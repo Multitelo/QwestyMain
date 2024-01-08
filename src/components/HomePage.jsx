@@ -1,6 +1,6 @@
 import React from 'react';
 import FagData from './fagData';
-
+// import Header from './Header';
 export default function HomePage() {
   const faqs = [
     {
@@ -38,6 +38,7 @@ export default function HomePage() {
   
   return (
     <div className='bg-[#383434]'>
+    {/* {<Header/>} */}
     <div className='pt-10 pr-10'>
     <div className='grid grid-cols-2 w-[1078px]'>
 
