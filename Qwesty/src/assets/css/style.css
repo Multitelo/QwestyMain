@@ -646,7 +646,7 @@ letter-spacing: -0.483px;
 
 
 
-/* Add media query for small screens */
+/*  media query for small screens */
 @media screen and (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -658,16 +658,15 @@ letter-spacing: -0.483px;
   .items:last-child {
     margin-left: 0;
   }
-}
-
-
-
-/* media query for small screens */
-@media screen and (max-width: 768px) {
   #grid-container-first {
     grid-template-columns: 90vw;
   }
 }
+
+
+
+
+
 
 
 
