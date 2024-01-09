@@ -3,19 +3,29 @@ import womanPic from '../assets/images/woman.png'
 import connector from '../assets/images/connector.png'
 import Main from './Main';
 import { useState, useEffect } from 'react'
+import Faq from './Faq';
+import Footer from './Footer';
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
+  const[isHovoured, setIsHovoured] = useState({
+                  problemOne:false,
+                  problemTwo:false,
+                  problemThree:false
+  })
   const solutions = [{
     problem: ' "This form is so long, I\'m starting'+'\n'+' to think I\'m applying for a job."',
+    identity:'A typical Participant\'s day',
     solution: 'Qwesty is so fun, you\'ll forget'+'\n'+'  you\'re giving feedback'
   },
   {
     problem:'"These responses are so empty, that'+'\n'+'  I wonder if the participants are forced to respond',
+    identity:'A typical Product Manager\'s day',
     solution:'Qwesty is the only way to'+'\n'+'  find out what your users really think, even if they don\'t want to tell you.'
  
   },
   {
     problem: '“I know what my target audience want'+'\n'+'  but but it\'s still not kinda helpful”',
+    identity: 'A typical Content Strategist\'s day',
     solution:'Qwesty not only tells you'+'\n'+'  What but also tells you Why'
      }
 ]
@@ -26,7 +36,7 @@ function Home() {
     };
    window.addEventListener('touchstart', handleTouchStart);
 
-    // Cleanup the event listener when the component unmounts
+   
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
     };
@@ -81,6 +91,8 @@ function Home() {
       </div>
     </div>
     {<Main/>}
+    {<Faq/>}
+    {<Footer/>}
     </>
   )
 }
@@ -92,9 +104,12 @@ function Convos(props){
     <div id="flex-items" 
          style={{translate:props.index==1?'200px':props.index==2?'600px':'0'}}
         >
-  <p>
+  <p id="first-displayed">
     
    {props.solutions.problem}
+  </p>
+  <p id="on-hover">
+    {props.solutions.identity}
   </p>
   <img src={connector} />
   <p >
