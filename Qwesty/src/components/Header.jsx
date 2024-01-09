@@ -47,12 +47,12 @@ function Header() {
     <>
    
    
-    
+   <div className='nav-medium-devices'>
+      
+      <Link to='/' className='small-logo'><img src={Logo}></img></Link>
+     </div> 
     {windowWidth<769 && !barClicked ?
      <div className='nav-medium-devices'>
-      
-     <Link to='/' className='small-logo'><img src={Logo}></img></Link>
-     
       <button onClick={handleClick} 
                          id="dropdown-btn"><img src={bars}/></button>
                          </div>
