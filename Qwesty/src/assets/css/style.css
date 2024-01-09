@@ -660,19 +660,18 @@ letter-spacing: -0.483px;
   }
 }
 
-/* Styles for Home.jsx */
-/* Your existing styles for the home section */
 
-/* Add media query for small screens */
+
+/* media query for small screens */
 @media screen and (max-width: 768px) {
   #grid-container-first {
     grid-template-columns: 90vw;
   }
 }
 
-/* Your existing styles for the second container */
 
-/* Add media query for medium screens */
+
+/* media query for medium screens */
 @media screen and (max-width: 1024px) {
   #grid-container-second {
     grid-template-columns: 1fr;
@@ -680,10 +679,6 @@ letter-spacing: -0.483px;
   
 }
 
-/* Your existing styles for the third container */
-/* No specific media query added for now */
-
-/* Your existing styles for the FAQ section */
 /* Adjust styles for small screens */
 @media screen and (max-width: 768px) {
   .faq-container {
@@ -785,5 +780,3 @@ letter-spacing: -0.483px;
    
 }
 
-/* Your existing styles for the footer */
-/* No specific media query added for now */
