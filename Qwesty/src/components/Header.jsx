@@ -1,0 +1,80 @@
+import '../assets/css/style.css';
+import Home from './Home'
+import Logo from '../assets/images/Logo.png';
+import arrow from '../assets/images/down-arrow.png'
+import bars from '../assets/images/bars.svg'
+import x from '../assets/images/x.svg';
+import { Routes, Route, Link } from "react-router-dom"
+import { useState, useEffect } from 'react';
+function Header() {
+
+    const [barClicked, setBarClicked]= useState(false)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    const handleClick = ()=>{
+      setBarClicked(prevState=> !prevState)
+      
+    }
+
+    const closeAnswers = () => {
+      // Close the dropdown bar in small devices when the window is scrolled
+     setBarClicked(false);
+    };
+
+    useEffect(()=>{
+     
+      document.addEventListener("scroll", closeAnswers);
+      return () => {
+        document.removeEventListener("scroll", closeAnswers);
+      };
+
+      
+    })
+
+    useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
+  
+  return (
+    <>
+   
+   
+   <div className='nav-medium-devices'>
+      
+      <Link to='/' className='small-logo'><img src={Logo}></img></Link>
+     </div> 
+    {windowWidth<769 && !barClicked ?
+     <div className='nav-medium-devices'>
+      <button onClick={handleClick} 
+                         id="dropdown-btn"><img src={bars}/></button>
+                         </div>
+                         
+        :<nav id="nav-bar">
+            
+            <Link to='/' className='items logo'><img src={Logo}></img></Link>
+            {
+              barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
+            } 
+            <Link to='/'className='items' id="first-item">about us</Link>
+            <Link to='/'className='items' id="second-item">contact us</Link>
+            <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/'className='items' id="fourth-item">join waitlist</Link>
+           
+        </nav>
+}
+   
+        <Routes>
+            <Route path='/' element={<Home/>}></Route>
+        </Routes>
+        </>
+  )
+}
+export default Header
