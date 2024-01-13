@@ -6,23 +6,27 @@ function Footer() {
   return (
 <>
     <div className="footer-container">
+        
         <div className='flex-items-1'><img src={logo}
                   alt="Qwesty'logo"/></div>
-                  
+         <div className='social-links'>
         <div className='flex-items'>
             <img src={fbIcon}
                  alt="Facebook icon"/>
-        </div>
-        <div className='flex-items'>
-            <img src={igIcon}
-                 alt="Instagram icon"/>
         </div>
         <div className='flex-items'>
             <img src={linkedinIcon}
                  alt="Linkedin icon"/>
         
         </div>
-        <div className='flex-items lists'>
+        <div className='flex-items'>
+            <img src={igIcon}
+                 alt="Instagram icon"/>
+        </div>
+       
+        </div>
+
+        <div className='flex-items-lists'>
             <div className='list-items'>Terms</div>
             <div className='list-items'>help</div>
             <div className='list-items'>about</div>

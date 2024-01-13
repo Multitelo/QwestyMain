@@ -176,7 +176,7 @@ nav #arrow{
 #btn-join{
   grid-area: btn;
   margin-top: 50px;
-  border: 1px solid white;
+  
 }
 
 #desc h1{
@@ -533,9 +533,9 @@ justify-self: center;
 .faq-items{
   border-radius: 15px;
   border: 1px solid #FFF;
-  height:12vh;
+  height:auto;
   width: 30vw;
-  padding: 10px;
+  padding: 15px 20px;
   display: flex;
   align-content: center;
   flex-direction: column;
@@ -608,7 +608,6 @@ justify-self: center;
 .footer-container{
    display: flex;
    margin-top: 50vh;
-  
    width:80vw;
    padding: 0 50px;
    height: 30vh;
@@ -632,21 +631,31 @@ letter-spacing: -0.483px;
 .flex-items-1{
   margin-right: auto;
   align-self: flex-start;
-  width: 10vw;
+  width: 20vw;
   /* justify-self: stretch; */
   
 }
 
-/* .social-links{
-  width:10vw;
-} */
-.footer-container :last-child{
+.social-links{
+ display: flex;
+ gap:15%;
+ align-items: flex-end;
+}
+
+.social-links :last-child{
+  /* width: 15vw; */
+}
+.footer-container .flex-items-lists{
   margin-left: auto;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns:1fr 1fr ;
- column-gap: 30px;
+  gap: 30px;
   align-self: flex-start;
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 20px;
+
 }
 
 #last-item{
@@ -815,10 +824,6 @@ button img,img#close-bar{
 }
 }
 /* For medium and */
-@media screen and (min-width: 1024px){
-
- 
-}
 
 
 
@@ -835,15 +840,16 @@ button img,img#close-bar{
 
 /* Adjust styles for small screens */
 @media screen and (max-width: 768px) {
+
   .faq-container {
-    grid-template-columns: 90vw;
-    column-gap: 20px;
+    /* grid-template-columns: 90vw;
+    column-gap: 20px; */
   }
   .faq-container{
     display: grid;
     grid-template-rows: 20vh repeat(8, 20vh);
-    grid-template-columns: 90vw;
-    justify-content: center;
+    grid-template-columns: 70vw;
+    /* justify-content: center; */
     grid-template-areas: "header"
                          "faq-item-0"
                          "faq-item-1"
@@ -857,80 +863,65 @@ button img,img#close-bar{
     margin-bottom: 100px;
     column-gap: 0px;
     row-gap: 0px;
-    align-items: center;
-    align-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    /* border: 19px solid white; */
+    justify-content: center;
   }
 
   .faq-items{
     
-    height:15vh;
-    width: 80vw;
-    padding: 10px;
+    height:auto;
+    width: 70vw;
+    padding: 20px;
     display: flex;
-    align-content: center;
+    align-content: flex-start;
     flex-direction: column;
     position: relative;
+    align-items: flex-start;
+
   }
   .answer {
     width:80vw;}
 
 
-    .footer-container{
-      display: grid;
-      margin-top: 50vh;
-      width:80vw;
-      padding: 0 50px;
-      height: 30vh;
-      grid-template-rows: 30vh;
-      grid-template-columns: 10vh 30vh 10vh;
-      grid-template-areas: "logos footerNav footerNav";
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20vh;  
-   }
-   
+    /* Style for the footer */
+.footer-container{
+  display: grid;
+  justify-content: stretch;
+  padding: 10px;
+  grid-template-columns: repeat(2, 40vw);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: "footerL lists"
+                        "socialLinks socialLinks";
+}
+.flex-items-1{
+  grid-area: footerL;
+  width: 25vw;
+  align-self: center;
+  justify-self: center;
+  margin: 1px auto;
+}
 
-   .footer-container .flex-items{
-     width: 10vw;
-     row-gap: 0px;
-     color: #FFF;
-   font-feature-settings: 'clig' off, 'liga' off;
-   font-family: Outfit;
-   font-size: 20px;
-   font-style: normal;
-   font-weight: 500;
-   line-height: normal;
-   letter-spacing: -0.483px;
-   }
+.social-links{
+  grid-area: socialLinks;
+  justify-self: center;
+  align-items: end;
+  padding-top: 10vh;
+  width: 30vw;
+}
    
-   .flex-items-1{
-     grid-area: logos;
-    
-     width: 30vw;
-    margin-right: 0;
-    align-self: center;
-    justify-self: start;
-   }
-
-   .flex-items .lists{
-      grid-area:FooterNav;
-      height:10vh;
-   }
-  
-   .flex-items-2{
-    grid-area:fb;
-    justify-self: end;
-    border: 1px solid white;
-   }
-   .flex-items-3{
-    grid-area: ig;
-   }
-   .flex-items-4{
-    grid-area: lk;
-   }
-   
-   
-  
+.flex-items-lists{
+  grid-area: lists;
+  font-size: 16px;
+}  
    
 }
 
+@media screen and (min-width: 700px){
+
+  .convo-item{
+    height: auto;
+    
+  }
+}
