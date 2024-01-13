@@ -50,11 +50,11 @@ function Home() {
     <div id="grid-container-first">
       <div id="desc">
         <h1 id="title">
-            User <span>research </span> has never been so fun and fast
+            User <span> research </span> has never been so fun and fast
         </h1>
       <p>
     Qwesty help UX Researchers get useful data in order to make the market
-     desire their product while helping the participants enjoy and get rewards for <br/>the data they share
+     desire their product while helping the participants enjoy and get rewards for the data they share
    </p>
     </div>
 
@@ -68,28 +68,21 @@ function Home() {
 
     </div>
 
-    <div id="grid-container-second">
+    {/* <div id="grid-container-second">
       <div id="heading">
         <p>Traditional Market/UX Research Platforms</p>
       </div>
 
       <div id="item2">
         <img src={womanPic} id="flex-item"/>
-        {
-           solutions.map((solutione,index) =>{
-           
-          return(<div key={index}>
-              <Convos key={index} solutions={solutione} index={index}/>
-            </div>
-           )})
-        }
        
-      </div>
+       
+      </div> */}
 
-      <div id="item3">
+      {/* <div id="item3">
       Qwesty
-      </div>
-    </div>
+      </div> */}
+    {/* </div> */}
     {<Main/>}
     {<Faq/>}
     {<Footer/>}

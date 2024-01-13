@@ -37,6 +37,10 @@ nav{
   animation: nav 0.5s ease-in-out;
 }
 
+#nav-bar-small{
+  display: none;
+}
+
 @keyframes nav{
   0%{
     translate:0 0px;
@@ -107,23 +111,21 @@ nav #arrow{
   margin-left: 7px;
 }
 
-
+.nav-medium-devices{
+  display: none;
+}
 /* Style for Home.jsx */
 #grid-container-first{
-  display: grid;
-  place-items: center;
-  
-  margin-top: 60px;
-  grid-template-columns: 55vw;
-  grid-template-rows: 300px auto 100px;
-  
-  justify-items: center;
+
+  display: flex;
+  flex-direction: column;
+  margin:15vh auto;
+  width:80vw;
   justify-content: center;
-  grid-template-areas: "desc" 
-                       "vid"
-                       "btn";
-  
-  
+  align-items: center;
+  /* border: 1px solid pink; */
+  align-content: center;
+  justify-items: flex-start;
 }
 
 @keyframes trans{
@@ -148,18 +150,33 @@ nav #arrow{
 
 #desc{
   grid-area:desc;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  /* border: 1px solid white; */
+  width: 60vw;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:5vh;
+  margin-bottom: 5vh;
 }
 
 #vid{
   grid-area: vid;
   transition: 1s translate;
-animation: vid 0.5s ease-in-out 1;
+  animation: vid 0.5s ease-in-out 1;
+  /* border: 10px solid white; */
+  width: 60vw;
+  align-self: center;
 }
 
+#vid img{
+ width: 60vw;
+}
 #btn-join{
   grid-area: btn;
   margin-top: 50px;
+  border: 1px solid white;
 }
 
 #desc h1{
@@ -171,19 +188,19 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 letter-spacing: -0.483px;
-margin-bottom: 60px;
-/* text-wrap: nowrap; */
-height: 50px;
-
+margin-bottom: 10px;
 transition: 1s translate;
   animation: trans 0.5s ease-in-out 1;
+  /* border: 1px solid white; */
+  width:100vw;
+text-align: center;
 }
 
 #desc span{
   background-image: url('../images/research.png');
   background-repeat: no-repeat;
   padding-bottom: 30px;
-
+ padding-left: 5px;
 }
 
 #desc p{
@@ -198,9 +215,11 @@ line-height: normal;
 letter-spacing: -0.483px;
 opacity: 0.75;
 text-align: center;
-text-indent: 42px;
+/* text-indent: 42px; */
 transition: 1s translate;
 animation: vid 0.5s ease-in-out 1;
+align-self: center;
+width: 60vw;
 }
 
 #btn-join button{
@@ -267,8 +286,8 @@ line-height: 28px; /* 116.667% */
 }
 
 #first-displayed, #on-hover{
-  width: 267px;
-height: 89.378px;
+  width: 20vw;
+height: 10vh;
 flex-shrink: 0;
 text-align: center;
 padding-top: 17px;
@@ -647,8 +666,8 @@ letter-spacing: -0.483px;
 
 
 /*  media query for small screens */
-@media screen and (max-width: 768px) {
-  nav {
+@media screen and (max-width: 1024px) {
+  #nav-bar-small {
   display: grid;
   grid-template-columns: 70vw;
   grid-template-rows: repeat(5,10vh);
@@ -658,7 +677,7 @@ letter-spacing: -0.483px;
                         "third"
                         "fourth";
   position: absolute;
-  right: -40vw;
+  right: -30vw;
   top:0vh;
   background-color: #8E5DF5;
   height: 90vh;
@@ -670,7 +689,18 @@ letter-spacing: -0.483px;
   padding-top: 10vh;
   animation: nav 0.5s ease-in-out;
 }
+#grid-container-first{
 
+  display: flex;
+  flex-direction: column;
+  margin:15vh auto;
+  width:80vw;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid pink; */
+  align-content: center;
+  justify-items: flex-start;
+}
 @keyframes nav{
   0%{
     translate:100vw 0px;
@@ -689,7 +719,7 @@ height: 5vh;
 }
 .nav-medium-devices{
    display:flex;
-   padding: 20px 50px;
+   padding: 20px 70px;
   }
 
 .logo{
@@ -698,11 +728,14 @@ height: 5vh;
 .small-logo{
   margin-right: auto;
   width: 30vw;
+  position: absolute;
+  top:4vh;
+  left:8vw;
 }
 
 #dropdown-btn{
   margin-left: auto;
-  /* width: 30vw; */
+ 
   display: inline-flex;
   position: absolute;
   top:4vh;
@@ -748,7 +781,7 @@ button img,img#close-bar{
     
   }
 
-  nav .items:last-child{
+  #nav-bar-small .items:last-child{
     margin:0px;
     height: 7vh;
     width:40vw;
@@ -770,14 +803,21 @@ button img,img#close-bar{
     grid-template-columns: 90vw;
   }
  
-
+ h1#title{
+  font-size: 30px;
+ }
+ 
+ #desc p{
+  font-size: 18px;
+ }
+#nav-bar{
+  display: none;
+}
 }
 /* For medium and */
-@media screen and (min-width: 769px){
+@media screen and (min-width: 1024px){
 
-  .nav-medium-devices{
-    display: none;
-  }
+ 
 }
 
 
@@ -865,7 +905,7 @@ button img,img#close-bar{
    
    .flex-items-1{
      grid-area: logos;
-     /* align-self: flex-start; */
+    
      width: 30vw;
     margin-right: 0;
     align-self: center;

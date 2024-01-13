@@ -36,13 +36,13 @@ function Header() {
       setWindowWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener("resize", handleResize);
+    handleResize();
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []); 
-  
+ 
   return (
     <>
    
@@ -50,26 +50,35 @@ function Header() {
    <div className='nav-medium-devices'>
       
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
-     </div> 
-    {windowWidth<769 && !barClicked ?
-     <div className='nav-medium-devices'>
+     
       <button onClick={handleClick} 
                          id="dropdown-btn"><img src={bars}/></button>
                          </div>
+           {barClicked &&              
+          <nav id="nav-bar-small">
+            
+          <Link to='/' className='items logo'><img src={Logo}></img></Link>
+          {
+            barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
+          } 
+          <Link to='/'className='items' id="first-item">about us</Link>
+          <Link to='/'className='items' id="second-item">contact us</Link>
+          <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+          <Link to='/'className='items' id="fourth-item">join waitlist</Link>
+         
+      </nav>}              
                          
-        :<nav id="nav-bar">
+        <nav id="nav-bar">
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
-            {
-              barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
-            } 
+         
             <Link to='/'className='items' id="first-item">about us</Link>
             <Link to='/'className='items' id="second-item">contact us</Link>
             <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
             <Link to='/'className='items' id="fourth-item">join waitlist</Link>
            
         </nav>
-}
+
    
         <Routes>
             <Route path='/' element={<Home/>}></Route>
