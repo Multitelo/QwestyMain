@@ -5,6 +5,7 @@ import Main from './Main';
 import { useState, useEffect } from 'react'
 import Faq from './Faq';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
   const[isHovoured, setIsHovoured] = useState({
@@ -62,9 +63,9 @@ function Home() {
       <img src={vid}/>
     </div>
 
-    <div id="btn-join">
+    <Link to='/LogIn'><div id="btn-join">
       <button id="btn"><span>join waitlist</span></button> 
-    </div>
+    </div></Link>
 
     </div>
 
