@@ -251,7 +251,7 @@ line-height: 28px; /* 116.667% */
   display: grid;
   margin-top: 250px;
   grid-template-columns: 35vw 45vw;
-  grid-template-rows: 17vh  repeat(4, 40vh);
+  grid-template-rows: 17vh  repeat(4, 43vh);
   grid-template-areas: "Heading Heading"
                         "Item2 Item3"
                         "firstBox Item3"
@@ -281,7 +281,7 @@ line-height: 28px; /* 116.667% */
 }
 
 #item2 img{
-  height:40vh;
+  height:43vh;
   width:35vw;
 }
 
@@ -317,8 +317,8 @@ line-height: 28px; /* 116.667% */
 }
 
 .first-item, .second-item{
-  width: 20vw;
-height: 14vh;
+  width: 21vw;
+height: 16vh;
 flex-shrink: 0;
 text-align: center;
 padding-top: 17px;
