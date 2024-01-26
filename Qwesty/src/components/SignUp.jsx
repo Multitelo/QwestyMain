@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import qwesty from "./images/qwesty.jpg"
+
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -49,7 +51,7 @@ export default function LogIn() {
         </div></div>
         <div>
           <img
-            src="https://s3-alpha-sig.figma.com/img/b2de/e3d9/eca46d083bc1a3361ca7df3e14b88285?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=O6ZM5dzolBDtIqnpR01UPfrQV0Pj2bcVgIyJcVovwnLBJ2LiLhAh9t6RGv5aRHGXhF23IcSE1V6yovCALXXUtcnt8NAB~2n9hoLzz4GIWX7uPHpgvxnQoj1duer7iQP-gzNAvF8uBJs8cA9qBOuFWOamiKDS3sm77k~cdvIA2rwGsvyFyvmi6m5H4l-DTGF9~eMcUaKIaZAdKFIx5UKDUPn0HpTBt~4-5cvXvfQik6~KdJTh~9Ppj0qXiNlkJDcnANNitNeaR5x5baAn1Er2DrQ~WPHZJoZFu8MifS-cZwiHzuiRKWEUwl0A9Q2DCUL3eHnJHMygNUPjrQAZJI9iTw__"
+          src={qwesty}
             alt="colorful qwesty letters"
             className="max-w-full"
           />
