@@ -251,11 +251,15 @@ line-height: 28px; /* 116.667% */
   display: grid;
   margin-top: 250px;
   grid-template-columns: 35vw 45vw;
-  grid-template-rows: 17vh 86vh;
-  column-gap: 0;
+  grid-template-rows: 17vh  repeat(4, 40vh);
   grid-template-areas: "Heading Heading"
-                        "Item2 Item3";
+                        "Item2 Item3"
+                        "firstBox Item3"
+                        "secondBox secondBox"
+                        "thirdBox thirdBox";
   justify-content: center;
+  row-gap: 0px;
+  
 }
 
 #grid-container-second #heading{
@@ -265,94 +269,110 @@ line-height: 28px; /* 116.667% */
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Outfit;
   font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.483px;
+  
 }
 
 #grid-container-second #item2{
- 
+  
   grid-area: Item2;
+  border-radius: 15px;
+  height:20vh;
+  /* border: 1px solid whitesmoke; */
+}
+
+#item2 img{
+  height:40vh;
+  width:35vw;
+}
+
+
+.item-box{
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
 }
 
-#flex-items{
-  border-radius: 40px;
-  height: 35vh;
-  border: 1px solid #918A8A;
+.item-box.first{
+  grid-area: firstBox;
+  
 }
 
-#first-displayed, #on-hover{
+.item-box.first, .second, .third{
+
+  border: 1px solid rgb(213, 204, 204);
+  border-radius: 50px;
+  padding: 25px;
+  
+}
+
+.item-box.second{
+  grid-area: secondBox;
+  justify-self: center;
+  width: 40vw;
+}
+
+.item-box.third{
+  grid-area: thirdBox;
+  justify-self: end;
+  width: 40vw;
+}
+
+.first-item, .second-item{
   width: 20vw;
-height: 10vh;
+height: 14vh;
 flex-shrink: 0;
 text-align: center;
 padding-top: 17px;
   border-radius: 30px;
   background: #FFF3C7;
-  margin: 40px 0  0 42px;
+  /* margin: 50px 0  0 42px;   */
+  padding:20px;
+  display: flex;
+align-items: center;
+
+}
+
+.first-item p{
   color: #2A2727;
-  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Outfit;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.483px;
-  padding:20px;
-  display: block;
 }
-
-#flex-items #first-displayed{
-  display: block;
-}
-#on-hover{
-  display:none;
+.first-item .hovoured{
+  
   color: #FFF;
-  background-color: #626873;
   text-align: center;
-  padding: 30px 0;
+ 
 }
 
-#first-displayed:hover + #on-hover {
-  display: block;
+.first-item:hover{
+  background-color: #626873;
+  padding:30px;
 }
 
-#flex-items #first-displayed:hover{
-  display: none;
+#connector{
+   align-self: center;
+   position: relative;
+   left: -100px;
 }
 
-#flex-items img{
-  max-width: 100%;
-  margin-left:100px;
 
-}
 
-#flex-items :last-child{
-  align-self: center;
-  color: #FFF;
-text-align: center;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Outfit;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.483px;
-border-radius: 30px;
+
+.second-item {
 background: #8E5DF5;
-margin-left: 220px;
-width: 265px;
-height: 92.442px;
-flex-shrink: 0;
-margin-top: -80px;
-padding-top: 17px;
-text-align: center;
-padding: 20px;
-margin-bottom: 15px;
+align-self: flex-end;
+position: relative;
+top:-100px;
+margin: 40px 0  0 42px;  
+}
+
+.second-item p{
+  color: #FFF;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 auto;
+ 
 }
 #grid-container-second #item3{
   grid-area: Item3;
@@ -360,18 +380,12 @@ margin-bottom: 15px;
   background: #8E5DF5;
   color: #FFF;
   text-align: center;
-  /* align-self: stretch; */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFF;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Outfit;
-font-size: 96px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.483px;
+  font-family: Outfit;
+  font-size: 96px;
+  font-weight: 500;
 
 }
 
@@ -380,7 +394,7 @@ img{
 }
 /* Third container style */
 .third-container{
-  margin-top: 85vh;
+  margin-top: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -642,9 +656,7 @@ letter-spacing: -0.483px;
  align-items: flex-end;
 }
 
-.social-links :last-child{
-  /* width: 15vw; */
-}
+
 .footer-container .flex-items-lists{
   margin-left: auto;
   display: grid;
@@ -823,13 +835,87 @@ button img,img#close-bar{
   display: none;
 }
 }
-/* For medium and */
+
+@media screen and (max-width: 1096px) {
+  
+  #grid-container-second{
+    display: grid;
+    margin-top: 250px;
+    grid-template-columns: 35vw 45vw;
+    grid-template-rows: 17vh  repeat(4, 50vh);
+    grid-template-areas: "Heading Heading"
+                          /* "Item2 Item2" */
+                          "firstBox firstBox "
+                          "secondBox secondBox"
+                          "thirdBox thirdBox";
+    justify-content: center;
+    row-gap: 0px;
+    padding: 20px;
+  }
+  #grid-container-second #item2{
+  
+    grid-area: Item2;
+    border-radius: 15px;
+    height:20vh;
+    display: none;
+    /* border: 1px solid whitesmoke; */
+  }
+  
+
+  #item2 img{
+    height:40vh;
+    width:65vw;
+  }
+
+  .second-item {
+    
+    top:-90px;
+    
+    }
+    #connector{
+      align-self: center;
+      position: relative;
+      left: -150px;
+   }
+  #grid-container-second #item3{
+    display: none;
+  }
+
+  .item-box.first, .item-box.second, .item-box.third{
+    
+    width:60vw
+  }
+  .first-item, .second-item{
+    width: 40vw;
+    height: 15vh;
+  } 
+  .third-container{
+    margin-top: 0vh;
+}
+}
+
+
+@media screen and (max-width: 800px) {
+  .item-box.second,.item-box.third,.item-box.first{
+    justify-self: center;
+    width:80vw;
+  }
+  
+  #grid-container-second{
+    row-gap: 5vh;
+  }
+  .first-item, .second-item{
+    width: 45vw;
+    
+  } 
+  #connector{
+   
+    left: -120px;
+ }
+}
 
 
 
-
-
-/* media query for medium screens */
 @media screen and (max-width: 1024px) {
   #grid-container-second {
     grid-template-columns: 1fr;
@@ -841,10 +927,15 @@ button img,img#close-bar{
 /* Adjust styles for small screens */
 @media screen and (max-width: 768px) {
 
-  .faq-container {
-    /* grid-template-columns: 90vw;
-    column-gap: 20px; */
-  }
+  #desc h1{
+  font-size: 30px;
+  
+}
+.convo-item.visible {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
   .faq-container{
     display: grid;
     grid-template-rows: 20vh repeat(8, 20vh);
