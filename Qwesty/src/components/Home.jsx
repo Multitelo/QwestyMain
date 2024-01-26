@@ -19,7 +19,7 @@ function Home() {
     solution: 'Qwesty is so fun, you\'ll forget'+'\n'+'  you\'re giving feedback'
   },
   {
-    problem:'"These responses are so empty, that'+'\n'+'  I wonder if the participants are forced to respond',
+    problem:'"These responses are so empty, that'+'\n'+'  I wonder if the participants are forced to respond."',
     identity:'A typical Product Manager\'s day',
     solution:'Qwesty is the only way to'+'\n'+'  find out what your users really think, even if they don\'t want to tell you.'
  
@@ -42,7 +42,10 @@ function Home() {
       window.removeEventListener('touchstart', handleTouchStart);
     };
   }, []); 
-
+  
+  const handleHover = ()=>{
+    setIsHovoured()
+  }
  
 
   return (
@@ -51,11 +54,11 @@ function Home() {
     <div id="grid-container-first">
       <div id="desc">
         <h1 id="title">
-            User <span>research </span> has never been so fun and fast
+            User <span> research </span> has never been so fun and fast
         </h1>
       <p>
     Qwesty help UX Researchers get useful data in order to make the market
-     desire their product while helping the participants enjoy and get rewards for <br/>the data they share
+     desire their product while helping the participants enjoy and get rewards for the data they share
    </p>
     </div>
 
@@ -75,21 +78,70 @@ function Home() {
       </div>
 
       <div id="item2">
-        <img src={womanPic} id="flex-item"/>
-        {
+        <img src={womanPic} />
+        </div>
+        <div id="item3">
+      Qwesty
+      </div>
+      <div className='item-box first'>
+        <div className='first-item'
+             onMouseEnter={()=>{
+              setIsHovoured({...isHovoured, problemOne:true})
+             }}
+             onMouseLeave={()=>{
+              setIsHovoured({...isHovoured, problemOne:false})}}>
+       {isHovoured.problemOne? <p className='hovoured'>{solutions[0].identity}</p>:
+        <p>{solutions[0].problem}</p>}</div>
+
+        <div id="connector"> <img src={connector} /></div>
+        <div className='second-item'>
+          <p>{solutions[0].solution}</p>
+          </div>  
+
+      </div>
+
+      <div className='item-box second'>
+        <div className='first-item'onMouseEnter={()=>{
+              setIsHovoured({...isHovoured, problemTwo:true})
+             }}
+             onMouseLeave={()=>{
+              setIsHovoured({...isHovoured, problemTwo:false})}}>
+       {isHovoured.problemTwo? <p className='hovoured'>{solutions[1].identity}</p>:
+        <p>{solutions[1].problem}</p>}</div>
+
+        <div id="connector"> <img src={connector} /></div>
+        <div className='second-item'>
+          <p>{solutions[1].solution}</p>
+          </div>  
+
+      </div>
+
+      <div className='item-box third'>
+        <div className='first-item'onMouseEnter={()=>{
+              setIsHovoured({...isHovoured, problemThree:true})
+             }}
+             onMouseLeave={()=>{
+              setIsHovoured({...isHovoured, problemThree:false})}}>
+       {isHovoured.problemThree? <p className='hovoured'>{solutions[2].identity}</p>:
+        <p>{solutions[2].problem}</p>}</div>
+        <div id="connector"> <img src={connector} /></div>
+        <div className='second-item'>
+          <p>{solutions[2].solution}</p>
+          </div>  
+
+      </div>
+        {/* {
            solutions.map((solutione,index) =>{
            
           return(<div key={index}>
               <Convos key={index} solutions={solutione} index={index}/>
             </div>
            )})
-        }
-       
-      </div>
+        } */}
 
-      <div id="item3">
-      Qwesty
-      </div>
+      
+
+      
     </div>
     {<Main/>}
     {<Faq/>}
@@ -98,29 +150,29 @@ function Home() {
   )
 }
 
-function Convos(props){
+// function Convos(props){
   
-  return(
-    <>
-    <div id="flex-items" 
-         style={{translate:props.index==1?'200px':props.index==2?'600px':'0'}}
-        >
-  <p id="first-displayed">
+//   return(
+//     <>
+//     <div id="flex-items" 
+//          style={{translate:props.index==1?'200px':props.index==2?'600px':'0'}}
+//         >
+//   <p id="first-displayed">
     
-   {props.solutions.problem}
-  </p>
-  <p id="on-hover">
-    {props.solutions.identity}
-  </p>
-  <img src={connector} />
-  <p >
-  {props.solutions.solution}
-  </p>
-  </div>
-  </>
-  )
+//    {props.solutions.problem}
+//   </p>
+//   <p id="on-hover">
+//     {props.solutions.identity}
+//   </p>
+//   <img src={connector} />
+//   <p >
+//   {props.solutions.solution}
+//   </p>
+//   </div>
+//   </>
+//   )
   
-}
+// }
 
 
 
