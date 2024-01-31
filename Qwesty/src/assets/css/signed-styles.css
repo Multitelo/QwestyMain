@@ -14,7 +14,7 @@ header.flexContainer{
     padding:5px 30px 20px 25px;
     display: flex;
     flex-direction: column;
-    height:100vh;
+    height:105vh;
     width:20vw;
     gap:2px;
     flex-wrap: nowrap;
@@ -224,14 +224,14 @@ border-radius: 15px;
     z-index: 1;
     background-color: #ffffff;
     width: 30vw;
-    height: 80vh;
+    height: 90vh;
     position: absolute;
     /* border: 1px solid red; */
     right: 0;
     display: flex;
     translate: 0px 0px;
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
     translate:0vw 0vw;
     border-radius: 0 0 0 15px;
     box-shadow: 1px 2px gray;
