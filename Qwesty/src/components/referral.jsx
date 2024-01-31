@@ -12,20 +12,55 @@ import Image3 from "./images/images.jpeg";
 import luke from "./images/luke.jpeg";
 import mike from "./images/mike.jpeg";
 import olivia from "./images/olivia.jpeg";
+import { FaSearch, FaClipboardList, FaUserCircle, FaGift, FaCog, FaSignOutAlt } from 'react-icons/fa';
+
 import Logo from "./Logo";
 
 const Referral = () => {
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex h-screen bg-black overflow-scroll">
       {/* Left Sidebar */}
       <aside className="bg-[#201F24] text-white p-4 flex-shrink-0">
-        <div>
-          <Logo />
-        </div>
-        <h2 className="text-2xl font-bold">Your Company</h2>
-        <p>Refer a friend and earn rewards!</p>
-      </aside>
+  <div>
+    <Logo />
+  </div>
+  <h2 className="text-2xl font-bold">Your Company</h2>
+  <p>Refer a friend and earn rewards!</p>
 
+  {/* Search Bar */}
+  <div className="mt-4 flex items-center relative  ">
+    <input
+      type="text"
+      placeholder=""
+      className="bg-[#333333] text-white p-2  rounded-md focus:outline-none "
+    />
+    <FaSearch className="text-gray-500 ml-2 absolute left-2 top-3" />
+  </div>
+
+  {/* Navigation Links */}
+  <ul className="mt-4">
+    <li className="flex items-center space-x-2 mt-5">
+      <FaClipboardList />
+      <span>Quests</span>
+    </li>
+    <li className="flex items-center space-x-2 mt-5">
+      <FaUserCircle />
+      <span>My Profile</span>
+    </li>
+    <li className="flex items-center space-x-2 mt-[40%]">
+      <FaGift />
+      <span>Rewards</span>
+    </li>
+    <li className="flex items-center space-x-2 mt-5">
+      <FaCog />
+      <span>Settings</span>
+    </li>
+    <li className="flex items-center mt-[50%] space-x-2 ">
+      <FaSignOutAlt />
+      <span>Logout</span>
+    </li>
+  </ul>
+</aside>
       <main className="flex-1 overflow-x-hidden overflow-y-auto w-[800px] p-4">
         <header className="bg-black text-white py-4 text-center w-[800px]">
           <p className="text-lg bg-[#EFE7FF] rounded-md text-purple-500">Fusky referred 5 friends and just got 50 $Qwes</p>
