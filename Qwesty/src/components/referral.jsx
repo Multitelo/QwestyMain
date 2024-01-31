@@ -6,6 +6,7 @@ import vec2 from "./images/vec2.png";
 import vec3 from "./images/vec3.png";
 import vec4 from "./images/vec4.png";
 import egg from "./images/egg.png"
+import rec from "./images/rec.png"
 import egg1 from "./images/egg1.png"
 import Image3 from "./images/images.jpeg";
 import luke from "./images/luke.jpeg";
@@ -26,9 +27,8 @@ const Referral = () => {
       </aside>
 
       <main className="flex-1 overflow-x-hidden overflow-y-auto w-[800px] p-4">
-        <header className="bg-blue-500 text-white py-4 text-center w-[800px]">
-          <h1 className="text-4xl font-bold">Refer a Friend</h1>
-          <p className="text-lg">Share the love and earn rewards!</p>
+        <header className="bg-black text-white py-4 text-center w-[800px]">
+          <p className="text-lg bg-[#EFE7FF] rounded-md text-purple-500">Fusky referred 5 friends and just got 50 $Qwes</p>
         </header>
         <div className="bg-gray-200 relative p-4 rounded-md w-[800px] ">
               <img src={Image3} alt="Referral Image 1" className="mb-4 rounded-md w-[797px] h-[302px]" />
@@ -107,8 +107,8 @@ const Referral = () => {
             </div>
           </div>
         </section>
-
-        <section className="mt-8  p-3 bg-[#201F24] shadow-md rounded-md w-[380px] h-[240px]">
+<div className="flex space-x-5">
+        <section className="mt-8  px-8 py-4 bg-[#201F24] shadow-md rounded-md w-[380px] h-[240px]">
   <p className="text-white mb-5 text-3xl">Referral List</p>
   <div className="flex space-x-3">
 
@@ -141,14 +141,18 @@ const Referral = () => {
         <p>Mike</p>
       </div>
     </div>
-    <div className="w-51 h-53 flex-shrink-0 rounded-lg border-2 border-[#8E5DF5] bg-white shadow-md">
-  {/* Your content goes here */}
-</div>
+   
 
 
   </div>
+  
 </section>
+<div className="w-[399px] h-[240px] flex-shrink-0 rounded-lg mt-8 mr-0 bg-[#292727]">
+<img src={rec} alt="" className="h-[240px] w-full"/>
+</div>
 
+
+</div>
 
 
        
@@ -156,7 +160,7 @@ const Referral = () => {
 
       {/* Right Sidebar */}
       <aside className="bg-blue-500 text-white p-4 flex-shrink-0">
-        {/* Add content for the right sidebar */}
+       
       </aside>
     </div>
   );
