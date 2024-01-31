@@ -66,8 +66,8 @@ function Home() {
       <img src={vid}/>
     </div>
 
-    <Link to='/LogIn'><div id="btn-join">
-      <button id="btn"><span>join waitlist</span></button> 
+    <Link to='/SignUp'><div id="btn-join">
+      <button id="btn"><span>Join Us</span></button> 
     </div></Link>
 
     </div>

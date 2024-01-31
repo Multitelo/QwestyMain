@@ -6,6 +6,9 @@ import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';
 import { Routes, Route, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
+import Indexx from './signedUp/Index';
+import Main from './Main';
+import About from './About';
 function Header() {
 
     const [barClicked, setBarClicked]= useState(false)
@@ -64,7 +67,7 @@ function Header() {
           <Link to='/'className='items' id="first-item">about us</Link>
           <Link to='/'className='items' id="second-item">contact us</Link>
           <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
-          <Link to='/'className='items' id="fourth-item">join waitlist</Link>
+         <Link to='/logIn'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
                          
@@ -75,13 +78,14 @@ function Header() {
             <Link to='/'className='items' id="first-item">about us</Link>
             <Link to='/'className='items' id="second-item">contact us</Link>
             <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
-            <Link to='/logIn'className='items' id="fourth-item">join waitlist</Link>
+            <Link to='/logIn'className='items' id="fourth-item">LogIn</Link>
            
         </nav>
 
    
         <Routes>
             <Route path='/' element={<Home/>}></Route>
+            <Route path="/about" element={<About/>} />
         </Routes>
         </>
   )
