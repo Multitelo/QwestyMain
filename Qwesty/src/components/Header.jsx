@@ -67,7 +67,7 @@ function Header() {
           <Link to='/'className='items' id="first-item">about us</Link>
           <Link to='/'className='items' id="second-item">contact us</Link>
           <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
-          <Link to='/logIn'className='items' id="fourth-item">join waitlist</Link>
+         
          
       </nav>}              
                          
@@ -75,10 +75,10 @@ function Header() {
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            <Link to='/about' className='items' id="first-item">about us</Link>
-            <Link to='/' className='items' id="second-item">contact us</Link>
-            <Link to='/' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
-            <Link to='/logIn' className='items' id="fourth-item">join waitlist</Link>
+            <Link to='/'className='items' id="first-item">about us</Link>
+            <Link to='/'className='items' id="second-item">contact us</Link>
+            <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/logIn'className='items' id="fourth-item">join waitlist</Link>
            
         </nav>
 

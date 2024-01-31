@@ -20,8 +20,25 @@ export default function LogIn() {
           </div>
           <div className="">
           <div className="mt-[20%] my-8 text-black/80">
-            <label className="font-bold ml-[30%]" htmlFor="email">
-              Please enter your password
+            <label className="font-bold ml-[30%] text-center" htmlFor="email">
+              Enter your password
+            </label>
+          </div>
+          <div className="mb-4 ml-[26%]">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="w-[60%] p-2 border-b-2 focus:outline-none text-center"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div className="mt-[10%] my-8 text-black/80">
+            <label className="font-bold ml-[30%] text-center" htmlFor="email">
+              Confirm Password
             </label>
           </div>
           <div className="mb-4 ml-[26%]">
