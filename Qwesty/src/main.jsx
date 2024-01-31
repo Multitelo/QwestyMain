@@ -10,6 +10,7 @@ import LogIn from './components/LogIn.jsx';
 import LogInn from './components/LogInn.jsx';
 import Reset from './components/Reset.jsx';
 import Header from './components/Header.jsx';
+import Referral from './components/referral.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<LogIn />} />
         <Route path="/loginn" element={<LogInn />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/referral" element={<Referral />} />
 
       </Routes>
     </BrowserRouter>

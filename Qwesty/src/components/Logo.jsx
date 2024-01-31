@@ -10,7 +10,7 @@ export default function Logo() {
     </div> 
     <div className="flex items-center ">
         
-        <div className="font-semibold  text-xl absolute top-16 left-[135px]">westy</div>
+        {/* <div className="font-semibold  text-xl absolute top-16 left-[135px]">westy</div> */}
     </div>
     </div>
   )
