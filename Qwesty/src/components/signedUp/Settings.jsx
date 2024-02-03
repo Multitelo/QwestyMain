@@ -101,7 +101,7 @@ function Settings() {
 
 const Account = ({theme})=>{
   return(
-    <div className="accountContent" style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>
+    <div className={theme==="dark"?"accountContent dark":"accountContent"} style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>
       <div className="headings">
         <h1  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Account</h1>
         <p  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Edit basic informations</p>

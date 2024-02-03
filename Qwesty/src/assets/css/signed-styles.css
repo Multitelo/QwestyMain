@@ -582,7 +582,7 @@ align-self: center;
  
 }
 
-.securityContent.dark input{
+.securityContent.dark input,.accountContent.dark input{
     background-color: #201F24;
     border: 1px solid #F4F4F4;
 }
