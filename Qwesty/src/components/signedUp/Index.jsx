@@ -1,17 +1,22 @@
 import '../../assets/css/signed-styles.css'
 import logoBlack from "../../assets/images/logoBlack.png";
+import logowhite from "../../assets/images/Logo.png";
 import bell from '../../assets/images/bell.svg'
-import calendar from '../../assets/images/calendar.svg'
+import calendarB from '../../assets/images/calendar.svg'
+import calendarW from '../../assets/images/calendarB.svg'
 import avatar from '../../assets/images/avatar.svg';
-import coinStack from '../../assets/images/coin-stack.svg';
-import logOut from '../../assets/images/log-out.svg';
+import coinStackB from '../../assets/images/coin-stack.svg';
+import coinStackW from '../../assets/images/coin-stackB.svg';
+import logOutB from '../../assets/images/log-out.svg';
+import logOutW from '../../assets/images/log-outB.svg';
 import menu from '../../assets/images/menu-2.svg';
 import search from '../../assets/images/search.svg';
 import settingsB from '../../assets/images/settingsB.svg';
 import settings from '../../assets/images/settings.svg';
-import userPlus from '../../assets/images/user-plus.svg';
-import user from '../../assets/images/user.svg';
-import Settings from './Settings';
+import userPlusB from '../../assets/images/user-plus.svg';
+import userPlusW from '../../assets/images/user-plusB.svg';
+import userB from '../../assets/images/user.svg';
+import userW from '../../assets/images/userB.svg';
 import x from '../../assets/images/menu-x.svg';
 import { Link,useLocation, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
@@ -41,11 +46,34 @@ function Index() {
 }
 
 
-const SideBar =()=>{
+
+const SideBar =({theme})=>{
   const location = useLocation();
   const [isClicked, setIsClicked] = useState(false);
-  
+  const [themee, setThemee]=useState(theme==="dark"?true:false)
   // Function to determine if link is active
+  
+    if(theme==="dark"){
+     var srcs={
+       logo:logowhite,
+       calendar:calendarW,
+       user:userW,
+       coinStack:coinStackW,
+       userPlus:userPlusW,
+       logOut:logOutW
+     }
+    }
+    else{
+      var srcs={
+        logo:logoBlack,
+        calendar:calendarB,
+        user:userB,
+        coinStack:coinStackB,
+        userPlus:userPlusB,
+        logOut:logOutB
+      }
+    }
+  
   const isLinkActive = (to) =>{
     return location.pathname === to;
   }
@@ -54,87 +82,88 @@ const SideBar =()=>{
   }
   return(
     <>
-    <div className="side-bar for-big-devices">
+    <div className="side-bar for-big-devices" style={{color: theme==="dark"?"#fff":"#201F24",backgroundColor: theme==="dark"?"#201F24":"#fff" }}
+         id={theme==="dark"?"sideBarDark":""}>
     <Link to="/signedUp">
-      <img src={logoBlack} alt="Qwesty's logo" id="logoB"/></Link> 
+      <img src={srcs.logo} alt="Qwesty's logo" id="logoB"/></Link> 
       <div className="flex-search">
         <img src={search} id="search-icon"  alt="search-icon"/>
         <input type="search" value="search" placeholder="Search" className="searchBox"/>
       </div>
      
          <div className="calendarBox">
-         <Link to="/signedUp"><img src={calendar} id="calendar-icon" alt="Calendar icon"/><span>Qwests</span>
+         <Link to="/signedUp"><img src={srcs.calendar} id="calendar-icon" alt="Calendar icon"/><span>Qwests</span>
          </Link>
        </div>
        
        <div className="profileBox">
-       <Link to="/signedUp"> <img src={user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
+       <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
        <div className="rewards-box">
-       <Link to="/signedUp"> <img src={coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
+       <Link to="/signedUp"> <img src={srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
        </div>
        <div className="settings-box" id={isLinkActive('/signedUp/settings') ? 'active': ''}>
        <Link to="/signedUp/settings"> <img src={isLinkActive('/signedUp/settings')?settingsB:settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
-       <Link to="/signedUp"><img src={userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
+       <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
        </div>
         <div className='logOut-box'>
-          <Link to="/"><img src={logOut} alt="log-out icon"/><span>Log out</span></Link>
+          <Link to="/"><img src={srcs.logOut} alt="log-out icon"/><span>Log out</span></Link>
         </div>
       </div> 
 
       {/* For small devices */}
-      <div id="small-devices">
+      <div id="small-devices" style={{color: theme==="dark"?"#fff":"#201F24",backgroundColor: theme==="dark"?"#201F24":"#fff" }}>
       <div id="s-logo">
       <Link to="/signedUp">
-      <img src={logoBlack} alt="Qwesty's logo" /></Link> 
+      <img src={srcs.logo} alt="Qwesty's logo" /></Link> 
       </div>
       <div id="s-topNav">
-      <div id="bell"><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
+      <div id="bell" style={{backgroundColor:theme==="dark"?"#424040":"#fff"}}><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
       <div id="avatar"><img src={avatar} id="avatar-icon" alt="User's picture" /></div>
       <img src={ isClicked?x:menu} alt="A navigation menu icon" id="menu"
            onClick={handleClick}/>
     
       </div>
       </div>
-      { isClicked && <div className='drop-down'>
+      { isClicked && <div className='drop-down' style={{color: theme==="dark"?"#fff":"#201F24",backgroundColor: theme==="dark"?"#201F24":"#fff" }}>
       <div className="flex-search">
         <img src={search} id="search-icon"  alt="search-icon"/>
         <input type="search" value="search" placeholder="Search" className="searchBox"/>
       </div>
      
          <div className="calendarBox">
-         <Link to="/signedUp"><img src={calendar} id="calendar-icon" alt="Calendar icon"/><span>Qwests</span>
+         <Link to="/signedUp"><img src={srcs.calendar} id="calendar-icon" alt="Calendar icon"/><span>Qwests</span>
          </Link>
        </div>
        
        <div className="profileBox">
-       <Link to="/signedUp"> <img src={user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
+       <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
        <div className="rewards-box">
-       <Link to="/signedUp"> <img src={coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
+       <Link to="/signedUp"> <img src={srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
        </div>
-       <div className="settings-box">
-       <Link to="/signedUp/settings"> <img src={settings} id="settings-icon" alt="a settings icon"/> <span>Settings</span></Link>
+       <div className="settings-box" id={isLinkActive('/signedUp/settings') ? 'active': ''}>
+       <Link to="/signedUp/settings">  <img src={isLinkActive('/signedUp/settings')?settingsB:settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
-       <Link to="/signedUp"><img src={userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
+       <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
        </div>
         <div className='logOut-box'>
-          <Link to="/"><img src={logOut} alt="log-out icon"/><span>Log out</span></Link>
+          <Link to="/"><img src={srcs.logOut} alt="log-out icon"/><span>Log out</span></Link>
         </div>
       </div>}
       </>
   )
 }
 
-const TopNav = ()=>{
+const TopNav = ({theme})=>{
   return (
     <div className="top-nav big-devices">
-    <div id="bell"><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
+    <div id="bell" style={{backgroundColor:theme==="dark"?"#424040":"#fff"}}><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
       <div id="avatar"><img src={avatar} id="avatar-icon" alt="User's picture" /></div>
-      <h2>Jake</h2>
+      <h2  style={{color: theme==="dark"?"#fff":"#201F24"}}>Jake</h2>
     </div>
   )
 }

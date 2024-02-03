@@ -18,6 +18,7 @@
 body{
   background: #383434;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 img{
@@ -525,7 +526,7 @@ letter-spacing: -0.483px;
                        "faq-item-4 faq-item-5"
                        "faq-item-6 faq-item-7"
                         ;
-  margin-bottom: 100px;
+  margin-bottom: 280px;
   column-gap: 100px;
   row-gap: 30px;
   align-items: center;
@@ -621,7 +622,7 @@ justify-self: center;
 
 .footer-container{
    display: flex;
-   margin-top: 50vh;
+   margin-top: 20vh;
    width:80vw;
    padding: 0 50px;
    height: 30vh;
@@ -979,32 +980,43 @@ button img,img#close-bar{
     /* Style for the footer */
 .footer-container{
   display: grid;
-  justify-content: stretch;
-  padding: 10px;
-  grid-template-columns: repeat(2, 40vw);
-  grid-template-rows: repeat(2, auto);
-  grid-template-areas: "footerL lists"
-                        "socialLinks socialLinks";
+  justify-content: start;
+  padding: 0 10px;
+  grid-template-columns: 90vw;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: "footerL"
+                       "socialLinks"
+                        "lists";
+  height: 50vh;
+  justify-items: center;
+  margin-top: 10vh;
+  align-items: start;
 }
 .flex-items-1{
+  margin-top: 0px;
   grid-area: footerL;
   width: 25vw;
-  align-self: center;
-  justify-self: center;
-  margin: 1px auto;
+  align-self: start;
+
+
+  /* margin: 1px auto; */
 }
 
 .social-links{
   grid-area: socialLinks;
   justify-self: center;
-  align-items: end;
+  align-items: start;
   padding-top: 10vh;
   width: 30vw;
 }
+
    
 .flex-items-lists{
   grid-area: lists;
   font-size: 16px;
+  justify-self: center;
+  width: 70vw;
+  padding: 20px;
 }  
    
 }
