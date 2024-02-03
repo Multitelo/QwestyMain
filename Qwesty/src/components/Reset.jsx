@@ -37,7 +37,7 @@ export default function LogIn() {
             />
           </div>
          
-          <Link to="/reset">
+          <Link to="/referral">
             <button className="bg-purple-500 mt-5 text-white ml-[35%] p-2 w-44 h-10 rounded-3xl">Ok</button>
           </Link>
           
