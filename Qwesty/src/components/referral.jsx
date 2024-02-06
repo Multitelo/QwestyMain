@@ -2,30 +2,32 @@ import pink from "./images/pink.png"
 import blue from "./images/blue.png";
 import lemon from "./images/lemon.png";
 import vec1 from "./images/vec1.png";
+import ref from "./images/ref.png"
+import rec from "./images/rec.png"
+import oliv from "./images/olivia.png"
+import ref1 from "./images/ref1.png"
+import ref2 from "./images/ref2.png"
 import vec2 from "./images/vec2.png";
 import vec3 from "./images/vec3.png";
 import vec4 from "./images/vec4.png";
 import egg from "./images/egg.png"
-import rec from "./images/rec.png"
 import egg1 from "./images/egg1.png"
 import Image3 from "./images/images.jpeg";
-import luke from "./images/luke.jpeg";
-import mike from "./images/mike.jpeg";
-import olivia from "./images/olivia.jpeg";
+
 import { FaSearch, FaClipboardList, FaUserCircle, FaGift, FaCog, FaSignOutAlt } from 'react-icons/fa';
 
 import Logo from "./Logo";
 
 const Referral = () => {
   return (
-    <div className="flex h-screen bg-black overflow-scroll">
+    <div className="flex h-screen">
       {/* Left Sidebar */}
-      <aside className="bg-[#201F24] text-white p-4 flex-shrink-0">
+      <aside className="bg-white text-black p-4 flex-shrink-0">
   <div>
     <Logo />
   </div>
   <h2 className="text-2xl font-bold">Your Company</h2>
-  <p>Refer a friend and earn rewards!</p>
+  <p className="w-[]">Refer a friend and earn rewards!</p>
 
   {/* Search Bar */}
   <div className="mt-4 flex items-center relative  ">
@@ -61,22 +63,18 @@ const Referral = () => {
     </li>
   </ul>
 </aside>
-      <main className="flex-1 overflow-x-hidden overflow-y-auto w-[800px] p-4">
-        <header className="bg-black text-white py-4 text-center w-[800px]">
+      <main className="flex-1 bg-gray-100 overflow-x-hidden overflow-y-auto  w-[800px] p-4">
+        <header className=" text-white py-4 text-center w-[800px]">
           <p className="text-lg bg-[#EFE7FF] rounded-md text-purple-500">Fusky referred 5 friends and just got 50 $Qwes</p>
         </header>
-        <div className="bg-gray-200 relative p-4 rounded-md w-[800px] ">
-              <img src={Image3} alt="Referral Image 1" className="mb-4 rounded-md w-[797px] h-[302px]" />
-              <h2 className="text-xl font-semibold mb-2">Refer a Friend</h2>
-              <p className="text-gray-700">
-                Invite your friends to join and get exclusive rewards. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-              </p>
+        <div className=" relative p-1 rounded-md w-[800px] ">
+              <img src={Image3} alt="Referral Image 1" className="mb-4 rounded-md  w-[700px] h-[302px]" />
+              
               <div className="absolute text-white top-[20%] left-[13%]">
               <p className="font-bold my-14">Refer a researcher to earn 7 $Qwes points and a chance to get up to ₦5000  </p>
               <div className="flex items-center ml-[77px]"><p>your invite code:</p><p className="ml-[35%]">WK749T2SV</p> <button className="ml-3 bg-purple-500 w-24 rounded-lg  text-center"><p className="">copy</p></button></div>
             </div></div>
-        <section className="mt-8 p-8 bg-[#201F24] shadow-md rounded-md w-[800px]">
+        <section className="mt-8 p-8 bg-[#201F24] shadow-md rounded-md w-[700px]">
 
 
       <p className="text-white my-5 text-3xl">Referral History</p>
@@ -143,59 +141,36 @@ const Referral = () => {
           </div>
         </section>
 <div className="flex space-x-5">
-        <section className="mt-8  px-8 py-4 bg-[#201F24] shadow-md rounded-md w-[380px] h-[240px]">
-  <p className="text-white mb-5 text-3xl">Referral List</p>
-  <div className="flex space-x-3">
+        {/* <section className="mt-5 px-8 py-4  shadow-md rounded-md "> */}
+  <div className="flex space-x-3 mt-5  w-[380px] h-[200px]">
 
-    <div className="relative rounded-md text-white  h-[73px] w-[92px]">
-      <img src={luke} alt="" className=" h-[73px] w-[92px] object-cover rounded-md" />
-      <div className="absolute  h-[73px] w-[92px] rounded-lg top-[79%] p-4 bg-[#292727] ">
-        {/* Your content for Luke */}
-        <p>Luke</p>
-        <div className="w-[63.784px] h-[23.122px] flex-shrink-0 rounded-md border-0.5px border-[#AAFAF9] bg-white">
-  {/* Your content goes here */}
-</div>
-
-      </div>
-    </div>
-
-    
-
-    <div className="relative rounded-md text-white  h-[73px] w-[92px] ">
-      <img src={olivia} alt="" className="w-full h-[120%] object-cover rounded-md" />
-      <div className="absolute h-[73px] w-[92px] rounded-lg top-[99%] p-4 bg-[#292727] ">
-        {/* Your content for Olivia */}
-        <p>Olivia</p>
-      </div>
-    </div>
-
-    <div className="relative rounded-md text-white  h-[73px] w-[92px]">
-      <img src={mike} alt="" className="w-full h-full object-cover rounded-md" />
-      <div className="absolute  h-[73px] w-[92px]  rounded-lg top-[79%] p-4 bg-[#292727] ">
-        {/* Your content for Mike */}
-        <p>Mike</p>
-      </div>
-    </div>
+   <img src={oliv} alt="olivia" className="w-[400px]"/>
    
-
-
-  </div>
-  
-</section>
-<div className="w-[399px] h-[240px] flex-shrink-0 rounded-lg mt-8 mr-0 bg-[#292727]">
-<img src={rec} alt="" className="h-[240px] w-full"/>
-</div>
+   <img src={rec} alt="rec" className="w-[400px] h-[175px]"/>
 
 
 </div>
-
-
-       
+{/* </section> */}
+</div>
       </main>
 
-      {/* Right Sidebar */}
-      <aside className="bg-blue-500 text-white p-4 flex-shrink-0">
+
        
+
+      {/* Right Sidebar */}
+      <aside className="bg-white  text-white p-4 flex-shrink-0">
+        <div>
+       <img src={ref} alt="ref"  className="w-[241px] h-[183px]"/>
+
+        </div>
+        <div>
+       <img src={ref1} alt="ref"  className="w-[241px] h-[183px]"/>
+
+        </div>
+        <div>
+       <img src={ref2} alt="ref"  className="w-[241px] h-[183px]"/>
+
+        </div>
       </aside>
     </div>
   );
