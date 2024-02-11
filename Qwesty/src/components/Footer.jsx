@@ -1,4 +1,4 @@
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/Logo.png';
 import fbIcon from '../assets/images/fb.svg';
 import igIcon from '../assets/images/ig.svg';
 import linkedinIcon from '../assets/images/linkedin.svg';
