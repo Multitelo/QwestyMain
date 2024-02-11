@@ -7,7 +7,7 @@ function Footer() {
 <>
     <div className="footer-container">
         
-        <div className='flex-items-1'><img src={logo}
+        <div className='flex-items-1'><img src={fbIcon}
                   alt="Qwesty'logo"/></div>
          <div className='social-links'>
         <div className='flex-items'>
