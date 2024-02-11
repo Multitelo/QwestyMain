@@ -8,8 +8,6 @@ import ref2 from "./images/ref2.png";
 
 import Image3 from "./images/images.jpeg";
 
-
-
 import Logo from "./Logo";
 
 const Referral = () => {

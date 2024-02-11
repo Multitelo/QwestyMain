@@ -69,7 +69,7 @@ export default function LogIn() {
             </Link>
             <p className="mt-24 font-semibold ml-[27%]">
               Already have an account?{" "}
-              <Link to="/signIn" className="text-purple-500">
+              <Link to="/logIn" className="text-purple-500">
                 Log In
               </Link>
             </p>

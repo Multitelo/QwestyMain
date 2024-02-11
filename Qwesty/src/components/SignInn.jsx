@@ -54,7 +54,7 @@ export default function LogIn() {
             />
           </div>
           
-          <Link to="/signInn">
+          <Link to="/signedUp/settings">
             <button className="bg-purple-500 mt-5 text-white ml-[32%] p-2 w-44 h-10 rounded-3xl">Lets go!</button>
           </Link>
           
