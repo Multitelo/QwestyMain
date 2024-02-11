@@ -1,4 +1,4 @@
-// import logo from '../assets/images/Logo.png';
+import logo from '../assets/images/logo.png';
 import fbIcon from '../assets/images/fb.svg';
 import igIcon from '../assets/images/ig.svg';
 import linkedinIcon from '../assets/images/linkedin.svg';
@@ -7,7 +7,7 @@ function Footer() {
 <>
     <div className="footer-container">
         
-        <div className='flex-items-1'><img src={fbIcon}
+        <div className='flex-items-1'><img src={logo}
                   alt="Qwesty'logo"/></div>
          <div className='social-links'>
         <div className='flex-items'>
