@@ -8,7 +8,7 @@ import ref2 from "./images/ref2.png";
 
 import Image3 from "./images/images.jpeg";
 
-import { FaSearch, FaClipboardList, FaUserCircle, FaGift, FaCog, FaSignOutAlt } from 'react-icons/fa';
+
 
 import Logo from "./Logo";
 
