@@ -53,6 +53,36 @@ export default function LogIn() {
 </div>
 
         <div className="hidden md:block">
+          <p className="text-4xl mt-[24%] ml-[40%] font-semibold">Log In</p>
+          <div className="my-8 text-black/80">
+            <label className="font-bold ml-[35%]" htmlFor="email">
+              Enter your password
+            </label>
+          </div>
+          <div className="mb-4 ml-[26%]">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="w-[60%] p-2 border-b-2 focus:outline-none text-center"
+              placeholder="********"
+              required
+            />
+          </div>
+          
+          <Link to="/signedUp/settings">
+            <button className="bg-purple-500 mt-5 text-white ml-[32%] p-2 w-44 h-10 rounded-3xl">Next</button>
+          </Link>
+          <p className="mt-32 underline font-semibold ml-[50%]">
+            <Link to="/reset">
+            Forgot password?
+            </Link>
+          </p>
+          
+        </div>
+        <div>
           <img
             src={qwesty}
             alt="colorful qwesty letters"

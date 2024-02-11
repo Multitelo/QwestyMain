@@ -84,20 +84,39 @@ export default function LogIn() {
           </div>
         </div>
         <div className="md:w-1/2 hidden md:block">
+          <div className="mb-4 ml-[26%]">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="w-[60%] p-2 border-b-2 focus:outline-none text-center"
+              placeholder="********"
+              required
+            />
+          </div>
+          
+          <Link to="/signedUp/settings">
+            <button className="bg-purple-500 mt-5 text-white ml-[32%] p-2 w-44 h-10 rounded-3xl">Lets go!</button>
+          </Link>
+          
+          
+        </div></div>
+        <div>
           <img
             src={qwesty}
             alt="colorful qwesty letters"
             className="max-w-full"
           />
         </div>
-      </div>
       <div className="md:hidden absolute left-[70%] top-0 h-full w-[50%]">
         <img
           src={art}
           alt="colorful qwesty letters"
           className="w-full h-full"
-        />
+          />
       </div>
-    </div>
-  );
+    </div>)
+ 
 }

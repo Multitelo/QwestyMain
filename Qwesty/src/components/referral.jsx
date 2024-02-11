@@ -10,6 +10,7 @@ import ref2 from "./images/ref2.png";
 import Image3 from "./images/images.jpeg";
 import { SideBar } from "./signedUp/Index";
 
+
 const Referral = () => {
   return (
     <div className="flex flex-col md:flex-row h-[170vh]">
