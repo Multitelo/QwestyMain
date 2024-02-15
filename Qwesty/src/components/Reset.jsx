@@ -21,7 +21,7 @@ export default function LogIn() {
           <p className="text-4xl mt-[24%] text-center font-semibold">Reset Password</p>
           <div className="my-8 text-black/80">
             <label className="font-bold ml-[34%]" htmlFor="email">
-              Please what is your email
+              Please enter your email
             </label>
           </div>
           <div className="mb-4 ml-[26%]">
