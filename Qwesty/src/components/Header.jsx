@@ -64,8 +64,8 @@ function Header() {
           {
             barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
           } 
-          <Link to='/'className='items' id="first-item">about us</Link>
-          <Link to='/'className='items' id="second-item">contact us</Link>
+          <Link to='/signedUp/settings'className='items' id="first-item">about us</Link>
+          <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
           <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
          <Link to='/logIn'className='items' id="fourth-item">LogIn</Link>
          
@@ -75,8 +75,8 @@ function Header() {
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            <Link to='/'className='items' id="first-item">about us</Link>
-            <Link to='/'className='items' id="second-item">contact us</Link>
+            <Link to='/signedUp/settings'className='items' id="first-item">about us</Link>
+            <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
             <Link to='/'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
             <Link to='/logIn'className='items' id="fourth-item">LogIn</Link>
            

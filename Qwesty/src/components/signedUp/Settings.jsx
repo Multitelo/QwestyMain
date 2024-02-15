@@ -6,22 +6,23 @@ import autoTheme from '../../assets/images/theme3.png';
 import Footer from "../Footer";
 import ToggleInput from "./ToggleInput";
 import { useState } from "react"
+import { useTheme } from '../../ThemeContext'; // Import the useTheme hook
 
 function Settings() {
+     const { theme, toggleTheme } = useTheme(); // Access theme state and toggleTheme function
+
     const [isAccountClicked, setIsAccountClicked] = useState(true)
     const [isGeneralClicked, setIsGeneralClicked] = useState(false)
     const [isSecurityClicked, setIsSecurityClicked] = useState(false)
     const [isNotificationsClicked, setIsNotificationsClicked] = useState(false)
-    const [theme, setTheme]  = useState("light")  
+   
 
     const styles={
       input:{
         backgroundColor: theme==="dark"?"#201F24":"#F4F4F4",
       }
     }
-    const handleTheme = (theme)=>{
-          setTheme(theme);
-    }
+   
 
     const handleClick = (clicked) =>{
       // preventDefault()
@@ -79,7 +80,7 @@ function Settings() {
        
        <div className="content">
          {isAccountClicked? <Account theme={theme}/>: 
-         isGeneralClicked? <General theme={theme} handleTheme={handleTheme} /> :
+         isGeneralClicked? <General theme={theme} toggleTheme={toggleTheme} /> :
           isSecurityClicked? <Security theme={theme} styles={styles}/>: 
           isNotificationsClicked?<Notifications theme={theme}/>: <Account theme={theme}/>}
        </div>
@@ -88,7 +89,7 @@ function Settings() {
 
         </div>
         <div className="signedUp-footer">
-        {<Footer/>}
+        {<Footer theme={theme}/>}
        </div>
     </div>
 
@@ -110,7 +111,7 @@ const Account = ({theme})=>{
         <div className="avatar"><img src={avatar}/></div>
         <div id="upload-avatar"><button>Upload Avatar</button></div>
         <p id="caption" style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Image should not be more than 10mb</p>
-        <div id="remove-avatar" ><button style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Remove Avatar</button></div>
+        <div id="remove-avatar"><button className={`rmAvatar ${theme}`}>Remove Avatar</button></div>
       </div>
       <label htmlFor="userName" id="uname">Username</label>
       <input type="text" name="userName" id="userName"
@@ -126,7 +127,7 @@ const Account = ({theme})=>{
        
         
         <button id="delBtn">
-          delete account
+          Delete account
         </button>
         </div>
 
@@ -134,7 +135,7 @@ const Account = ({theme})=>{
   )
 }
 
-const General = ({handleTheme, theme})=>{
+const General = ({theme, toggleTheme})=>{
   const [soundEffect, setSoundEffect] = useState(true)
  
 
@@ -152,19 +153,19 @@ const General = ({handleTheme, theme})=>{
           <div id="theme-1" className="themes">
             <img src={lightTheme}
                  alt="An image indicating a light theme"
-                 onClick = {()=>handleTheme("light")}
+                 onClick = {()=>toggleTheme('light')}
                  className={theme==="light"? "currentTheme": ""}/><caption style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Light</caption>
           </div>
           <div id="theme-2" className="themes">
             <img src={darkTheme}
                   alt="An image indicating a dark theme"
-                  onClick = {()=>handleTheme("dark")}
+                  onClick = {()=>toggleTheme('dark')}
                   className={theme==="dark"? "currentTheme": ""}/><caption style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Dark</caption>
           </div>
           <div id="theme-3" className="themes">
             <img src={autoTheme}
                  alt="An image indicating an auto theme"
-                 onClick = {()=>handleTheme("auto")}
+                 onClick = {()=>toggleTheme('auto')}
                  className={theme==="auto"? "currentTheme": ""}/><caption style={{color: theme==="dark"?"#FFF":"#201F24"}}>Auto</caption>
           </div>
         </div>

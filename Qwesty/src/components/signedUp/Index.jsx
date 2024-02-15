@@ -9,7 +9,8 @@ import coinStackB from '../../assets/images/coin-stack.svg';
 import coinStackW from '../../assets/images/coin-stackB.svg';
 import logOutB from '../../assets/images/log-out.svg';
 import logOutW from '../../assets/images/log-outB.svg';
-import menu from '../../assets/images/menu-2.svg';
+import menuD from '../../assets/images/menu-2.svg';
+import menuW from '../../assets/images/menuW.svg';
 import search from '../../assets/images/search.svg';
 import settingsB from '../../assets/images/settingsB.svg';
 import settings from '../../assets/images/settings.svg';
@@ -17,7 +18,9 @@ import userPlusB from '../../assets/images/user-plus.svg';
 import userPlusW from '../../assets/images/user-plusB.svg';
 import userB from '../../assets/images/user.svg';
 import userW from '../../assets/images/userB.svg';
-import x from '../../assets/images/menu-x.svg';
+import xD from '../../assets/images/menu-x.svg';
+import xW from '../../assets/images/xW.svg';
+
 import { Link,useLocation, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 function Index() {
@@ -27,8 +30,8 @@ function Index() {
 
 
     <>
-    {<SideBar/>}
-    {<TopNav/>}
+    {<SideBar theme={theme}/>}
+    {<TopNav theme={theme}/>}
     </>
    
     // <div style={{backgroundColor: "#F7F7F7", height:"100vh"}} >
@@ -60,7 +63,10 @@ const SideBar =({theme})=>{
        user:userW,
        coinStack:coinStackW,
        userPlus:userPlusW,
-       logOut:logOutW
+       logOut:logOutW,
+       settings:settingsB,
+       menu:menuW,
+       x:xW,
      }
     }
     else{
@@ -70,7 +76,10 @@ const SideBar =({theme})=>{
         user:userB,
         coinStack:coinStackB,
         userPlus:userPlusB,
-        logOut:logOutB
+        logOut:logOutB,
+        settings:settings,
+        menu:menuD,
+        x:xD,
       }
     }
   
@@ -99,11 +108,13 @@ const SideBar =({theme})=>{
        <div className="profileBox">
        <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
-       <div className="rewards-box">
-       <Link to="/signedUp"> <img src={srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
+       <div className="rewards-box" id={isLinkActive('/signedUp/rewards') ? 'active': ''}>
+       <Link to="/signedUp/rewards"> 
+       <img 
+            src={isLinkActive('/signedUp/rewards')?coinStackW:srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
        </div>
        <div className="settings-box" id={isLinkActive('/signedUp/settings') ? 'active': ''}>
-       <Link to="/signedUp/settings"> <img src={isLinkActive('/signedUp/settings')?settingsB:settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
+       <Link to="/signedUp/settings"> <img src={isLinkActive('/signedUp/settings')?settingsB:srcs.settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
        <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
@@ -122,7 +133,7 @@ const SideBar =({theme})=>{
       <div id="s-topNav">
       <div id="bell" style={{backgroundColor:theme==="dark"?"#424040":"#fff"}}><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
       <div id="avatar"><img src={avatar} id="avatar-icon" alt="User's picture" /></div>
-      <img src={ isClicked?x:menu} alt="A navigation menu icon" id="menu"
+      <img src={ isClicked?srcs.x:srcs.menu} alt="A navigation menu icon" id="menu"
            onClick={handleClick}/>
     
       </div>
@@ -141,11 +152,12 @@ const SideBar =({theme})=>{
        <div className="profileBox">
        <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
-       <div className="rewards-box">
-       <Link to="/signedUp"> <img src={srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> <span>Rewards</span></Link>
+       <div className="rewards-box" id={isLinkActive('/signedUp/rewards') ? 'active': ''} >
+       <Link to="/signedUp/rewards"> <img src={isLinkActive('/signedUp/rewards')?coinStackW:srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> 
+       <span>Rewards</span></Link>
        </div>
        <div className="settings-box" id={isLinkActive('/signedUp/settings') ? 'active': ''}>
-       <Link to="/signedUp/settings">  <img src={isLinkActive('/signedUp/settings')?settingsB:settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
+       <Link to="/signedUp/settings">  <img src={isLinkActive('/signedUp/settings')?settingsB:srcs.settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
        <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
