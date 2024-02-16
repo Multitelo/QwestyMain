@@ -1,6 +1,6 @@
 import '../assets/css/style.css';
 import Home from './Home'
-import Logo from '../assets/images/Logo.png';
+import Logo from '../assets/images/logo.png';
 import arrow from '../assets/images/down-arrow.png'
 import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';

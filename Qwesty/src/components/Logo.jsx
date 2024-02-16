@@ -1,5 +1,5 @@
 
-import Log from '../assets/images/Logob.png'
+import Log from '../assets/images/logoB.png'
 
 export default function Logo() {
   return (

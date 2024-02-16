@@ -1,6 +1,6 @@
 import '../../assets/css/signed-styles.css'
 import logoBlack from "../../assets/images/logoBlack.png";
-import logowhite from "../../assets/images/Logo.png";
+import logowhite from "../../assets/images/logo.png";
 import bell from '../../assets/images/bell.svg'
 import calendarB from '../../assets/images/calendar.svg'
 import calendarW from '../../assets/images/calendarB.svg'
