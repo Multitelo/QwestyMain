@@ -313,7 +313,7 @@ const Notifications = ({theme})=>{
                     checked={notificationValues.qwestSms}
                     id="qSms"/>}
         {<ToggleInput 
-                    onChange={() => handleCheckboxChange('questEmail')}
+                    onChange={() => handleCheckboxChange('qwestEmail')}
                     checked={notificationValues.qwestEmail}
                     id="qEmail"/>}
       

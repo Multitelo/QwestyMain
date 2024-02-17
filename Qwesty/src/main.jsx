@@ -15,12 +15,12 @@ import Referral from './components/referral.jsx';
 import Index from './components/signedUp/Index.jsx';
 import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
-
+import SignUpPage from './components/SignUpPage.jsx';
 function App() {
-  const [theme, setTheme] = useState("light"); // Define theme state here
+  const [theme, setTheme] = useState("light");
 
   return (
-    <ThemeProvider> {/* Wrap your entire application with the ThemeProvider */}
+    <ThemeProvider> 
       <React.StrictMode>
         <BrowserRouter>
           <Routes>
@@ -32,7 +32,7 @@ function App() {
                 </>
               }
             />
-            <Route path="signUp" element={<SignUp />} />
+            {/* <Route path="/signUp" element={<SignUp />} /> */}
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signinn" element={<SignInn />} />
             <Route path="/login" element={<LogIn />} />
@@ -42,6 +42,7 @@ function App() {
             <Route path="/signedUp/settings" element={<Settings />} />
             <Route path="/signedUp" element={<Index />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
+            <Route path="/SignUp" element={<SignUpPage />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
