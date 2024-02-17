@@ -27,7 +27,8 @@
   
     width:50vw;
     background-image: url('../images/bGImg.png');
-   
+   background-size: cover;
+   background-repeat: no-repeat;
 }
 
 .signUp-left .first-content, 

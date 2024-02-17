@@ -3,6 +3,8 @@ import '../assets/css/login-signup.css';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png'
 import { useState } from 'react';
+
+
 function SignUpPage() {
 
     const [content, setContent] = useState('first');
@@ -17,7 +19,7 @@ function SignUpPage() {
     const [confirmPwd, setConfirmPwd] = useState('')
     const [usertype, setUsertype] = useState('participant')
 
-    console.log(username, email, password, confirmPwd, usertype)
+    
   return (
     
     <div className='signUp-container'>
