@@ -198,8 +198,11 @@
   /* styles for the third signup page */
   .signUp-left .third-content{
     margin-top: 70px;
-
+   gap: 0px;
  }
+  .third-content #confPwd{
+    margin-top: 50px;
+  }
   @media only screen and (max-width:769px){
 
     .signUp-container{

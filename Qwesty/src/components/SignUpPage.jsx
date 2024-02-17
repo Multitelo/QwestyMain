@@ -122,7 +122,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd})=
                    placeholder='**********'
                    onChange={(e)=>setPassword(e.target.value)}/>
 
-        <label htmlFor='confirmpwd'>Confirm password</label> 
+        <label htmlFor='confirmpwd' id="confPwd">Confirm password</label> 
             <input type="password"
                    id="confirmpwd"
                    name="confirmPwd"
