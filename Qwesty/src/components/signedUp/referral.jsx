@@ -1,14 +1,14 @@
 
-import day from "./images/day.png";
-import ref from "./images/ref.png";
-import rec from "./images/rec.png";
-import oliv from "./images/olivia.png";
-import ref1 from "./images/ref1.png";
-import profile from "./images/profile.png";
-import ref2 from "./images/ref2.png";
+import day from "../images/day.png";
+import ref from "../images/ref.png";
+import rec from "../images/rec.png";
+import oliv from "../images/olivia.png";
+import ref1 from "../images/ref1.png";
+import profile from "../images/profile.png";
+import ref2 from "../images/ref2.png";
 
-import Image3 from "./images/images.jpeg";
-import { SideBar } from "./signedUp/Index";
+import Image3 from "../images/images.jpeg";
+import { SideBar } from "./Index";
 
 
 const Referral = () => {

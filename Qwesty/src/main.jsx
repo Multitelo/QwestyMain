@@ -9,7 +9,7 @@ import LogIn from './components/LogIn.jsx';
 import LogInn from './components/LogInn.jsx';
 import Reset from './components/Reset.jsx';
 import Header from './components/Header.jsx';
-import Referral from './components/referral.jsx';
+import Referral from './components/signedUp/referral.jsx';
 import Index from './components/signedUp/Index.jsx';
 import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
@@ -32,11 +32,11 @@ function App() {
             />
             {/* <Route path="/signUp" element={<SignUp />} /> */}
            
-            <Route path="/login" element={<LogIn />} />
+            <Route path="/Login" element={<LogIn />} />
             <Route path="/loginn" element={<LogInn />} />
-            <Route path="/reset" element={<Reset />} />
-            <Route path="/referral" element={<Referral />} />
-            <Route path="/signedUp/settings" element={<Settings />} />
+            <Route path="/Reset" element={<Reset />} />
+            <Route path="/signedUp/referral" element={<Referral />} />
+            <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp" element={<Index />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/SignUp" element={<SignUpPage />} />

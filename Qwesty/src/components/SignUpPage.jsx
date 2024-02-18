@@ -1,59 +1,98 @@
-
-import '../assets/css/login-signup.css';
+import React, { useState } from 'react';
 import logo from '../assets/images/logoBlack.png';
-import backBtn from '../assets/images/backBtn.png'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import backBtn from '../assets/images/backBtn.png';
+import axios from 'axios';
+import '../assets/css/login-signup.css';
 
 
 function SignUpPage() {
-
     const [content, setContent] = useState('first');
-    
-    const handleContent = (content)=>{
-             setContent(prevState => prevState==='second'?'first':prevState==='first'?'second':prevState==='third'?'second':'')
-    }
-
     const [username, setUsername] = useState('');
-    const [email, setEmail]  = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPwd, setConfirmPwd] = useState('')
-    const [usertype, setUsertype] = useState('participant')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPwd, setConfirmPwd] = useState('');
+    const [usertype, setUsertype] = useState('');
 
-    
-  return (
-    
-    <div className='signUp-container'>
-     <div className='signUp-left'>
-       <div id="logo-container">
-           <Link to="/">
-           <img src={logo}
-                 alt="A logo of Qwesty"/>
-           </Link>
-       </div>
+    const handleContent = (content) => {
+        setContent((prevState) =>
+            prevState === 'second'
+                ? 'first'
+                : prevState === 'first'
+                ? 'second'
+                : prevState === 'third'
+                ? 'second'
+                : ''
+        );
+    };
 
-       <main>
-        {content === 'first'?<FirstSignUpContent email={email} setEmail={setEmail} usertype={usertype} setUsertype={setUsertype} handleContent={handleContent}/>:
-        content==='second'?<SecondSignupcontent username={username} setUsername={setUsername} setContent={setContent}/>:
-        content==='third'?<ThirdSignupcontent password={password} setPassword={setPassword} confirmPwd={confirmPwd} setConfirmPwd={setConfirmPwd} />:''
-        }
-       </main>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Send form data to PHP script using Axios
+        axios.post('./php/signin.php', { email, usertype, username, password })
+            .then((response) => {
+                console.log(response.data);
+                // Handle successful submission, e.g., show a success message
+                history.push('/signedUp/settings');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Handle error, e.g., show an error message
+            });
+    };
 
-    
-  </div>
-<div className='signUp-right'>
+    return (
+        <div className="signUp-container">
+            <div className="signUp-left">
+                <div id="logo-container">
+                    <img src={logo} alt="A logo of Qwesty" />
+                </div>
 
-</div>
- <footer>
- {content==='first'?<h2>1/3</h2>:
- <img src={backBtn} 
-      alt="an icon that takes you to the previous page" 
-      onClick={handleContent}/>}
-       </footer>
-    </div>
-  )
+                <main>
+                    {content === 'first' ? (
+                        <FirstSignUpContent
+                            email={email}
+                            setEmail={setEmail}
+                            usertype={usertype}
+                            setUsertype={setUsertype}
+                            handleContent={handleContent}
+                        />
+                    ) : content === 'second' ? (
+                        <SecondSignupcontent
+                            username={username}
+                            setUsername={setUsername}
+                            setContent={setContent}
+                        />
+                    ) : content === 'third' ? (
+                      <ThirdSignupcontent
+                          password={password}
+                          setPassword={setPassword}
+                          confirmPwd={confirmPwd}
+                          setConfirmPwd={setConfirmPwd}
+                          handleSubmit={handleSubmit} // Pass handleSubmit function
+                  />
+                  
+                    ) : (
+                        ''
+                    )}
+                </main>
+            </div>
+            <div className="signUp-right"></div>
+            <footer>
+                {content === 'first' ? (
+                    <h2>1/3</h2>
+                ) : (
+                    <img
+                        src={backBtn}
+                        alt="an icon that takes you to the previous page"
+                        onClick={handleContent}
+                    />
+                )}
+            </footer>
+        </div>
+    );
 }
-export default SignUpPage
+
+export default SignUpPage;
 
 
 const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent})=>{
@@ -93,7 +132,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
            </label>
             </div>
        <button onClick={()=>handleContent('first')}>Ok</button>
-       <p>Already have an account? <span><Link to='/login'>Log in</Link></span> </p>
+       <p>Already have an account? <span><a href="/LogIn">Log In</a></span> </p>
         </div>
     )
 }
@@ -115,9 +154,8 @@ const SecondSignupcontent = ({username, setUsername, setContent})=>{
     )
 }
 
-const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd})=>{
-
- return(
+const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit}) => {
+  return (
     <div className='third-content'>
           <label htmlFor='pwd'>Enter your password</label> 
             <input type="password"
@@ -135,7 +173,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd})=
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <button>Lets go!</button>
+        <button><a href="/signedUp/Settings">Let's Go</a></button>
         </div>
     
  )
