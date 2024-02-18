@@ -41,7 +41,9 @@ function LoginPage() {
         <div className="signUp-container">
             <div className="signUp-left">
                 <div id="logo-container">
-                    <img src={logo} alt="A logo of Qwesty" />
+                   <Link to="/">
+                   <img src={logo} alt="A logo of Qwesty" />
+                    </Link> 
                 </div>
 
                 <main>
@@ -58,7 +60,7 @@ function LoginPage() {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <button onClick={handleNext}>Next</button>
-                            <p>Don't have an account? <span><a href="/SignUp">Sign up</a></span></p>
+                            <p>Don't have an account? <span><Link to="/SignUp">Sign up</Link></span></p>
                         </div>
                     ) : content === 'password' ? (
                         <div className='second-content'>
@@ -71,7 +73,7 @@ function LoginPage() {
                                 placeholder='**********'
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <button><Link to='/signedUp/settings'>Log In</Link></button>
+                            <button><Link to='/signedUp/Settings'>Log In</Link></button>
                             <p>Forgotten Your Password? <span><a href="/Reset">Reset</a></span></p>
                         </div>
                     ) : null}

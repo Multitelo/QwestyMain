@@ -3,7 +3,7 @@ import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
 import '../assets/css/login-signup.css';
-
+import { Link } from 'react-router-dom';
 
 function SignUpPage() {
     const [content, setContent] = useState('first');
@@ -44,7 +44,10 @@ function SignUpPage() {
         <div className="signUp-container">
             <div className="signUp-left">
                 <div id="logo-container">
-                    <img src={logo} alt="A logo of Qwesty" />
+                  <Link to='/'> 
+                  <img src={logo} 
+                       alt="A logo of Qwesty"
+                          /></Link> 
                 </div>
 
                 <main>
