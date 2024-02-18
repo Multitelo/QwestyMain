@@ -132,7 +132,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
            </label>
             </div>
        <button onClick={()=>handleContent('first')}>Ok</button>
-       <p>Already have an account? <span><a href="/logIn">Log In</a></span> </p>
+       <p>Already have an account? <span><a href="/LogIn">Log In</a></span> </p>
         </div>
     )
 }
@@ -173,7 +173,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <button><a href="/signedUp/settings">Let's Go</a></button>
+        <button><a href="/signedUp/Settings">Let's Go</a></button>
         </div>
     
  )
