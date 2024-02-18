@@ -1,72 +1,91 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import qwesty from "./images/qwesty.jpg";
-import art from "./images/Art.png";
-
-export default function LogIn() {
-  const [email, setEmail] = useState("");
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+import React, { useState } from 'react';
+import logo from '../assets/images/logoBlack.png';
+import backBtn from '../assets/images/backBtn.png';
+import axios from 'axios';
+import '../assets/css/login-signup.css';
+import { Link } from 'react-router-dom';
 
 
+function LoginPage() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [content, setContent] = useState('email');
 
-  return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center bg-white overflow-hidden">
-      <div className="flex">
-        <div className="md:w-full">
-          <div className="md:p-10 absolute top-10 left-10">
-            <Logo />
-          </div>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Send form data to PHP script using Axios
+        axios.post('./php/login.php', { email, password })
+            .then((response) => {
+                console.log(response.data);
+                // Handle successful login, e.g., redirect to dashboard
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Handle error, e.g., show an error message
+            });
+    };
 
-          <div className="md:mt-[40%] my-8 text-black/80  md:my-4 md:ml-[30%] ">
-            <p className=" ml-[4%] my-12 font-semibold">Welcome back mandela</p>
-  <label className="font-bold md:text-center" htmlFor="email">
-    Please enter your password
-  </label>
-</div>
-<div className="mb-4 ml-auto mr-auto md:mb-8 md:ml-[35%] md:mr-[26%]">
-  <input
-    type="email"
-    name="email"
-    id="email"
-    value={email}
-    onChange={handleEmailChange}
-    className="w-full md:w-[60%] p-2 border-b-2 focus:outline-none text-center"
-    placeholder="*******"
-    required
-  />
-</div>
-<div className="md:ml-[33%] ml-5">
-  <Link to="/signInn">
-    <button className="bg-purple-500 mt-5 text-white p-2 md:py-2  w-44 h-10 md:w-44 md:h-10 rounded-3xl">
-      Ok
-    </button>
-  </Link>
-</div>
-<Link to="/referral">
+    const handleNext = () => {
+        if (content === 'email') {
+            setContent('password');
+        }
+    };
 
-<p className="font-semibold md:ml-[55%] ml-20 mt-10 underline cursor-pointer ">Forgot password?</p>
-  </Link>
-</div>
+    const handleBack = () => {
+        if (content === 'password') {
+            setContent('email');
+        }
+    };
 
-        <div className="hidden md:block">
-          <img
-            src={qwesty}
-            alt="colorful qwesty letters"
-            className="max-w-full"
-          />
+    return (
+        <div className="signUp-container">
+            <div className="signUp-left">
+                <div id="logo-container">
+                    <img src={logo} alt="A logo of Qwesty" />
+                </div>
+
+                <main>
+                    {content === 'email' ? (
+                        <div className='first-content'>
+                            <h1>Login</h1>
+                            <label htmlFor='email'>Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                placeholder='name@gmail.com'
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <button onClick={handleNext}>Next</button>
+                            <p>Don't have an account? <span><a href="/SignUp">Sign up</a></span></p>
+                        </div>
+                    ) : content === 'password' ? (
+                        <div className='second-content'>
+                            <label htmlFor='pwd'>Enter your Password</label>
+                            <input
+                                type="password"
+                                id="pwd"
+                                name="password"
+                                value={password}
+                                placeholder='**********'
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button onClick={handleSubmit}>Login</button>
+                        </div>
+                    ) : null}
+                </main>
+            </div>
+            <div className="signUp-right"></div>
+            <footer>
+                <img
+                    onClick={handleBack}
+                    src={backBtn}
+                    alt="an icon that takes you to the previous page"
+                />
+            </footer>
         </div>
-        <div className="md:hidden absolute left-[70%] top-0 h-full w-[50%]">
-          <img
-            src={art}
-            alt="colorful qwesty letters"
-            className="w-full h-full"
-          />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
+
+export default LoginPage;
