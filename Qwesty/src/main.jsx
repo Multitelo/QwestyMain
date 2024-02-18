@@ -33,9 +33,9 @@ function App() {
            
             <Route path="/login" element={<LogIn />} />
             <Route path="/loginn" element={<LogInn />} />
-            <Route path="/reset" element={<Reset />} />
+            <Route path="/Reset" element={<Reset />} />
             <Route path="/signedUp/referral" element={<Referral />} />
-            <Route path="/signedUp/settings" element={<Settings />} />
+            <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp" element={<Index />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/SignUp" element={<SignUpPage />} />
