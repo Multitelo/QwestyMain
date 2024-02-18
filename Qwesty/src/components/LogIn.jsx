@@ -71,7 +71,8 @@ function LoginPage() {
                                 placeholder='**********'
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <button onClick={handleSubmit}>Login</button>
+                            <button><a href="/signedUp/settings">Log In</a></button>
+                            <p>Forgotten Your Password? <span><a href="/reset">Reset</a></span></p>
                         </div>
                     ) : null}
                 </main>

@@ -1,55 +1,61 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import qwesty from "./images/qwesty.jpg"
+import React, { useState } from 'react';
+import logo from '../assets/images/logoBlack.png';
+import backBtn from '../assets/images/backBtn.png';
+import axios from 'axios';
+import '../assets/css/login-signup.css';
 
-export default function LogIn() {
-  const [email, setEmail] = useState("");
+function ForgottenPasswordPage() {
+    const [email, setEmail] = useState('');
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Send form data to server for password reset
+        axios.post('./php/reset_password.php', { email })
+            .then((response) => {
+                console.log(response.data);
+                // Handle success, e.g., show a success message
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Handle error, e.g., show an error message
+            });
+    };
 
-  return (
-    <div className="max-w-720px bg-white mx-auto">
-      <div className="flex">
-        <div className="w-full">
-        <div className="p-10 ml-[7%]">
+    return (
+        <div className="signUp-container">
+            <div className="signUp-left">
+                <div id="logo-container">
+                    <img src={logo} alt="A logo of Qwesty" />
+                </div>
 
-            <Logo />
-          </div>
-          <p className="text-4xl mt-[24%] text-center font-semibold">Reset Password</p>
-          <div className="my-8 text-black/80">
-            <label className="font-bold ml-[34%]" htmlFor="email">
-              Please enter your email
-            </label>
-          </div>
-          <div className="mb-4 ml-[26%]">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-              className="w-[60%] p-2 border-b-2 focus:outline-none text-center"
-              placeholder="mandela@gmail.com"
-              required
-            />
-          </div>
-         
-          <Link to="/referral">
-            <button className="bg-purple-500 mt-5 text-white ml-[35%] p-2 w-44 h-10 rounded-3xl">Ok</button>
-          </Link>
-          
+                <main>
+                    <div className='first-content'>
+                        <h1>Forgot Password</h1>
+                        <label htmlFor='email'>Enter your email address to reset your password.</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            placeholder='name@gmail.com'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <button onClick={handleSubmit}>Reset Password</button>
+                        <p>Remembered your password? <span><a href="/login">Login</a></span></p>
+                    </div>
+                </main>
+            </div>
+            <div className="signUp-right"></div>
+            <footer>
+            <a href="/login">
+                <img
+                    src={backBtn}
+                    alt="an icon that takes you to the previous page"
+                />
+                </a>
+            </footer>
         </div>
-        <div>
-          <img
-            src={qwesty}
-            alt="colorful qwesty letters"
-            className="max-w-full"
-          />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
+
+export default ForgottenPasswordPage;

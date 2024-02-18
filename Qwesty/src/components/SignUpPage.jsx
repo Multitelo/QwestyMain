@@ -4,6 +4,7 @@ import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
 import '../assets/css/login-signup.css';
 
+
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState('');
@@ -31,6 +32,7 @@ function SignUpPage() {
             .then((response) => {
                 console.log(response.data);
                 // Handle successful submission, e.g., show a success message
+                history.push('/signedUp/settings');
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -171,7 +173,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <button onClick={handleSubmit}><a href="./signedUp/settings">Let's Go</a></button>
+        <button><a href="/signedUp/settings">Let's Go</a></button>
         </div>
     
  )

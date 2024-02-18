@@ -117,7 +117,7 @@ const SideBar =({theme})=>{
        <Link to="/signedUp/settings"> <img src={isLinkActive('/signedUp/settings')?settingsB:srcs.settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
-       <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
+       <Link to="/signedUp/referral"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
        </div>
         <div className='logOut-box'>
           <Link to="/"><img src={srcs.logOut} alt="log-out icon"/><span>Log out</span></Link>
@@ -160,7 +160,7 @@ const SideBar =({theme})=>{
        <Link to="/signedUp/settings">  <img src={isLinkActive('/signedUp/settings')?settingsB:srcs.settings} id="settings-icon" alt="a settings icon" /> <span>Settings</span></Link>
        </div>
        <div className="referrals-box">
-       <Link to="/signedUp"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
+       <Link to="/signedUp/referral"><img src={srcs.userPlus} id="user-plus-icon" alt="User icon"/> <span>Referrals</span></Link>
        </div>
         <div className='logOut-box'>
           <Link to="/"><img src={srcs.logOut} alt="log-out icon"/><span>Log out</span></Link>
