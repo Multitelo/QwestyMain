@@ -31,7 +31,7 @@ function App() {
             />
             {/* <Route path="/signUp" element={<SignUp />} /> */}
            
-            <Route path="/login" element={<LogIn />} />
+            <Route path="/Login" element={<LogIn />} />
             <Route path="/loginn" element={<LogInn />} />
             <Route path="/Reset" element={<Reset />} />
             <Route path="/signedUp/referral" element={<Referral />} />
