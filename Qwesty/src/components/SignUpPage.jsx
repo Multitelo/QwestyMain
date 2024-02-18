@@ -3,6 +3,7 @@ import '../assets/css/login-signup.css';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function SignUpPage() {
@@ -23,10 +24,12 @@ function SignUpPage() {
   return (
     
     <div className='signUp-container'>
-  <div className='signUp-left'>
+     <div className='signUp-left'>
        <div id="logo-container">
-            <img src={logo}
+           <Link to="/">
+           <img src={logo}
                  alt="A logo of Qwesty"/>
+           </Link>
        </div>
 
        <main>
@@ -90,7 +93,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
            </label>
             </div>
        <button onClick={()=>handleContent('first')}>Ok</button>
-       <p>Already have an account? <span>Log in</span> </p>
+       <p>Already have an account? <span><Link to='/login'>Log in</Link></span> </p>
         </div>
     )
 }
