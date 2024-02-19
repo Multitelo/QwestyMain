@@ -27,17 +27,19 @@ function SignUpPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Send form data to PHP script using Axios
-        axios.post('./php/signin.php', { email, usertype, username, password })
+        
+        axios.post('http://localhost:80/api/signin.php', { email, usertype, username, password })
             .then((response) => {
                 console.log(response.data);
-                // Handle successful submission, e.g., show a success message
-                history.push('/signedUp/settings');
+                
+                window.location.href = '/signedUp/settings';
+                
             })
             .catch((error) => {
                 console.error('Error:', error);
-                // Handle error, e.g., show an error message
+                
             });
+            console.log({email, usertype, username, password})
     };
 
     return (
@@ -71,7 +73,7 @@ function SignUpPage() {
                           setPassword={setPassword}
                           confirmPwd={confirmPwd}
                           setConfirmPwd={setConfirmPwd}
-                          handleSubmit={handleSubmit} // Pass handleSubmit function
+                          handleSubmit={handleSubmit} 
                   />
                   
                     ) : (
@@ -176,8 +178,9 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <Link to="/signedUp/Settings"
-              id="signupBtn"><button>Let's Go</button></Link>
+       <button 
+                                    onClick={handleSubmit}
+                                    type='submit'>Let's Go</button>
         </div>
     
  )
