@@ -176,7 +176,8 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <button><a href="/signedUp/Settings">Let's Go</a></button>
+        <Link to="/signedUp/Settings"
+              id="signupBtn"><button>Let's Go</button></Link>
         </div>
     
  )

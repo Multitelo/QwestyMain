@@ -220,9 +220,10 @@
     margin: 20px 10px;
   }
 /* Styles for login page */
-#loginBtn{
+#loginBtn, #signupBtn{
   align-self: center;
 }
+
 #forgotLink{
 align-self: flex-end;
 text-decoration: underline;
