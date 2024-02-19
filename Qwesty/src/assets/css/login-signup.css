@@ -46,7 +46,11 @@
     justify-content: center;
 }
 
-.signUp-left h1, .signUp-left label, .signUp-left p{
+.signUp-left h1, 
+.signUp-left label, 
+.signUp-left p, 
+.second-content h2,
+.first-content h2{
     font-family: Outfit;
     font-size: 64px;
     font-weight: 400;
@@ -57,6 +61,9 @@
     margin-bottom: 40px;
 }
 
+.second-content h2, .first-content h2{
+  font-size: 30px;
+}
 .signUp-left label{
     font-size: 16px;
     font-weight: 500;
@@ -204,6 +211,33 @@
   .third-content #confPwd{
     margin-top: 50px;
   }
+ 
+  #checkbox-input{
+    align-self: flex-start;
+  }
+  #checkbox-input input{
+    
+    margin: 20px 10px;
+  }
+/* Styles for login page */
+#loginBtn{
+  align-self: center;
+}
+#forgotLink{
+align-self: flex-end;
+text-decoration: underline;
+}
+
+#forgotLink:hover p{
+  color:#8E5DF5;
+}
+/* End of styles for login page */
+
+/* Styles for Reset page */
+.first-content.reset{
+  margin-top: 30px;
+}
+/* End of styles for reset page */
   @media only screen and (max-width:769px){
 
     .signUp-container{

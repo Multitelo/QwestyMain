@@ -3,8 +3,8 @@ import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
 import '../assets/css/login-signup.css';
-
-function ForgottenPasswordPage() {
+import { Link } from 'react-router-dom';
+function Reset() {
     const [email, setEmail] = useState('');
 
     const handleSubmit = (e) => {
@@ -25,13 +25,14 @@ function ForgottenPasswordPage() {
         <div className="signUp-container">
             <div className="signUp-left">
                 <div id="logo-container">
-                    <img src={logo} alt="A logo of Qwesty" />
+                <Link to="/">
+                <img src={logo} alt="A logo of Qwesty" /></Link>    
                 </div>
 
                 <main>
-                    <div className='first-content'>
-                        <h1>Forgot Password</h1>
-                        <label htmlFor='email'>Enter your email address to reset your password.</label>
+                    <div className='first-content reset'>
+                        <h2>Reset password</h2>
+                        <label htmlFor='email'>Please what is your Email</label>
                         <input
                             type="email"
                             id="email"
@@ -40,22 +41,22 @@ function ForgottenPasswordPage() {
                             placeholder='name@gmail.com'
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <button onClick={handleSubmit}>Reset Password</button>
-                        <p>Remembered your password? <span><a href="/login">Login</a></span></p>
+                        <button onClick={handleSubmit}>Reset</button>
+                        {/* <p>Remembered your password? <span><Link to="/login">Login</Link></span></p> */}
                     </div>
                 </main>
             </div>
             <div className="signUp-right"></div>
             <footer>
-            <a href="/login">
+            <Link to="/LogIn">
                 <img
                     src={backBtn}
                     alt="an icon that takes you to the previous page"
                 />
-                </a>
+                </Link>
             </footer>
         </div>
     );
 }
 
-export default ForgottenPasswordPage;
+export default Reset;

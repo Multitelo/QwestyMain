@@ -6,9 +6,10 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 
 
-function LoginPage() {
+function LogIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberDetails, setRememberDetails] = useState(false)
     const [content, setContent] = useState('email');
 
     const handleSubmit = (e) => {
@@ -50,7 +51,7 @@ function LoginPage() {
                     {content === 'email' ? (
                         <div className='first-content'>
                             <h1>Login</h1>
-                            <label htmlFor='email'>Email</label>
+                            <label htmlFor='email'>Please enter your email</label>
                             <input
                                 type="email"
                                 id="email"
@@ -59,11 +60,19 @@ function LoginPage() {
                                 placeholder='name@gmail.com'
                                 onChange={(e) => setEmail(e.target.value)}
                             />
+                        <label id="checkbox-input">
+                            <input type='checkbox'
+                                   checked={rememberDetails}
+                                   onChange={e=> setRememberDetails(e.target.checked)}/>
+                            Remember for 30 days
+                        </label>
                             <button onClick={handleNext}>Next</button>
                             <p>Don't have an account? <span><Link to="/SignUp">Sign up</Link></span></p>
                         </div>
                     ) : content === 'password' ? (
                         <div className='second-content'>
+                                <h2>Welcome back mandela</h2>
+
                             <label htmlFor='pwd'>Enter your Password</label>
                             <input
                                 type="password"
@@ -73,22 +82,31 @@ function LoginPage() {
                                 placeholder='**********'
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <button><Link to='/signedUp/Settings'>Log In</Link></button>
-                            <p>Forgotten Your Password? <span><a href="/Reset">Reset</a></span></p>
+                            <Link to='/signedUp/Settings'
+                                  id="loginBtn"><button>
+                                Log In
+                                </button></Link>
+                            <Link to="/Reset" 
+                                  id="forgotLink"> <p>forgot password?</p></Link>
                         </div>
                     ) : null}
                 </main>
             </div>
             <div className="signUp-right"></div>
             <footer>
-                <img
+                {content === 'email'?(
+                    <h2>1/2</h2>
+                ): (
+                    <img
                     onClick={handleBack}
                     src={backBtn}
                     alt="an icon that takes you to the previous page"
                 />
+                )}
+               
             </footer>
         </div>
     );
 }
 
-export default LoginPage;
+export default LogIn;

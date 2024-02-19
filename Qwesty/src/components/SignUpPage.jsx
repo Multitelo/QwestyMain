@@ -135,7 +135,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
            </label>
             </div>
        <button onClick={()=>handleContent('first')}>Ok</button>
-       <p>Already have an account? <span><a href="/LogIn">Log In</a></span> </p>
+       <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
         </div>
     )
 }

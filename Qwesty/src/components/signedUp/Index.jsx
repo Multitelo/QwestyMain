@@ -54,7 +54,7 @@ const SideBar =({theme})=>{
   const location = useLocation();
   const [isClicked, setIsClicked] = useState(false);
   const [themee, setThemee]=useState(theme==="dark"?true:false)
-  // Function to determine if link is active
+  
   
     if(theme==="dark"){
      var srcs={
@@ -83,7 +83,7 @@ const SideBar =({theme})=>{
       }
     }
   
-  const isLinkActive = (to) =>{
+  const isLinkActive = (to) =>{// Function to determine if link is active
     return location.pathname === to;
   }
   const handleClick = ()=>{
@@ -93,8 +93,10 @@ const SideBar =({theme})=>{
     <>
     <div className="side-bar for-big-devices" style={{color: theme==="dark"?"#fff":"#201F24",backgroundColor: theme==="dark"?"#201F24":"#fff" }}
          id={theme==="dark"?"sideBarDark":""}>
-    <Link to="/signedUp">
-      <img src={srcs.logo} alt="Qwesty's logo" id="logoB"/></Link> 
+    <Link to="/">
+      <img src={srcs.logo} 
+           alt="Qwesty's logo" 
+           id="logoB"/></Link> 
       <div className="flex-search">
         <img src={search} id="search-icon"  alt="search-icon"/>
         <input type="search" value="search" placeholder="Search" className="searchBox"/>
@@ -127,7 +129,7 @@ const SideBar =({theme})=>{
       {/* For small devices */}
       <div id="small-devices" style={{color: theme==="dark"?"#fff":"#201F24",backgroundColor: theme==="dark"?"#201F24":"#fff" }}>
       <div id="s-logo">
-      <Link to="/signedUp">
+      <Link to="/">
       <img src={srcs.logo} alt="Qwesty's logo" /></Link> 
       </div>
       <div id="s-topNav">
