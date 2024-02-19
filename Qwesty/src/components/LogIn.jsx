@@ -70,7 +70,7 @@ function LogIn() {
                             <p>Don't have an account? <span><Link to="/SignUp">Sign up</Link></span></p>
                         </div>
                     ) : content === 'password' ? (
-                        <div className='second-content'>
+                        <div className='second-content login'>
                                 <h2>Welcome back mandela</h2>
 
                             <label htmlFor='pwd'>Enter your Password</label>

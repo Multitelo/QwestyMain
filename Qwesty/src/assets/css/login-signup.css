@@ -203,6 +203,8 @@
      margin-top: 100px;
 
   }
+
+  
   /* styles for the third signup page */
   .signUp-left .third-content{
     margin-top: 70px;
@@ -231,6 +233,9 @@ text-decoration: underline;
 
 #forgotLink:hover p{
   color:#8E5DF5;
+}
+.second-content.login{
+  margin-top: 10px;
 }
 /* End of styles for login page */
 
