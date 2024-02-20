@@ -26,10 +26,10 @@ function SignUpPage() {
     };
 
     const handleSubmit = () => {
-        axios.post('https://localhost:80/QwestyMain/api/signin.php', { email, usertype, username, password })
+        axios.post('http://127.0.0.1/qwestymain/api/signin.php', { email, usertype, username, password })
             .then((response) => {
                 console.log(response.data);
-
+                 
                 window.location.href = '/signedUp/settings';
                 
             })

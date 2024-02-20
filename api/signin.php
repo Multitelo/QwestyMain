@@ -2,13 +2,10 @@
     include_once './cone.php';
    
 
-    header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: *');
-header('Access-Control-Max-Age: 1728000');
-header("Content-Length: 0");
-header("Content-Type: text/plain"); 
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
+    header("Content-type:application/json");
 
 
     if($conn1){
