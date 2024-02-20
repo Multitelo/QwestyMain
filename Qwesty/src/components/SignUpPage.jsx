@@ -25,22 +25,20 @@ function SignUpPage() {
         );
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        axios.post('http://localhost:80/api/signin.php', { email, usertype, username, password })
+    const handleSubmit = (email, usertype, username, password) => {
+        axios.post('http://localhost:80/QwestyMain/api/signin.php', { email, usertype, username, password })
             .then((response) => {
                 console.log(response.data);
-                
+
                 window.location.href = '/signedUp/settings';
                 
             })
             .catch((error) => {
                 console.error('Error:', error);
-                
             });
             console.log({email, usertype, username, password})
     };
+    
 
     return (
         <div className="signUp-container">
@@ -178,9 +176,10 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-       <button 
-                                    onClick={handleSubmit}
-                                    type='submit'>Let's Go</button>
+        <button onClick={() => handleSubmit(email, usertype, username, password)}>Lets Go</button>
+
+
+
         </div>
     
  )
