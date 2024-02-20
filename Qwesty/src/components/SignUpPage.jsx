@@ -26,30 +26,41 @@ function SignUpPage() {
     };
 
     const handleSubmit = () => {
-        axios.post('http://127.0.0.1/qwestymain/api/signin.php', { email, usertype, username, password })
-            .then((response) => {
-                console.log(response.data);
-                 
-                window.location.href = '/signedUp/settings';
-                
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-            console.log({email, usertype, username, password})
+        // Serialize form data
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('usertype', usertype);
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('confirmPwd', confirmPwd);
+        
+    
+        // Disable the submit button or show loading indicator
+        fetch('http://localhost/qwestymain/api/signin.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Response:', data);
+            // Provide feedback to the user about successful submission
+            // Redirect the user after successful submission
+            // window.location.href = '/signedUp/settings';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Provide feedback to the user about the error
+        });
     };
     
-
     return (
         <div className="signUp-container">
             <div className="signUp-left">
                 <div id="logo-container">
-                  <Link to='/'> 
-                  <img src={logo} 
-                       alt="A logo of Qwesty"
-                          /></Link> 
+                    <Link to='/'>
+                        <img src={logo} alt="A logo of Qwesty" />
+                    </Link>
                 </div>
-
                 <main>
                     {content === 'first' ? (
                         <FirstSignUpContent
@@ -66,14 +77,13 @@ function SignUpPage() {
                             setContent={setContent}
                         />
                     ) : content === 'third' ? (
-                      <ThirdSignupcontent
-                          password={password}
-                          setPassword={setPassword}
-                          confirmPwd={confirmPwd}
-                          setConfirmPwd={setConfirmPwd}
-                          handleSubmit={handleSubmit} 
-                  />
-                  
+                        <ThirdSignupcontent
+                            password={password}
+                            setPassword={setPassword}
+                            confirmPwd={confirmPwd}
+                            setConfirmPwd={setConfirmPwd}
+                            handleSubmit={handleSubmit}
+                        />
                     ) : (
                         ''
                     )}
@@ -97,91 +107,80 @@ function SignUpPage() {
 
 export default SignUpPage;
 
-
 const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent})=>{
- 
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
-    
+
     return(
         <div className='first-content'>
             <h1>Sign up</h1>
-            <label htmlFor='email'>Please enter your email</label> 
+            <label htmlFor='email'>Please enter your email</label>
             <input type="email"
                    id="email"
                    name="email"
                    value={email}
                    placeholder='name@gmail.com'
                    onChange={(e)=>setEmail(e.target.value)}/>
-          <div className='radio-inputs'>   
-          <label className='radio-container'>
-            <input type='radio'
-                   value='participant'
-                   checked={usertype==='participant'}
-                   onChange={handleUserTypeChange}
-                   id="participant"/>
-               Participant
-               <span className="checkmark"></span>
-               </label>
-           
-               <label className='radio-container'> <input type='radio'
-                   value='researcher'
-                   checked={usertype === 'researcher'}
-                   onChange={handleUserTypeChange}
-                   id='researcher'/>
-           Researcher
-           <span className="checkmark"></span>
-           </label>
+            <div className='radio-inputs'>
+                <label className='radio-container'>
+                    <input type='radio'
+                           value='participant'
+                           checked={usertype==='participant'}
+                           onChange={handleUserTypeChange}
+                           id="participant"/>
+                    Participant
+                    <span className="checkmark"></span>
+                </label>
+                <label className='radio-container'>
+                    <input type='radio'
+                           value='researcher'
+                           checked={usertype === 'researcher'}
+                           onChange={handleUserTypeChange}
+                           id='researcher'/>
+                    Researcher
+                    <span className="checkmark"></span>
+                </label>
             </div>
-       <button onClick={()=>handleContent('first')}>Ok</button>
-       <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
+            <button onClick={()=>handleContent('first')}>Ok</button>
+            <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
         </div>
     )
 }
 
 const SecondSignupcontent = ({username, setUsername, setContent})=>{
     return(
-        <div className='second-content'> 
-               
-               <label htmlFor='username'>Please enter your Username</label> 
+        <div className='second-content'>
+            <label htmlFor='username'>Please enter your Username</label>
             <input type="text"
                    id="username"
                    name="username"
                    value={username}
                    placeholder='mandela'
                    onChange={(e)=>setUsername(e.target.value)}/>
-
-        <button onClick={()=>setContent('third')}>Next</button>
+            <button onClick={()=>setContent('third')}>Next</button>
         </div>
     )
 }
 
 const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit}) => {
-  return (
-    <div className='third-content'>
-          <label htmlFor='pwd'>Enter your password</label> 
+    return (
+        <div className='third-content'>
+            <label htmlFor='pwd'>Enter your password</label>
             <input type="password"
                    id="pwd"
                    name="password"
                    value={password}
                    placeholder='**********'
                    onChange={(e)=>setPassword(e.target.value)}/>
-
-        <label htmlFor='confirmpwd' id="confPwd">Confirm password</label> 
+            <label htmlFor='confirmpwd' id="confPwd">Confirm password</label>
             <input type="password"
                    id="confirmpwd"
                    name="confirmPwd"
                    value={confirmPwd}
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
-
-        <button onClick={ handleSubmit}>Lets Go</button>
-
-
-
+            <button onClick={handleSubmit}>Lets Go</button>
         </div>
-    
- )
-
+    )
 }
