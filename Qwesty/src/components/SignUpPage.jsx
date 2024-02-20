@@ -26,7 +26,7 @@ function SignUpPage() {
     };
 
     const handleSubmit = () => {
-        axios.post('http://localhost:80/QwestyMain/api/signin.php', { email, usertype, username, password })
+        axios.post('https://localhost:80/QwestyMain/api/signin.php', { email, usertype, username, password })
             .then((response) => {
                 console.log(response.data);
 
