@@ -25,7 +25,7 @@ function SignUpPage() {
         );
     };
 
-    const handleSubmit = (email, usertype, username, password) => {
+    const handleSubmit = () => {
         axios.post('http://localhost:80/QwestyMain/api/signin.php', { email, usertype, username, password })
             .then((response) => {
                 console.log(response.data);
@@ -131,7 +131,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                    onChange={handleUserTypeChange}
                    id='researcher'/>
            Researcher
-           <span class="checkmark"></span>
+           <span className="checkmark"></span>
            </label>
             </div>
        <button onClick={()=>handleContent('first')}>Ok</button>
@@ -176,7 +176,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    placeholder='**********'
                    onChange={(e)=>setConfirmPwd(e.target.value)}/>
 
-        <button onClick={() => handleSubmit(email, usertype, username, password)}>Lets Go</button>
+        <button onClick={ handleSubmit}>Lets Go</button>
 
 
 
