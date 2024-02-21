@@ -10,20 +10,25 @@
     $db1_database = "qwestyparti";
 
     // Database 2 connection parameters
-    // $db2_servername = "localhost";
-    // $db2_username = "Multitelo";
-    // $db2_password = "77359095";
-    // $db2_database = "qwestyresea";
+    $db2_servername = "localhost";
+    $db2_username = "Multitelo";
+    $db2_password = "77359095";
+    $db2_database = "qwestyresea";
 
     // Create connections to each database
-    $conn = mysqli_connect($db1_servername, $db1_username, $db1_password, $db1_database);
-    // $conn2 = mysqli_connect($db2_servername, $db2_username, $db2_password, $db2_database);
+    $conn1 = mysqli_connect($db1_servername, $db1_username, $db1_password, $db1_database);
+    $conn2 = mysqli_connect($db2_servername, $db2_username, $db2_password, $db2_database);
 
-    // Check connections
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    // Check connections for database 1
+    if (!$conn1) {
+        die("Connection to database 1 failed: " . mysqli_connect_error());
     }
-// echo "connected"
+
+    // Check connections for database 2
+    if (!$conn2) {
+        die("Connection to database 2 failed: " . mysqli_connect_error());
+    }
+echo "connected"
 
 // // Example query on database 1
 // $query1 = "SELECT * FROM table1";

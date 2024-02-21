@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
-import axios from 'axios';
+// import axios from 'axios';
 import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 
@@ -45,7 +45,7 @@ function SignUpPage() {
             console.log('Response:', data);
             // Provide feedback to the user about successful submission
             // Redirect the user after successful submission
-            // window.location.href = '/signedUp/settings';
+            window.location.href = '/signedUp/settings';
         })
         .catch(error => {
             console.error('Error:', error);
