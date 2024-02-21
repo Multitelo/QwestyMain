@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
-import axios from 'axios';
+// import axios from 'axios';
 import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 
