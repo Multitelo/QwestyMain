@@ -112,6 +112,9 @@
 .signUp-left button:hover{
     background-color: rgba(142, 93, 245, 0.8);
 }
+.signUp-left button.disabled{
+  background-color: rgba(142, 93, 245, 0.5);
+}
 .signUp-left p{
     
     font-size: 14px;
@@ -244,6 +247,23 @@ text-decoration: underline;
   margin-top: 30px;
 }
 /* End of styles for reset page */
+
+sup{
+  color: rgb(255, 0, 0);
+}
+
+/* Styles when user input has errors */
+.signUp-container input.err{
+     border-bottom: 3px solid rgba(255, 0, 0);
+   }
+
+ .signUp-container input.correct{
+    border-bottom: 3px solid rgb(0, 128, 0);
+  }
+
+  #errMsg{
+    color:rgba(255, 0, 0, 0.6);
+  }
   @media only screen and (max-width:769px){
 
     .signUp-container{

@@ -8,11 +8,15 @@ import { Link } from 'react-router-dom';
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState({value:'', touched:false});
     const [password, setPassword] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
     const [usertype, setUsertype] = useState('');
-
+    const [errors, setErrors] = useState({emailError:'',
+                                          usertypeErr:false, 
+                                          pwdErr:false,
+                                          confirmPwdErr:false})
+    const [btnState, setBtnState] = useState(true)
     const handleContent = (content) => {
         setContent((prevState) =>
             prevState === 'second'
@@ -25,10 +29,36 @@ function SignUpPage() {
         );
     };
 
+    const handleEmail = (e) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const inputValue = e.target.value;
+        const isValidEmail = emailRegex.test(inputValue);
+    
+        setEmail({ ...email, value: inputValue });
+    
+        console.log("email.touched:", email.touched);
+        console.log("email.value:", email.value);
+    
+        if (!isValidEmail || (email.touched && (!email.value || email.value.length < 8))) {
+            setErrors({ ...errors, emailError: 'err' });
+        } else {
+            setErrors({ ...errors, emailError: 'correct' });
+        }
+    };
+    
+    const handleBtnState = ()=>{
+        if( errors.emailError==='err' || usertype===""){
+            setBtnState(true)
+        }
+        else{
+            setBtnState(false)
+        }
+        return btnState;
+    }
     const handleSubmit = () => {
         // Serialize form data
         const formData = new FormData();
-        formData.append('email', email);
+        formData.append('email', email.value);
         formData.append('usertype', usertype);
         formData.append('username', username);
         formData.append('password', password);
@@ -45,7 +75,7 @@ function SignUpPage() {
             console.log('Response:', data);
             // Provide feedback to the user about successful submission
             // Redirect the user after successful submission
-            // window.location.href = '/signedUp/settings';
+            window.location.href = '/signedUp/settings';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -69,12 +99,18 @@ function SignUpPage() {
                             usertype={usertype}
                             setUsertype={setUsertype}
                             handleContent={handleContent}
+                            handleEmail={handleEmail}
+                            errors={errors}
+                            setErrors={setErrors}
+                            handleBtnState={handleBtnState}
+                            btnState={btnState}
                         />
                     ) : content === 'second' ? (
                         <SecondSignupcontent
                             username={username}
                             setUsername={setUsername}
                             setContent={setContent}
+                           
                         />
                     ) : content === 'third' ? (
                         <ThirdSignupcontent
@@ -107,21 +143,31 @@ function SignUpPage() {
 
 export default SignUpPage;
 
-const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent})=>{
+const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors,setErrors, handleBtnState, btnState})=>{
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
-
+    const handleBlur = () => {
+        if (!email.value) {
+            setErrors({ ...errors, emailError: 'err' });
+        }
+    };
     return(
         <div className='first-content'>
             <h1>Sign up</h1>
-            <label htmlFor='email'>Please enter your email</label>
+            <label htmlFor='email'>Please enter your email <sup>*</sup></label>
             <input type="email"
                    id="email"
                    name="email"
-                   value={email}
+                   value={email.value}
                    placeholder='name@gmail.com'
-                   onChange={(e)=>setEmail(e.target.value)}/>
+                   onBlur={handleBlur}
+
+                   onChange={handleEmail}
+                   className={errors.emailError}
+                  
+                   />
+                   {/* {errors.emailError==='err'&& <span id='errMsg'>Incorrect email</span>} */}
             <div className='radio-inputs'>
                 <label className='radio-container'>
                     <input type='radio'
@@ -140,9 +186,14 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                            id='researcher'/>
                     Researcher
                     <span className="checkmark"></span>
+                   
                 </label>
+                
             </div>
-            <button onClick={()=>handleContent('first')}>Ok</button>
+            <button onClick={()=>handleContent('first')}
+                    disabled={handleBtnState()}
+                    className={handleBtnState() ? 'disabled' : 'enabled'}>
+                       Ok</button>
             <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
         </div>
     )
@@ -151,7 +202,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
 const SecondSignupcontent = ({username, setUsername, setContent})=>{
     return(
         <div className='second-content'>
-            <label htmlFor='username'>Please enter your Username</label>
+            <label htmlFor='username'>Please enter your Username <sup>*</sup> </label>
             <input type="text"
                    id="username"
                    name="username"
@@ -166,14 +217,14 @@ const SecondSignupcontent = ({username, setUsername, setContent})=>{
 const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit}) => {
     return (
         <div className='third-content'>
-            <label htmlFor='pwd'>Enter your password</label>
+            <label htmlFor='pwd'>Enter your password <sup>*</sup></label>
             <input type="password"
                    id="pwd"
                    name="password"
                    value={password}
                    placeholder='**********'
                    onChange={(e)=>setPassword(e.target.value)}/>
-            <label htmlFor='confirmpwd' id="confPwd">Confirm password</label>
+            <label htmlFor='confirmpwd' id="confPwd">Confirm password <sup>*</sup></label>
             <input type="password"
                    id="confirmpwd"
                    name="confirmPwd"
