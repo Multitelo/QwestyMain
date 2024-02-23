@@ -282,7 +282,6 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
             setErrors({ ...errors, pwdErr: 'correct' });
         }
     
-        // Revalidate confirm password field whenever password field changes
         handleConfirmPwd(confirmPwd.value);
 
     };
