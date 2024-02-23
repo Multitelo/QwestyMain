@@ -39,7 +39,7 @@ function SignUpPage() {
         setEmail({ ...email, value: inputValue });
     
        
-    
+        const isValidEmail= emailRegex.test(inputValue)
         if (!isValidEmail || (email.touched && (!email.value || email.value.length < 8))) {
             setErrors({ ...errors, emailError: 'err' });
         } else {
