@@ -39,7 +39,9 @@
     gap:10px;
     margin-top: 0px;
 }
-
+.signUp-left .first-content{
+  margin-top: 50px;
+}
 
 .radio-inputs{
     display: flex;
@@ -89,8 +91,7 @@
 }
 
 .signUp-container input[type='email'],
-.signUp-container input[type='text'],
-.signUp-container input[type='password']{
+.signUp-container input[type='text']{
     
     font-family: Outfit;
     font-size: 16px;
@@ -107,7 +108,40 @@
     align-self:center;
 }
 
+.pwd-container{
+  display: flex;
+  border-bottom: 1px solid #292727;
+}
+.pwd-container input[type='text']{
+  border: none;
+}
+.pwd-container img{
+  align-self: center;
+   width: 30px;
+   height: 20px;
+   opacity: 0.4;
+   cursor: pointer;
+}
 
+.pwd-container img.open{
+  height: 30px;
+}
+.signUp-container input[type='password']{
+    
+  font-family: Outfit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0em;
+  opacity: 50%;
+  color:#292727;
+  outline: none;
+  border: none;
+  width:320px;
+  text-align: center;
+  position: relative;
+  align-self:center;
+}
 
 .signUp-left button{
     font-family: Inter;
@@ -215,6 +249,7 @@
     cursor: pointer;
   }
 
+  
   /* styles for second signup page */
 
   .signUp-left .second-content{
@@ -268,11 +303,11 @@ sup{
 }
 
 /* Styles when user input has errors */
-.signUp-container input.err{
+.signUp-container input.err, .pwd-container.err{
      border-bottom: 3px solid rgba(255, 0, 0);
    }
 
- .signUp-container input.correct{
+ .signUp-container input.correct, .pwd-container.correct{
     border-bottom: 3px solid rgb(0, 128, 0);
   }
 

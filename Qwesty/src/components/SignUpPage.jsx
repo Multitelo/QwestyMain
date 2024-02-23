@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
-// import axios from 'axios';
 import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
-
+import eyeOpen from '../assets/images/eye.jpg';
+import eyeClosed from '../assets/images/hiddenEye.jpg';
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
@@ -271,6 +271,17 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;
+    const [showPwd, setShowPwd] = useState({pwd:false, confirmPwd: false})
+
+    const handleShowPwd = (pwd)=>{
+        if(pwd==="password"){
+            setShowPwd( {...showPwd, pwd:!showPwd.pwd})
+        }
+
+        else{
+            setShowPwd({...showPwd, confirmPwd:!showPwd.confirmPwd})
+        }
+    }
 
     const handlePwd = (e) => {
 
@@ -314,7 +325,8 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     return (
         <div className='third-content'>
             <label htmlFor='pwd'>Enter your password <sup>*</sup></label>
-            <input type="password"
+        <div className={`pwd-container ${errors.pwdErr}`}>
+              <input type={showPwd.pwd?'text':'password'}
                    id="pwd"
                    name="password"
                    value={password.value}
@@ -322,12 +334,20 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    onChange={handlePwd}
                    onBlur={handleBlur}
 
-                   className={errors.pwdErr}
+                   
                    /> 
+                   <img src={showPwd.pwd?eyeOpen: eyeClosed}
+                        alt="An image of an eye, which indicates whether the password should be visible or not"
+                        onClick={()=>handleShowPwd('password')}
+                        className={showPwd.pwd?'open':""}
+                />
+                        </div>
      <div className='errMsg'>{errors.pwdErr==="err"?errMsg:""}</div>
 
             <label htmlFor='confirmpwd' id="confPwd">Confirm password <sup>*</sup></label>
-            <input type="password"
+
+            <div className={`pwd-container ${errors.confirmPwdErr}`}>
+            <input type={showPwd.confirmPwd?'text':'password'}
                    id="confirmpwd"
                    name="confirmPwd"
                    value={confirmPwd.value}
@@ -336,7 +356,14 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    onBlur={()=>{if (!confirmPwd.value) {
                     setErrors({ ...errors, confirmPwdErr: 'err' });
                 }}}
-                   className={errors.confirmPwdErr}/>
+                   />
+
+                    <img src={showPwd.confirmPwd?eyeOpen: eyeClosed}
+                        alt="An image of an eye, which indicates whether the password should be visible or not"
+                        onClick={()=>handleShowPwd('confirmPwd')}
+                />
+
+                   </div>
                    {pwdErr && <div className='errMsg'>Password didn't match</div>}
             <button onClick={handleSubmit}
                      disabled={handleBtnState()}
