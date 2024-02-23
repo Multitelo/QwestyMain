@@ -67,7 +67,7 @@ function SignUpPage() {
             setPwdErr(true)
             setErrors({...errors, confirmPwdErr:'err'})
         }
-        setPwdErr(false)
+        
         const formData = new FormData();
         formData.append('email', email.value);
         formData.append('usertype', usertype);
@@ -273,7 +273,6 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;
 
     const handlePwd = (e) => {
-        // setPwdErr(false)
 
         const inputPwd = e.target.value;
         const isValidPwd = passwordRegex.test(inputPwd);
@@ -291,7 +290,8 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     };
     
     const handleConfirmPwd = (e) => {
-        
+                setPwdErr(false)
+
         const confirmPwdValue = e.target.value;
         const isValidPwd = passwordRegex.test(confirmPwdValue);
     
