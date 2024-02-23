@@ -296,10 +296,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
         } else {
             setErrors({ ...errors, pwdErr: 'correct' });
         }
-    
-       
-
-    };
+     };
     
     const handleConfirmPwd = (e) => {
                 setPwdErr(false)
