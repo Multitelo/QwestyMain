@@ -362,6 +362,8 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                     <img src={showPwd.confirmPwd?eyeOpen: eyeClosed}
                         alt="An image of an eye, which indicates whether the password should be visible or not"
                         onClick={()=>handleShowPwd('confirmPwd')}
+                        className={showPwd.confirmPwd?'open':""}
+
                 />
 
                    </div>
