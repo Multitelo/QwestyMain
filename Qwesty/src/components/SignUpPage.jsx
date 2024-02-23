@@ -67,6 +67,7 @@ function SignUpPage() {
             setPwdErr(true)
             setErrors({...errors, confirmPwdErr:'err'})
         }
+        setPwdErr(false)
         const formData = new FormData();
         formData.append('email', email.value);
         formData.append('usertype', usertype);
@@ -136,6 +137,7 @@ function SignUpPage() {
                             handleSubmit={handleSubmit}
                             handleBtnState={handleBtnState}
                             pwdErr={pwdErr}
+                            setPwdErr={setPwdErr}
                         />
                     ) : (
                         ''
@@ -265,12 +267,14 @@ const SecondSignupcontent = ({username, setUsername, setContent, setErrors, erro
     )
 }
 
-const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit, errors, setErrors, handleBtnState,pwdErr}) => {
+const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit, errors, setErrors, handleBtnState,pwdErr, setPwdErr}) => {
     
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;
 
     const handlePwd = (e) => {
+        // setPwdErr(false)
+
         const inputPwd = e.target.value;
         const isValidPwd = passwordRegex.test(inputPwd);
     
@@ -282,11 +286,12 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
             setErrors({ ...errors, pwdErr: 'correct' });
         }
     
-        handleConfirmPwd(confirmPwd.value);
+       
 
     };
     
     const handleConfirmPwd = (e) => {
+        
         const confirmPwdValue = e.target.value;
         const isValidPwd = passwordRegex.test(confirmPwdValue);
     
