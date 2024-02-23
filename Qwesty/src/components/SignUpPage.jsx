@@ -36,8 +36,6 @@ function SignUpPage() {
     const handleEmail = (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const inputValue = e.target.value;
-        const isValidEmail = emailRegex.test(inputValue);
-    
         setEmail({ ...email, value: inputValue });
     
        
@@ -48,6 +46,9 @@ function SignUpPage() {
             setErrors({ ...errors, emailError: 'correct' });
         }
     };
+    
+    
+    
     
     const handleBtnState = () => {
         if (content === 'first') {
@@ -86,7 +87,7 @@ function SignUpPage() {
             console.log('Response:', data);
             // Provide feedback to the user about successful submission
             // Redirect the user after successful submission
-            window.location.href = '/signedUp/settings';
+            // window.location.href = '/signedUp/settings';
         })
         .catch(error => {
             console.error('Error:', error);

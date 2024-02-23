@@ -6,13 +6,13 @@
 // Database 1 connection parameters
     $db1_servername = "localhost";
     $db1_username = "Multitelo";
-    $db1_password = "77359095";
+    $db1_password = "k77359095";
     $db1_database = "qwestyparti";
 
     // Database 2 connection parameters
     $db2_servername = "localhost";
     $db2_username = "Multitelo";
-    $db2_password = "77359095";
+    $db2_password = "k77359095";
     $db2_database = "qwestyresea";
 
     // Create connections to each database
