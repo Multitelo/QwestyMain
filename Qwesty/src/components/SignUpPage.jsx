@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
-    const [email, setEmail] = useState({value:'', touched:false});
+    const [email, setEmail] = useState({value: '', touched:false});
     const [password, setPassword] = useState({value:'', touched:false});
     const [confirmPwd, setConfirmPwd] = useState({value:'', touched:false});
     const [usertype, setUsertype] = useState('');
@@ -33,19 +33,45 @@ function SignUpPage() {
         
     };
 
-    const handleEmail = (e) => {
+    const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const inputValue = e.target.value;
-        setEmail({ ...email, value: inputValue });
+        setEmail({ ...email, value: inputValue, touched: true });
     
-       
+        // Check if the email format is valid
+        if (!emailRegex.test(inputValue)) {
+            setErrors({ ...errors, emailError: 'Invalid email format.' });
+            return;
+        }
     
-        if (!isValidEmail || (email.touched && (!email.value || email.value.length < 8))) {
-            setErrors({ ...errors, emailError: 'err' });
-        } else {
-            setErrors({ ...errors, emailError: 'correct' });
+        // Prepare FormData
+        let formData = new FormData();
+        formData.append('email', inputValue);
+        formData.append('usertype', usertype); // Ensure 'usertype' state is defined and updated in your component
+    
+        try {
+            // Adjust the URL to your PHP script's location
+            const response = await fetch('http://localhost/qwestymain/api/email.php', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            const data = await response.json();
+    
+            // Assuming the PHP script returns { isAvailable: true/false }
+            if (!data.isAvailable) {
+                setErrors({ ...errors, emailError: 'Email already in use.' });
+            } else {
+                // If the email does not exist, clear the emailError.
+                setErrors({ ...errors, emailError: '' });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle any errors that occur during the fetch
+            setErrors({ ...errors, emailError: 'An error occurred while checking the email.' });
         }
     };
+    
     
     
     
@@ -181,11 +207,11 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                    id="email"
                    name="email"
                    value={email.value}
-                   placeholder='name@gmail.com'
+                   placeholder="name@example.com"
                    onBlur={handleBlur}
 
                    onChange={handleEmail}
-                   className={errors.emailError}
+                   className={errors.emailError ? 'error' : ''}
                   
                    />
 
