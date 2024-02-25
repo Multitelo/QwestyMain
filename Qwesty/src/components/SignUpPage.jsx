@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logoBlack.png';
 import backBtn from '../assets/images/backBtn.png';
-// import axios from 'axios';
 import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
-
+import eyeOpen from '../assets/images/eye.jpg';
+import eyeClosed from '../assets/images/hiddenEye.jpg';
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
@@ -36,39 +36,14 @@ function SignUpPage() {
     const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const inputValue = e.target.value;
-        setEmail({ ...email, value: inputValue, touched: true });
+        setEmail({ ...email, value: inputValue });
     
-        // Check if the email format is valid
-        if (!emailRegex.test(inputValue)) {
-            setErrors({ ...errors, emailError: 'Invalid email format.' });
-            return;
-        }
-    
-        // Prepare FormData
-        let formData = new FormData();
-        formData.append('email', inputValue);
-        formData.append('usertype', usertype); // Ensure 'usertype' state is defined and updated in your component
-    
-        try {
-            // Adjust the URL to your PHP script's location
-            const response = await fetch('http://localhost/qwestymain/api/email.php', {
-                method: 'POST',
-                body: formData,
-            });
-    
-            const data = await response.json();
-    
-            // Assuming the PHP script returns { isAvailable: true/false }
-            if (!data.isAvailable) {
-                setErrors({ ...errors, emailError: 'Email already in use.' });
-            } else {
-                // If the email does not exist, clear the emailError.
-                setErrors({ ...errors, emailError: '' });
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            // Handle any errors that occur during the fetch
-            setErrors({ ...errors, emailError: 'An error occurred while checking the email.' });
+       
+        const isValidEmail= emailRegex.test(inputValue)
+        if (!isValidEmail || (email.touched && (!email.value || email.value.length < 8))) {
+            setErrors({ ...errors, emailError: 'err' });
+        } else {
+            setErrors({ ...errors, emailError: 'correct' });
         }
     };
     
@@ -298,6 +273,17 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;
+    const [showPwd, setShowPwd] = useState({pwd:false, confirmPwd: false})
+
+    const handleShowPwd = (pwd)=>{
+        if(pwd==="password"){
+            setShowPwd( {...showPwd, pwd:!showPwd.pwd})
+        }
+
+        else{
+            setShowPwd({...showPwd, confirmPwd:!showPwd.confirmPwd})
+        }
+    }
 
     const handlePwd = (e) => {
 
@@ -311,10 +297,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
         } else {
             setErrors({ ...errors, pwdErr: 'correct' });
         }
-    
-       
-
-    };
+     };
     
     const handleConfirmPwd = (e) => {
                 setPwdErr(false)
@@ -341,7 +324,8 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
     return (
         <div className='third-content'>
             <label htmlFor='pwd'>Enter your password <sup>*</sup></label>
-            <input type="password"
+        <div className={`pwd-container ${errors.pwdErr}`}>
+              <input type={showPwd.pwd?'text':'password'}
                    id="pwd"
                    name="password"
                    value={password.value}
@@ -349,12 +333,20 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    onChange={handlePwd}
                    onBlur={handleBlur}
 
-                   className={errors.pwdErr}
+                   
                    /> 
+                   <img src={showPwd.pwd?eyeOpen: eyeClosed}
+                        alt="An image of an eye, which indicates whether the password should be visible or not"
+                        onClick={()=>handleShowPwd('password')}
+                        className={showPwd.pwd?'open':""}
+                />
+                        </div>
      <div className='errMsg'>{errors.pwdErr==="err"?errMsg:""}</div>
 
             <label htmlFor='confirmpwd' id="confPwd">Confirm password <sup>*</sup></label>
-            <input type="password"
+
+            <div className={`pwd-container ${errors.confirmPwdErr}`}>
+            <input type={showPwd.confirmPwd?'text':'password'}
                    id="confirmpwd"
                    name="confirmPwd"
                    value={confirmPwd.value}
@@ -363,7 +355,16 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
                    onBlur={()=>{if (!confirmPwd.value) {
                     setErrors({ ...errors, confirmPwdErr: 'err' });
                 }}}
-                   className={errors.confirmPwdErr}/>
+                   />
+
+                    <img src={showPwd.confirmPwd?eyeOpen: eyeClosed}
+                        alt="An image of an eye, which indicates whether the password should be visible or not"
+                        onClick={()=>handleShowPwd('confirmPwd')}
+                        className={showPwd.confirmPwd?'open':""}
+
+                />
+
+                   </div>
                    {pwdErr && <div className='errMsg'>Password didn't match</div>}
             <button onClick={handleSubmit}
                      disabled={handleBtnState()}
