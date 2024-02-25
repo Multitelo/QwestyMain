@@ -14,9 +14,11 @@ import Index from './components/signedUp/Index.jsx';
 import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
+import { useEffect } from 'react';
 function App() {
   const [theme, setTheme] = useState("light");
 
+   
   return (
     <ThemeProvider> 
       <React.StrictMode>
