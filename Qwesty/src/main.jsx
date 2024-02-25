@@ -18,7 +18,24 @@ import { useEffect } from 'react';
 function App() {
   const [theme, setTheme] = useState("light");
 
-   
+  useEffect(() => {
+    const handleOrientationChange = () => {
+      if (window.orientation !== 0) {
+        // Prevent rotation
+        window.screen.orientation.lock('portrait');
+      }
+    };
+
+    // Listen for orientation change
+    window.addEventListener('orientationchange', handleOrientationChange);
+
+    // Unlock orientation when component unmounts
+    return () => {
+      window.removeEventListener('orientationchange', handleOrientationChange);
+      // Unlock orientation
+      window.screen.orientation.unlock();
+    };
+  }, []);
   return (
     <ThemeProvider> 
       <React.StrictMode>
