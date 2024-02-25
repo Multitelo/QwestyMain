@@ -1028,3 +1028,18 @@ button img,img#close-bar{
     
   }
 }
+
+@media (orientation: portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: center;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer */
+  }
+}
