@@ -1,0 +1,14 @@
+
+
+.myProfile-container{
+
+    display: grid;
+    grid-template-columns: 22vw 75vw;
+    grid-template-rows: 15vh auto;
+    grid-template-areas: "sideNav topNav"
+                         
+                         "sideNav mainContent";
+  
+     column-gap: 0px;
+    height: auto;
+}

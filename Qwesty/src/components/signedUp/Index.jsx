@@ -34,17 +34,7 @@ function Index() {
     {<TopNav theme={theme}/>}
     </>
    
-    // <div style={{backgroundColor: "#F7F7F7", height:"100vh"}} >
-    //     <header className="flexContainer" >
-        
-          
-      
-     
-    //   {<Settings/>}
-    //     </header>
     
-   
-    //     </div>
   )
 }
 
@@ -53,7 +43,6 @@ function Index() {
 const SideBar =({theme})=>{
   const location = useLocation();
   const [isClicked, setIsClicked] = useState(false);
-  const [themee, setThemee]=useState(theme==="dark"?true:false)
   
   
     if(theme==="dark"){
@@ -107,8 +96,10 @@ const SideBar =({theme})=>{
          </Link>
        </div>
        
-       <div className="profileBox">
-       <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
+       <div className="profileBox" id={isLinkActive('/signedUp/my-profile') ? 'active': ''}>
+       <Link to="/signedUp/my-profile"> 
+       <img 
+            src={isLinkActive('/signedUp/my-profile')?userW:srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
        <div className="rewards-box" id={isLinkActive('/signedUp/rewards') ? 'active': ''}>
        <Link to="/signedUp/rewards"> 
@@ -151,8 +142,10 @@ const SideBar =({theme})=>{
          </Link>
        </div>
        
-       <div className="profileBox">
-       <Link to="/signedUp"> <img src={srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
+       <div className="profileBox" id={isLinkActive('/signedUp/my-profile') ? 'active': ''}>
+       <Link to="/signedUp/my-profile"> 
+        <img 
+              src={isLinkActive('/signedUp/my-profile')?userW:srcs.user} id="user-icon" alt="User icon"/> <span>My profile</span></Link>
        </div>
        <div className="rewards-box" id={isLinkActive('/signedUp/rewards') ? 'active': ''} >
        <Link to="/signedUp/rewards"> <img src={isLinkActive('/signedUp/rewards')?coinStackW:srcs.coinStack} id="coinStack-icon" alt="Coin-stack icon"/> 

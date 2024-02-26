@@ -4,9 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './ThemeContext'; // Import the ThemeProvider
 
 import './index.css';
-
 import LogIn from './components/LogIn.jsx';
-import LogInn from './components/LogInn.jsx';
 import Reset from './components/Reset.jsx';
 import Header from './components/Header.jsx';
 import Referral from './components/signedUp/referral.jsx';
@@ -14,6 +12,7 @@ import Index from './components/signedUp/Index.jsx';
 import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
+import Myprofile from './components/signedUp/Myprofile.jsx';
 import { useEffect } from 'react';
 function App() {
   const [theme, setTheme] = useState("light");
@@ -52,12 +51,13 @@ function App() {
             {/* <Route path="/signUp" element={<SignUp />} /> */}
            
             <Route path="/Login" element={<LogIn />} />
-            <Route path="/loginn" element={<LogInn />} />
+           
             <Route path="/Reset" element={<Reset />} />
             <Route path="/signedUp/referral" element={<Referral />} />
             <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp" element={<Index />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
+            <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
           </Routes>
         </BrowserRouter>

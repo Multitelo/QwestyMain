@@ -18,10 +18,10 @@ import vector5 from '../../assets/images/Vector5.svg';
 import Select from "react-select";
 import makeAnimated from 'react-select/animated';
 import { useState } from "react";
-import { useTheme } from '../../ThemeContext'; // Import the useTheme hook
+import { useTheme } from '../../ThemeContext'; 
 
 function Rewards() {
-    const { theme} = useTheme(); // Access theme state and toggleTheme function
+    const { theme} = useTheme(); 
 
     const options = [
         {value:'1', label:"All time"},
