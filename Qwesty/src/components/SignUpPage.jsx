@@ -8,7 +8,7 @@ import eyeClosed from '../assets/images/hiddenEye.jpg';
 function SignUpPage() {
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
-    const [email, setEmail] = useState({value:'', touched:false});
+    const [email, setEmail] = useState({value: '', touched:false});
     const [password, setPassword] = useState({value:'', touched:false});
     const [confirmPwd, setConfirmPwd] = useState({value:'', touched:false});
     const [usertype, setUsertype] = useState('');
@@ -33,7 +33,7 @@ function SignUpPage() {
         
     };
 
-    const handleEmail = (e) => {
+    const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const inputValue = e.target.value;
         setEmail({ ...email, value: inputValue });
@@ -46,6 +46,7 @@ function SignUpPage() {
             setErrors({ ...errors, emailError: 'correct' });
         }
     };
+    
     
     
     
@@ -181,11 +182,11 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                    id="email"
                    name="email"
                    value={email.value}
-                   placeholder='name@gmail.com'
+                   placeholder="name@example.com"
                    onBlur={handleBlur}
 
                    onChange={handleEmail}
-                   className={errors.emailError}
+                   className={errors.emailError ? 'error' : ''}
                   
                    />
 
