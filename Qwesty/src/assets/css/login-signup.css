@@ -40,7 +40,7 @@
     margin-top: 0px;
 }
 .signUp-left .first-content{
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .radio-inputs{
@@ -313,7 +313,9 @@ sup{
 
   #errMsg{
     color:rgba(255, 0, 0, 0.6);
+    font-size: 12px;
   }
+
 
   @media only screen and (max-width:1246px){
     .errMsg {

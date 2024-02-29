@@ -20,7 +20,7 @@ function SignUpPage() {
                                           confirmPwdErr:false})
     const [pwdErr, setPwdErr] = useState(false)
     const [btnState, setBtnState] = useState(true)
-
+    const [errE, setErrE] = useState('')
     const handleContent = (content) => {
         setContent((prevState) =>
             prevState === 'second'
@@ -36,13 +36,16 @@ function SignUpPage() {
     
     const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setErrE('');
+
         setEmail({ value: e.target.value, touched: true });
     
-        setErrors({ ...errors, emailError: emailRegex.test(e.target.value) ? '' : 'Invalid email format' });
+        setErrors({ ...errors, emailError: emailRegex.test(e.target.value) ? '' : 'err' });
     };
     
 
     const handleEmailCheck = async () => {
+        
         const formData = new FormData();
         formData.append('email',email.value);
         formData.append('usertype', usertype);
@@ -59,11 +62,15 @@ function SignUpPage() {
     
             if (!data.isAvailable) {
                 // Email is not available, set error message
-                setErrors(prevErrors => ({ ...prevErrors, emailError: 'Email is already in use' }));
+                setErrE('Email is already in use');
+                setErrors({...errors, emailError:'err'})
             } else {
                 // Email is available, clear any existing error messages and move to the next content
-                setErrors(prevErrors => ({ ...prevErrors, emailError: '' }));
-                setContent('second'); // Only move to the next content if the email is available
+                setErrE('');
+                setErrors({...errors, emailError:''})
+
+                setContent('second');
+                 // Only move to the next content if the email is available
             }
         } catch (error) {
             console.error('Error:', error);
@@ -141,7 +148,8 @@ function SignUpPage() {
                             setErrors={setErrors}
                             handleBtnState={handleBtnState}
                             btnState={btnState}
-                            handleEmailCheck={handleEmailCheck} // Pass the function here
+                            handleEmailCheck={handleEmailCheck} 
+                            errE = {errE}// Pass the function here
                     />                    
                     ) : content === 'second' ? (
                         <SecondSignupcontent
@@ -190,7 +198,7 @@ function SignUpPage() {
 
 export default SignUpPage;
 
-const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, btnState, handleEmailCheck})=>{
+const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, errE, handleEmailCheck})=>{
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
@@ -211,10 +219,10 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                    onBlur={handleBlur}
 
                    onChange={handleEmail}
-                   className={errors.emailError ? 'error' : ''}
+                   className={errors.emailError}
                   
                    />
-            {errors.emailError && <p className="error">{errors.emailError}</p>}
+          <span id="errMsg"> {errE}</span>  
 
             <div className='radio-inputs'>
                 <label className='radio-container'>
