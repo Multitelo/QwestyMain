@@ -15,6 +15,10 @@
     padding-bottom: 50px;
 }
 
+.myProfile-container.dark{
+    background-color: #131217;
+}
+
 .myProfile-content{
     display: flex;
     flex-direction: column;
@@ -22,6 +26,9 @@
     gap: 30px;
 }
 
+.myProfile-container.dark .myProfile-content{
+    background-color: #131217;
+}
 .myProfile-content #title{
      background-color: #EFE7FF;
      align-self: center;
@@ -46,18 +53,23 @@
 .myProfile-content .left-cont{
     display:grid;
     width: 40vw;
-    /* border: 1px solid red; */
-    grid-template-rows: 40vh auto;
-    grid-template-columns: 20vw 20vw;
+    grid-template-rows: 50vh auto;
+    grid-template-columns: 20vw 22vw;
     grid-template-areas: "avatar verfication"
                          "details details";
     gap:30px;
+    margin-right: auto;
 }
 
 .left-cont > div{
     background-color: #fff;
     border-radius: 30px;
     padding: 10px;
+}
+
+.myProfile-container.dark .left-cont >div{
+    background-color: #201F24;
+    color:#F4F4F4;
 }
 .left-cont .avatar-box{
     grid-area: avatar;
@@ -80,6 +92,7 @@
     font-family: Outfit;
     font-size: 20px;
     line-height: 16px;
+   
 }
 .avatar-box span{
     padding-left: 20px;
@@ -107,7 +120,10 @@
     border-radius: 10px;
     width: 250px;
 }
-
+.myProfile-container.dark .verfication-box input{
+    border:1px solid rgba(244, 244, 244, 0.5);
+    background-color: inherit;
+}
 .verfication-box .icons{
     display: flex;
     align-self: flex-end;
@@ -123,8 +139,8 @@
 .verfication-box  .last h2{
     margin-right: auto;
     font-family: Outfit;
-    font-size: 20px;
-    
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .verfication-box  .last p{
@@ -218,6 +234,10 @@
     justify-content: center;
   }
   
+  .myProfile-container.dark .user-details #checked{
+    border:0.5px solid #8E5DF5;
+  }
+
 .user-details input[type="radio"] +label {
     
      display: flex;
@@ -250,18 +270,24 @@
     grid-template-rows: 30px 30px;
     border-radius: 15px;
     gap:10px;
-    padding: 20px 30px;
+    padding: 20px 10px;
 }
 
+.myProfile-container.dark .interest-box .interest-lists{
+    border:0.5px solid #D2BCFF;
+}
 .interest-lists p {
     background-color: #F3EEFF;
     color:#8E5DF5;
     font-size: 18px;
-    padding: 2px 30px;
+    padding: 2px 20px;
     text-align: center;
     border-radius: 5px;
 }
-
+.myProfile-container.dark .interest-lists p{
+    background-color: #565557;
+    color:#F4F4F4;
+}
 .interest-lists p:last-child{
     grid-column: 1/3;
     justify-self: center;
@@ -271,7 +297,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
+    width: 30vw;
     
 }
 
@@ -284,7 +310,9 @@
     align-items: center;
     border-radius: 30px;
 }
-
+.myProfile-container.dark .myProfile-content .first-row{
+    background-color: #1E1F22;
+}
 .first-row > p{
     border-top: 1px solid rgba(0, 0, 0,0.3);
     font-family: Outfit;
@@ -304,6 +332,9 @@
     font-size: 20px;
 }
 
+.myProfile-container.dark .first-row >h2, .myProfile-container.dark .first-row > p{
+    color:#fff;
+}
 .payment-box{
     display: flex;
     gap: 10px;
@@ -312,7 +343,8 @@
     width: 25vw;
     padding:10px 50px;
     border-radius: 20px;
-    
+    transform: rotate(0.5deg); /* Rotate the entire payment box */
+  box-shadow: -5px -1px 10px rgba(0, 0, 0, 0.3); /* Apply box shadow */
 }
 
 .payment-box h2{
@@ -348,7 +380,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    height: 400px;
+    height:100%;
     border-radius: 15px;
 }
 
@@ -358,4 +390,266 @@
     font-family: Outfit;
     font-weight: bold;
     align-self: center;
+    padding: 0 20px;
+}
+
+@media only screen and (max-width: 1246px) {
+   
+    .left-cont .user-details{
+        padding: 20px 20px;
+        
+    }
+    .verfication-box input{
+        
+        width: 170px;
+    }
+    #gender-box{
+        display: flex;
+        gap: 3px;
+    }
+    .status-box{
+        display: flex;
+        gap:0px;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .interest-lists p {
+     
+        padding: 2px 20px;
+        
+    }
+}
+
+@media only screen and (max-width:1115px){
+    
+    .interest-box .interest-lists{
+      
+        grid-template-columns: repeat(2,auto);
+       
+        padding: 20px 10px;
+    }
+}
+
+@media only screen and (max-width:993px){
+
+    .myProfile-container{
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: "sideNav"
+                             "mainContent"
+                             "footer";
+      height: 100vh;
+    }
+    .myProfile-content .flex-cont{
+        gap: 10px;
+    }
+    .myProfile-content .flex-cont{
+        display: flex;
+        flex-direction: row;
+        gap: 70px;
+        padding: 0 20px;
+    }
+    
+    .myProfile-content .left-cont{
+        display:grid;
+        width: 60vw;
+        
+        grid-template-rows: 50vh auto;
+        grid-template-columns: 30vw 30vw;
+        grid-template-areas: "avatar verfication"
+                             "details details";
+        
+    }
+    .verfication-box input{
+        width: 200px;
+    }
+    .details-box{
+        grid-template-rows: 15vh 15vh;
+        grid-template-columns: 25vw 25vw;
+        column-gap:30px;
+        row-gap: 10px;
+    }
+
+    .myProfile-content .first-row{
+        padding: 30px;
+    }
+    .myProfile-content .right-cont{
+        
+        gap: 20px;
+        width: 30vw;
+        
+    }
+
+    .payment-box{
+        width:25vw;
+        padding-left: 20px;
+    }
+
+    .payment-box p{
+        width: 200px;
+
+    }
+}
+
+@media only screen and (max-width:900px){
+    .myProfile-content .flex-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+        padding: 0 20px;
+    }
+    .myProfile-content #title{
+        display: none;
+    }
+    .myProfile-content .left-cont{
+        display:grid;
+        width: 100%;
+        grid-template-rows: repeat(4, auto);
+        grid-template-columns: 100%;
+        grid-template-areas: "avatar"
+                             "verfication"
+                             "details"
+                             "right";
+        gap:30px;
+        margin: 0;
+        padding: 10px 100px;
+        /* justify-items: center; */
+    }
+    .left-cont .verfication-box{
+        grid-area: verfication;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        padding-right: 50px;
+    }
+    .verfication-box input, .verfication-box label{
+        width: 400px;
+        align-self: center;
+    }
+    .verfication-box .icons{
+        padding-right: 100px;
+    }
+    .verfication-box .last{
+      padding-left: 10%;
+    }
+    .myProfile-content .right-cont{
+         grid-area: right;
+         width: 70vw;
+         align-self: center;
+    }
+
+    .payment-box{
+        width:50vw;
+        padding:10px 0;
+    }
+    .payment-box p{
+        width:40vw;
+        align-self: center;
+    }
+    .right-cont .second-row{
+        height: 400px;
+        /* width: 100vw; */
+        background-size: cover;
+
+    }
+}
+
+@media only screen and (max-width:700px){
+
+    .myProfile-content .flex-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+        padding: 0 20px;
+    }
+    .myProfile-content #title{
+        display: none;
+    }
+    .myProfile-content .left-cont{
+        
+        padding: 10px 10px;
+      
+    }
+    .left-cont .verfication-box{
+        grid-area: verfication;
+        display: flex;
+        flex-direction: column;
+        padding-right: 50px;
+    }
+    .verfication-box input, .verfication-box label{
+        width: 100%;
+        align-self: center;
+    }
+    .verfication-box .icons{
+        padding-right: 0px;
+    }
+    .verfication-box .last{
+      padding-left: 10%;
+    }
+    .myProfile-content .right-cont{
+         grid-area: right;
+         width: 100vw;
+         align-self: center;
+         padding: 10px 30px;
+
+    }
+
+    .payment-box{
+        width:70vw;
+        padding:10px 0;
+    }
+    .payment-box p{
+        width:50vw;
+        align-self: center;
+    }
+    .right-cont .second-row{
+        height: 400px;
+        background-size: cover;
+
+    }
+    .first-row > p{
+        width: 60vw;
+    }
+
+    .status-box{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 0px;
+        font-size: 16px;
+    }
+    .status-box label, .select-age{
+        padding-left: 20px;
+    }
+    .details-box{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap:20px;
+    }
+    #gender-box{
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    #gender-box{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #gender-box label{
+        align-self: flex-start;
+        padding-left: 20px;
+    }
+    .interest-box .interest-lists{
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        padding: 10px 20px;
+        
+    }
+    .interest-lists p{
+        font-size: 14px;
+    }
 }

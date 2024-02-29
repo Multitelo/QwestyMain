@@ -57,21 +57,24 @@ function Myprofile() {
                 padding:'5px 0px',
                 cursor:'pointer',
                 borderRadius:'10px',
-                backgroundColor:theme==='dark'?'#525157':'#fff',
+                border:theme==='dark'?'1px solid rgba(244, 244, 244, 0.5)':"",
+                backgroundColor:theme==='dark'?'#201F24':'#fff',
             }),
             singleValue: (provided) => ({
                 ...provided,
-                color:theme==='dark'?'#fff': 'rgba(35, 33, 33,0.5)',
+                color:theme==='dark'?'rgba(244, 244, 244,0.5)': 'rgba(35, 33, 33,0.5)',
                 fontWeight:'500',
                 fontSize:'18px',
+                backgroundColor:theme==='dark'?'#201F24':'#f5f2fa', 
+
             }),
             option: (provided, state) =>({
                 ...provided,
-                backgroundColor:state.isSelected? '#f0f0f0' : '#fff',
-                color: 'rgba(35, 33, 33,0.7)',
+                backgroundColor:state.isSelected? 'rgb(244, 244, 244)': '#fff',
+                color: 'rgba(35, 33, 33,0.5)',
                 
            ':hover': {
-                backgroundColor: '#f5f2fa', // Background color on hover
+                backgroundColor:'#f5f2fa', 
               }}),
        
     }
@@ -321,7 +324,9 @@ function Myprofile() {
 
 
         </div>
-
+        <div className="signedUp-footer">
+            {<Footer/>}
+        </div>
     </div>
   )
 }
