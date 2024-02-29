@@ -44,14 +44,15 @@ function SignUpPage() {
 
     const handleEmailCheck = async () => {
         const formData = new FormData();
-        formData.append('email', email.value);
+        formData.append('email',email.value);
         formData.append('usertype', usertype);
-    
+        
         try {
             const response = await fetch('http://localhost/qwestymain/api/email.php', {
                 method: 'POST',
                 body: formData,
             });
+            console.log(response)
             const data = await response.json(); // Assuming the server responds with JSON
     
             console.log("Response data:", data); // Log the response data for debugging
@@ -238,8 +239,8 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                 
             </div>
 
-            <button onClick={() => handleEmailCheck()}
-            disabled={handleBtnState()}
+            <button  onClick={() => handleEmailCheck().then().catch()}
+                    disabled={handleBtnState()}
             className={handleBtnState() ? 'disabled' : 'enabled'}>
              Ok
             </button>

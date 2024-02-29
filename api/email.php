@@ -15,9 +15,8 @@ header('Content-Type: application/json');
 include './cone.php';
 
 // Retrieve data from POST request
-$email = $_POST['email'];
-$usertype = $_POST['usertype'];
-
+$email = isset($_POST['email']) ? $_POST['email'] : null;
+$usertype = isset($_POST['usertype']) ? $_POST['usertype'] : null;
 $response = ['isAvailable' => true];
 
 if (!empty($email) && !empty($usertype)) {
@@ -35,6 +34,7 @@ if (!empty($email) && !empty($usertype)) {
     }
     
     // Sanitize email input
+    
     $email = mysqli_real_escape_string($conn, $email);
     
     // Check if email exists in the selected table
