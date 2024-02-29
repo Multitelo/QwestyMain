@@ -24,8 +24,8 @@ function Rewards() {
     const { theme} = useTheme(); 
 
     const options = [
-        {value:'1', label:"All time"},
-        {value:'2', label:'This time'}
+        {value:'All time', label:"All time"},
+        {value:'This time', label:'This time'}
     ]
     const selectStyles = {
         control: (provided, state) =>({
@@ -50,9 +50,11 @@ function Rewards() {
         }),
     }
     const [selectedOption,setSelectedOption] = useState(options[0]);
+
     const handleSelected = (e)=>{
         setSelectedOption(e);
     }
+    
   return (
     <div className={`rewards-container ${theme}`}>
     <div id="side-nav">

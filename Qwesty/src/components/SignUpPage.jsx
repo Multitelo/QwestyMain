@@ -5,7 +5,9 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
+
 function SignUpPage() {
+
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
     const [email, setEmail] = useState({value: '', touched:false});
@@ -166,6 +168,7 @@ function SignUpPage() {
 export default SignUpPage;
 
 const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors,setErrors, handleBtnState, btnState})=>{
+   
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
