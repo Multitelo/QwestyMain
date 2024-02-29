@@ -30,40 +30,61 @@ function SignUpPage() {
                 : prevState === 'third'
                 ? 'second'
                 : ''
-        );
-
-        
+        );        
     };
 
+    
     const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const inputValue = e.target.value;
-        setEmail({ ...email, value: inputValue });
+        setEmail({ value: e.target.value, touched: true });
     
-       
-        const isValidEmail= emailRegex.test(inputValue)
-        if (!isValidEmail || (email.touched && (!email.value || email.value.length < 8))) {
-            setErrors({ ...errors, emailError: 'err' });
-        } else {
-            setErrors({ ...errors, emailError: 'correct' });
+        setErrors({ ...errors, emailError: emailRegex.test(e.target.value) ? '' : 'Invalid email format' });
+    };
+    
+
+    const handleEmailCheck = async () => {
+        const formData = new FormData();
+        formData.append('email', email.value);
+        formData.append('usertype', usertype);
+    
+        try {
+            const response = await fetch('http://localhost/qwestymain/api/email.php', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json(); // Assuming the server responds with JSON
+    
+            console.log("Response data:", data); // Log the response data for debugging
+    
+            if (!data.isAvailable) {
+                // Email is not available, set error message
+                setErrors(prevErrors => ({ ...prevErrors, emailError: 'Email is already in use' }));
+            } else {
+                // Email is available, clear any existing error messages and move to the next content
+                setErrors(prevErrors => ({ ...prevErrors, emailError: '' }));
+                setContent('second'); // Only move to the next content if the email is available
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
         }
     };
     
     
     
-    
+
     
     const handleBtnState = () => {
         if (content === 'first') {
-            return (errors.emailError === 'err' || usertype === "");
+            return !email.value || errors.emailError || !usertype;
         } else if (content === 'second') {
-            return errors.unameErr === 'err' || !username.value;
-        } else if (content === "third"){
-            return (errors.confirmPwdErr ==='err' || errors.pwdErr ==='err'|| !password.value || !confirmPwd.value )
+            return !username.value || errors.unameErr;
+        } else if (content === "third") {
+            return !password.value || errors.pwdErr || !confirmPwd.value || password.value !== confirmPwd.value;
         }
-   
-        return true; 
+        return true;
     };
+
 
     const handleSubmit = () => {
         // Serialize form data
@@ -119,7 +140,8 @@ function SignUpPage() {
                             setErrors={setErrors}
                             handleBtnState={handleBtnState}
                             btnState={btnState}
-                        />
+                            handleEmailCheck={handleEmailCheck} // Pass the function here
+                    />                    
                     ) : content === 'second' ? (
                         <SecondSignupcontent
                             username={username}
@@ -167,8 +189,7 @@ function SignUpPage() {
 
 export default SignUpPage;
 
-const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors,setErrors, handleBtnState, btnState})=>{
-   
+const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, btnState, handleEmailCheck})=>{
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
@@ -192,6 +213,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                    className={errors.emailError ? 'error' : ''}
                   
                    />
+            {errors.emailError && <p className="error">{errors.emailError}</p>}
 
             <div className='radio-inputs'>
                 <label className='radio-container'>
@@ -216,16 +238,17 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                 
             </div>
 
-            <button onClick={()=>handleContent('first')}
-                    disabled={handleBtnState()}
-                    className={handleBtnState() ? 'disabled' : 'enabled'}>
-                       Ok</button>
+            <button onClick={() => handleEmailCheck()}
+            disabled={handleBtnState()}
+            className={handleBtnState() ? 'disabled' : 'enabled'}>
+             Ok
+            </button>
             <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
         </div>
     )
 }
 
-const SecondSignupcontent = ({username, setUsername, setContent, setErrors, errors, handleBtnState})=>{
+const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState}) => {
     
     const [errMsg, setErrMsg] = useState('')
     const handleUname = (e) =>{
@@ -272,7 +295,7 @@ const SecondSignupcontent = ({username, setUsername, setContent, setErrors, erro
     )
 }
 
-const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit, errors, setErrors, handleBtnState,pwdErr, setPwdErr}) => {
+const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit, errors, setErrors, handleBtnState, pwdErr, setPwdErr}) => {
     
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;

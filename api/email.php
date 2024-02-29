@@ -5,11 +5,11 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header('Content-Type: application/json');
 
 // Debugging statement to print request method
-echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
+// echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
 
-// Debugging statement to print contents of $_POST array
-echo "POST Data: ";
-print_r($_POST);
+// // Debugging statement to print contents of $_POST array
+// echo "POST Data: ";
+// print_r($_POST);
 
 // Include database connection
 include './cone.php';
@@ -56,4 +56,5 @@ if (!empty($email) && !empty($usertype)) {
 }
 
 echo json_encode($response);
+exit();
 ?>
