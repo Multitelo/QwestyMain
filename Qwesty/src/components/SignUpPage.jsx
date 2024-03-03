@@ -78,6 +78,42 @@ function SignUpPage() {
         }
     };
     
+    const handleUsernameCheck = async () => {
+        const formData = new FormData();
+        formData.append('username', username.value);
+        formData.append('usertype', usertype);
+    
+        try {
+            const response = await fetch('http://localhost/qwestymain/api/username.php', {
+                method: 'POST',
+                body: formData,
+            });
+            console.log(response);
+            const data = await response.json(); // Assuming the server responds with JSON
+    
+            console.log("Response data:", data); // Log the response data for debugging
+    
+            if (!data.isAvailable) {
+                // Username is not available, set error message
+                setErrors(prevErrors => ({ ...prevErrors, unameErr: true }));
+                // Assuming you want to display a specific error message for username availability
+                setErrMsg('Username is already in use'); // Update your state or method to display this error message
+            } else {
+                // Username is available, clear any existing error messages
+                setErrors(prevErrors => ({ ...prevErrors, unameErr: false }));
+                setErrMsg(''); // Clear the error message
+                // Proceed to the next step or update the UI accordingly
+                // For example, if you are moving through a multi-step form, you might set the content to the next step here
+                setContent('third'); // Adjust based on your application's flow
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setErrors(prevErrors => ({ ...prevErrors, unameErr: true }));
+            // Update your state or method to display a generic error message
+            setErrMsg('An error occurred. Please try again.');
+        }
+    };
+    
     
     
 
@@ -150,7 +186,7 @@ function SignUpPage() {
                             btnState={btnState}
                             handleEmailCheck={handleEmailCheck} 
                             errE = {errE}// Pass the function here
-                    />                    
+                        />                    
                     ) : content === 'second' ? (
                         <SecondSignupcontent
                             username={username}
@@ -160,6 +196,7 @@ function SignUpPage() {
                             setErrors={setErrors}
                             handleBtnState={handleBtnState}
                             btnState={btnState}
+                            handleUsernameCheck={handleUsernameCheck} // Pass the function here
                         />
                     ) : content === 'third' ? (
                         <ThirdSignupcontent
@@ -257,7 +294,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
     )
 }
 
-const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState}) => {
+const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState, handleUsernameCheck}) => {
     
     const [errMsg, setErrMsg] = useState('')
     const handleUname = (e) =>{
@@ -295,11 +332,12 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
                    onChange={handleUname}
                    onBlur={handleBlur}
                    className={errors.unameErr}/>
-              <div className='errMsg'>{errMsg}</div>
-            <button onClick={()=>setContent('third')}
-                    disabled={handleBtnState()}
-                    className={handleBtnState() ? 'disabled' : 'enabled'}>
-                        Next</button>
+              <div id='errMsg'>{errMsg}</div>
+              <button onClick={() => handleUsernameCheck().then(() => setContent('third')).catch(() => {})}
+              disabled={handleBtnState()}
+              className={handleBtnState() ? 'disabled' : 'enabled'}>
+                    Next
+                </button>
         </div>
     )
 }
