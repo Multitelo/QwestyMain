@@ -21,6 +21,7 @@ function SignUpPage() {
     const [pwdErr, setPwdErr] = useState(false)
     const [btnState, setBtnState] = useState(true)
     const [errE, setErrE] = useState('')
+    const [unameE, setUnameE] = useState('')
     const handleContent = (content) => {
         setContent((prevState) =>
             prevState === 'second'
@@ -84,7 +85,7 @@ function SignUpPage() {
         formData.append('usertype', usertype);
     
         try {
-            const response = await fetch('http://localhost/qwestymain/api/username.php', {
+            const response = await fetch('http://localhost/qwestymain/api/uname.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -95,13 +96,13 @@ function SignUpPage() {
     
             if (!data.isAvailable) {
                 // Username is not available, set error message
-                setErrors(prevErrors => ({ ...prevErrors, unameErr: true }));
+                setErrors(prevErrors => ({ ...prevErrors, unameErr: 'err' }));
                 // Assuming you want to display a specific error message for username availability
-                setErrMsg('Username is already in use'); // Update your state or method to display this error message
+                setUnameE('Username is already in use'); // Update your state or method to display this error message
             } else {
                 // Username is available, clear any existing error messages
-                setErrors(prevErrors => ({ ...prevErrors, unameErr: false }));
-                setErrMsg(''); // Clear the error message
+                setErrors(prevErrors => ({ ...prevErrors, unameErr: 'correct' }));
+                setUnameE(''); // Clear the error message
                 // Proceed to the next step or update the UI accordingly
                 // For example, if you are moving through a multi-step form, you might set the content to the next step here
                 setContent('third'); // Adjust based on your application's flow
@@ -122,7 +123,7 @@ function SignUpPage() {
         if (content === 'first') {
             return !email.value || errors.emailError || !usertype;
         } else if (content === 'second') {
-            return !username.value || errors.unameErr;
+            return !username.value || errors.unameErr==='err';
         } else if (content === "third") {
             return !password.value || errors.pwdErr || !confirmPwd.value || password.value !== confirmPwd.value;
         }
@@ -196,6 +197,7 @@ function SignUpPage() {
                             setErrors={setErrors}
                             handleBtnState={handleBtnState}
                             btnState={btnState}
+                            unameE={unameE}
                             handleUsernameCheck={handleUsernameCheck} // Pass the function here
                         />
                     ) : content === 'third' ? (
@@ -294,9 +296,10 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
     )
 }
 
-const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState, handleUsernameCheck}) => {
+const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState, handleUsernameCheck, unameE}) => {
     
     const [errMsg, setErrMsg] = useState('')
+
     const handleUname = (e) =>{
         const inputName= e.target.value
         const usernameRegex = /^[a-zA-Z0-9_]{3,30}$/;
@@ -332,7 +335,9 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
                    onChange={handleUname}
                    onBlur={handleBlur}
                    className={errors.unameErr}/>
-              <div id='errMsg'>{errMsg}</div>
+
+              <span id="errMsg"> {unameE}</span>  
+
               <button onClick={() => handleUsernameCheck().then(() => setContent('third')).catch(() => {})}
               disabled={handleBtnState()}
               className={handleBtnState() ? 'disabled' : 'enabled'}>
