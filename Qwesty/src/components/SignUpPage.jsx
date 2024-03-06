@@ -5,15 +5,14 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
-
+import { useTheme } from '../ThemeContext';
 function SignUpPage() {
-
+    const {usertype, setUsertype} = useTheme();
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
     const [email, setEmail] = useState({value: '', touched:false});
     const [password, setPassword] = useState({value:'', touched:false});
     const [confirmPwd, setConfirmPwd] = useState({value:'', touched:false});
-    const [usertype, setUsertype] = useState('');
     const [errors, setErrors] = useState({emailError:'',
                                           unameErr:false, 
                                           pwdErr:false,
@@ -125,7 +124,7 @@ function SignUpPage() {
         } else if (content === 'second') {
             return !username.value || errors.unameErr==='err';
         } else if (content === "third") {
-            return !password.value || errors.pwdErr || !confirmPwd.value || password.value !== confirmPwd.value;
+            return !password.value || errors.pwdErr==='err' || !confirmPwd.value || password.value !== confirmPwd.value;
         }
         return true;
     };
@@ -156,7 +155,13 @@ function SignUpPage() {
             console.log('Response:', data);
             // Provide feedback to the user about successful submission
             // Redirect the user after successful submission
-            // window.location.href = '/signedUp/settings';
+            if(usertype==='participant'){
+                window.location.href = '/signedUp/settings';
+            }
+            else if (usertype==='researcher'){
+                window.location.href = '/researcher';
+            }
+
         })
         .catch(error => {
             console.error('Error:', error);
@@ -338,7 +343,16 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
 
               <span id="errMsg"> {unameE}</span>  
 
-              <button onClick={() => handleUsernameCheck().then(() => setContent('third')).catch(() => {})}
+              <button onClick={() => handleUsernameCheck().then(
+
+
+
+
+
+
+
+
+              ).catch(() => {})}
               disabled={handleBtnState()}
               className={handleBtnState() ? 'disabled' : 'enabled'}>
                     Next
