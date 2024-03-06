@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
 import { useTheme } from '../ThemeContext';
+
 function SignUpPage() {
     const {usertype, setUsertype} = useTheme();
     const [content, setContent] = useState('first');
@@ -151,7 +152,7 @@ function SignUpPage() {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-    
+        console.log(response)
             const data = await response.json();
     
             if (data.token) {
@@ -451,7 +452,7 @@ const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, h
 
                    </div>
                    {pwdErr && <div className='errMsg'>Password didn't match</div>}
-            <button onClick={handleSubmit}
+            <button onClick={()=>handleSubmit().then().catch(() => {})}
                      disabled={handleBtnState()}
                      className={handleBtnState() ? 'disabled' : 'enabled'}>Lets Go</button>
 

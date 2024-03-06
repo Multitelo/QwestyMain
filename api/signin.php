@@ -5,11 +5,11 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header("Content-type:application/json");
 
 // Debugging statement to print request method
-echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
+// echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
 
 // Debugging statement to print contents of $_POST array
-echo "POST Data: ";
-print_r($_POST);
+// echo "POST Data: ";
+// print_r($_POST);
 
 include "./cone.php"; // Ensure this path is correct
 require './vendor/autoload.php'; // Adjust this path if necessary
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usert
         ];
 
         $secretKey = 'your_secret_key'; // Replace with your actual secret key
-        $jwt = JWT::encode($payload, $secretKey);
+        $jwt = JWT::encode($payload, $secretKey, 'HS256');
         echo json_encode(['message' => "Signup successful", 'token' => $jwt]);
     } else {
         http_response_code(500);
