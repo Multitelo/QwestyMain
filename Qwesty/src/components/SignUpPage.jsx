@@ -46,7 +46,6 @@ function SignUpPage() {
     
 
     const handleEmailCheck = async () => {
-        
         const formData = new FormData();
         formData.append('email',email.value);
         formData.append('usertype', usertype);
@@ -98,7 +97,7 @@ function SignUpPage() {
                 // Username is not available, set error message
                 setErrors(prevErrors => ({ ...prevErrors, unameErr: 'err' }));
                 // Assuming you want to display a specific error message for username availability
-                setUnameE('Username is already in use'); // Update your state or method to display this error message
+                setUnameE('Username taken.'); // Update your state or method to display this error message
             } else {
                 // Username is available, clear any existing error messages
                 setErrors(prevErrors => ({ ...prevErrors, unameErr: 'correct' }));
@@ -125,44 +124,53 @@ function SignUpPage() {
         } else if (content === 'second') {
             return !username.value || errors.unameErr==='err';
         } else if (content === "third") {
-            return !password.value || errors.pwdErr || !confirmPwd.value || password.value !== confirmPwd.value;
+            return !password.value || errors.pwdErr==='err' || !confirmPwd.value || password.value !== confirmPwd.value;
         }
         return true;
     };
 
 
-    const handleSubmit = () => {
-        // Serialize form data
-        if(password.value!==confirmPwd.value){
-            setPwdErr(true)
-            setErrors({...errors, confirmPwdErr:'err'})
+    const handleSubmit = async () => {
+        if (password.value !== confirmPwd.value) {
+            setPwdErr(true);
+            setErrors({...errors, confirmPwdErr: 'Passwords do not match'});
+            return;
         }
-        
+    
         const formData = new FormData();
         formData.append('email', email.value);
         formData.append('usertype', usertype);
         formData.append('username', username.value);
         formData.append('password', password.value);
-        // formData.append('confirmPwd', confirmPwd);
-        
     
-        // Disable the submit button or show loading indicator
-        fetch('http://localhost/qwestymain/api/signin.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Response:', data);
-            // Provide feedback to the user about successful submission
-            // Redirect the user after successful submission
-            // window.location.href = '/signedUp/settings';
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Provide feedback to the user about the error
-        });
+        try {
+            const response = await fetch('http://localhost/qwestymain/api/signin.php', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+    
+            if (data.token) {
+                localStorage.setItem('userToken', data.token);
+                console.log('Signup successful, token:', data.token);
+                window.location.href = '/signedUp/Settings'; // Make sure this matches your route
+            } else {
+                console.error('Signup failed:', data.error || 'Unknown error');
+                setErrE(data.error || 'An error occurred.');
+            }
+        } catch (error) {
+            console.error('Network error:', error.message);
+            setErrE("A network error occurred. Please try again.");
+        }
     };
+    
+    
+    
     
     return (
         <div className="signUp-container">
@@ -338,7 +346,7 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
 
               <span id="errMsg"> {unameE}</span>  
 
-              <button onClick={() => handleUsernameCheck().then(() => setContent('third')).catch(() => {})}
+              <button onClick={() => handleUsernameCheck().then().catch(() => {})}
               disabled={handleBtnState()}
               className={handleBtnState() ? 'disabled' : 'enabled'}>
                     Next
@@ -349,7 +357,7 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
 
 const ThirdSignupcontent = ({password, setPassword, confirmPwd, setConfirmPwd, handleSubmit, errors, setErrors, handleBtnState, pwdErr, setPwdErr}) => {
     
-    const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
+    const errMsg = "Password must be above 8 characters and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'<,>.?/\[\]\\|\-]).{8,}$/;
     const [showPwd, setShowPwd] = useState({pwd:false, confirmPwd: false})
 

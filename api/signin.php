@@ -4,71 +4,64 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
 header("Content-type:application/json");
 
-// // Debugging statement to print request method
-// echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
+// Debugging statement to print request method
+echo "Request Method: " . $_SERVER["REQUEST_METHOD"] . "<br>";
 
-// // Debugging statement to print contents of $_POST array
-// echo "POST Data: ";
-// print_r($_POST);
+// Debugging statement to print contents of $_POST array
+echo "POST Data: ";
+print_r($_POST);
 
-// Include the file where $conn1 and $conn2 are defined
-include "./cone.php";
+include "./cone.php"; // Ensure this path is correct
+require './vendor/autoload.php'; // Adjust this path if necessary
 
-// Check if the request method is POST and required fields are set
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['usertype']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmPwd'])) {
-    // Retrieve POST data
+use Firebase\JWT\JWT;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usertype'], $_POST['username'], $_POST['password'])) {
     $email = $_POST['email'];
     $usertype = $_POST['usertype'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $confirmPwd = $_POST['confirmPwd'];
 
-    // Ensure password and confirmation password match
-    if ($password !== $confirmPwd) {
-        echo "Error: Passwords do not match.";
+    // Database connection and table selection based on user type
+    $conn = $usertype === 'participant' ? $conn1 : ($usertype === 'researcher' ? $conn2 : null);
+    $tableName = $usertype === 'participant' ? 'parti' : ($usertype === 'researcher' ? 'resead' : '');
+
+    if (!$conn || !$tableName) {
+        http_response_code(400);
+        echo json_encode(["error" => "Invalid user type."]);
         exit;
     }
 
-    // Select the appropriate database connection and table name based on usertype
-    if ($usertype == 'participant') {
-        $conn = $conn1; // Use connection for participants
-        $tableName = 'parti';
-    } elseif ($usertype == 'researcher') {
-        $conn = $conn2; // Use connection for researchers
-        $tableName = 'resead';
-    } else {
-        echo "ERROR: Invalid user type.";
-        exit;
-    }
-
-    // Sanitize inputs to prevent SQL injection
+    // Prevent SQL injection
     $email = mysqli_real_escape_string($conn, $email);
     $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password); // Consider hashing the password
-    // $confirmPwd = mysqli_real_escape_string($conn, $confirmPwd); // Redundant due to password check above
 
-    // Construct SQL query without usertype as it's not being inserted into the database
-    $sql = "INSERT INTO `$tableName`(`email`, `username`, `password`) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    // Hash the password before storing it
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
+    // Prepare SQL statement for inserting user data
+    $stmt = $conn->prepare("INSERT INTO `$tableName` (`email`, `username`, `password`) VALUES (?, ?, ?)");
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
     $stmt->bind_param("sss", $email, $username, $hashedPassword);
 
-    // Execute the query
     if ($stmt->execute()) {
-        echo "New record created successfully";
+        $issuedAt = time();
+        $expirationTime = $issuedAt + 3600; // Token valid for 1 hour
+        $payload = [
+            'iat' => $issuedAt, // Issued at
+            'exp' => $expirationTime, // Expiration time
+            'userId' => $stmt->insert_id, // User ID from the inserted record
+        ];
+
+        $secretKey = 'your_secret_key'; // Replace with your actual secret key
+        $jwt = JWT::encode($payload, $secretKey);
+        echo json_encode(['message' => "Signup successful", 'token' => $jwt]);
     } else {
-        echo "Error: " . $conn->error;
+        http_response_code(500);
+        echo json_encode(["error" => "Error: " . $conn->error]);
     }
 
-    // Close statement
     $stmt->close();
+    mysqli_close($conn);
 } else {
-    echo "ERROR: Missing required fields or invalid request method.";
+    http_response_code(400);
+    echo json_encode(["error" => "Missing required fields or invalid request method."]);
 }
-
-// Close the database connection if not needed further
-mysqli_close($conn);
 ?>
