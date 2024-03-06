@@ -5,15 +5,14 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
-
+import { useTheme } from '../ThemeContext';
 function SignUpPage() {
-
+    const {usertype, setUsertype} = useTheme();
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
     const [email, setEmail] = useState({value: '', touched:false});
     const [password, setPassword] = useState({value:'', touched:false});
     const [confirmPwd, setConfirmPwd] = useState({value:'', touched:false});
-    const [usertype, setUsertype] = useState('');
     const [errors, setErrors] = useState({emailError:'',
                                           unameErr:false, 
                                           pwdErr:false,
@@ -124,7 +123,7 @@ function SignUpPage() {
         } else if (content === 'second') {
             return !username.value || errors.unameErr==='err';
         } else if (content === "third") {
-            return !password.value || errors.pwdErr==='err' || !confirmPwd.value || password.value !== confirmPwd.value;
+            return !password.value || errors.pwdErr==='err'==='err' || !confirmPwd.value || password.value !== confirmPwd.value;
         }
         return true;
     };
