@@ -158,7 +158,7 @@ function SignUpPage() {
             if (data.token) {
                 localStorage.setItem('userToken', data.token);
                 console.log('Signup successful, token:', data.token);
-                window.location.href = '/signedUp/Settings'; // Make sure this matches your route
+                // window.location.href = '/signedUp/Settings'; // Make sure this matches your route
             } else {
                 console.error('Signup failed:', data.error || 'Unknown error');
                 setErrE(data.error || 'An error occurred.');
