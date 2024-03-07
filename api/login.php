@@ -5,7 +5,8 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header("Content-type:application/json");
 
 include "./cone.php"; // Ensure this path is correct
-require './create_jwt.php'; // Include the JWT creation script
+// require './create_jwt.php'; // Include the JWT creation script
+require './send_otp_mail.php'; // Include the separate script for sending the OTP email
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['password'], $_POST['usertype'])) {
     $email = $_POST['email'];
@@ -43,17 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['passw
             $stmt->fetch();
 
             if (password_verify($password, $hashedPassword)) {
-                // Password is correct, create JWT token
-                create_jwt($userId, $email); // Call the JWT creation function
+                // If password is correct, send OTP
+                if (sendOTPMail($email, $userId, $usertype, $conn1, $conn2)) {
+                    // OTP sent successfully, create JWT token
+                    echo json_encode(["message" => "OTP sent successfully."]);
+                     // Assuming $userId is fetched from the database
+                } else {
+                    // Error handling if OTP mail fails to send
+                    http_response_code(500);
+                    echo json_encode(["error" => "Failed to send OTP."]);
+                }
             } else {
                 // Invalid password
                 http_response_code(401);
-                echo json_encode(["error" => "Invalid email or password."]);
+                echo json_encode(["error" => "Invalid password."]);
             }
         } else {
             // email not found
             http_response_code(404);
-            echo json_encode(["error" => "Invalid email or password."]);
+            echo json_encode(["error" => "Invalid email."]);
         }
     } else {
         http_response_code(500);
