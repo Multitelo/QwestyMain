@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usert
         $secretKey = 'your_secret_key'; // Replace with your actual secret key
         $jwt = JWT::encode($payload, $secretKey, 'HS256');
         echo json_encode(['message' => "Signup successful", 'token' => $jwt]);
+        
     } else {
         http_response_code(500);
         echo json_encode(["error" => "Error: " . $conn->error]);
