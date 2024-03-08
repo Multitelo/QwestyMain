@@ -38,7 +38,7 @@ const Verify = () => {
   };
 
   return (
-    <div style={{width:'100%', height:'100vh', backgroundColor:'white'}}>
+    <div style={{width:'100%', height:'100%', minHeight:'100vh', backgroundColor:'white'}}>
     <div className='verify-container'>
       <Link to='/'> <img src= {logo}
             alt="Logo of qwesty"/></Link>
