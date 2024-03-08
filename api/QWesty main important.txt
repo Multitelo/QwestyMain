@@ -1,0 +1,29 @@
+curl -X POST http://localhost/qwestymain/api/login.php \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "email=emenikeaugustine301@gmail.co&password=K@vp7QK5XXZ2efd&usertype=participant"
+
+
+
+
+Your account securemail@qwty.site has been setup. In your e-mail program, use:
+Username:	securemail@qwty.site
+Password:	Qwesty#sece1
+POP/IMAP Server:	mail.qwty.site
+SMTP Server:	mail.qwty.site port 587
+
+
+
+
+CREATE TABLE `user_otp` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `user_id` BIGINT NOT NULL,
+  `otp` VARCHAR(6) NOT NULL,
+  `expires_at` DATETIME NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES `parti`(`id`) -- Assuming you have a users table
+);
+
+
+
+curl -X POST http://localhost/qwestymain/api/verify_otp.php \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "userId=1&otp=12345&usertype=participant"

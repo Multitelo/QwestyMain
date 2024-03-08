@@ -13,10 +13,10 @@ import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
 import Myprofile from './components/signedUp/Myprofile.jsx';
+import HomePage from './components/signedUp/researchers/HomePage.jsx';
 import { useEffect } from 'react';
-import HomePage from './components/r/HomePage.jsx';
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [usertype, setUsertype] = useState('');
 
   useEffect(() => {
     const handleOrientationChange = () => {
@@ -49,7 +49,7 @@ function App() {
                 </>
               }
             />
-            {/* <Route path="/signUp" element={<SignUp />} /> */}
+            
            
             <Route path="/Login" element={<LogIn />} />
            
@@ -60,7 +60,6 @@ function App() {
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
-            <Route path="/homepage" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
