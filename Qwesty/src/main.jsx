@@ -14,6 +14,7 @@ import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
 import Myprofile from './components/signedUp/Myprofile.jsx';
 import HomePage from './components/signedUp/researchers/HomePage.jsx';
+import Verify from './components/Verify.jsx';
 import { useEffect } from 'react';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       window.screen.orientation.unlock();
     };
   }, []);
+  
   return (
     <ThemeProvider> 
       <React.StrictMode>
@@ -62,6 +64,7 @@ function App() {
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
             <Route path='/researcher' element={<HomePage />} />
+            <Route path='/verify' element={<Verify />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>

@@ -1,0 +1,82 @@
+
+
+.verify-container{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height:60vh;
+    width:50vw;
+    align-content:space-between;
+    padding-top: 50px;
+    /* border:1px solid gray; */
+    align-items: center;
+    margin: 0px auto;
+    gap: 4px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.verify-container img{
+    align-self: center;
+    width: 150px;
+}
+.verify-container h1{
+    align-self: center;
+    font-size: 26px;
+    font-family: Outfit;
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#verify-box{
+    border:1px solid rgba(128, 128, 128, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 30px;
+    margin-top: 50px;
+    width: 70%;
+    border-radius: 15px;
+}
+.otp-input-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .otp-input {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    flex-wrap: wrap;
+  }
+  
+  .otp-input:focus {
+    border-color: #007bff;
+  }
+  
+  .verify-container button{
+    background-color: #8E5DF5;
+    color: #fff;
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  @media only screen and  (max-width:790px){
+    .verify-container{
+        width: 80vw;
+    }
+    
+    #verify-box{
+        width: 100%;
+     }
+  }
+
+ @media only screen and (max-width:320px){
+    .otp-input {
+        width: 30px;}
+ }

@@ -282,9 +282,13 @@
 #forgotLink{
 align-self: flex-end;
 text-decoration: underline;
+cursor: auto;
+}
+#forgotLink p{
+  cursor: pointer;
 }
 
-#forgotLink:hover p{
+#forgotLink p:hover{
   color:#8E5DF5;
 }
 .second-content.login{

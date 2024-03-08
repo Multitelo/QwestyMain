@@ -14,7 +14,7 @@ function LogIn() {
     const [content, setContent] = useState('email');
     const [errors, setErrors] = useState({emailError:'',
                                           pwdErr:false})
-    
+    const [usertype, setUsertype] = useState('')
     const [btnState, setBtnState] = useState(true)
     const [showPwd, setShowPwd] = useState(false)
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
@@ -55,7 +55,7 @@ function LogIn() {
     const handleBtnState = () => {
 
         if (content === 'email') {
-            return (errors.emailError === 'err' );
+            return (!email.value ||errors.emailError === 'err' || usertype ==='' );
         } else if (content === 'password') {
             return (errors.pwdErr ==='err'|| !password.value)
         } 
@@ -81,7 +81,9 @@ function LogIn() {
         }
     };
 
-   
+    const handleUserTypeChange = (event)=>{
+        setUsertype(event.target.value)
+    }
       
 
     const handlePwd = (e) => {
@@ -122,8 +124,32 @@ function LogIn() {
                                 placeholder='name@gmail.com'
                                 onBlur={handleBlur}
                                 onChange={handleEmail}
-                                className={errors.emailError}
+                                className={errors.emailError==='err'?'err':''}
                             />
+
+                        <div className='radio-inputs'>
+                            <label className='radio-container'>
+                                <input type='radio'
+                                    value='participant'
+                                    checked={usertype==='participant'}
+                                    onChange={handleUserTypeChange}
+                                    id="participant"/>
+                                Participant
+                                <span className="checkmark"></span>
+                            </label>
+
+                            <label className='radio-container'>
+                                <input type='radio'
+                                    value='researcher'
+                                    checked={usertype === 'researcher'}
+                                    onChange={handleUserTypeChange}
+                                    id='researcher'/>
+                                Researcher
+                                <span className="checkmark"></span>
+                            
+                            </label>
+                
+            </div>
 
                         <label id="checkbox-input">
                             <input type='checkbox'

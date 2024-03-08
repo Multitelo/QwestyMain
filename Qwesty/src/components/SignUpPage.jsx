@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
 import { useTheme } from '../ThemeContext';
-
+import Verify from './Verify';
 function SignUpPage() {
     const {usertype, setUsertype} = useTheme();
     const [content, setContent] = useState('first');
@@ -131,6 +131,7 @@ function SignUpPage() {
 
 
     const handleSubmit = async () => {
+
         if (password.value !== confirmPwd.value) {
             setPwdErr(true);
             setErrors({...errors, confirmPwdErr: 'Passwords do not match'});
@@ -158,7 +159,8 @@ function SignUpPage() {
             if (data.token) {
                 localStorage.setItem('userToken', data.token);
                 console.log('Signup successful, token:', data.token);
-                // window.location.href = '/signedUp/Settings'; // Make sure this matches your route
+               
+                window.location.href = '/verify'; // Make sure this matches your route
             } else {
                 console.error('Signup failed:', data.error || 'Unknown error');
                 setErrE(data.error || 'An error occurred.');

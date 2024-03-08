@@ -68,7 +68,7 @@ function Header() {
           } 
           <Link to='/signedUp/settings'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
-          <Link to='/researcher'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+          <Link to='/verify'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
@@ -79,7 +79,7 @@ function Header() {
          
             <Link to='/signedUp/settings' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/researcher' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/verify' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
             <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>
