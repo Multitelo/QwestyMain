@@ -14,6 +14,7 @@ import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
 import Myprofile from './components/signedUp/Myprofile.jsx';
 import { useEffect } from 'react';
+import HomePage from './components/r/HomePage.jsx';
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
+            <Route path="/homepage" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
