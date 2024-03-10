@@ -2,6 +2,376 @@ body{
     /* background-color: aqua; */
 }
 
-.researcher-side-bar input{
-    /* border:10px solid white; */
+.researcher-bar{
+    background-color: #fff;
+    width:20%;
+    color:#363334;
+    font-family: Outfit;
+    font-size: 18px;
+    height:100vh;
+    transition: all 0.5s;
+    padding: 10px 30px;
+    border-bottom-right-radius: 15px;
+    position: fixed;
+    
+}
+.researcher-bar .flex-search {
+    margin-top: 30px;
+}
+
+.researcher-bar .flex-search .search{
+    outline: none;
+    background-color: inherit;
+    color:rgba(37, 34, 34, 0.7);
+    font-size: 16px;
+    font-size: Inter;
+}
+
+.side-links{
+    display: flex;
+    flex-direction: column;
+   
+}
+.researcher-bar .logo{
+    padding:20px 0px 10;
+    width: 270px;
+    height: 80px;
+    
+}
+
+.side-link{
+    margin-top: 0;
+    display: flex;
+    padding: 10px 15px;
+    gap:15px;
+    transition: all 0.5s;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.side-link.Settings{
+ margin-top: 20%;
+}
+
+.side-link:hover.Home img{
+    content: url('../images/gridW.svg');
+} 
+
+.side-link:hover.Research img{
+    content: url('../images/pie-chartW.svg');
+} 
+
+.side-link:hover.Insights img{
+    content: url('../images/insightW.svg');
+} 
+
+.side-link:hover.Settings img{
+    content: url('../images/settingsB.svg');
+} 
+.side-link:hover{
+    background-color: #8E5DF5;
+    color:#fff;
+    transition: all 0.5s;
+}
+
+.Home.active, .Research.active, .Settings.active, .Insights.active{
+    background-color: #8E5DF5;
+    color:#fff;
+    transition: all 0.5s;
+}
+
+.researcher-bar.dark{
+    background-color: #201F24;
+    color: #fff;
+}
+
+.theme-box{
+   width: 40px;
+   border:1px solid #8AADC1;
+   padding: 5px;
+   border-radius:10px;
+   background-color: rgba(138, 173, 193, 0.5);
+}
+.logout-btn{
+    display: flex;
+    gap:10px;
+    justify-self: flex-end;
+    position: absolute;
+    bottom: 0;
+    font-weight: bold;
+    padding: 10px 15px 40px 15px;
+   
+}
+/* Styles of top page */
+.reas-top{
+    display: flex;
+    gap:30px;
+    color:#131217;
+    background-color: #F4F4F4;
+    justify-content: flex-end;
+    padding: 20px;
+    font-family: Outfit;
+    font-size: 20px;
+    align-items: center;
+    transition: all 0.5s ;
+}
+
+.reas-top.dark{
+    color:#fff;
+    background-color: #201F24;
+
+}
+
+.reas-top .create-box{
+    padding: 5px;
+    background-color: #8E5DF5;
+    color:#fff;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 10px 10px;
+    height: 40px;
+    border-radius: 5px;
+
+}
+
+.reas-top .user-content{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+
+.bell-box{
+    background-color: #fff;
+    padding: 5px;
+    border-radius:5px;
+}
+
+
+.user-content .pic{
+    border: 1px solid #8AADC1;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.user-content .menu-icon{
+    display: none;
+}
+
+.reas-top .logos{
+    display: none;
+}
+
+/* Homepage's styles */
+
+.researcher-content{
+    display: flex;
+    padding: 10px;
+    gap:30px;
+    background-color: #F4F4F4;
+
+}
+
+.researcher-content.dark{
+    background-color: #131217;
+}
+.researcher-bar.dark .side-links.small{
+    background-color: #201F24;
+}
+
+.researcher-menu{
+    width: 20%;
+}
+
+.home-main{
+    width: 80%;
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* For making responsive  */
+/* 2xl */
+@media (max-width: 1536px) {
+
+}
+
+/* xl */
+@media (max-width: 1280px) {
+
+}
+
+/* lg */
+@media (max-width: 1024px) {
+    .researcher-bar{
+        font-size: 16px;
+    }
+    .researcher-bar .flex-search .search{
+        font-size: 14px;
+    }
+    .theme-box{
+        width:40px;
+    }
+    .reas-top{
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width:993px){
+    .researcher-content{
+        gap:0px;
+    }
+    .researcher-bar.dark{
+        background-color: inherit;
+}
+    .researcher-bar{
+      height: 80px;
+      background-color: inherit;  
+    }
+    .researcher-bar .logo{
+        display: none;
+    }
+    .researcher-bar .side-links.small{
+        opacity: 0;
+         right:0px;
+         top:110px;
+         position: fixed;
+         background-color: #F4F4F4;
+         max-height:100%;
+         min-height:85vh;
+         padding: 20px 20px;
+         transition: all 0.5s;
+         
+    }
+    .researcher-bar .side-links.small.display{
+        opacity: 1;
+        z-index: -1;
+    }
+
+    .side-link,
+    .researcher-bar .flex-search{
+        width: 300px;
+    }
+    .researcher-bar .flex-search{
+        outline: none;
+        margin: 50px 0 20px;
+        background-color: #fff;
+    }
+
+    .user-content .menu-icon{
+        display: inline;
+        
+    }
+    
+     .user-content #big,
+      #headphones,
+      .reas-top .create-box,
+      .user-content #dropArw{
+        display: none;
+    }
+    .reas-top{
+        height: 100px;
+        width: 100%;
+        /* border: 1px solid red; */
+        padding-left: 10px;
+        z-index: 1;
+        display: flex;
+    }
+    .reas-top .logos{
+        display: block;
+        margin-right: auto;
+        align-self: center;
+        height: 40px;
+        scale: 1.2;
+        width: 100px;
+        /* border: 1px solid red; */
+     }
+    .researcher-menu{
+        width: 0%;
+    }
+    .home-main{
+        width: 100%;
+    }
+
+
+    .fixed-body {
+        overflow: hidden;
+        
+      }
+
+     
+
+   
+}
+
+/* md */
+@media (max-width: 768px) {
+    .reas-top{
+        padding-top: 30px;
+    }
+}
+
+/* sm */
+@media (max-width: 640px) {
+    .user-content .pic{
+        width: 60px;
+    }
+   
+}
+
+/* xs */
+@media (max-width: 475px) {
+    .researcher-bar .side-links.small{
+        opacity: 0;
+         right:0px;
+         top:85px;
+        }
+    .reas-top{
+        gap:10px;
+       padding-left: 30px;
+       justify-content: flex-start;
+       padding-bottom: 20px;
+    }
+    .reas-top .logos{
+        width: 100px; 
+        margin-right: auto;
+}
+
+
+.researcher-content{
+    padding: 0px;
+}
+.reas-top .user-content{
+    display: flex;
+    gap:10px;
+}
+}
+
+@media (max-width: 401px) {
+
+ .user-content .pic{
+        width: 45px;
+    }
+
+.reas-top .bell-box{
+    width: 30px;
+    display: none;
+}
+.theme-box{
+    width:30px;
+    padding: 5px;
+}
+.reas-top .logos{
+    scale: 1;
+}
+.side-link,
+.researcher-bar .flex-search{
+    width: 90%;
+    font-size: 14px;
+    padding: 10px;
+}
+
 }

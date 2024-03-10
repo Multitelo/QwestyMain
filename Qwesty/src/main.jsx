@@ -17,6 +17,10 @@ import HomePage from './components/signedUp/researchers/HomePage.jsx';
 import Verify from './components/Verify.jsx';
 import { useEffect } from 'react';
 
+import SettingsRes from './components/signedUp/researchers/SettingsRes.jsx';
+import Insights from './components/signedUp/researchers/Insights.jsx';
+import Research from './components/signedUp/researchers/Research.jsx';
+
 function App() {
   const [usertype, setUsertype] = useState('');
 
@@ -55,7 +59,6 @@ function App() {
             
            
             <Route path="/Login" element={<LogIn />} />
-           
             <Route path="/Reset" element={<Reset />} />
             <Route path="/signedUp/referral" element={<Referral />} />
             <Route path="/signedUp/Settings" element={<Settings />} />
@@ -63,8 +66,13 @@ function App() {
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
-            <Route path='/researcher' element={<HomePage />} />
+            <Route path='/researcher/home' element={<HomePage />} />
             <Route path='/verify' element={<Verify />} />
+            <Route path='/researcher/settings' element={<SettingsRes />} />
+            <Route path='/researcher/insights' element={<Insights />} />
+            <Route path='/researcher/research' element={<Research />} />
+          
+          
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
