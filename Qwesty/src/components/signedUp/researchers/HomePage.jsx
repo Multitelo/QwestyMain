@@ -1,35 +1,27 @@
-import { useTheme } from '../../../ThemeContext'; 
-import SideBar from './SideBar';
-import Top from './Top';
-import Footer from "../../Footer";
+import SideBar from "./SideBar"
+import Top from './Top'
+import { useTheme } from "../../../ThemeContext"
 
 function HomePage() {
-
-    const {theme} = useTheme();
-
-
+  const {resTheme} = useTheme();
   return (
 
-    <div className={`researcher-home-container ${theme}`}>
-       
-        <div id="side-nav">
-             {<SideBar theme={theme}/>}
-        </div> 
-
-        <div id="topNav">
-            {<Top theme={theme}/>}
+    <div className={`researcher-content ${resTheme}`}>
+        <div className="researcher-menu">
+          <SideBar/>
         </div>
 
-        <div className="main-content myProfile-content">
-
-
+        <div className="home-main">
+        <div className="top-section">
+          <Top/>
+        </div>
+        <div className="home-main-section">
+          Home page
+        </div>
         </div>
 
- <div className="signedUp-footer">
-            {<Footer/>}
-        </div>
-
-    </div>
+        
+      </div>
   )
 }
-export default HomePage
+export default  HomePage

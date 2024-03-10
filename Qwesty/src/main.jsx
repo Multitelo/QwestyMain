@@ -13,8 +13,9 @@ import Settings from './components/signedUp/Settings.jsx';
 import Rewards from './components/signedUp/Rewards.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
 import Myprofile from './components/signedUp/Myprofile.jsx';
-import HomePageComponent from './components/signedUp/researchers/components/HomePageComponent.jsx';
+import HomePage from './components/signedUp/researchers/HomePage.jsx';
 import { useEffect } from 'react';
+
 function App() {
   const [usertype, setUsertype] = useState('');
 
@@ -36,6 +37,7 @@ function App() {
       window.screen.orientation.unlock();
     };
   }, []);
+  
   return (
     <ThemeProvider> 
       <React.StrictMode>
@@ -52,7 +54,6 @@ function App() {
             
            
             <Route path="/Login" element={<LogIn />} />
-           
             <Route path="/Reset" element={<Reset />} />
             <Route path="/signedUp/referral" element={<Referral />} />
             <Route path="/signedUp/Settings" element={<Settings />} />
@@ -60,7 +61,7 @@ function App() {
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
             <Route path="/SignUp" element={<SignUpPage />} />
-            <Route path="/homepage" element={<HomePageComponent />} />
+            <Route path='/researcher' element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>

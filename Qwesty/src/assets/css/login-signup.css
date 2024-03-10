@@ -2,8 +2,10 @@
 .signUp-container{
     display: flex;
     background-color: #fff;
-    height: 100vh;
-}
+    min-height: 100vh; 
+    height: 100%;
+  
+  }
 
 .signUp-left{
     width:50vw;
@@ -239,13 +241,15 @@
     text-align: left;
     color: #151414;
     position: absolute;
-    bottom: -0px;
+    bottom: 0px;
   }
   .signUp-container footer img{
     width: 60px;
     height: 60px;
     padding: 10px;
-    margin: 20px 50px;
+    margin: 100px 50px;
+    position: relative;
+    bottom: -100px;
     cursor: pointer;
   }
 
@@ -282,9 +286,13 @@
 #forgotLink{
 align-self: flex-end;
 text-decoration: underline;
+cursor: auto;
+}
+#forgotLink p{
+  cursor: pointer;
 }
 
-#forgotLink:hover p{
+#forgotLink p:hover{
   color:#8E5DF5;
 }
 .second-content.login{
@@ -328,7 +336,8 @@ sup{
       margin-top: 50px;
     }
     .signUp-container{
-        height: 100vh;
+      min-height: 140vh; 
+      height: 100%;
         background: 
         linear-gradient(to right, rgba(255, 255, 255, 0.9) 100%, transparent 50%), 
           url('../images/bGImg.png') no-repeat center; 
@@ -379,3 +388,15 @@ sup{
         align-self: center;
     }
   }
+
+  @media screen and (orientation: landscape) and (max-width: 768px){
+    .signUp-container{
+      min-height: 130vh; 
+  }
+    .signUp-container footer img{
+      margin: 0px 50px;
+      bottom: -100px;
+    }
+  }
+
+

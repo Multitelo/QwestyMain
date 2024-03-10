@@ -66,9 +66,9 @@ function Header() {
           {
             barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
           } 
-          <Link to='/signedUp/settings'className='items' id="first-item">about us</Link>
+          <Link to='/researcher/home'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
-          <Link to='/researcher'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+          <Link to='/verify'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
@@ -77,9 +77,9 @@ function Header() {
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            <Link to='/signedUp/settings' className='items' id="first-item">about us</Link>
+            <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/researcher' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/verify' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
             <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>

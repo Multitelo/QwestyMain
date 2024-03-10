@@ -22,7 +22,9 @@ import xD from '../../assets/images/menu-x.svg';
 import xW from '../../assets/images/xW.svg';
 
 import { Link,useLocation, Routes, Route } from "react-router-dom";
+import { useTheme } from '../../ThemeContext';
 import { useState } from 'react';
+
 function Index() {
 
 
@@ -42,6 +44,7 @@ function Index() {
 
 const SideBar =({theme})=>{
   const location = useLocation();
+  const {usertype} = useTheme()
   const [isClicked, setIsClicked] = useState(false);
   
   
@@ -166,6 +169,7 @@ const SideBar =({theme})=>{
 }
 
 const TopNav = ({theme})=>{
+
   return (
     <div className="top-nav big-devices">
     <div id="bell" style={{backgroundColor:theme==="dark"?"#424040":"#fff"}}><Link to="/signedUp"> <img src={bell} id="bell-icon" alt="A notification's bell icon"/></Link></div>
