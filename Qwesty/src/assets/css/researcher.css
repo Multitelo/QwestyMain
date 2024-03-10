@@ -298,7 +298,7 @@ body{
 
 
     .fixed-body {
-        /* overflow: hidden; */
+        overflow: hidden;
         
       }
 
@@ -376,33 +376,3 @@ body{
 
 }
 
-/* researcher.css */
-
-/* Add this to your existing CSS */
-
-/* For the dropdown menu */
-.side-links.display {
-    overflow: auto; /* Enable scrolling if content overflows */
-    max-height: calc(150vh - 110px); /* Adjust height dynamically based on viewport height */
-}
-
-/* To handle rotation */
-@media screen and (orientation: landscape) {
-    .researcher-bar .flex-search {
-        margin-top: 5px;
-    }
-    .side-link.Settings{
-        margin-top: 0%;
-       }
-    /* Adjust styles as needed when the device is rotated to landscape mode */
-    .side-links.small {
-        max-height: calc(150vh - 50px); /* Adjust max height for landscape mode */
-    }
-}
-
-/* To prevent cutoff on smaller screens */
-@media (max-height: 600px) {
-    .side-links.small {
-        max-height: calc(100vh - 90px); /* Adjust max height for smaller screens */
-    }
-}
