@@ -8,11 +8,11 @@ const HomePage = () => {
     <div className="bg-white w-full h-screen">
       <section className="flex">
         {/* sample sidebar */}
-        <div className="sidebar h-[100v]  hidden  w-[400px] bg-gray-300 992:grid place-content-center shadow-md">
+        <div className="sidebar h-[100v]  hidden  w-[450px] bg-white 992:grid place-content-center shadow-md">
           Sidebar
         </div>
         {/* content */}
-        <div className="w-full h-[100%] flex flex-col bg-emerald-500 p-2 md:p-10">
+        <div className="w-full h-[100%] flex flex-col bg-gray-300 p-2 md:p-10">
           <div className="grid  gap-4 grid-cols-1 md:grid-cols-2 1207:grid-cols-3 lg:gap-8">
             {/* profile  */}
             <div className="profileContainer">

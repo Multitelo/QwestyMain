@@ -19,7 +19,7 @@ const LineChart = () => {
     ],
     options: {
       chart: {
-        height: 350,
+        height: 200,
         type: 'line',
       },
       xaxis: {
