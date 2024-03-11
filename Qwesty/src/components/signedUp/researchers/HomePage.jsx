@@ -16,13 +16,15 @@ function HomePage() {
         <div className="top-section">
           <Top/>
         </div>
+
+
         <div className="home-main-section">
           homepage
         </div>
         </div>
 
         
-      </div>
+    </div>
   )
 }
 export default  HomePage

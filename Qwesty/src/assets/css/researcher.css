@@ -1,6 +1,4 @@
-body{
-    /* background-color: aqua; */
-}
+
 
 .researcher-bar{
     background-color: #fff;
@@ -13,7 +11,8 @@ body{
     padding: 10px 30px;
     border-bottom-right-radius: 15px;
     position: fixed;
-    
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .researcher-bar .flex-search {
     margin-top: 30px;
@@ -168,6 +167,7 @@ body{
 
 .researcher-content{
     display: flex;
+    /* height:200vh; */
     gap:30px;
     background-color: #F4F4F4;
 
@@ -242,12 +242,11 @@ body{
         top: 100px;
         position: fixed;
         background-color: #f4f4f4;
-        height: calc(100dvh - 80px); /* Calculate height to fill remaining viewport height */
-        overflow-y: auto; /* Enable vertical scrolling */
+        height: calc(100dvh - 80px); 
+        overflow-y: auto; 
         z-index: 1;
         padding: 20px 20px;
         transition: all 0.5s;
-        /* border: 10px solid red; */
       }
       
     .researcher-bar .side-links.small.display{
@@ -347,11 +346,12 @@ body{
         }
     .reas-top{
         gap:10px;
-       padding-left: 30px;
+       padding-left: 10px;
        justify-content: flex-start;
        padding-bottom: 20px;
     }
     .reas-top .logos{
+        padding-left: 0;
         width: 100px; 
         margin-right: auto;
 }
@@ -367,14 +367,17 @@ body{
 }
 
 @media (max-width: 401px) {
-
+.researcher-bar{
+    padding: 0;
+    
+}
  .user-content .pic{
         width: 45px;
     }
 
 .reas-top .bell-box{
-    width: 30px;
-    display: none;
+    width: 25px;
+    display: inline;
 }
 .theme-box{
     width:30px;
@@ -387,11 +390,39 @@ body{
 .researcher-bar .flex-search{
     width: 90%;
     font-size: 14px;
-    padding: 10px;
+    height:30px;
+    padding: 20px;
 }
 
+.flex-search{
+    width: 90%;
+    font-size: 14px;
+   padding: 20px;
+}
 }
 
 @media  (orientation:landscape){
     
 }
+
+
+/* Hide scrollbar arrows */
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+  
+  /* Style the scrollbar track and thumb */
+  ::-webkit-scrollbar {
+    width: 5px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 5px;
+  }
+  
