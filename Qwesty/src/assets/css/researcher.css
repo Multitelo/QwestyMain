@@ -30,7 +30,8 @@ body{
 .side-links{
     display: flex;
     flex-direction: column;
-   
+    /* border: 1px solid red; */
+    height: 85%;
 }
 .researcher-bar .logo{
     padding:20px 0px 10;
@@ -96,11 +97,12 @@ body{
     display: flex;
     gap:10px;
     justify-self: flex-end;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    margin-top: auto;
+    /* bottom: 10px; */
     font-weight: bold;
     padding: 10px 15px 40px 15px;
-   
+   /* border: 1px solid red; */
 }
 /* Styles of top page */
 .reas-top{
@@ -234,18 +236,20 @@ body{
     .researcher-bar .logo{
         display: none;
     }
-    .researcher-bar .side-links.small{
+    .researcher-bar .side-links.small {
         opacity: 0;
-         right:0px;
-         top:100px;
-         position: fixed;
-         background-color: #F4F4F4;
-         max-height:100%;
-         min-height:85vh;
-         padding: 20px 20px;
-         transition: all 0.5s;
-         
-    }
+        right: 0px;
+        top: 100px;
+        position: fixed;
+        background-color: #f4f4f4;
+        height: calc(100vh - 80px); /* Calculate height to fill remaining viewport height */
+        overflow-y: auto; /* Enable vertical scrolling */
+        z-index: 1;
+        padding: 20px 20px;
+        transition: all 0.5s;
+        /* border: 10px solid red; */
+      }
+      
     .researcher-bar .side-links.small.display{
         opacity: 1;
        
@@ -304,7 +308,16 @@ body{
         
       }
 
-     
+      .logout-btn{
+        display: flex;
+        gap:10px;
+        justify-self: flex-end;
+        position: relative;
+        bottom: -20px;
+        font-weight: bold;
+        padding: 10px 15px 40px 15px;
+       
+    }
 
    
 }
@@ -379,3 +392,8 @@ body{
 
 }
 
+@media  (orientation:landscape){
+    .side-links.small{
+        background-color: aqua;
+    }
+}
