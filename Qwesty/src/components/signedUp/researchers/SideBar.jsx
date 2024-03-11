@@ -53,15 +53,15 @@ function SideBar() {
                document.documentElement.style.setProperty('--vh', `${vh}px`);
              });
 
-          // if (dropdown) {
-          //   document.body.classList.add('fixed-body');
-          // } else {
-          //   document.body.classList.remove('fixed-body');
-          // }
+          if (dropdown) {
+            document.body.classList.add('fixed-body');
+          } else {
+            document.body.classList.remove('fixed-body');
+          }
       
-          // return () => {
-          //   document.body.classList.remove('fixed-body');
-          // };
+          return () => {
+            document.body.classList.remove('fixed-body');
+          };
         }, [dropdown]);
   return (
     <div className={`researcher-bar small ${resTheme}`}>

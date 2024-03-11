@@ -242,7 +242,7 @@ body{
         top: 100px;
         position: fixed;
         background-color: #f4f4f4;
-        height: calc(100vh - 80px); /* Calculate height to fill remaining viewport height */
+        height: calc(100dvh - 80px); /* Calculate height to fill remaining viewport height */
         overflow-y: auto; /* Enable vertical scrolling */
         z-index: 1;
         padding: 20px 20px;
@@ -343,7 +343,7 @@ body{
     .researcher-bar .side-links.small{
         opacity: 0;
          right:0px;
-         top:85px;
+         /* top:85px; */
         }
     .reas-top{
         gap:10px;
