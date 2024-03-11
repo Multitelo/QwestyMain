@@ -228,8 +228,7 @@ body{
 }
     .researcher-bar{
       height: 80px;
-      background-color: inherit;  
-      border: 1px solid red;
+      background-color: inherit; 
       
     }
     .researcher-bar .logo{
