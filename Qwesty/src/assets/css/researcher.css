@@ -229,6 +229,8 @@ body{
     .researcher-bar{
       height: 80px;
       background-color: inherit;  
+      border: 1px solid red;
+      
     }
     .researcher-bar .logo{
         display: none;
@@ -236,7 +238,7 @@ body{
     .researcher-bar .side-links.small{
         opacity: 0;
          right:0px;
-         top:110px;
+         top:100px;
          position: fixed;
          background-color: #F4F4F4;
          max-height:100%;
@@ -247,7 +249,7 @@ body{
     }
     .researcher-bar .side-links.small.display{
         opacity: 1;
-        z-index: -1;
+       
        
     }
 
@@ -325,6 +327,7 @@ body{
 
 /* xs */
 @media (max-width: 475px) {
+
     .researcher-bar .side-links.small{
         opacity: 0;
          right:0px;
@@ -376,3 +379,4 @@ body{
 }
 
 }
+

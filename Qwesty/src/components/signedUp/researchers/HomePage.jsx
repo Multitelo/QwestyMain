@@ -17,7 +17,7 @@ function HomePage() {
           <Top/>
         </div>
         <div className="home-main-section">
-          <Settings />
+          homepage
         </div>
         </div>
 

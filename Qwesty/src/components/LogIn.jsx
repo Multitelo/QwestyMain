@@ -84,7 +84,30 @@ function LogIn() {
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
-      
+    
+    const handleEmailSubmit = async () => {
+        const formData  = new FormData();
+        formData.append('email', email.value);
+        formData.append('usertype', usertype);
+        formData.append('rememberDetails', rememberDetails);
+
+        try {
+            const response = await fetch('http://localhost/qwestymain/api/login.php', {
+                method: 'POST',
+                body:formData,
+            });
+
+            console.log(response)
+            const data = await response.json();
+
+            console.log('response data:', data)
+        } catch(e){
+            console.log('Error: ', e)
+            setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
+
+        }
+        handleNext
+    }
 
     const handlePwd = (e) => {
 
@@ -158,15 +181,16 @@ function LogIn() {
                             Remember for 30 days
                         </label>
 
-                            <button onClick={handleNext}
+                            <button onClick={()=> handleEmailSubmit().then().catch()}
                                     disabled={handleBtnState()}
                                     className={handleBtnState() ? 'disabled' : 'enabled'}>
                                 Next</button>
                             <p>Don't have an account? <span><Link to="/SignUp">Sign up</Link></span></p>
                         </div>
+
                     ) : content === 'password' ? (
                         <div className='second-content login'>
-                                <h2>Welcome back mandela</h2>
+                                <h2>Welcome back {email}</h2>
 
                             <label htmlFor='pwd'>Enter your Password</label>
 
