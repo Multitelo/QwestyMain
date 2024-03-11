@@ -240,7 +240,7 @@
     letter-spacing: 0em;
     text-align: left;
     color: #151414;
-    position: absolute;
+    position: relative;
     bottom: 0px;
   }
   .signUp-container footer img{
@@ -336,7 +336,7 @@ sup{
       margin-top: 50px;
     }
     .signUp-container{
-      min-height: 140vh; 
+      min-height: 100dvh; 
       height: 100%;
         background: 
         linear-gradient(to right, rgba(255, 255, 255, 0.9) 100%, transparent 50%), 
@@ -355,7 +355,7 @@ sup{
         
     }
     .signUp-container footer img{
-        margin: 20px 10px;
+        
         
       }
       .errMsg {
@@ -391,11 +391,12 @@ sup{
 
   @media screen and (orientation: landscape) and (max-width: 768px){
     .signUp-container{
-      min-height: 130vh; 
+      min-height: 100vh; 
   }
-    .signUp-container footer img{
+    .signUp-container footer img, .signUp-right h2{
       margin: 0px 50px;
-      bottom: -100px;
+      bottom: 10px;
+      left: -10px;
     }
   }
 
