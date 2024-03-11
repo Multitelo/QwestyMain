@@ -393,7 +393,5 @@ body{
 }
 
 @media  (orientation:landscape){
-    .side-links.small{
-        background-color: aqua;
-    }
+    
 }
