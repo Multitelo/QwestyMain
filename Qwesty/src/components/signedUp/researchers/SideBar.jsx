@@ -22,7 +22,7 @@ function SideBar() {
         const {resTheme, researcherTheme, dropdown} = useTheme();
         const [search, setSearch] = useState('')
         const location = useLocation();
-
+     
         const menuItem = [
           {
               path: "/researcher/home",
@@ -47,15 +47,21 @@ function SideBar() {
       ];
 
       useEffect(() => {
-          if (dropdown) {
-            document.body.classList.add('fixed-body');
-          } else {
-            document.body.classList.remove('fixed-body');
-          }
+          window.addEventListener('resize', () => {
+
+               let vh = window.innerHeight * 0.01;
+               document.documentElement.style.setProperty('--vh', `${vh}px`);
+             });
+
+          // if (dropdown) {
+          //   document.body.classList.add('fixed-body');
+          // } else {
+          //   document.body.classList.remove('fixed-body');
+          // }
       
-          return () => {
-            document.body.classList.remove('fixed-body');
-          };
+          // return () => {
+          //   document.body.classList.remove('fixed-body');
+          // };
         }, [dropdown]);
   return (
     <div className={`researcher-bar small ${resTheme}`}>

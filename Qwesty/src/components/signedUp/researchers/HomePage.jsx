@@ -1,5 +1,6 @@
 import SideBar from "./SideBar"
 import Top from './Top'
+import Settings from "../Settings";
 import { useTheme } from "../../../ThemeContext"
 
 function HomePage() {
@@ -16,7 +17,7 @@ function HomePage() {
           <Top/>
         </div>
         <div className="home-main-section">
-          Home page
+          <Settings />
         </div>
         </div>
 
