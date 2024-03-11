@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import ResearchCard from "./ResearchCard";
 import { ResearchPageData } from "../../../data/data";
+import Sidebar from "./Sidebar";
 
 const ResearchPage = () => {
   const [open, setOpen] = useState(false);
@@ -14,26 +15,23 @@ const ResearchPage = () => {
   };
   useEffect(() => {
     const closeSidebar = (event) => {
-      if (open && !event.target.closest('.options')) {
+      if (open && !event.target.closest(".options")) {
         setOpen(false);
       }
     };
 
-    document.body.addEventListener('click', closeSidebar);
+    document.body.addEventListener("click", closeSidebar);
 
     return () => {
-      document.body.removeEventListener('click', closeSidebar);
+      document.body.removeEventListener("click", closeSidebar);
     };
   }, [open]);
-
 
   return (
     <div className="bg-white w-full h-screen">
       <section className="flex w-full h-[100h]">
         {/* sample sidebar */}
-        <div className="sidebar h-[100v]  hidden  w-[450px] bg-white 992:grid place-content-center shadow-md">
-          Sidebar
-        </div>
+        <Sidebar />
         {/* content */}
         <div className="w-full h-[100%] flex justify-center bg-gray-300 p-2 md:p-10">
           <section className="bg-white w-full h-[100vh]  1097:w-[80%] rounded-xl">
@@ -87,7 +85,7 @@ const ResearchPage = () => {
             <div className="w-full px-2 531:px-10">
               {ResearchPageData.map((research, index) => (
                 <ResearchCard
-                key={index}
+                  key={index}
                   status={research.status}
                   statusColor={
                     research?.status == "completed"
