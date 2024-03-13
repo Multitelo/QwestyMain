@@ -1,12 +1,11 @@
 
-.signUp-container{
-    display: flex;
-    background-color: #fff;
-    min-height: 100vh; 
-    height: 100%;
-  
-  }
-
+.signUp-container {
+  display: flex;
+  background-color: #fff;
+  min-height: 100vh;
+  flex-direction: row; 
+  justify-content: stretch; 
+}
 .signUp-left{
     width:50vw;
     display: flex;
@@ -25,12 +24,12 @@
     align-items: center;
     margin-top: 0px;
 }
-.signUp-container .signUp-right{
-  
-    width:50vw;
-    background-image: url('../images/bGImg.png');
-   background-size: cover;
-   background-repeat: no-repeat;
+
+.signUp-right {
+  flex: 1;
+  background-image: url('../images/bGImg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .signUp-left .first-content, 
@@ -230,7 +229,7 @@
     display: block;
   }
 
-  .signUp-container footer{
+  .signUp-container footer {
     margin-right: auto;
     padding: 50px 20px 0px;
     font-family: Outfit;
@@ -240,16 +239,18 @@
     letter-spacing: 0em;
     text-align: left;
     color: #151414;
-    position: relative;
-    bottom: 0px;
-  }
+    position: relative; /* Change position to fixed */
+    bottom: 0; /* Set bottom to 0 */
+    width: 100%; /* Ensure the footer spans the entire width */
+    background-color: #fff; /* Optional: You can set the background color */
+    z-index: 999; /* Ensure it appears above other content */
+}
+
   .signUp-container footer img{
     width: 60px;
     height: 60px;
     padding: 10px;
-    margin: 100px 50px;
-    position: relative;
-    bottom: -100px;
+    margin: 20px 50px;
     cursor: pointer;
   }
 
@@ -286,13 +287,9 @@
 #forgotLink{
 align-self: flex-end;
 text-decoration: underline;
-cursor: auto;
-}
-#forgotLink p{
-  cursor: pointer;
 }
 
-#forgotLink p:hover{
+#forgotLink:hover p{
   color:#8E5DF5;
 }
 .second-content.login{
@@ -336,8 +333,7 @@ sup{
       margin-top: 50px;
     }
     .signUp-container{
-      min-height: 100dvh; 
-      height: 100%;
+        min-height: 100vh;
         background: 
         linear-gradient(to right, rgba(255, 255, 255, 0.9) 100%, transparent 50%), 
           url('../images/bGImg.png') no-repeat center; 
@@ -355,7 +351,7 @@ sup{
         
     }
     .signUp-container footer img{
-        
+        margin: 20px 10px;
         
       }
       .errMsg {
@@ -388,16 +384,3 @@ sup{
         align-self: center;
     }
   }
-
-  @media screen and (orientation: landscape) and (max-width: 768px){
-    .signUp-container{
-      min-height: 100vh; 
-  }
-    .signUp-container footer img, .signUp-right h2{
-      margin: 0px 50px;
-      bottom: 10px;
-      left: -10px;
-    }
-  }
-
-

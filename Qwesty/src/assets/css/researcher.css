@@ -13,6 +13,7 @@
     position: fixed;
     overflow-y: scroll;
     overflow-x: hidden;
+   
 }
 .researcher-bar .flex-search {
     margin-top: 30px;
@@ -29,8 +30,9 @@
 .side-links{
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
     height: 85%;
+    gap: 10px;
+    z-index: 2;
 }
 .researcher-bar .logo{
     padding:20px 0px 10;
@@ -49,6 +51,13 @@
     align-items: center;
 }
 
+
+#toggle-theme{
+    display: flex;
+    gap:10px;   
+    padding: 40px 15px; 
+    align-items: center;
+}
 .side-link.Settings{
  margin-top: 20%;
 }
@@ -119,7 +128,7 @@
 
 .reas-top.dark{
     color:#fff;
-    background-color: #201F24;
+    background-color: #121217
 
 }
 
@@ -167,17 +176,16 @@
 
 .researcher-content{
     display: flex;
-    /* height:200vh; */
+    min-height: 100vh;
     gap:30px;
+   
     background-color: #F4F4F4;
-
+    justify-content: stretch;
+    align-content: stretch;
 }
 
 .researcher-content.dark{
-    background-color: #131217;
-}
-.researcher-bar.dark .side-links.small{
-    background-color: #201F24;
+    background-color: #121217;
 }
 
 .researcher-menu{
@@ -186,13 +194,48 @@
 
 .home-main{
     width: 80%;
-    background-color: #fff;
-    height: 100vh;
+    /* background-color: #fff; */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
+/* Styles for settings page */
+.home-main-section.settings .avatar-modify{
+    z-index: 0;
+}
+.avatar-modify .avatar.res{
+    padding: 3px;
+    border: 1px solid #8AADC1;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    grid-area: avatar;
+    
+}
+.avatar-modify .avatar.res img{
+    padding: 3px;
+    border: 1px solid #8AADC1;
+    scale:2;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 
+.researcher-content.dark .home-main-section.settings{
+    background-color: #201F24;
+}
+.home-main-section.settings{
+    display: flex;   
+    gap:50px;
+  
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.research-footer{
+    display: none;
+}
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
@@ -224,6 +267,7 @@
 @media (max-width:993px){
     .researcher-content{
         gap:0px;
+        flex-direction: column;
     }
     .researcher-bar.dark{
         background-color: inherit;
@@ -231,7 +275,10 @@
     .researcher-bar{
       height: 80px;
       background-color: inherit; 
-      
+     
+    }
+    .researcher-bar.dropdown{
+        z-index: 1;
     }
     .researcher-bar .logo{
         display: none;
@@ -239,7 +286,7 @@
     .researcher-bar .side-links.small {
         opacity: 0;
         right: 0px;
-        top: 100px;
+        top: 120px;
         position: fixed;
         background-color: #f4f4f4;
         height: calc(100dvh - 80px); 
@@ -251,10 +298,12 @@
       
     .researcher-bar .side-links.small.display{
         opacity: 1;
-       
-       
-    }
+      }
 
+    .researcher-bar.dark .side-links.small{
+        background-color:#121217 ;
+    }
+    
     .side-link,
     .researcher-bar .flex-search{
         width: 300px;
@@ -265,10 +314,18 @@
         background-color: #fff;
     }
 
-    .user-content .menu-icon{
+   
+
+    .user-content .menu-icon {
         display: inline;
-        
+        cursor: pointer;
+        transition: transform 0.5s ease;
     }
+    
+    .user-content .menu-icon.active {
+        transform: rotate(180deg);
+    }
+    
     
      .user-content #big,
       #headphones,
@@ -317,14 +374,25 @@
         padding: 10px 15px 40px 15px;
        
     }
+    .home-main-section.settings{
+        flex-direction: column;
+        gap:0px;
+    }
 
-   
+    .home-main-section.settings .insideNav{
+        justify-content: center;
+        gap:100px;
+    }
 }
 
 /* md */
 @media (max-width: 768px) {
     .reas-top{
         padding-top: 30px;
+    }
+    .research-footer{
+        display: block;
+        background-color: #383434;
     }
 }
 
@@ -367,12 +435,19 @@
 }
 
 @media (max-width: 401px) {
+    .researcher-bar .side-links.small {
+        
+        top: 110px;
+    }
+    .home-main{
+         padding: 10px;
+    }
 .researcher-bar{
     padding: 0;
     
 }
  .user-content .pic{
-        width: 45px;
+        width: 60px;
     }
 
 .reas-top .bell-box{
@@ -384,7 +459,7 @@
     padding: 5px;
 }
 .reas-top .logos{
-    scale: 1;
+    scale: 1.4;
 }
 .side-link,
 .researcher-bar .flex-search{
@@ -406,23 +481,19 @@
 }
 
 
-/* Hide scrollbar arrows */
 ::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-  }
-  
+    display: none;
+}
+
+/* Show scrollbar arrows when content overflows */
+.researcher-bar {
+    overflow-y: auto;
+}
+
+.researcher-bar::-webkit-scrollbar-button {
+    display: block;
+}
+
+
   /* Style the scrollbar track and thumb */
-  ::-webkit-scrollbar {
-    width: 5px; 
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 5px;
-  }
   

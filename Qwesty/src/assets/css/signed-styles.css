@@ -155,17 +155,16 @@ border-radius: 15px;
 
 /* Styles for settings page */
 
-.settings-container{
-   
+.settings-container {
     display: grid;
     grid-template-columns: 22vw 75vw;
-    grid-template-rows: 15vh 115vh;
+    grid-template-rows: min-content min-content; /* Change to min-content */
     grid-template-areas: "sideNav topNav"
                          "sideNav mainContent";
-  
-     column-gap: 0px;
-    height: 135vh;
+    column-gap: 0px;
+    justify-content: stretch;
 }
+
 
 .rewards-container{
    
@@ -206,14 +205,14 @@ border-radius: 15px;
 }
 
 .main-content{
-    /* border: 1px solid red; */
     grid-area: mainContent;
     border-radius: 30px;
     background: #FFF;
     padding-right: 0px;
     display: flex;
+    min-height: 100dvh;
 }
-.main-content .insideNav{
+.insideNav{
     display: flex;
     margin: 30px 0px;
     flex-direction: column;
@@ -241,7 +240,20 @@ border-radius: 15px;
     color:#F4F4F4 ;
 }
 
-.insideNav button:hover, .insideNav .btn ,.insideNav .btnn, #insideNavDark .btn, #insideNavDark .btnn{
+#insideNavDark button:hover{
+    color: #8E5DF5;
+
+}
+
+.home-main-section.settings .insideNav button:hover,
+.insideNav button:hover, 
+.insideNav .btn ,
+.insideNav .btnn,
+
+ #insideNavDark .btn, 
+ .home-main-section.settings #insideNavDark .btn,
+ #insideNavDark .btnn
+ .home-main-section.settings #insideNaDark .btnn{
     color: #8E5DF5;
 }
 .insideNav .btn::after,.insideNav .btnn::after {
@@ -262,7 +274,7 @@ border-radius: 15px;
 
 }
 
-.main-content .content{
+ .content{
    width:50vw;
    padding: 50px 30px;
 }
@@ -293,7 +305,7 @@ border-radius: 15px;
 .avatar-modify{
     display: grid;
     grid-template-columns:  5.5vw repeat(2,20vw);
-    grid-template-rows: repeat(2,7vh);
+    grid-template-rows: repeat(2,auto);
     column-gap: 3px;
     align-items: center;
     /* border: 1px solid #FA8787; */
@@ -383,12 +395,11 @@ border-radius: 15px;
 .del-box{
     display: grid;
     grid-template-columns: 30vw 15vw;
-    grid-template-rows: 5vh 5vh;
+    grid-template-rows: min-content min-content;
     column-gap: 10px;
     grid-template-areas: "heading delBtn"
                          "description delBtn";
     margin-top: 70px;
-   /* border: 1px solid grey; */
 }
 
 .del-box h3, .del-box p, .del-box #delBtn{
@@ -415,10 +426,10 @@ border-radius: 15px;
     border-radius: 10px;
     background: #E63030;
    color: #FFF;
-   
+   align-self: center;
    grid-area: delBtn;
    text-align: center;
-   height: 8vh;
+    height: 60px;
 
 }
 /* end of Styles for Account content */
@@ -1316,13 +1327,13 @@ width:20px;
     display: grid;
     
     grid-template-columns: 100%;
-    grid-template-rows: auto 155vh auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas: "sideNav"
                          "mainContent"
                          "footer";
     /* border: 1px solid red; */
      row-gap: 0px;
-    height: 150vh;
+    min-height: 150vh;
 }
 .rewards-container{
     
@@ -1472,10 +1483,11 @@ width: 40vw;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
+    
     /* padding: 50px; */
     /* border: 1px solid blueviolet; */
 }
-.main-content .insideNav{
+ .insideNav{
     display: flex;
     margin: 0px 0px;
     flex-direction: row;
@@ -1494,7 +1506,7 @@ width: 40vw;
     right:-30px;
 }
 
-.main-content .content{
+ .content{
     width: 90vw;
     padding: 70px 30px;
     
@@ -1512,7 +1524,7 @@ width: 40vw;
     padding-left: 0;
     align-self: center;
     grid-template-columns:  6.5vw repeat(2,25vw);
-    grid-template-rows: repeat(2,7vh);
+    grid-template-rows: repeat(2,auto);
     column-gap: 3px;
     align-items: center;
     grid-template-areas:"avatar upAvatar rmAvatar"
@@ -1526,7 +1538,7 @@ width: 40vw;
 .del-box{
     display: grid;
     grid-template-columns: 30vw 25vw;
-    grid-template-rows: 5vh 5vh;
+    grid-template-rows: auto auto;
     column-gap: 30px;
     grid-template-areas: "heading delBtn"
                          "description delBtn";
@@ -1805,12 +1817,12 @@ width: 20vw;
         display: grid;
         
         grid-template-columns: 100vw;
-        grid-template-rows: auto 167vh auto;
+        grid-template-rows: auto auto auto;
         grid-template-areas: "sideNav"
                              "mainContent"
                              "footer";
          row-gap: 0px;
-        height: 150vh;
+        min-height: 150vh;
     }
 
     .securityContent input{
@@ -1825,7 +1837,7 @@ width: 20vw;
     .avatar-modify{
         display: grid;
         grid-template-columns: 50vw 50vw;
-        grid-template-rows: repeat(3,7vh);
+        grid-template-rows: repeat(3,auto);
         gap: 10px;
         row-gap: 5px;
         margin-top: 50px;
@@ -1870,7 +1882,7 @@ width: 20vw;
     .del-box{
         display: grid;
         grid-template-columns: 80vw;
-        grid-template-rows: 5vh 5vh 5vh;
+        grid-template-rows: repeat(3,auto);
         
         grid-template-areas: "heading"
                              "description"
@@ -1889,7 +1901,7 @@ width: 20vw;
        
        grid-area: delBtn;
        text-align: center;
-       height: 8vh;
+      
       width: 30vw;
       margin-top: 30px;
     }
@@ -2090,9 +2102,9 @@ width: 20vw;
          }
     
          .settings-container{
-            grid-template-rows: auto 197vh auto;
+            grid-template-rows: auto auto auto;
         
-            height: 150vh;
+            min-height: 150vh;
         }
         .del-box #delBtn{
             width:60vw;

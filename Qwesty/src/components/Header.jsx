@@ -6,7 +6,6 @@ import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';
 import { Routes, Route, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import Indexx from './signedUp/Index';
 import Main from './Main';
 import About from './About';
 

@@ -5,8 +5,9 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
-import { useTheme } from '../ThemeContext';
+import { useTheme} from '../context/ThemeContext'
 import Verify from './Verify';
+
 function SignUpPage() {
     const {usertype, setUsertype} = useTheme();
     const [content, setContent] = useState('first');
