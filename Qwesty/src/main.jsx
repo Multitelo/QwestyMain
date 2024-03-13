@@ -53,7 +53,7 @@ function App() {
             {/* Route for Researcher's page */}
             <Route path='/researcher/home' element={<HomePage />} />
             <Route path='/researcher/settings' element={<SettingsRes />} />
-
+            <Route path='/researcher/research' element={<Research />} />
             {/* Route for Participant's page */} 
             <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />

@@ -63,6 +63,7 @@ function SideBar() {
             document.body.classList.remove('fixed-body');
           };
         }, [dropdown]);
+        
   return (
     <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}`}>
         <div className="logo">
