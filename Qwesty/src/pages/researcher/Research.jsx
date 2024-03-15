@@ -7,10 +7,14 @@ import { FaPlus } from "react-icons/fa6";
 import { PiStackSimple } from "react-icons/pi";
 import { GoClock } from "react-icons/go";
 import { FaRegCircleQuestion } from "react-icons/fa6";
-
+import ScheduledResearch from "../../components/mahtot/ScheduledResearch";
+import { useState } from "react";
 function Research() {
     const {resTheme} = useTheme();
-
+    const [content, setContent] = useState({newResearch:false,
+                                            drafts:false,
+                                            scheduledResearch:false,
+                                            aboutCreatingResearch:false})
     const boxItem = [
       {
         title: 'Create new research',
@@ -24,7 +28,8 @@ function Research() {
         icon: <PiStackSimple />,
         backgroundColor: '#8E5DF5',
         color: '#fff',
-        id:'small'
+        id:'small',
+       
       },
       
       {
@@ -32,7 +37,8 @@ function Research() {
         icon: <GoClock />,
         backgroundColor: '#D0FFF2',
         color: '#000',
-        id:'large-wide'
+        id:'large-wide',
+        onClick: ()=>{setContent(prevState=>({...prevState, scheduledResearch:true}))}
       },
       {
         title: 'About creating research',
@@ -60,6 +66,8 @@ function Research() {
 
         <div className="home-main-section">
           {/* content */}
+             {
+              content.scheduledResearch? <ScheduledResearch />:
               <div className="research-box">
                <div className="first-boxes">
                 {
@@ -71,7 +79,8 @@ function Research() {
                                     title={box.title}
                                     bgColor={box.backgroundColor}
                                     color={box.color}
-                                    id={box.id}/>
+                                    id={box.id}
+                                    />
                    ) )
                 }
                 </div>
@@ -86,11 +95,12 @@ function Research() {
                                     title={box.title}
                                     bgColor={box.backgroundColor}
                                     color={box.color}
-                                    id={box.id}/>
+                                    id={box.id}
+                                    onClick={box.onClick}/>
                    ) )
                 }
                 </div>
-              </div>
+              </div>}
         </div>
         
        

@@ -119,7 +119,7 @@
     color:#131217;
     background-color: #F4F4F4;
     justify-content: flex-end;
-    padding: 20px;
+    padding:0 20px;
     font-family: Outfit;
     font-size: 20px;
     align-items: center;
@@ -295,6 +295,72 @@
 .research-box .large{
     width: 40vw;
 }
+
+/* styles for Scheduled Research */
+.scheduled-container{
+    color:#121217;
+    font-family: Outfit;
+}
+.scheduled-container.dark{
+    color:#F4F4F4;
+}
+
+.scheduled-container h2{
+    font-size: 32px;
+
+}
+
+.scheduled-container p{
+    font-size: 20px;
+}
+.scheduled-container .filter-box{
+    display: flex;
+    font-size: 16px;
+    color:#8E5DF5;
+    gap:10px;
+    margin: 20px 0 60px;
+}
+.filter-box .type{
+    background-color: #F0F0F5;
+    border-radius: 10px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.motion-survey-box{
+    display: flex;
+    gap:50px;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.motion-survey-box .time{
+    display: flex;
+    justify-items: center;
+    gap:5px;
+    font-weight: bold;
+    flex-direction: column;
+}
+.clock{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+.clock p{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.motion-survey-box .edit-btn{
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 5px 40px;
+}
+.scheduled-container.dark .motion-survey-box .edit-btn{
+    background-color: #363334;
+    
+}
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
@@ -456,6 +522,11 @@
         width:40vw;
         min-height: 170px;
     }
+
+    /* styles for scheduled research page */
+    .scheduled-container{
+        padding: 50px;
+    }
 }
 
 /* md */
@@ -490,6 +561,34 @@
     .research-box .large{
         width: 80vw;
         min-height: 150px;
+    }
+
+    /* Style for schedule research page */
+    .scheduled-container{
+        padding: 20px;
+    }
+    .scheduled-container .filter-box{
+        display: grid;
+        grid-template-columns: repeat(2, 35vw);
+        grid-template-rows: repeat(2, min-content);
+        text-align: justify;
+        gap:10px;
+    }
+    .filter-box .type:nth-child(3),
+    .filter-box .type:nth-child(4){
+        margin-left: 50px;
+        width: 35vw;
+    }
+
+    .motion-survey-box{
+        background-color: #EDE5FF;
+        border-radius: 15px;
+        color:#121217;
+        padding:20px;
+    }
+   
+    .motion-survey-box .edit-btn{
+        display: none;
     }
 
 }
@@ -530,6 +629,20 @@
     display: flex;
     gap:10px;
 }
+    /* Style for schedule research page */
+.scheduled-container .filter-box{
+    grid-template-columns: repeat(2, 40vw);
+    padding: 0;
+}
+.filter-box .type:nth-child(3),
+.filter-box .type:nth-child(4){
+    margin-left: 20px;
+    width: 40vw;
+}
+.filter-box .type{
+    padding: 7px 5px;
+}
+
 }
 
 @media (max-width: 401px) {
@@ -571,6 +684,23 @@
     width: 90%;
     font-size: 14px;
    padding: 20px;
+}
+
+/* styles for Scheduled Research */
+.scheduled-container h2{
+    font-size: 24px;
+}
+.scheduled-container p{
+    font-size: 16px;
+}
+.scheduled-container .filter-box{
+font-size: 14px;
+}
+.clock p{
+    font-size: 14px;
+}
+.motion-survey-box{
+    gap:20px;
 }
 }
 
