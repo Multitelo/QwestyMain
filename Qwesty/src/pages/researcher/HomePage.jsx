@@ -5,7 +5,7 @@ import ProfileContainer from "../../components/ben/ProfileContainer";
 import LineChart from "../../components/ben/LineChart";
 import ComingSoon from "../../components/ben/ComingSoon";
 import Footer from "../../components/Footer";
-
+import Research from "./Research";
 function HomePage() {
   const {resTheme} = useTheme();
   return (
@@ -41,6 +41,7 @@ function HomePage() {
           <div className="chart hidden md:block">
             <LineChart />
           </div>
+          
         </div>
 
      

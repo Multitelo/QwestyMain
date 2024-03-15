@@ -8,6 +8,7 @@ import { PiStackSimple } from "react-icons/pi";
 import { GoClock } from "react-icons/go";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import ScheduledResearch from "../../components/mahtot/ScheduledResearch";
+import NewResearch from "../../components/mahtot/NewResearch";
 import { useState } from "react";
 function Research() {
     const {resTheme} = useTheme();
@@ -21,7 +22,9 @@ function Research() {
         icon: <FaPlus />,
         backgroundColor: '#FFF1BE',
         color: '#000',
-        id:'small'
+        id:'small',
+        onClick: ()=>{setContent(prevState=>({...prevState, newResearch:true}))}
+
       },
       {
         title: 'Create from draft',
@@ -68,6 +71,7 @@ function Research() {
           {/* content */}
              {
               content.scheduledResearch? <ScheduledResearch />:
+              content.newResearch?<NewResearch/>:
               <div className="research-box">
                <div className="first-boxes">
                 {
@@ -80,6 +84,7 @@ function Research() {
                                     bgColor={box.backgroundColor}
                                     color={box.color}
                                     id={box.id}
+                                    onClick={box.onClick}
                                     />
                    ) )
                 }
