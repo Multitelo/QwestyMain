@@ -1,10 +1,10 @@
-import SideBar from "./SideBar"
-import Top from './Top'
-import Settings from "../Settings";
-import { useTheme } from "../../../ThemeContext"
-import ProfileContainer from "./ben/ProfileContainer";
-import LineChart from "./ben/LineChart";
-import ComingSoon from "./ben/ComingSoon";
+import SideBar from "../../components/share/SideBar"
+import Top from '../../components/share/Top'
+import { useTheme } from "../../context/ThemeContext"
+import ProfileContainer from "../../components/ben/ProfileContainer";
+import LineChart from "../../components/ben/LineChart";
+import ComingSoon from "../../components/ben/ComingSoon";
+import Footer from "../../components/Footer";
 
 function HomePage() {
   const {resTheme} = useTheme();
@@ -39,6 +39,7 @@ function HomePage() {
           <div className="chart hidden md:block">
             <LineChart />
           </div>
+          
         </div>
         </div>
 

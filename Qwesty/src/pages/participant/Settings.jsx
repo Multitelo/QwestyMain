@@ -107,6 +107,7 @@ const Account = ({theme})=>{
         <h1  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Account</h1>
         <p  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Edit basic informations</p>
       </div>
+      
       <div className="avatar-modify">
         <div className="avatar"><img src={avatar}/></div>
         <div id="upload-avatar"><button>Upload Avatar</button></div>
