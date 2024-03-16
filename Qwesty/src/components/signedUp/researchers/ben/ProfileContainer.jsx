@@ -16,14 +16,14 @@ const ProfileContainer = () => {
       <h1 className="font-bold">Spencer</h1>
       <div className="hidden 475:flex flex-col 1320:flex-row gap-3  mt-12">
         <h1 className="text-sm lg:text-lg font-bold">Account</h1>
-        <span className="whitespace-nowrap w-fit rounded-full font-bold bg-green-100 px-2.5 py-0.5 text-sm text-[#027A48]">
+        <span className="whitespace-nowrap w-fit rounded-full font-bold bg-green-200 px-2.5 py-0.5 text-sm text-green-800">
           Verified
         </span>
       </div>
     </div>
     <div className="475:hidden flex  ml-10 gap-3 items-center justify-center mt-3 md:mt-12">
       <h1 className="">Account</h1>
-      <span className="whitespace-nowrap rounded-full font-bold bg-green-100 px-2.5 py-0.5 text-sm text-green-600">
+      <span className="whitespace-nowrap rounded-full font-bold bg-green-200 px-2.5 py-0.5 text-sm text-green-800">
         Verified
       </span>
     </div>

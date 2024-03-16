@@ -9,6 +9,7 @@ const ResearchCard = ({
   numberReached,
   amountSpent,
   open,
+  index,
   handleOpen,
   handleClose,
 }) => {
@@ -26,10 +27,10 @@ const ResearchCard = ({
             {status}
           </p>
         </span>
-        <EllipsisVertical onClick={open? handleClose : handleOpen} className="options cursor-pointer" />
+        <EllipsisVertical onClick={open ? handleClose : handleOpen} className="options cursor-pointer" />
         {/* options */}
         {open && (
-          <div className="bg-gray-200 rounded-xl px-3 py-2 absolute top-7 -right-3 shadow-md">
+          <div className="option bg-gray-200 rounded-xl px-3 py-2 absolute top-7 -right-3 shadow-md">
             <p className="cursor-pointer">Delete</p>
           </div>
         )}
