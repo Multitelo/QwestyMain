@@ -104,7 +104,7 @@ function Main() {
     </div>
     
     <div className="convo-list">
-      <p id="first-greeting"> Hello!, Skyrose here 👋</p>
+      <p id="first-greeting"> Hello!, qwesty here 👋</p>
       {convos.map((convo, index) => (
         <div
           key={index}
