@@ -28,7 +28,7 @@ export const draftTableData = {
     { col: "Title" },
     { col: "Summary" },
     { col: "Last Edited" },
-    { col: "" }, // Assuming this empty column is intentional
+    { col: "" }, 
   ],
   body: [
     {

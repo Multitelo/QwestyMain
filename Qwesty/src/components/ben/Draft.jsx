@@ -16,8 +16,8 @@ const Draft = () => {
             <Searchbar placeholder="Search drafts..." showIcon={true} />
             {/* main */}
 
-    <div className="w-full rounded-xl border-[1px] border-gray-400 p-5">
-            <table className="w-full border-spacing-5">
+            <div className="w-full rounded-xl border-[1px] border-gray-400 p-5">
+              {/* <table className="w-full border-spacing-5">
               <thead>
                 <tr>
                   <th className="px-5 py-3">Title</th>
@@ -45,7 +45,43 @@ const Draft = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table> */}
+              <div class="grid grid-cols-4 gap-5">
+                <div class="px-5 py-3 rounded-lg bg-red-400">Title</div>
+                <div class="px-5 py-3 rounded-lg bg-blue-400">Summary</div>
+                <div class="px-5 py-3 rounded-lg bg-yellow-400 text-center whitespace-nowrap">
+                  Last Edited
+                </div>
+                <div class="grid grid-cols-2 gap-5">
+                  <button class="bg-white shadow-md px-10 py-2 rounded-lg hover:text-white hover:bg-[#8E5DF5] text-black">
+                    Edit
+                  </button>
+                  <button class="bg-[#8E5DF5] shadow-md px-[1.7rem] py-2 rounded-lg hover:text-black hover:bg-white text-white">
+                    Launch
+                  </button>
+                </div>
+                {draftTableData.body.map((item, index) => (
+                  <>
+                    <div key={index} class="px-5 py-3 rounded-lg bg-red-400">
+                      {item.Title}
+                    </div>
+                    <div class="px-5 py-3 rounded-lg bg-blue-400">
+                      {item.Summary}
+                    </div>
+                    <div class="px-5 py-3 rounded-lg bg-yellow-400 text-center whitespace-nowrap">
+                      {item.LastEdited}
+                    </div>
+                    <div class="grid grid-cols-2 gap-5">
+                      <button class="bg-white shadow-md px-10 py-2 rounded-lg hover:text-white hover:bg-[#8E5DF5] text-black">
+                        Edit
+                      </button>
+                      <button class="bg-[#8E5DF5] shadow-md px-[1.7rem] py-2 rounded-lg hover:text-black hover:bg-white text-white">
+                        Launch
+                      </button>
+                    </div>
+                  </>
+                ))}
+              </div>
             </div>
           </section>
         </div>
