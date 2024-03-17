@@ -8,10 +8,8 @@ const ResearchPage = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
   };
   const handleClose = () => {
-    setOpen(false);
   };
   useEffect(() => {
     const closeSidebar = (event) => {
@@ -19,7 +17,6 @@ const ResearchPage = () => {
         setOpen(false);
       }
     };
-
     document.body.addEventListener("click", closeSidebar);
 
     return () => {
@@ -85,12 +82,12 @@ const ResearchPage = () => {
             <div className="w-full px-2 531:px-10">
               {ResearchPageData.map((research, index) => (
                 <ResearchCard
-                  key={index}
+                key={index}
                   status={research.status}
                   statusColor={
-                    research?.status == "completed"
+                    research.status == "completed"
                       ? "green"
-                      : research?.status == "incomplete"
+                      : research.status == "incomplete"
                       ? "red"
                       : "purple"
                   }
