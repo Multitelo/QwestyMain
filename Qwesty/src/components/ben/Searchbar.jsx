@@ -16,7 +16,7 @@ const Searchbar = ({
         type="text"
         placeholder={placeholder}
         onClick={handleSearch}
-        className="w-full px-3 py-2 md:py-3 placeholder:text-md md:placeholder:text-xl bg-transparent focus:outline-none"
+        className="w-full px-3 py-2 md:py-3 placeholder:text-black placeholder:font-bold placeholder:text-md md:placeholder:text-xl bg-transparent focus:outline-none"
       />
     </div>
   );

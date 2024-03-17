@@ -4,20 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext'; // Import the ThemeProvider
 
 import './index.css';
-import Login from './components/LogIn.jsx';
-import Reset from './components/Reset.jsx';
-import Header from './components/Header.jsx';
-// import Referral from './components/signedUp/referral.jsx';
-// import Index from './components/signedUp/Index.jsx';
-import SignUpPage from './components/SignUpPage.jsx';
-import HomePage from './components/signedUp/researchers/HomePage.jsx';
-import HomePageComponent from "./components/ben/HomePageComponent.jsx";
-import ResearchPage from "./components/ben/ResearchPage.jsx";
-import { useEffect } from 'react';
-// import Draft from './components/signedUp/researchers/ben/Draft.jsx';
 
-// participants imports
- import { Settings, Rewards, Myprofile } from './routes/Index.jsx';
+import { Login, Signup, Reset, Header, Settings, Rewards, Myprofile, HomePage, Research, SettingsRes, Draft } from './routes/Index.jsx';
+
+import { useEffect } from 'react';
 
 function App() {
   const [usertype, setUsertype] = useState('');
@@ -62,17 +52,18 @@ function App() {
 
             {/* Route for Researcher's page */}
             <Route path='/researcher/home' element={<HomePage />} />
-            <Route path='/researcher/settings' element={<Settings />} />
+            <Route path='/researcher/settings' element={<SettingsRes />} />
             <Route path='/researcher/research' element={<Research />} />
+            <Route path='/researcher/draft' element={<Draft />} />
 
             {/* Route for Participant's page */} 
             <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
-            <Route path="/SignUp" element={<SignUpPage />} />
-            <Route path='/researcher' element={<HomePage />} />
-            <Route path='/homepage' element={<HomePageComponent />} />
-            <Route path='/researchpage' element={<ResearchPage />} />
+           
+            
+            
+            
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
@@ -81,4 +72,3 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />); // Render the App component
-

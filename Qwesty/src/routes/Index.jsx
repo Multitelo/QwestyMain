@@ -8,6 +8,7 @@ export { default as Myprofile } from "../pages/participant/Myprofile";
 export { default as HomePage } from "../pages/researcher/HomePage";
 export { default as Research } from "../pages/researcher/Research";
 export {default as SettingsRes} from '../pages/researcher/SettingsRes';
+export {default as Draft } from '../pages/researcher/Draft';
 
 
 
