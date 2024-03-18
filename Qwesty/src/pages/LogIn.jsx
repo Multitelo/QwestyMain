@@ -126,6 +126,7 @@ function LogIn() {
      };
 
     return (
+        <div className='auth-container'>
         <div className="signUp-container">
             <div className="signUp-left">
                 <div id="logo-container">
@@ -228,19 +229,20 @@ function LogIn() {
                 </main>
             </div>
             <div className="signUp-right"></div>
-            <footer>
-                {content === 'email'?(
-                    <h2>1/2</h2>
-                ): (
-                    <img
-                    onClick={handleBack}
-                    src={backBtn}
-                    alt="an icon that takes you to the previous page"
-                />
-                )}
-               
-            </footer>
+           
         </div>
+         <footer>
+         {content === 'email'?(
+             <h2>1/2</h2>
+         ): (
+             <img
+             onClick={handleBack}
+             src={backBtn}
+             alt="an icon that takes you to the previous page"
+         />
+         )}
+        
+     </footer></div>
     );
 }
 

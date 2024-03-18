@@ -19,6 +19,7 @@ const ResearchCard = ({
       <div className="flex justify-between relative">
         <span
           className={`inline-flex items-center justify-center gap-1 rounded-full bg-${`${statusColor}`}-200 px-2.5 py-0.5`}
+          style={{backgroundColor:statusColor}}
         >
           <Circle color={statusColor} size={16} fill={statusColor} />
           <p

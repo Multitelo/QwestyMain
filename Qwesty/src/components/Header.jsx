@@ -7,7 +7,6 @@ import x from '../assets/images/x.svg';
 import { Routes, Route, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import Main from './Main';
-import About from './About';
 
 function Header() {
 
@@ -86,7 +85,6 @@ function Header() {
    
         <Routes>
             <Route path='*' element={<Home/>}></Route>
-            <Route path="/about" element={<About/>} />
         </Routes>
         </>
   )

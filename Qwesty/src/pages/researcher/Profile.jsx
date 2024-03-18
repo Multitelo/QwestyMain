@@ -6,7 +6,7 @@ import LineChart from "../../components/ben/LineChart";
 import ComingSoon from "../../components/ben/ComingSoon";
 import Footer from "../../components/Footer";
 
-function HomePage() {
+function Profile() {
   const {resTheme} = useTheme();
   return (
 
@@ -47,4 +47,4 @@ function HomePage() {
       </div>
   )
 }
-export default  HomePage
+export default  Profile

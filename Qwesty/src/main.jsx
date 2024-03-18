@@ -5,7 +5,7 @@ import { ThemeProvider } from './context/ThemeContext'; // Import the ThemeProvi
 
 import './index.css';
 
-import { Login, Signup, Reset, Header, Settings, Rewards, Myprofile, HomePage, Research, SettingsRes, Draft } from './routes/Index.jsx';
+import { Login, Signup, Reset, Header, Settings, Rewards, Myprofile, Profile, Research, SettingsRes, Draft, Home } from './routes/Index.jsx';
 
 import { useEffect } from 'react';
 
@@ -51,7 +51,8 @@ function App() {
             <Route path="/SignUp" element={<Signup />} />
 
             {/* Route for Researcher's page */}
-            <Route path='/researcher/home' element={<HomePage />} />
+            <Route path='/researcher/home' element={<Home />} />
+            <Route path='/researcher/profile' element={<Profile/>} />
             <Route path='/researcher/settings' element={<SettingsRes />} />
             <Route path='/researcher/research' element={<Research />} />
             <Route path='/researcher/draft' element={<Draft />} />

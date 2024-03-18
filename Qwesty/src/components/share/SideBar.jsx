@@ -25,10 +25,11 @@ function SideBar() {
      
         const menuItem = [
           {
-              path: "/researcher/home",
+              path: "/researcher/home" ,
               name: "Home",
-              icon: resTheme === "dark" || location.pathname === "/researcher/home" ? gridW : gridB,
+              icon: resTheme === "dark" || location.pathname === "/researcher/home"||"/researcher/profile" ? gridW : gridB,
           },
+       
           {
               path: "/researcher/research",
               name: "Research",

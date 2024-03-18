@@ -5,10 +5,13 @@ import Button from "../../components/ben/Button";
 import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
+import { useTheme } from "../../context/ThemeContext";
 
 const Draft = () => {
+  const {resTheme} = useTheme();
+
   return (
-    <div className={`researcher-content`}>
+    <div className={`researcher-content ${resTheme}`}>
       <div className="researcher-menu">
           <SideBar/>
         </div>

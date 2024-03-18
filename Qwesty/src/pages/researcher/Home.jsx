@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
-import ResearchCard from "./ResearchCard";
-import { ResearchPageData } from "../../../data/data";
-import Sidebar from "./Sidebar";
+import ResearchCard from "../../components/ben/ResearchCard";
+import { ResearchPageData } from "../../data/data";
+import SideBar from "../../components/share/SideBar";
+import Top from "../../components/share/Top";
+import { useTheme } from "../../context/ThemeContext";
 
-const ResearchPage = () => {
+const Home = () => {
+  const {resTheme} = useTheme()
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -25,13 +28,19 @@ const ResearchPage = () => {
   }, [open]);
 
   return (
-    <div className="bg-white w-full h-screen">
-      <section className="flex w-full h-[100h]">
-        {/* sample sidebar */}
-        <Sidebar />
-        {/* content */}
-        <div className="w-full h-[100%] flex justify-center bg-gray-300 p-2 md:p-10">
-          <section className="bg-white w-full h-[100vh]  1097:w-[80%] rounded-xl">
+
+    <div className={`researcher-content ${resTheme}`}>
+        <div className="researcher-menu">
+          <SideBar/>
+        </div>
+
+        <div className="home-main">
+        <div className="top-section">
+          <Top/>
+        </div>
+        <div className="home-main-section">
+          {/* content */}
+          <section className="bg-white w-full   1097:w-[80%] rounded-xl">
             {/* heading */}
             <div className="heading 531:flex 531:justify-between 531:items-center py-5 px-2 531:px-10">
               <h1 className="text-3xl font-bold hidden 531:grid">Researcher</h1>
@@ -102,10 +111,13 @@ const ResearchPage = () => {
               ))}
             </div>
           </section>
+          
         </div>
-      </section>
-    </div>
-  );
+        </div>
+
+        
+      </div>
+  )
 };
 
-export default ResearchPage;
+export default Home;
