@@ -6,7 +6,8 @@ import { useTheme } from "../../context/ThemeContext";
 
 const ResearchCard = ({
   status,
-  statusColor,
+  statusColorBg,
+  statusColorText,
   title,
   researchType,
   numberReached,
@@ -22,12 +23,13 @@ const { theme, resTheme } = useTheme()
       {/* status and option */}
       <div className="flex justify-between relative">
         <span
-          className={`inline-flex items-center justify-center gap-1 rounded-full bg-${`${statusColor}`}-200 px-2.5 py-0.5`}
-          style={{backgroundColor:statusColor}}
+          className={`inline-flex items-center justify-center gap-1 rounded-full bg-$ px-2.5 py-0.5`}
+          style={{backgroundColor:statusColorBg}}
         >
-          <Circle color={statusColor} size={16} fill={statusColor} />
+          <Circle color={statusColorText} size={16} fill={statusColorText} />
           <p
-            className={`whitespace-nowrap text-sm text-${`${statusColor}`}-800 font-semibold`}
+            className={`whitespace-nowrap text-sm font-semibold`}
+            style={{ color: switchTheme(statusColorText, statusColorText, resTheme) }}
           >
             {status}
           </p>

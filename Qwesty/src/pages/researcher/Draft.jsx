@@ -8,6 +8,8 @@ import Footer from "../../components/Footer";
 import { useTheme } from "../../context/ThemeContext";
 
 const Draft = () => {
+  const { resTheme } = useTheme();
+
   return (
     <div className={`researcher-content ${resTheme}`}>
       <div className="researcher-menu">
