@@ -32,7 +32,7 @@ function sendOTPMail($email, $userId, $usertype, $conn1, $conn2) {
         $mail->SMTPAuth = true;  // Enable SMTP authentication
         $mail->Username = 'securemail@qwesty.site';  // SMTP username
         $mail->Password = 'Qwesty#secure1';  // SMTP password
-        $mail->SMTPSecure = 'ssl';  // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'SSl';  // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;  // TCP port to connect to
 
         // Recipients
@@ -47,6 +47,7 @@ function sendOTPMail($email, $userId, $usertype, $conn1, $conn2) {
         $mail->send();
         return true;
     } catch (Exception $e) {
+        error_log('Mailer Error: ' . $mail->ErrorInfo);
         return false;  // Optionally, log this error or handle it further
     }
 }
