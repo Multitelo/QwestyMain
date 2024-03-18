@@ -15,6 +15,7 @@ import {
   Myprofile,
   HomePage,
   Profile,
+  Survey,
   Research,
   SettingsRes,
   Draft,
@@ -69,6 +70,8 @@ function App() {
             <Route path="/researcher/research" element={<Research />} />
             <Route path="/researcher/draft" element={<Draft />} />
             <Route path="/researcher/profile" element={<Profile />} />
+            <Route path="/researcher/survey" element={<Survey />} />
+
 
             {/* Route for Participant's page */}
             <Route path="/signedUp/Settings" element={<Settings />} />
