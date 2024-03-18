@@ -54,3 +54,10 @@ export const draftTableData = {
     },
   ],
 };
+
+
+// Tailwind theme switch function
+export const switchTheme = (lightColor, darkColor, theme) => {
+  return theme === 'light' ? lightColor : darkColor;
+};
+export const darkTheme = "bg-[#201F24]";

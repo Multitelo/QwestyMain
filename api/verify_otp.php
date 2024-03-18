@@ -60,7 +60,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['otp'
             $deleteStmt = $conn->prepare("DELETE FROM user_otp WHERE user_id = ? AND otp = ?");
             $deleteStmt->bind_param("is", $userId, $otp);
             $deleteStmt->execute();
-    
+
+            $activateStmt = $conn->prepare("UPDATE `$tableName` SET is_active = 1 WHERE id = ?");
+            $activateStmt->bind_param("i", $userId);
+            $activateStmt->execute();
+            
+            // This code snippet should follow immediately after the previously shown block
+
+            // Participant case: check and insert into ParticipantRegistry
+            if ($usertype === 'participant') {
+                $checkExistQuery = $conn3->prepare("SELECT participant_id FROM ParticipantRegistry WHERE participant_id = ?");
+                $checkExistQuery->bind_param("i", $userId);
+                $checkExistQuery->execute();
+                $result = $checkExistQuery->get_result();
+                if ($result->num_rows == 0) { // If user does not exist, insert
+                    $insertRegistryQuery = $conn3->prepare("INSERT INTO ParticipantRegistry (participant_id) VALUES (?)");
+                    $insertRegistryQuery->bind_param("i", $userId);
+                    if (!$insertRegistryQuery->execute()) {
+                        error_log("Error inserting participant into ParticipantRegistry: " . $conn3->error);
+                    }
+                }
+            } elseif ($usertype === 'researcher') {
+                // Researcher case: check and insert into ResearcherRegistry
+                $checkExistQuery = $conn3->prepare("SELECT researcher_id FROM ResearcherRegistry WHERE researcher_id = ?");
+                $checkExistQuery->bind_param("i", $userId);
+                $checkExistQuery->execute();
+                $result = $checkExistQuery->get_result();
+                if ($result->num_rows == 0) { // If user does not exist, insert
+                    $insertRegistryQuery = $conn3->prepare("INSERT INTO ResearcherRegistry (researcher_id) VALUES (?)");
+                    $insertRegistryQuery->bind_param("i", $userId);
+                    if (!$insertRegistryQuery->execute()) {
+                        error_log("Error inserting researcher into ResearcherRegistry: " . $conn3->error);
+                    }
+                }
+            }
+
+
+            // Continue with the rest of your script...
+
             // Alternatively, if you prefer marking the OTP as used instead of deleting,
             // you might add an 'is_used' column (TINYINT or BOOLEAN) to your 'user_otp' table and set it to 1 (or TRUE) here
             // $updateStmt = $conn->prepare("UPDATE user_otp SET is_used = 1 WHERE user_id = ? AND otp = ?");
@@ -69,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['otp'
     
             // Proceed to create JWT
             create_jwt($userId, $email); // Now you have the email for JWT creation
-            echo json_encode(["message" => "OTP verified successfully.", "email" => $email]);
+            echo json_encode(["message" => "OTP verified successfully. Account activated.", "email" => $email]);
         } else {
             http_response_code(401); // Unauthorized
             echo json_encode(["error" => "OTP is invalid or expired."]);
