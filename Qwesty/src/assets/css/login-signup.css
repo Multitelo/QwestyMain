@@ -1,4 +1,8 @@
-
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}  
 .signUp-container {
   display: flex;
   background-color: #fff;
@@ -26,10 +30,11 @@
 }
 
 .signUp-right {
-  flex: 1;
+  
   background-image: url('../images/bGImg.png');
   background-size: cover;
   background-repeat: no-repeat;
+  width: 50vw;
 }
 
 .signUp-left .first-content, 
@@ -229,21 +234,18 @@
     display: block;
   }
 
-  .signUp-container footer {
+  .auth-container footer {
     margin-right: auto;
+    margin-top: auto;
     padding: 50px 20px 0px;
     font-family: Outfit;
     font-size: 24px;
     font-weight: 600;
     line-height: 38px;
-    letter-spacing: 0em;
     text-align: left;
     color: #151414;
-    position: relative; /* Change position to fixed */
-    bottom: 0; /* Set bottom to 0 */
-    width: 100%; /* Ensure the footer spans the entire width */
-    background-color: #fff; /* Optional: You can set the background color */
-    z-index: 999; /* Ensure it appears above other content */
+    position: absolute; 
+    bottom: -20px; 
 }
 
   .signUp-container footer img{

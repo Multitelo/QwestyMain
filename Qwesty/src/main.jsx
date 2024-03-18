@@ -5,21 +5,7 @@ import { ThemeProvider } from "./context/ThemeContext"; // Import the ThemeProvi
 
 import "./index.css";
 
-import {
-  Login,
-  Signup,
-  Reset,
-  Header,
-  Settings,
-  Rewards,
-  Myprofile,
-  HomePage,
-  Research,
-  SettingsRes,
-  Draft,
-  Survey,
-  ResearchPage
-} from "./routes/Index.jsx";
+import { Login, Signup, Reset, Header, Settings, Rewards, Myprofile, HomePage, Research, SettingsRes, Draft } from './routes/Index.jsx';
 
 import { useEffect } from "react";
 
@@ -65,14 +51,10 @@ function App() {
             <Route path="/SignUp" element={<Signup />} />
 
             {/* Route for Researcher's page */}
-            <Route path="/researcher/home" element={<HomePage />} />
-            <Route path="/researcher/settings" element={<SettingsRes />} />
-            <Route path="/researcher/research" element={<Research />} />
-            <Route path="/researcher/draft" element={<Draft />} />
-            <Route path="/researcher/survey" element={<Survey />} />
-            <Route path="/researcher/researchpage" element={<ResearchPage />} />
-
-
+            <Route path='/researcher/home' element={<HomePage />} />
+            <Route path='/researcher/settings' element={<SettingsRes />} />
+            <Route path='/researcher/research' element={<Research />} />
+            <Route path='/researcher/draft' element={<Draft />} />
 
             {/* Route for Participant's page */}
             <Route path="/signedUp/Settings" element={<Settings />} />

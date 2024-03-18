@@ -10,6 +10,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import logoBlack from "../../assets/images/logoBlack.png";
 import logowhite from "../../assets/images/Logo.png";
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function Top() {
   const {resTheme, researcherTheme, dropdown, handleResearcherDropdown, setDropdown} = useTheme();
@@ -51,11 +52,13 @@ function Top() {
       <div className='user-content'>
        <RiArrowDropDownLine id="dropArw" />
        <div className='pic'>
+        <Link to='/researcher/profile'>  
           <img src={avatar}
-               alt="avatar"/>
-            
+               alt="avatar"
+               /></Link>
+             
        </div>
-       <p id="big">Spencer</p>
+       <Link to='/researcher/profile'><p id="big">Spencer</p></Link>
         <div className={`menu-icon ${dropdown===true?'active':''}`}
              onClick={handleResearcherDropdown}
              title={`${dropdown===true?'Hide' :'Show'} menu`} >
