@@ -6,9 +6,7 @@ import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';
 import { Routes, Route, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import Indexx from './signedUp/Index';
 import Main from './Main';
-import About from './About';
 
 function Header() {
 
@@ -66,9 +64,9 @@ function Header() {
           {
             barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
           } 
-          <Link to='/signedUp/settings'className='items' id="first-item">about us</Link>
+          <Link to='/researcher/home'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
-          <Link to='/researcher'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+          <Link to='/verify'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
@@ -77,9 +75,9 @@ function Header() {
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            <Link to='/signedUp/settings' className='items' id="first-item">about us</Link>
+            <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/researcher' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/verify' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
             <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>
@@ -87,7 +85,6 @@ function Header() {
    
         <Routes>
             <Route path='*' element={<Home/>}></Route>
-            <Route path="/about" element={<About/>} />
         </Routes>
         </>
   )

@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './ThemeContext'; // Import the ThemeProvider
+import { ThemeProvider } from './context/ThemeContext'; // Import the ThemeProvider
 
 import './index.css';
-import LogIn from './components/LogIn.jsx';
-import Reset from './components/Reset.jsx';
-import Header from './components/Header.jsx';
-import Referral from './components/signedUp/referral.jsx';
-import Index from './components/signedUp/Index.jsx';
-import Settings from './components/signedUp/Settings.jsx';
-import Rewards from './components/signedUp/Rewards.jsx';
-import SignUpPage from './components/SignUpPage.jsx';
-import Myprofile from './components/signedUp/Myprofile.jsx';
-import HomePage from './components/signedUp/researchers/HomePage.jsx';
+
+import { Login, Signup, Reset, Header, Settings, Rewards, Myprofile, Profile, Research, SettingsRes, Draft, Home } from './routes/Index.jsx';
+
 import { useEffect } from 'react';
 
 function App() {
@@ -37,6 +30,7 @@ function App() {
       window.screen.orientation.unlock();
     };
   }, []);
+  
   return (
     <ThemeProvider> 
       <React.StrictMode>
@@ -51,17 +45,26 @@ function App() {
               }
             />
             
-           
-            <Route path="/Login" element={<LogIn />} />
-           
+           {/* Route for authentication */}
+            <Route path="/Login" element={<Login />} />
             <Route path="/Reset" element={<Reset />} />
-            <Route path="/signedUp/referral" element={<Referral />} />
+            <Route path="/SignUp" element={<Signup />} />
+
+            {/* Route for Researcher's page */}
+            <Route path='/researcher/home' element={<Home />} />
+            <Route path='/researcher/profile' element={<Profile/>} />
+            <Route path='/researcher/settings' element={<SettingsRes />} />
+            <Route path='/researcher/research' element={<Research />} />
+            <Route path='/researcher/draft' element={<Draft />} />
+
+            {/* Route for Participant's page */} 
             <Route path="/signedUp/Settings" element={<Settings />} />
-            <Route path="/signedUp" element={<Index />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element= {<Myprofile />}/>
-            <Route path="/SignUp" element={<SignUpPage />} />
-            <Route path='/researcher' element={<HomePage />} />
+           
+            
+            
+            
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
@@ -70,4 +73,3 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />); // Render the App component
-
