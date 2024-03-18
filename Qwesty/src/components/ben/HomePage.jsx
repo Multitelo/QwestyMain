@@ -3,15 +3,20 @@ import LineChart from "./LineChart";
 import ProfileContainer from "./ProfileContainer";
 import ComingSoon from "./ComingSoon";
 import Sidebar from "./Sidebar";
+import { ThemeProvider } from "../../context/ThemeContext";
+import { useContext } from "react";
+
 
 const HomePage = () => {
+  const { theme, resTheme } = useContext(ThemeProvider)
+  
   return (
-    <div className="bg-white w-full h-screen">
+    <div className="w-full h-screen">
       <section className="flex">
         {/* sample sidebar */}
         <Sidebar />
         {/* content */}
-        <div className="w-full h-[100%] flex flex-col bg-gray-300 p-2 md:p-10">
+        <div className="w-full h-[100%] flex flex-col  p-2 md:p-10">
           <div className="grid  gap-4 grid-cols-1 md:grid-cols-2 1207:grid-cols-3 lg:gap-8">
             {/* profile  */}
             <div className="profileContainer">

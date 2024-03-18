@@ -42,8 +42,9 @@ function HomePage() {
           
         </div>
         </div>
-
-        
+        <div className="research-footer">
+        <Footer />
+      </div>  
       </div>
   )
 }

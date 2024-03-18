@@ -9,6 +9,10 @@ export { default as HomePage } from "../pages/researcher/HomePage";
 export { default as Research } from "../pages/researcher/Research";
 export {default as SettingsRes} from '../pages/researcher/SettingsRes';
 export {default as Draft } from '../pages/researcher/Draft';
+export {default as Survey } from '../pages/researcher/Survey';
+export {default as ResearchPage } from '../components/ben/ResearchPage';
+
+
 
 
 

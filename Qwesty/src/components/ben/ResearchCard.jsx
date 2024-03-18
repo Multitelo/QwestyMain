@@ -1,5 +1,8 @@
 import { Circle, EllipsisVertical } from "lucide-react";
 import React from "react";
+import { darkTheme, switchTheme } from "../../data/data";
+import { useTheme } from "../../context/ThemeContext";
+
 
 const ResearchCard = ({
   status,
@@ -9,12 +12,13 @@ const ResearchCard = ({
   numberReached,
   amountSpent,
   open,
-  index,
   handleOpen,
   handleClose,
 }) => {
+const { theme, resTheme } = useTheme()
+
   return (
-    <div className="rounded-2xl w-full p-5 border-[1px] border-gray-300 mb-5 bg-white">
+    <div className={`rounded-2xl w-full p-5 border-[1px]  mb-5 ${switchTheme('bg-white border-gray-400', darkTheme + " text-white border-gray-700", resTheme)}`}>
       {/* status and option */}
       <div className="flex justify-between relative">
         <span
