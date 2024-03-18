@@ -256,24 +256,37 @@ const Survey = () => {
           </section>
 
           <section className="w-[70%] pl-5">
-            <div >
-              <span id="ProgressLabel" className="sr-only">
-                Loading
-              </span>
-
-              <span
-                role="progressbar"
-                aria-labelledby="ProgressLabel"
-                aria-valuenow="50"
-                className="block rounded-full bg-gray-200"
-              >
-                <span
-                  className="block h-3 rounded-full bg-[#37D8AD] text-center text-[10px]/4"
-                  style={{width: "50%"}}
-                >
-                  <span className="font-bold text-white"> 50% </span>
+          <p className={`font-semibold py-3 ${switchTheme('text-black', 'text-white', resTheme)}`}>Total Questions</p>
+            <div className="flex justify-between items-center w-full">
+              <div className="w-[70%] shadow-sm">
+                <span id="ProgressLabel" className="sr-only">
+                  Loading
                 </span>
-              </span>
+
+                <span
+                  role="progressbar"
+                  aria-labelledby="ProgressLabel"
+                  aria-valuenow="50"
+                  className="block rounded-full bg-white"
+                >
+                  <span
+                    className="block h-3 rounded-full bg-[#37D8AD] text-center text-[10px]/4"
+                    style={{ width: "50%" }}
+                  >
+                    <span className="font-bold text-white"> 50% </span>
+                  </span>
+                </span>
+              </div>
+              <Btn
+                padding={`0.7rem 20px`}
+                theme={switchTheme(
+                  "bg-[#8E5DF5] text-white",
+                  "bg-[#8E5DF5] text-white",
+                  resTheme
+                )}
+              >
+              Preview
+              </Btn>
             </div>
           </section>
         </div>
