@@ -9,10 +9,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 const ResearchPage = () => {
   const { theme, resTheme } = useTheme();
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {};
-  const handleClose = () => {};
   useEffect(() => {
     const closeSidebar = (event) => {
       if (open && !event.target.closest(".options")) {
@@ -44,7 +41,7 @@ const ResearchPage = () => {
                 "bg-white",
                 darkTheme + " text-white",
                 resTheme
-              )} w-full h-[100vh]  1097:w-[80%] rounded-xl`}
+              )} w-full h-[100h]  1097:w-[80%] rounded-xl`}
             >
               {/* heading */}
               <div className="heading 531:flex 531:justify-between 531:items-center py-5 px-2 531:px-10">

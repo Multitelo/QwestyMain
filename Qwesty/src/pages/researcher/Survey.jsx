@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { useTheme } from "../../context/ThemeContext";
 import { darkTheme, switchTheme } from "../../data/data";
-import Button from "../../components/ben/Button";
 import { CirclePlus } from "lucide-react";
+import ProgressBar from "../../components/ben/survey/ProgressBar";
+import QuestionInput from "../../components/ben/survey/QuestionInput";
 
-const Btn = ({ children, onClick, theme, width, padding }) => {
+export const Btn = ({ children, onClick, theme, width, padding }) => {
   return (
     <div>
       <button
@@ -23,6 +24,7 @@ const Btn = ({ children, onClick, theme, width, padding }) => {
 
 const Survey = () => {
   const { resTheme } = useTheme();
+  const [questions, setQuestions] = useState([1]);
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -35,8 +37,9 @@ const Survey = () => {
         </div>
         {/* content */}
         <div className="home-main-section">
+          {/* heading */}
           <section
-            className={`w-full  rounded-2xl h-[100vh] my-10 p-3 ${switchTheme(
+            className={`w-full  rounded-2xl h-[100h] my-10 p-3 ${switchTheme(
               "bg-gray-100",
               darkTheme,
               resTheme
@@ -79,56 +82,49 @@ const Survey = () => {
                 </h3>
 
                 {/* button fex */}
-                <section className="my-5">
-                  <div className="flex w-1/4 gap-5">
-                    <button
-                      className={`${switchTheme(
-                        "bg-gray-200",
-                        "bg-[#43433F]",
-                        resTheme
-                      )} w-1/2 font-bold shadow-md px-5 rounded-lg py-1`}
-                    >
-                      <span className="text-sm whitespace-nowrap">
-                        Multiple choice
-                      </span>
-                    </button>
-                    <button
-                      className={`${switchTheme(
-                        "bg-gray-200",
-                        "bg-[#43433F]",
-                        resTheme
-                      )} w-1/2 font-bold shadow-md px-5 rounded-lg py-1`}
-                    >
-                      <span className="text-sm whitespace-nowrap">
-                        Short text
-                      </span>
-                    </button>
-                  </div>
-                  <div className="flex w-1/4 gap-5 my-5">
-                    <Btn
-                      width={`100%`}
-                      padding={`0.75rem 55px`}
-                      theme={switchTheme(
-                        "bg-[#8E5DF5] text-white",
-                        "bg-[#8E5DF5] text-white",
-                        resTheme
-                      )}
-                    >
-                      Next
-                    </Btn>
-                    <Btn
-                      width={`100%`}
-                      padding={`0.75rem 13px`}
-                      theme={switchTheme(
-                        "bg-white text-black",
-                        "bg-[#43433F] text-white",
-                        resTheme
-                      )}
-                    >
-                      Delete Question
-                    </Btn>
-                  </div>
+                <section className="my-5 grid grid-cols-1 280:grid-cols-2 gap-10 md:gap-4 w-full 627:w-1/2 1157:w-1/3 1320:w-1/4">
+                  <button
+                    className={`${switchTheme(
+                      "bg-gray-200",
+                      "bg-[#43433F]",
+                      resTheme
+                    )} w-full text-sm whitespace-nowrap font-bold shadow-md px-5 rounded-lg py-1`}
+                  >
+                    Multiple choice
+                  </button>
+                  <button
+                    className={`${switchTheme(
+                      "bg-gray-200",
+                      "bg-[#43433F]",
+                      resTheme
+                    )} w-full text-sm whitespace-nowrap font-bold shadow-md px-5 rounded-lg py-1`}
+                  >
+                    Short text
+                  </button>
+                  <Btn
+                    width={`100%`}
+                    padding={`0.75rem 55px`}
+                    theme={switchTheme(
+                      "bg-[#8E5DF5] text-white",
+                      "bg-[#8E5DF5] text-white",
+                      resTheme
+                    )}
+                  >
+                    Next
+                  </Btn>
+                  <Btn
+                    width={`100%`}
+                    padding={`0.75rem 13px`}
+                    theme={switchTheme(
+                      "bg-white text-black",
+                      "bg-[#43433F] text-white",
+                      resTheme
+                    )}
+                  >
+                    Delete Question
+                  </Btn>
                 </section>
+
                 {/* create question */}
                 <section
                   className={`${switchTheme(
@@ -137,146 +133,47 @@ const Survey = () => {
                     resTheme
                   )} mt-[100px]`}
                 >
-                  <h1 className="font-bold text-xl">Page 1 of 3</h1>
+                  <h1 className="font-bold text-xl mb-5">Page 1 of 3</h1>
                   {/* input */}
-                  <div className="flex items-center gap-10 mt-5">
-                    <div className="flex w-[70%] px-2 focus-within:border-[#8E5DF5] rounded-lg border-gray-400 bg-transparent border-2">
-                      <input
-                        type="text"
-                        className="focus:outline-none bg-transparent p-5 w-[70%] placeholder:font-bold"
-                        placeholder="Add a question"
-                      />
-                      {/* Badge container */}
-                      <div className="flex gap-2 items-center pr-3">
-                        {/* Upload image badge */}
-                        <label
-                          htmlFor="file-upload"
-                          className={`${switchTheme(
-                            "bg-white",
-                            darkTheme,
-                            resTheme
-                          )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border border-gray-400 px-5 py-1 cursor-pointer`}
-                        >
-                          upload image
-                          <input
-                            id="file-upload"
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                          />
-                        </label>
-                        {/* Multiple choice badge */}
-                        <label className="rounded-2xl shadow-md h-fit whitespace-nowrap font-semibold text-white bg-[#636387]  border-gray-[#636387] px-3 py-1 cursor-pointer">
-                          multiple choice
-                        </label>
-                      </div>
+                  <section className="flex flex-col gap-10">
+                    <div className="flex flex-col md:flex-row h-fit items-center gap-10 w-full">
+                      <QuestionInput resTheme={resTheme} />
+                      <button
+                        onClick={() =>
+                          setQuestions([...questions, questions.length + 1])
+                        }
+                        className={`flex w-full h-fit sm:w-fit gap-3 py-3 px-8 rounded-md font-bold justify-center items-center whitespace-nowrap ${switchTheme(
+                          "bg-[#8E5DF5] text-white",
+                          "bg-[#8E5DF5] text-white",
+                          resTheme
+                        )}`}
+                      >
+                        <CirclePlus />
+                        <span>Next</span>
+                      </button>
                     </div>
-                    <Btn
-                      padding={`0.7rem 20px`}
-                      theme={switchTheme(
-                        "bg-[#8E5DF5] text-white",
-                        "bg-[#8E5DF5] text-white",
-                        resTheme
-                      )}
-                    >
-                      <span className="flex gap-3 items-center">
-                        <CirclePlus /> Next
-                      </span>
-                    </Btn>
-                  </div>
-                  <div className="flex items-center gap-10 mt-5">
-                    <div className="flex w-[70%] px-2 focus-within:border-[#8E5DF5] rounded-lg border-gray-400 bg-transparent border-2">
-                      <input
-                        type="text"
-                        className="focus:outline-none bg-transparent p-5 w-[70%] placeholder:font-bold"
-                        placeholder="Add a question"
-                      />
-                      {/* Badge container */}
-                      <div className="flex gap-2 items-center pr-3">
-                        {/* Upload image badge */}
-                        <label
-                          htmlFor="file-upload"
-                          className={`${switchTheme(
-                            "bg-white",
-                            darkTheme,
-                            resTheme
-                          )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border border-gray-400 px-5 py-1 cursor-pointer`}
-                        >
-                          upload image
-                          <input
-                            id="file-upload"
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                          />
-                        </label>
-                        {/* Multiple choice badge */}
-                        <label className="rounded-2xl shadow-md h-fit whitespace-nowrap font-semibold text-white bg-[#636387]  border-gray-[#636387] px-3 py-1 cursor-pointer">
-                          multiple choice
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-10 mt-5">
-                    <div className="flex w-[70%] px-2 focus-within:border-[#8E5DF5] rounded-lg border-gray-400 bg-transparent border-2">
-                      <input
-                        type="text"
-                        className="focus:outline-none bg-transparent p-5 w-[70%] placeholder:font-bold"
-                        placeholder="Add a question"
-                      />
-                      {/* Badge container */}
-                      <div className="flex gap-2 items-center pr-3">
-                        {/* Upload image badge */}
-                        <label
-                          htmlFor="file-upload"
-                          className={`${switchTheme(
-                            "bg-white",
-                            darkTheme,
-                            resTheme
-                          )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border border-gray-400 px-5 py-1 cursor-pointer`}
-                        >
-                          upload image
-                          <input
-                            id="file-upload"
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                          />
-                        </label>
-                        {/* Multiple choice badge */}
-                        <label className="rounded-2xl shadow-md h-fit whitespace-nowrap font-semibold text-white bg-[#636387]  border-gray-[#636387] px-3 py-1 cursor-pointer">
-                          multiple choice
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                    {/* additonal buttons down here */}
+                    {questions.map((questionIndex) => (
+                      <QuestionInput key={questionIndex} resTheme={resTheme} />
+                    ))}
+                  </section>
                 </section>
               </div>
             </div>
           </section>
 
-          <section className="w-[70%] pl-5">
-          <p className={`font-semibold py-3 ${switchTheme('text-black', 'text-white', resTheme)}`}>Total Questions</p>
-            <div className="flex justify-between items-center w-full">
-              <div className="w-[70%] shadow-sm">
-                <span id="ProgressLabel" className="sr-only">
-                  Loading
-                </span>
-
-                <span
-                  role="progressbar"
-                  aria-labelledby="ProgressLabel"
-                  aria-valuenow="50"
-                  className="block rounded-full bg-white"
-                >
-                  <span
-                    className="block h-3 rounded-full bg-[#37D8AD] text-center text-[10px]/4"
-                    style={{ width: "50%" }}
-                  >
-                    <span className="font-bold text-white"> 50% </span>
-                  </span>
-                </span>
-              </div>
+          <section className="w-full 1320:w-[70%] px-5 md:px-0">
+            <p
+              className={`font-semibold py-3 ${switchTheme(
+                "text-black",
+                "text-white",
+                resTheme
+              )}`}
+            >
+              Total Questions
+            </p>
+            <div className="flex flex-col md:flex-row gap-10 md:gap-40 justify-center md:justify-between items-center w-full mb-20">
+              <ProgressBar progress={85} label={85} />
               <Btn
                 padding={`0.7rem 20px`}
                 theme={switchTheme(
@@ -285,7 +182,7 @@ const Survey = () => {
                   resTheme
                 )}
               >
-              Preview
+                Preview survey
               </Btn>
             </div>
           </section>
