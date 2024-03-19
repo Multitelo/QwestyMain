@@ -149,7 +149,7 @@ const Survey = () => {
                         )}`}
                       >
                         <CirclePlus />
-                        <span>Next</span>
+                        <span>Add</span>
                       </button>
                     </div>
                     {/* additonal buttons down here */}
