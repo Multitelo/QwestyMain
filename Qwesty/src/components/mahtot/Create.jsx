@@ -2,7 +2,7 @@ import { useTheme } from "../../context/ThemeContext"
 import { useState } from "react";
 import Select from "react-select";
 import PreviewSurvey from "./PreviewSurvey";
-
+import { fieldOptions} from '../../data/data'
 function Create() {
     const {resTheme} = useTheme();
     const [researchDetails, setResearchDetails ] = useState({
@@ -11,8 +11,9 @@ function Create() {
                                                                 field:''
                         })
     const defaultOption = {value:'', label:'Select a field'}
-    const fieldOptions = [{value:'sth', label:'sth'},
-                          {value:'sth2', label:'sth2'}]
+
+   
+
     const [btn, setBtn] = useState(false)
 
     const handleResearchDetails = (e) =>{
@@ -26,8 +27,9 @@ function Create() {
             color: state.isFocused ? 'black' : 'red', 
             borderRadius: '10px',
             padding: '10px',
-           
-        }),
+            zIndex:'1',
+            
+                }),
         singleValue: (provided, state) => ({
             ...provided,
             color: '#9A9696', 
@@ -67,13 +69,18 @@ function Create() {
                     <label>
                         What is your research field?
                         <Select
-                                value={researchDetails.field}
-                                options = {fieldOptions}
-                                onChange={(selectedOption)=>setResearchDetails({...researchDetails, field:selectedOption})}
-                                name="field"
-                                className="select-field"
-                                styles={customStyles}
+                            value={researchDetails.field}
+                            options={fieldOptions}
+                            onChange={(selectedOption) => setResearchDetails({ ...researchDetails, field: selectedOption })}
+                            name="field"
+                            id="select-field"
+                            styles={customStyles}
+                            classNamePrefix="react-select"
+                            menuPlacement="auto"
+                            maxMenuHeight={300}
+                            className="custom-select" // Add a custom class name
                         />
+
                     </label>
                     <p>or input field</p>
                 </div>

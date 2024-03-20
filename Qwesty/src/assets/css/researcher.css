@@ -535,7 +535,7 @@
     color:#F4F4F4;
 }
 .create-survey-container input, 
-.select-field,
+#select-field,
 .create-survey-container textarea{
     font-size: 20px;
     color:#9A9696;
@@ -555,8 +555,9 @@
     outline: none;
     border-color: #007bff; 
 }
-.create-survey-container .select-field{
+.create-survey-container #select-field{
     border: none;
+    padding: 0;
 }
 .create-survey-container p{
     font-size: 16px;
@@ -669,6 +670,11 @@ font-weight: bold;
     color:#fff;
     background-color: #8E5DF5;
 }
+/* Target the dropdown menu class */
+.react-select__menu.react-select__menu--auto.custom-select {
+    margin-top: -10px; /* Adjust this value as needed */
+}
+
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
@@ -867,6 +873,7 @@ font-weight: bold;
     width:90vw;
     padding: 40px;
     font-size: 20px;
+    height: auto;
 }
 .create-survey-container form{
     width:75vw;
@@ -879,10 +886,12 @@ font-weight: bold;
     font-size: 24px;
 }
 .create-survey-container input, 
-.select-field,
+#select-field,
 .create-survey-container textarea{
     font-size: 16px;
 }
+
+
 
 /* styles for preview survey page */
 .preview-survey-container h1{
@@ -1080,7 +1089,7 @@ font-weight: bold;
     font-size: 18px;
 }
 .create-survey-container input, 
-.select-field,
+#select-field,
 .create-survey-container textarea{
     font-size: 15px;
 }

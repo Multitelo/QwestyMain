@@ -230,8 +230,20 @@ function SignUpPage() {
                 </main>
             </div>
 
-            <div className="signUp-right"></div>
-            <footer>
+            <div className="signUp-right">
+                <footer>
+                    {content === 'first' ? (
+                        <h2>1/3</h2>
+                    ) : (
+                        <img
+                            src={backBtn}
+                            alt="an icon that takes you to the previous page"
+                            onClick={handleContent}
+                        />
+                    )}
+                </footer>
+            </div>
+            <footer id="small-footer">
                 {content === 'first' ? (
                     <h2>1/3</h2>
                 ) : (
