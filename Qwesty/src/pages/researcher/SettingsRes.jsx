@@ -11,7 +11,7 @@ function SettingsRes() {
   const [isSupportClicked, setIsSupportClicked] = useState(false)
 
   const handleClick = (clicked) =>{
-    // preventDefault()
+    
     switch(clicked){
       case "Account": 
             setIsAccountClicked(true);
@@ -107,9 +107,79 @@ const Account = ({theme})=>{
 
 
 const Support = ({theme})=>{
+  const [userDetails, setUserDetails] = useState({
+                                                  firstName:'',
+                                                  lastName:'',
+                                                  email:'',
+                                                  phoneNum:'',
+                                                  msg:'',
+                                                  agreePrivacyPolicy:false
+  })
+
+  const handleChanges = (e)=>{
+    setUserDetails(prevState=>({...prevState,[e.target.name]:e.target.value}))
+  }
+
   return(
-    <div className="research-support">
-      Support page
+    <div className={`research-support ${theme}`}>
+      <h1>Contact us</h1>
+      <p>Our friendly team would love to hear from you.</p>
+      <form>
+        <div id="name-container">
+          <label>First name
+          <input type="text"
+                 placeholder="First name"
+                 value={userDetails.firstName}
+                 onChange={handleChanges}
+                 name="firstName"
+                 required
+                 />
+          </label>
+
+          <label>Last name
+            <input type="text"
+                  placeholder="Last name"
+                  value={userDetails.lastName}
+                  onChange={handleChanges}
+                  required
+                  name="lastName"/></label>
+        </div>
+        <label>
+          Email 
+          <input type="email"
+                 placeholder="you@company.com"
+                 value={userDetails.email}
+                 onChange={handleChanges}
+                 required
+                 name="email"/>
+        
+        </label>
+
+        <label>Phone numer
+          <input type="tel"
+                 name="phoneNum"
+                 required
+                 value={userDetails.phoneNum}
+                 onChange={handleChanges}/>
+        </label>
+
+        <label>Message
+        <textarea name="msg"
+                  value={userDetails.msg}
+                  onChange={handleChanges}
+                  required/> </label>
+       <label style={{display:'flex', flexDirection:'row'}}
+              id="term">
+      
+        <input type="checkbox"
+               checked={userDetails.agreePrivacyPolicy===true}
+               onChange={(e)=>setUserDetails(prevState=>({...prevState, agreePrivacyPolicy:!prevState.agreePrivacyPolicy}))}
+               />
+             You agree to our friendly Privacy policy.  
+        </label>
+
+        <button type="submit">Send message</button>
+      </form>
     </div>
   )
 }

@@ -217,6 +217,9 @@
 }
 
 /* Styles for settings page */
+.home-main-section.settings{
+    margin:30px 10px ;
+}
 .home-main-section.settings .avatar-modify{
     z-index: 0;
 }
@@ -546,7 +549,8 @@
     justify-self: flex-start;
     
 }
-.create-survey-container textarea{
+.create-survey-container textarea,
+.research-support textarea{
     resize:vertical; 
     height: 150px;
 }
@@ -675,6 +679,64 @@ font-weight: bold;
     margin-top: -10px; /* Adjust this value as needed */
 }
 
+/* Styles for support page within settings */
+.research-support{
+    font-family: Outfit;
+    
+    font-size: 16px;
+    color: #667085;
+    width: 32vw;
+}
+.research-support form{
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    margin-top: 40px;
+}
+.research-support #name-container{
+    display: flex;
+    gap:20px;
+}
+.research-support.dark h1{
+    color:#f4f4f4;
+
+}
+.research-support h1{
+    color: #101828;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.research-support.dark h1{
+    color:#f4f4f4;
+}
+.research-support label{
+   
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.research-support input, .research-support textarea{
+    border:1px solid #D0D5DD;
+    background-color: inherit;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.research-support.dark input, .research-support.dark textarea{
+    background-color: #363334;
+}
+
+.research-support button{
+    background-color: #8E5DF5;
+    border-radius: 10px;
+    color:#fff;
+    padding: 10px;
+}
+
+.research-support.dark{
+    color:#F4F4F4;
+}
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
@@ -910,6 +972,14 @@ font-weight: bold;
 .preview-survey-container .end-btns button{
     padding: 10px 20px;
 }
+/* Styles for support page within the settings page */
+.research-support{
+    width: 60vw;
+    margin: 0 auto;
+}
+.research-support form{
+    width: 50vw;
+}
 }
 
 /* md */
@@ -1006,7 +1076,25 @@ font-weight: bold;
         gap: 0;
         width: 30vw;
     }
-
+/* Styles for support page within the settings page */
+.research-support{
+    width: 80vw;
+    /* margin: 0 auto; */
+}
+.research-support #name-container{
+   flex-direction: column;
+   gap:50px;
+}
+.research-support form{
+    width:70vw;
+    gap:50px;
+}
+.research-support h1{
+    font-size: 36px;
+}
+.research-support #term{
+    font-size: 14px;
+}
 }
 
 /* sm */
