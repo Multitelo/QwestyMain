@@ -218,7 +218,7 @@
 
 /* Styles for settings page */
 .home-main-section.settings{
-    margin:30px 10px ;
+    margin:30px 0px ;
 }
 .home-main-section.settings .avatar-modify{
     z-index: 0;
@@ -551,8 +551,9 @@
 }
 .create-survey-container textarea,
 .research-support textarea{
-    resize:vertical; 
+   
     height: 150px;
+    resize:none; 
 }
 .create-survey-container input:focus,
 .create-survey-container textarea:focus {
@@ -1079,6 +1080,7 @@ font-weight: bold;
 /* Styles for support page within the settings page */
 .research-support{
     width: 80vw;
+    padding: 10px;
     /* margin: 0 auto; */
 }
 .research-support #name-container{
