@@ -1,8 +1,8 @@
 import { useTheme } from "../../context/ThemeContext"
 import { useState } from "react";
 import Select from "react-select";
-import PreviewSurvey from "./PreviewSurvey";
 import { fieldOptions} from '../../data/data'
+
 function Create() {
     const {resTheme} = useTheme();
     const [researchDetails, setResearchDetails ] = useState({
@@ -38,8 +38,7 @@ function Create() {
     
     console.log(researchDetails)
     return (
-       <>
-       { btn?<PreviewSurvey/>:
+       
         <div className={`create-survey-container ${resTheme}`}>
             <h1>Upload research details</h1>
             <h2>Lets get started with some details about your research</h2>
@@ -85,10 +84,10 @@ function Create() {
                     <p>or input field</p>
                 </div>
                 <button type='submit'
-                        onClick={()=>setBtn(true)}>
+                        >
                             Set survey questions</button>
             </form>
-         </div>}</>
+         </div>
   )
 }
 export default Create

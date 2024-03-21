@@ -11,7 +11,7 @@ export { default as SettingsRes } from '../pages/researcher/SettingsRes';
 export { default as Draft } from '../pages/researcher/Draft';
 export { default as Survey } from '../pages/researcher/Survey';
 export { default as HomePage } from "../pages/researcher/Home"
-
+export {default as PreviewSurvey} from '../pages/researcher/PreviewSurvey'
 
 
 
