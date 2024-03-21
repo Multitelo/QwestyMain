@@ -9,10 +9,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 const ResearchPage = () => {
   const { theme, resTheme } = useTheme();
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {};
-  const handleClose = () => {};
   useEffect(() => {
     const closeSidebar = (event) => {
       if (open && !event.target.closest(".options")) {
