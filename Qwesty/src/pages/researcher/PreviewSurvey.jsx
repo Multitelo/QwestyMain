@@ -5,6 +5,7 @@ import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+
 function PreviewSurvey() {
     const {resTheme} = useTheme();
     const questionTypes = [

@@ -257,7 +257,7 @@
 
 /* Styles for research page */
 .research-box{
-    margin: 10px 10px 50px;
+    margin: 50px 10px 50px;
    
     font-family: Outfit;
     font-size: 32px;
@@ -738,6 +738,7 @@ font-weight: bold;
 .research-support.dark{
     color:#F4F4F4;
 }
+
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
@@ -771,7 +772,7 @@ font-weight: bold;
 @media (max-width:993px){
   
     .research-box{
-        font-size: 26px;
+        font-size: 24px;
     }
     .researcher-content{
         gap:0px;

@@ -7,9 +7,8 @@ import { FaPlus } from "react-icons/fa6";
 import { PiStackSimple } from "react-icons/pi";
 import { GoClock } from "react-icons/go";
 import { FaRegCircleQuestion } from "react-icons/fa6";
-import ScheduledResearch from "../../components/mahtot/ScheduledResearch";
-import NewResearch from "../../components/mahtot/NewResearch";
 import { useState } from "react";
+
 function Research() {
     const {resTheme} = useTheme();
     const [content, setContent] = useState({newResearch:false,
@@ -23,8 +22,7 @@ function Research() {
         backgroundColor: '#FFF1BE',
         color: '#000',
         id:'small',
-        onClick: ()=>{setContent(prevState=>({...prevState, newResearch:true}))}
-
+        path:"/researcher/new-research"
       },
       {
         title: 'Create from draft',
@@ -32,7 +30,7 @@ function Research() {
         backgroundColor: '#8E5DF5',
         color: '#fff',
         id:'small',
-       
+        path:'/researcher/draft'
       },
       
       {
@@ -41,14 +39,16 @@ function Research() {
         backgroundColor: '#D0FFF2',
         color: '#000',
         id:'large-wide',
-        onClick: ()=>{setContent(prevState=>({...prevState, scheduledResearch:true}))}
-      },
+        path:'/researcher/Scheduled-researches'
+       },
+
       {
         title: 'About creating research',
         icon: <FaRegCircleQuestion/>,
         backgroundColor: resTheme==='light'? '#fff':'#201F24',
         color: resTheme==='light'?'#000':'#F4F4F4',
-        id:'large'
+        id:'large',
+        path:'/'
       },
     ]
   const firstBoxItems = boxItem.slice(0, 2);
@@ -69,9 +69,7 @@ function Research() {
 
         <div className="home-main-section">
           {/* content */}
-             {
-              content.scheduledResearch? <ScheduledResearch />:
-              content.newResearch?<NewResearch/>:
+             
               <div className="research-box">
                <div className="first-boxes">
                 {
@@ -84,7 +82,7 @@ function Research() {
                                     bgColor={box.backgroundColor}
                                     color={box.color}
                                     id={box.id}
-                                    onClick={box.onClick}
+                                    path={box.path}
                                     />
                    ) )
                 }
@@ -101,11 +99,11 @@ function Research() {
                                     bgColor={box.backgroundColor}
                                     color={box.color}
                                     id={box.id}
-                                    onClick={box.onClick}/>
+                                    path={box.path}/>
                    ) )
                 }
                 </div>
-              </div>}
+              </div>
         </div>
         
        

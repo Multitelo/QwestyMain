@@ -108,10 +108,8 @@ const Account = ({theme})=>{
 
 const Support = ({theme})=>{
   const [userDetails, setUserDetails] = useState({
-                                                  firstName:'',
-                                                  lastName:'',
+                                                  title:'',
                                                   email:'',
-                                                  phoneNum:'',
                                                   msg:'',
                                                   agreePrivacyPolicy:false
   })
@@ -125,29 +123,18 @@ const Support = ({theme})=>{
       <h1>Contact us</h1>
       <p>Our friendly team would love to hear from you.</p>
       <form>
-        <div id="name-container">
-          <label>First name
-          <input type="text"
-                 placeholder="First name"
-                 value={userDetails.firstName}
-                 onChange={handleChanges}
-                 name="firstName"
-                 required
-                 />
-          </label>
-
-          <label>Last name
+          <label>Title
             <input type="text"
-                  placeholder="Last name"
-                  value={userDetails.lastName}
+                  placeholder="Interview problems"
+                  value={userDetails.title}
                   onChange={handleChanges}
                   required
-                  name="lastName"/></label>
-        </div>
+                  name="title"/></label>
+       
         <label>
           Email 
           <input type="email"
-                 placeholder="you@company.com"
+                 placeholder="olivia@untitledui.com"
                  value={userDetails.email}
                  onChange={handleChanges}
                  required
@@ -155,13 +142,7 @@ const Support = ({theme})=>{
         
         </label>
 
-        <label>Phone numer
-          <input type="tel"
-                 name="phoneNum"
-                 required
-                 value={userDetails.phoneNum}
-                 onChange={handleChanges}/>
-        </label>
+       
 
         <label>Message
         <textarea name="msg"

@@ -41,9 +41,10 @@ function Top() {
              alt="logo of Qwesty"/>
          </div>
        
-      <div className='create-box'>
+      <Link className='create-box'
+            to="/researcher/create">
         <FaPlus /> create
-      </div>
+      </Link>
 
       <div className='bell-box'>
         <img src={bell}
