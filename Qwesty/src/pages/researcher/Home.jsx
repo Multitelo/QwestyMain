@@ -34,14 +34,14 @@ const ResearchPage = () => {
         </div>
         {/* content */}
         <div className="home-main-section">
-          <div className="w-full  rounded-2xl h-[100h] flex justify-center my-10">
+          <div className="w-full  rounded-2xl  flex justify-center my-10">
             {/* main content */}
             <section
               className={`${switchTheme(
                 "bg-white",
                 darkTheme + " text-white",
                 resTheme
-              )} w-full h-[100h]  1097:w-[80%] rounded-xl`}
+              )} w-full  1097:w-[90%] rounded-xl`}
             >
               {/* heading */}
               <div className="heading 531:flex 531:justify-between 531:items-center py-5 px-2 531:px-10">
@@ -85,7 +85,12 @@ const ResearchPage = () => {
                   </select>
                   <select
                     defaultValue="Filter"
-                    className="md:hidden grid py-2 outline-none rounded-md border-[2px] border-gray-300"
+                    className={`md:hidden grid py-2 outline-none rounded-md border-[2px] border-gray-300
+                    ${switchTheme(
+                      "border-gray-300",
+                      darkTheme + " text-gray-400 border-gray-700",
+                      resTheme
+                    )}` }
                   >
                     <option value="One">One</option>
                     <option value="Two">Two</option>

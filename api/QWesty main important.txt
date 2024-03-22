@@ -1,15 +1,15 @@
 curl -X POST http://localhost/qwestymain/api/login.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "email=emenikeaugustine301@gmail.co&password=K@vp7QK5XXZ2efd&usertype=participant"
+-d "email=emenikeaugustine301@gmail.com&password=K@vp7QK5XXZ2efd&usertype=researcher"
 
 
 
 
-Your account securemail@qwty.site has been setup. In your e-mail program, use:
-Username:	securemail@qwty.site
-Password:	Qwesty#sece1
-POP/IMAP Server:	mail.qwty.site
-SMTP Server:	mail.qwty.site port 587
+Your account securemail@qwestyty.site has been setup. In your e-mail program, use:
+Username:	securemail@qwesty.site
+Password:	Qwesty#secure1
+POP/IMAP Server:	mail.qwesty.site
+SMTP Server:	mail.qwesty.site port 587
 
 
 
@@ -26,4 +26,36 @@ CREATE TABLE `user_otp` (
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=1&otp=12345&usertype=participant"
+-d "userId=6&otp=91930&usertype=researcher"
+
+
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"email":"user@example.com", "password":"yourPassword", "usertype":"participant"}' http://localhost/qwestymain/api/signin.php
+
+
+
+
+$reg_number = $_POST['reg_number'];
+$fullname = $_POST['fullname'];
+$nick_name = $_POST['nick_name'];
+$dob = $_POST['dob'];
+$state_of_origin = $_POST['state_of_origin'];
+$hobbies = $_POST['hobbies'];
+$relationship_status = $_POST['relationship_status'];
+$favourite_course = $_POST['favourite_course'];
+$most_dreaded_course = $_POST['most_dreaded_course'];
+$favourite_lecturer = $_POST['favourite_lecturer'];
+$most_strenuous_level = $_POST['most_strenuous_level'];
+$class_crush = $_POST['class_crush'];
+$best_experience = $_POST['best_experience'];
+$favourite_slang = $_POST['favourite_slang'];
+$alternative_major = $_POST['alternative_major'];
+$favourite_quote = $_POST['favourite_quote'];
+$social_handles = $_POST['social_handles'];
+$picture_url = $_POST['picture_url'];
+
+
+
+GBDQ5IIXTGUULUFQ3CYACCBBSIAOCSHCQSVOTNKKADYP3WWLQ4S5UWKG

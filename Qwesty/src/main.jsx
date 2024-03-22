@@ -19,6 +19,10 @@ import {
   Research,
   SettingsRes,
   Draft,
+  PreviewSurvey,
+  NewResearch,
+  ScheduledResearch,
+  Create
 } from "./routes/Index.jsx";
 
 import { useEffect } from "react";
@@ -71,8 +75,11 @@ function App() {
             <Route path="/researcher/draft" element={<Draft />} />
             <Route path="/researcher/profile" element={<Profile />} />
             <Route path="/researcher/survey" element={<Survey />} />
-
-
+            <Route path="/researcher/preview-survey" element={<PreviewSurvey/>} />
+            <Route path="/researcher/new-research" element={<NewResearch/>} />
+            <Route path="researcher/Scheduled-researches" element={<ScheduledResearch/>} />
+            <Route path='researcher/create' element={<Create/>} />
+            
             {/* Route for Participant's page */}
             <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />

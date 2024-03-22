@@ -5,6 +5,10 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header("Content-type:application/json");
 
 include "./cone.php"; // Ensure this path is correct
+require './send_otp_mail.php';
+require './send_welcome_email.php';
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usertype'], $_POST['username'], $_POST['password'])) {
     $email = $_POST['email'];
@@ -37,14 +41,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usert
     $stmt->bind_param("sss", $email, $username, $hashedPassword);
 
     if ($stmt->execute()) {
-        // Include the JWT creation script here
-        require './create_jwt.php';
-        create_jwt($stmt->insert_id, $email); // Call the JWT creation function
-        
+        $newUserId = mysqli_insert_id($conn);
+        if ($newUserId > 0) {
+            if (sendOTPMail($email, $newUserId, $usertype, $conn1, $conn2)) {
+                if(sendWelcomeEmail($email)) {
+                    echo json_encode(["message" => "Account created successfully. Verification OTP and welcome email sent."]);
+                    
+                } else {
+                    echo json_encode(["error" => "Account created and OTP sent, but failed to send welcome email."]);
+                }
+            } else {
+                echo json_encode(["error" => "Account created, but verification email failed to send."]);
+            }
+        } else {
+            echo json_encode(["error" => "User ID not found. Account creation might have failed."]);
+        }
     } else {
-        http_response_code(500);
-        echo json_encode(["error" => "Error: " . $conn->error]);
+        echo json_encode(["error" => "Account creation failed: " . $stmt->error]);
     }
+    
+    
 
     $stmt->close();
     mysqli_close($conn);
