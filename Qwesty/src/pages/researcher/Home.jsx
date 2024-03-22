@@ -110,15 +110,15 @@ const ResearchPage = () => {
                     statusColorBg={
                       research.status == "completed"
                         ? "#C7FBC6"
-                        : research.status == "incomplete"
-                        ? "#FBC6C6"
+                        : research.status == "paused"
+                        ? "#A79C44"
                         : "#E9DFFF"
                     }
                     statusColorText={
                       research.status == "completed"
                         ? "green"
-                        : research.status == "incomplete"
-                        ? "red"
+                        : research.status == "paused"
+                        ? "yellow"
                         : "purple"
                     }
                     title={research.title}

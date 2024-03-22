@@ -7,6 +7,7 @@ import { darkTheme, switchTheme } from "../../data/data";
 import { CirclePlus } from "lucide-react";
 import ProgressBar from "../../components/ben/survey/ProgressBar";
 import QuestionInput from "../../components/ben/survey/QuestionInput";
+import { Link } from "react-router-dom";
 
 export const Btn = ({ children, onClick, theme, width, padding }) => {
   return (
@@ -173,7 +174,8 @@ const Survey = () => {
               Total Questions
             </p>
             <div className="flex flex-col md:flex-row gap-10 md:gap-40 justify-center md:justify-between items-center w-full mb-20">
-              <ProgressBar progress={85} label={85} />
+              <ProgressBar progress={10} label={10} />
+              <Link to="/researcher/preview-survey">
               <Btn
                 padding={`0.7rem 20px`}
                 theme={switchTheme(
@@ -184,6 +186,7 @@ const Survey = () => {
               >
                 Preview survey
               </Btn>
+              </Link>
             </div>
           </section>
         </div>
