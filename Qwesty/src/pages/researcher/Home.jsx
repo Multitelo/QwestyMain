@@ -9,6 +9,8 @@ import { useTheme } from "../../context/ThemeContext";
 
 const ResearchPage = () => {
   const { theme, resTheme } = useTheme();
+  const [sortBy, setSortBy] = useState(null);
+  const [sortType, setSortType] = useState(null);
 
   useEffect(() => {
     const closeSidebar = (event) => {
@@ -22,6 +24,16 @@ const ResearchPage = () => {
       document.body.removeEventListener("click", closeSidebar);
     };
   }, [open]);
+
+  const sortArrowDown = () => {
+    setSortType("active");
+    setSortBy("desc");
+  };
+
+  const sortArrowUp = () => {
+    setSortType("active");
+    setSortBy("asc");
+  };
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -90,7 +102,7 @@ const ResearchPage = () => {
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
                       resTheme
-                    )}` }
+                    )}`}
                   >
                     <option value="One">One</option>
                     <option value="Two">Two</option>
@@ -101,37 +113,65 @@ const ResearchPage = () => {
               {/* sorting */}
               <div className="sorting px-10 hidden sm:flex gap-5 mb-5">
                 <h1 className="text-xl font-semibold">Number reached</h1>
-                <div className="flex">
-                  <ArrowDown />
-                  <ArrowUp />
+                <div className="flex cursor-pointer">
+                  {/* descending sort */}
+                  <ArrowDown
+                    onClick={sortArrowDown}
+                    color={
+                      sortType === "active" && sortBy === "desc"
+                        ? "#8E5DF5"
+                        : "#000000"
+                    }
+                  />
+                  {/* ascending sort */}
+                  <ArrowUp
+                    onClick={sortArrowUp}
+                    color={
+                      sortType === "active" && sortBy === "asc" ? "#8E5DF5" : "#000000"
+                    }
+                  />
                 </div>
               </div>
               {/* main */}
               <div className="w-full px-2 531:px-10">
-                {ResearchPageData.map((research, index) => (
-                  <ResearchCard
-                    key={index}
-                    status={research.status}
-                    statusColorBg={
-                      research.status == "completed"
-                        ? "#C7FBC6"
-                        : research.status == "paused"
-                        ? "#A79C44"
-                        : "#E9DFFF"
+                {ResearchPageData.slice()
+                  .sort((a, b) => {
+                    if (sortBy === "asc") {
+                      return (
+                        parseInt(a.numberReached) - parseInt(b.numberReached)
+                      );
+                    } else if (sortBy === "desc") {
+                      return (
+                        parseInt(b.numberReached) - parseInt(a.numberReached)
+                      );
+                    } else {
+                      return 0;
                     }
-                    statusColorText={
-                      research.status == "completed"
-                        ? "green"
-                        : research.status == "paused"
-                        ? "yellow"
-                        : "purple"
-                    }
-                    title={research.title}
-                    researchType={research.researchType}
-                    numberReached={research.numberReached}
-                    amountSpent={research.amountSpent}
-                  />
-                ))}
+                  })
+                  .map((research, index) => (
+                    <ResearchCard
+                      key={index}
+                      status={research.status}
+                      statusColorBg={
+                        research.status === "completed"
+                          ? "#C7FBC6"
+                          : research.status === "paused"
+                          ? "#A79C44"
+                          : "#E9DFFF"
+                      }
+                      statusColorText={
+                        research.status === "completed"
+                          ? "green"
+                          : research.status === "paused"
+                          ? "yellow"
+                          : "purple"
+                      }
+                      title={research.title}
+                      researchType={research.researchType}
+                      numberReached={research.numberReached}
+                      amountSpent={research.amountSpent}
+                    />
+                  ))}
               </div>
             </section>
           </div>
