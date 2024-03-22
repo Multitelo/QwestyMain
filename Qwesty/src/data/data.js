@@ -7,7 +7,7 @@ export const ResearchPageData = [
     amountSpent: "₦5000",
   },
   {
-    status: "incomplete",
+    status: "paused",
     title: "Product marketing research",
     researchType: "survey",
     numberReached: "32",
