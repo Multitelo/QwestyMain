@@ -11,24 +11,31 @@ import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import { useState } from "react";
+import AlertDialog from "../../components/mahtot/Alert.jsx";
 
 function PreviewSurvey() {
     const {resTheme} = useTheme();
     const [deadline, setDeadline] = useState(dayjs());
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
    
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+   
+    const style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };
 
     const questionTypes = [
                         {title:'Q1', type:'Multiple choice'},
@@ -65,31 +72,28 @@ function PreviewSurvey() {
             }
                 </div>
                 <div>
-                <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-                  set deadline 
-                </Button>   (optional)
-                <Popover
-                  id={id}
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handleClose}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
+      <Button onClick={handleOpen}>set deadline</Button> (optional)
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        <Typography sx={{ p: 2 }}>
-        { <CalendarM deadline={deadline} 
-                     setDeadline={setDeadline}
-                    handleClose={handleClose}/>}
-
-          
-          </Typography>
-      </Popover>
+        <Box sx={style}>
+         
+          <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+          <CalendarM deadline={deadline} 
+              setDeadline={setDeadline}
+             handleClose={handleClose}/>          </Typography>
+        </Box>
+      </Modal>
     </div>
-
+               
+             
+  
             <div className="end-btns">
-                <button id="btn-1">Start research</button>
+               <AlertDialog/>
+                
                 <button>Schedule research</button>
                 <button>Save research</button>
             </div>
