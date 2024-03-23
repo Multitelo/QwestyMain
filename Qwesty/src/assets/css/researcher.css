@@ -541,7 +541,6 @@
 #select-field,
 .create-survey-container textarea{
     font-size: 20px;
-    color:#9A9696;
     border: 1px solid #A5A1A1;
     border-radius: 10px;
     padding:10px;
@@ -739,6 +738,23 @@ font-weight: bold;
     color:#F4F4F4;
 }
 
+/* DatePicker.css */
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+    background-color: #F0F0F5 !important;
+    color:#121217 !important;
+    text-transform: none !important;
+}
+.researcher-content.dark .css-sghohy-MuiButtonBase-root-MuiButton-root{
+    background-color: #43433F !important;
+    color:#F4F4F4 !important;
+}
+.css-17ffvgn-MuiTypography-root{
+    /* background-color: rgba(128, 0, 128, 0.5) !important; */
+}
+.css-4pax7l-MuiPickersLayout-root {
+    /* color:#fff; */
+    background-color: rgba(128, 0, 128, 0.1) !important;
+}
 /* For making responsive  */
 /* 2xl */
 @media (max-width: 1536px) {
