@@ -31,12 +31,12 @@ function sendOTPMail($email, $userId, $usertype, $conn1, $conn2) {
         $mail->Host = 'mail.qwesty.site';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;  // Enable SMTP authentication
         $mail->Username = 'securemail@qwesty.site';  // SMTP username
-        $mail->Password = 'Qwesty#secure1';  // SMTP password
-        $mail->SMTPSecure = 'SSl';  // Enable TLS encryption, `ssl` also accepted
+        $mail->Password = 'Qwestyteam2023.';  // SMTP password
+        $mail->SMTPSecure = 'ssl';  // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;  // TCP port to connect to
 
         // Recipients
-        $mail->setFrom('securemail@qwesty.site', 'Mailer');
+        $mail->setFrom('securemail@qwesty.site', 'Qwesty Secure');
         $mail->addAddress($email);  // Add a recipient
 
         // Content

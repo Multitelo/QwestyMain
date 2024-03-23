@@ -26,7 +26,7 @@ CREATE TABLE `user_otp` (
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=6&otp=91930&usertype=researcher"
+-d "userId=6&otp=42384&usertype=researcher"
 
 
 
@@ -59,3 +59,25 @@ $picture_url = $_POST['picture_url'];
 
 
 GBDQ5IIXTGUULUFQ3CYACCBBSIAOCSHCQSVOTNKKADYP3WWLQ4S5UWKG
+
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU
+
+curl -X POST http://localhost/qwestymain/api/createsur.php \
+-H "Authorization: Bearer <eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU>" \
+-H "Content-Type: application/json" \
+-d '{"survey_type": "Online", "title": "Climate Change Awareness Survey", "field_of_research": "Environmental Science", "description": "A survey to assess public awareness on climate change."}'
+
+
+
+curl -X POST http://localhost/qwestymain/api/saveques.php \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU" \
+-H "Content-Type: application/json" \
+-d '{
+  "survey_id": "4",
+  "questions": [
+    {"question_text": "What is your opinion on climate change?", "question_order": 1},
+    {"question_text": "How often do you use public transportation?", "question_order": 2},
+    {"question_text": "Do you recycle?", "question_order": 3}
+  ]
+}
