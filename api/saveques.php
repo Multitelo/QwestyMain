@@ -37,18 +37,15 @@ $survey_id = $data['survey_id'];
 $questions = $data['questions'];
 
 // Prepare the statement for inserting questions
-$stmt = $conn3->prepare("INSERT INTO SurveyQuestions (SurveyID, ParentQuestionID, QuestionText, QuestionType, Options, QuestionOrder) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt = $conn3->prepare("INSERT INTO SurveyQuestions (SurveyID, QuestionText, QuestionOrder) VALUES (?, ?, ?)");
 
 $success = true;
 foreach ($questions as $question) {
-    // Extract question text, type, order, and options
+    // Extract question text and order, default order to 0 if not provided
     $question_text = $question['question_text'];
-    $question_type = $question['question_type']; // 'single_choice' or 'multiple_choice'
     $question_order = isset($question['question_order']) ? $question['question_order'] : 0;
-    $parent_question_id = isset($question['parent_question_id']) ? $question['parent_question_id'] : null;
-    $options = isset($question['options']) ? json_encode($question['options']) : null;
 
-    $stmt->bind_param("iissis", $survey_id, $parent_question_id, $question_text, $question_type, $options, $question_order);
+    $stmt->bind_param("isi", $survey_id, $question_text, $question_order);
     if (!$stmt->execute()) {
         $success = false;
         break; // Stop on first error
