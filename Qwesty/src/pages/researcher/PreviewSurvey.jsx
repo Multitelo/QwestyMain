@@ -5,14 +5,44 @@ import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import CalendarM from "../../components/mahtot/CalendarMu.jsx";
+import dayjs from 'dayjs';
+import * as React from 'react';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import { useState } from "react";
+import AlertDialog from "../../components/mahtot/Alert.jsx";
 
 function PreviewSurvey() {
     const {resTheme} = useTheme();
+    const [deadline, setDeadline] = useState(dayjs());
+   
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+   
+    const style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };
+
     const questionTypes = [
                         {title:'Q1', type:'Multiple choice'},
                         {title:'Q2', type:"Checkboxes"},
                         {title:'Q3', type:'Short text'},
                         {title:'Q4', type:"Long text"}]
+
   return (
     <div className={`researcher-content ${resTheme}`}>
     <div className="researcher-menu">
@@ -36,16 +66,34 @@ function PreviewSurvey() {
             {
                 questionTypes.map((item, index)=>(
                     <Question title={item.title}
-                            type={item.type}/>
+                            type={item.type}
+                            key={index}/>
                 ))
             }
                 </div>
-            <div className="preview">
-            <button>set deadline</button> <span> (optional)</span>
-            </div> 
-
+                <div>
+      <Button onClick={handleOpen}>set deadline</Button> (optional)
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+         
+          <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+          <CalendarM deadline={deadline} 
+              setDeadline={setDeadline}
+             handleClose={handleClose}/>          </Typography>
+        </Box>
+      </Modal>
+    </div>
+               
+             
+  
             <div className="end-btns">
-                <button id="btn-1">Start research</button>
+               <AlertDialog/>
+                
                 <button>Schedule research</button>
                 <button>Save research</button>
             </div>
@@ -53,13 +101,12 @@ function PreviewSurvey() {
       
       
     </div>
-    </div>
     <div className="research-footer">
     <Footer />
   </div>  
-  </div> 
+  </div> </div>
    
-  )
-}
+   )
+      }
 export default PreviewSurvey
 

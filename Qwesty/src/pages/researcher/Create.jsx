@@ -15,7 +15,6 @@ function Create() {
                                                                 field:''
                         })
     const defaultOption = {value:'', label:'Select a field'}
-
    
 
 
@@ -35,8 +34,25 @@ function Create() {
                 }),
         singleValue: (provided, state) => ({
             ...provided,
-            color: '#9A9696', 
+            color:resTheme==='dark'?'#fff': 'rgba(0, 0, 0, 0.8)', 
         }),
+        menuList: styles => ({
+            ...styles,
+            background: resTheme==='dark'?'#201F24':'#fff'
+        }),
+        option: (styles, {isFocused, isSelected}) => ({
+            ...styles,
+            background: isFocused
+                ? 'rgba(142, 93, 245, 0.5)'
+                : isSelected
+                    ? 'rgba(142, 93, 245, 1)'
+                    : undefined,
+            zIndex: 1
+        }),
+        menu: base => ({
+            ...base,
+            zIndex: 100
+        })
     };
     
     console.log(researchDetails)
@@ -106,6 +122,7 @@ function Create() {
                         
                 </form>
             </div>
+           
     
             
             </div>
