@@ -35,6 +35,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 50vw;
+  display: flex;
 }
 
 .signUp-left .first-content, 
@@ -234,9 +235,9 @@
     display: block;
   }
 
-  .auth-container footer {
-    margin-right: auto;
-    margin-top: auto;
+  .signUp-right footer,
+  .signUp-container footer
+  {
     padding: 50px 20px 0px;
     font-family: Outfit;
     font-size: 24px;
@@ -245,9 +246,14 @@
     text-align: left;
     color: #151414;
     position: absolute; 
-    bottom: -20px; 
+    /* bottom: 20px;  */
+    align-self: flex-end;
+    left: 0;
 }
-
+ footer#small-footer{
+  position: relative;
+  align-self: flex-start;
+}
   .signUp-container footer img{
     width: 60px;
     height: 60px;
@@ -255,7 +261,9 @@
     margin: 20px 50px;
     cursor: pointer;
   }
-
+  #small-footer{
+    display: none;
+  }
   
   /* styles for second signup page */
 
@@ -355,6 +363,9 @@ sup{
     .signUp-container footer img{
         margin: 20px 10px;
         
+      }
+      #small-footer{
+        display: inline-block;
       }
       .errMsg {
         width: 50vw;

@@ -7,13 +7,14 @@ export { default as Rewards } from "../pages/participant/Rewards";
 export { default as Myprofile } from "../pages/participant/Myprofile";
 export { default as Profile } from "../pages/researcher/Profile";
 export { default as Research } from "../pages/researcher/Research";
-export {default as SettingsRes} from '../pages/researcher/SettingsRes';
-export {default as Draft } from '../pages/researcher/Draft';
-export {default as Home} from '../pages/researcher/Home'
-
-
-
-
+export { default as SettingsRes } from '../pages/researcher/SettingsRes';
+export { default as Draft } from '../pages/researcher/Draft';
+export { default as Survey } from '../pages/researcher/Survey';
+export { default as HomePage } from "../pages/researcher/Home"
+export {default as PreviewSurvey} from '../pages/researcher/PreviewSurvey'
+export {default as NewResearch} from '../pages/researcher/NewResearch'
+export {default as ScheduledResearch} from '../pages/researcher/ScheduledResearch'
+export {default as Create} from '../pages/researcher/Create'
 
 
 

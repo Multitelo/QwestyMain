@@ -11,7 +11,7 @@ function SettingsRes() {
   const [isSupportClicked, setIsSupportClicked] = useState(false)
 
   const handleClick = (clicked) =>{
-    // preventDefault()
+    
     switch(clicked){
       case "Account": 
             setIsAccountClicked(true);
@@ -107,9 +107,60 @@ const Account = ({theme})=>{
 
 
 const Support = ({theme})=>{
+  const [userDetails, setUserDetails] = useState({
+                                                  title:'',
+                                                  email:'',
+                                                  msg:'',
+                                                  agreePrivacyPolicy:false
+  })
+
+  const handleChanges = (e)=>{
+    setUserDetails(prevState=>({...prevState,[e.target.name]:e.target.value}))
+  }
+
   return(
-    <div className="research-support">
-      Support page
+    <div className={`research-support ${theme}`}>
+      <h1>Contact us</h1>
+      <p>Our friendly team would love to hear from you.</p>
+      <form>
+          <label>Title
+            <input type="text"
+                  placeholder="Interview problems"
+                  value={userDetails.title}
+                  onChange={handleChanges}
+                  required
+                  name="title"/></label>
+       
+        <label>
+          Email 
+          <input type="email"
+                 placeholder="olivia@untitledui.com"
+                 value={userDetails.email}
+                 onChange={handleChanges}
+                 required
+                 name="email"/>
+        
+        </label>
+
+       
+
+        <label>Message
+        <textarea name="msg"
+                  value={userDetails.msg}
+                  onChange={handleChanges}
+                  required/> </label>
+       <label style={{display:'flex', flexDirection:'row'}}
+              id="term">
+      
+        <input type="checkbox"
+               checked={userDetails.agreePrivacyPolicy===true}
+               onChange={(e)=>setUserDetails(prevState=>({...prevState, agreePrivacyPolicy:!prevState.agreePrivacyPolicy}))}
+               />
+             You agree to our friendly Privacy policy.  
+        </label>
+
+        <button type="submit">Send message</button>
+      </form>
     </div>
   )
 }

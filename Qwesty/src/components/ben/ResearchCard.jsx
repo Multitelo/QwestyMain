@@ -1,44 +1,60 @@
 import { Circle, EllipsisVertical } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { darkTheme, switchTheme } from "../../data/data";
+import { useTheme } from "../../context/ThemeContext";
 
 const ResearchCard = ({
   status,
-  statusColor,
+  statusColorBg,
+  statusColorText,
   title,
   researchType,
   numberReached,
   amountSpent,
-  open,
-  index,
-  handleOpen,
-  handleClose,
 }) => {
+  const { resTheme } = useTheme();
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  const tailwindEffect = `transition-all duration-500 ease-in-out transform`;
+
+
+  useEffect(() => {
+    const closeSidebar = (event) => {
+      if (open && !event.target.closest(".options")) {
+        setOpen(false);
+      }
+    };
+    document.body.addEventListener("click", closeSidebar);
+
+    return () => {
+      document.body.removeEventListener("click", closeSidebar);
+    };
+  }, [open]);
+
   return (
-    <div className="rounded-2xl w-full p-5 border-[1px] border-gray-300 mb-5 bg-white">
-      {/* status and option */}
+    <div className={`rounded-2xl w-full ${tailwindEffect} p-5 border-[1px] mb-5 ${switchTheme('bg-white border-gray-400', darkTheme + " text-white border-gray-700", resTheme)}`}>
       <div className="flex justify-between relative">
         <span
-          className={`inline-flex items-center justify-center gap-1 rounded-full bg-${`${statusColor}`}-200 px-2.5 py-0.5`}
-          style={{backgroundColor:statusColor}}
+          className={`inline-flex items-center justify-center gap-1 rounded-full px-2.5 py-0.5`}
+          style={{backgroundColor: statusColorBg}}
         >
-          <Circle color={statusColor} size={16} fill={statusColor} />
-          <p
-            className={`whitespace-nowrap text-sm text-${`${statusColor}`}-800 font-semibold`}
-          >
+          <Circle color={statusColorText} size={16} fill={statusColorText} />
+          <p className={`whitespace-nowrap text-sm font-semibold`} style={{ color: switchTheme(statusColorText, statusColorText, resTheme) }}>
             {status}
           </p>
         </span>
-        <EllipsisVertical onClick={open ? handleClose : handleOpen} className="options cursor-pointer" />
-        {/* options */}
+        <EllipsisVertical onClick={handleToggle} className="options cursor-pointer" />
         {open && (
           <div className="option bg-gray-200 rounded-xl px-3 py-2 absolute top-7 -right-3 shadow-md">
             <p className="cursor-pointer">Delete</p>
           </div>
         )}
       </div>
-      {/* title */}
       <h1 className="font-bold text-lg md:text-2xl py-3">{title}</h1>
-      {/* items */}
       <div className="w-full flex flex-col 531:flex-row justify-between">
         <div className="text-center w-full flex justify-between 531:grid 531:w-fit">
           <h2 className="font-semibold text-lg 531:text-xl">Research type</h2>

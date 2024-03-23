@@ -42,9 +42,10 @@ function Profile() {
           
         </div>
         </div>
-
-        
+        <div className="research-footer">
+        <Footer />
+      </div>  
       </div>
   )
 }
-export default  Profile
+export default  Profile;

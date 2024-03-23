@@ -36,11 +36,6 @@ function SideBar() {
               icon: resTheme === "dark" || location.pathname === "/researcher/research" ? pieChatW : pieChatB,
           },
           {
-              path: "/researcher/insights",
-              name: "Insights",
-              icon: resTheme === "dark" || location.pathname === "/researcher/insights" ? insightW : insightB,
-          },
-          {
               path: "/researcher/settings",
               name: "Settings",
               icon: resTheme === "dark" || location.pathname === "/researcher/settings" ? settingsW : settingsB,
