@@ -1,0 +1,9 @@
+Array
+(
+    [Host] => localhost
+    [User-Agent] => curl/8.1.2
+    [Accept] => */*
+    [Authorization] => Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU
+    [Content-Type] => application/json
+    [Content-Length] => 188
+)

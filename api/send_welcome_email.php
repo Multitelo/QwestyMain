@@ -13,8 +13,8 @@ function sendWelcomeEmail($email) {
         $mail->isSMTP();
         $mail->Host = 'mail.qwesty.site';
         $mail->SMTPAuth = true;
-        $mail->Username = 'securemail@qwesty.site';
-        $mail->Password = 'Qwesty#secure1';
+        $mail->Username = 'team@qwesty.site';
+        $mail->Password = 'Qwestyteam2023.';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
