@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
-import ResearchCard from "../../components/ben/ResearchCard";
+import ResearchCard from "../../components/ben/research/ResearchCard";
 import {
   ResearchPageData,
   darkTheme,
@@ -14,22 +14,35 @@ import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { useTheme } from "../../context/ThemeContext";
+import ResearchCardToast from "../../components/ben/research/ResearchCardToast";
 
 const ResearchPage = () => {
   const { resTheme } = useTheme();
   const [sortBy, setSortBy] = useState(null);
   const [sortType, setSortType] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState("Status");
+  const [selectedResearchType, setSelectedResearchType] =
+    useState("Research Type");
 
-
+  // descending order
   const sortArrowDown = () => {
     setSortType("active");
     setSortBy("desc");
   };
-
+  // ascending order
   const sortArrowUp = () => {
     setSortType("active");
     setSortBy("asc");
   };
+  // Filtered research data based on selected status
+  const filteredResearchData = ResearchPageData.filter(
+    (research) =>
+      selectedStatus === "Status" ||
+      research.status.toLowerCase() === selectedStatus.toLowerCase()
+  );
+  // Message to display when no research is found for selected status
+  const noResearchMessage =
+    selectedStatus === "Status" ? "" : `No ${selectedStatus} status is found`;
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -57,8 +70,9 @@ const ResearchPage = () => {
                 <div className=" flex gap-2 flex-col 237:flex-row">
                   {/* status */}
                   <select
-                    defaultValue="Status"
-                    className={`hidden w-fit md:grid py-2 outline-none rounded-md border-[2px] ${switchTheme(
+                    value={selectedStatus}
+                    onChange={(e) => setSelectedStatus(e.target.value)}
+                    className={`py-2 hidden md:grid outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
                       resTheme
@@ -72,7 +86,8 @@ const ResearchPage = () => {
                   </select>
                   {/* Research Type */}
                   <select
-                    defaultValue="Research Type"
+                    value={selectedResearchType}
+                    onChange={(e) => setSelectedResearchType(e.target.value)}
                     className={`py-2 outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
@@ -144,44 +159,48 @@ const ResearchPage = () => {
               </div>
               {/* main */}
               <div className="w-full px-2 531:px-10">
-                {ResearchPageData.slice()
-                  .sort((a, b) => {
-                    if (sortBy === "asc") {
-                      return (
-                        parseInt(a.numberReached) - parseInt(b.numberReached)
-                      );
-                    } else if (sortBy === "desc") {
-                      return (
-                        parseInt(b.numberReached) - parseInt(a.numberReached)
-                      );
-                    } else {
-                      return 0;
-                    }
-                  })
-                  .map((research, index) => (
-                    <ResearchCard
-                      key={index}
-                      status={research.status}
-                      statusColorBg={
-                        research.status === "completed"
-                          ? "#C7FBC6"
-                          : research.status === "paused"
-                          ? "#FBF9C6"
-                          : "#E9DFFF"
+                {filteredResearchData.length === 0 ? (
+                  <ResearchCardToast noResearchMessage={noResearchMessage} />
+                ) : (
+                  filteredResearchData
+                    .sort((a, b) => {
+                      if (sortBy === "asc") {
+                        return (
+                          parseInt(a.numberReached) - parseInt(b.numberReached)
+                        );
+                      } else if (sortBy === "desc") {
+                        return (
+                          parseInt(b.numberReached) - parseInt(a.numberReached)
+                        );
+                      } else {
+                        return 0;
                       }
-                      statusColorText={
-                        research.status === "completed"
-                          ? "green"
-                          : research.status === "paused"
-                          ? "#B7B00E"
-                          : "purple"
-                      }
-                      title={research.title}
-                      researchType={research.researchType}
-                      numberReached={research.numberReached}
-                      amountSpent={research.amountSpent}
-                    />
-                  ))}
+                    })
+                    .map((research, index) => (
+                      <ResearchCard
+                        key={index}
+                        status={research.status}
+                        statusColorBg={
+                          research.status === "completed"
+                            ? "#C7FBC6"
+                            : research.status === "paused"
+                            ? "#FBF9C6"
+                            : "#E9DFFF"
+                        }
+                        statusColorText={
+                          research.status === "completed"
+                            ? "green"
+                            : research.status === "paused"
+                            ? "#B7B00E"
+                            : "purple"
+                        }
+                        title={research.title}
+                        researchType={research.researchType}
+                        numberReached={research.numberReached}
+                        amountSpent={research.amountSpent}
+                      />
+                    ))
+                )}
               </div>
             </section>
           </div>

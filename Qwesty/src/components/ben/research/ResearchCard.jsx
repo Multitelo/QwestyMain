@@ -1,7 +1,7 @@
 import { Circle, EllipsisVertical } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { darkTheme, switchTheme } from "../../data/data";
-import { useTheme } from "../../context/ThemeContext";
+import { darkTheme, switchTheme } from "../../../data/data";
+import { useTheme } from "../../../context/ThemeContext";
 
 const ResearchCard = ({
   status,

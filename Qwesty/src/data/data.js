@@ -1,6 +1,6 @@
 export const statusOptions = [
   { value: "Completed", label: "Completed" },
-  { value: "Incomplete", label: "Incomplete" },
+  { value: "Ongoing", label: "Ongoing" },
   { value: "Paused", label: "Paused" },
   { value: "Status", label: "Status" },
 ];
