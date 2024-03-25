@@ -23,7 +23,8 @@ import {
   NewResearch,
   ScheduledResearch,
   Create,
-  Insights
+  Insights,
+  Verify
 } from "./routes/Index.jsx";
 
 import { useEffect } from "react";
@@ -68,7 +69,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Reset" element={<Reset />} />
             <Route path="/SignUp" element={<Signup />} />
-
+            <Route path='/verify' element={<Verify/>} />
             {/* Route for Researcher's page */}
             <Route path="/researcher/home" element={<HomePage />} />
             <Route path="/researcher/settings" element={<SettingsRes />} />

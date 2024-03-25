@@ -156,11 +156,11 @@ function SignUpPage() {
             }
         console.log(response)
             const data = await response.json();
-    
+         
             if (data.token) {
                 localStorage.setItem('userToken', data.token);
                 console.log('Signup successful, token:', data.token);
-               
+                
                 window.location.href = '/verify'; // Make sure this matches your route
             } else {
                 console.error('Signup failed:', data.error || 'Unknown error');
