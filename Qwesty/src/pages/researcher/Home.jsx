@@ -28,7 +28,7 @@ const ResearchPage = () => {
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("This Year");
   const [selectedFilteredOption, setSelectedFilteredOption] =
     useState("Research Type");
-  const [selectedDropdown, setSelectedDropdown] = useState("Research Type");
+  const [selectedDropdown, setSelectedDropdown] = useState("Filter");
   // navigating to insight page
   const [clickedOnce, setClickedOnce] = useState(false);
   const [timer, setTimer] = useState(null);
@@ -153,7 +153,7 @@ const ResearchPage = () => {
                     )}`}
                     style={{
                       display:
-                        selectedDropdown === "Research Type" ? "block" : "none",
+                        selectedDropdown === "Filter" ? "block" : "none",
                     }}
                   >
                     {researchTypeOptions.map((option, index) => (

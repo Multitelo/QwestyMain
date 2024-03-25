@@ -28,7 +28,7 @@ export const timePeriodOptions = [
 ];
 
 export const filterOptions = [
-  { value: "Research Type", label: "Research Type" },
+  { value: "Filter", label: "Filter" },
   { value: "Status", label: "Status" },
   { value: "This Year", label: "This Year" },
 ];
