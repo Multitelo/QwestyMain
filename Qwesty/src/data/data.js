@@ -1,37 +1,37 @@
 export const statusOptions = [
+  { value: "Status", label: "Status" },
   { value: "Completed", label: "Completed" },
   { value: "Ongoing", label: "Ongoing" },
   { value: "Paused", label: "Paused" },
-  { value: "Status", label: "Status" },
 ];
 
 export const researchTypeOptions = [
+  { value: "Research Type", label: "Research Type" },
   { value: "Survey", label: "Survey" },
   { value: "Interview", label: "Interview" },
   { value: "Focus group", label: "Focus group" },
-  { value: "Card sorting", label: "Card sorting" },
   { value: "Ethnographic observation", label: "Ethnographic observation" },
   { value: "A/B Testing", label: "A/B Testing" },
   { value: "Usability Test", label: "Usability Test" },
   { value: "Voice from the street", label: "Voice from the street" },
   { value: "Tree Testing", label: "Tree Testing" },
-  { value: "Research Type", label: "Research Type" },
 ];
 
 export const timePeriodOptions = [
+  { value: "This Year", label: "This Year" },
   { value: "Last week", label: "Last week" },
   { value: "Last month", label: "Last month" },
   { value: "Last 3 months", label: "Last 3 months" },
   { value: "Last 6 months", label: "Last 6 months" },
   { value: "Last 2 years", label: "Last 2 years" },
   { value: "Last 3 years", label: "Last 3 years" },
-  { value: "This Year", label: "This Year" },
 ];
 
 export const filterOptions = [
-  { value: "One", label: "One" },
-  { value: "Two", label: "Two" },
   { value: "Filter", label: "Filter" },
+  { value: "Status", label: "Status" },
+  { value: "Research Type", label: "Research Type" },
+  { value: "This Year", label: "This Year" },
 ];
 
 export const ResearchPageData = [
@@ -41,13 +41,15 @@ export const ResearchPageData = [
     researchType: "survey",
     numberReached: "50",
     amountSpent: "₦5000",
+    date: "Last week",
   },
   {
     status: "paused",
     title: "Product marketing research",
-    researchType: "survey",
+    researchType: "interview",
     numberReached: "32",
     amountSpent: "₦2500",
+    date: "Last month",
   },
   {
     status: "ongoing",
@@ -55,6 +57,7 @@ export const ResearchPageData = [
     researchType: "survey",
     numberReached: "50",
     amountSpent: "₦14000",
+    date: "Last 2 years",
   },
 ];
 
