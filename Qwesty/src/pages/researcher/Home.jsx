@@ -15,6 +15,8 @@ import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { useTheme } from "../../context/ThemeContext";
 import ResearchCardToast from "../../components/ben/research/ResearchCardToast";
+import DropdownSelect from "../../components/ben/research/DropdownSelect";
+import { useNavigate } from "react-router-dom";
 
 const ResearchPage = () => {
   const { resTheme } = useTheme();
@@ -24,6 +26,13 @@ const ResearchPage = () => {
   const [selectedResearchType, setSelectedResearchType] =
     useState("Research Type");
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("This Year");
+  const [selectedFilteredOption, setSelectedFilteredOption] =
+    useState("Research Type");
+  const [selectedDropdown, setSelectedDropdown] = useState("Research Type");
+  // navigating to insight page
+  const [clickedOnce, setClickedOnce] = useState(false);
+  const [timer, setTimer] = useState(null);
+  const navigate = useNavigate();
 
   // descending order
   const sortArrowDown = () => {
@@ -63,6 +72,24 @@ const ResearchPage = () => {
     noResearchMessage = `No research found for ${selectedTimePeriod}`;
   }
 
+  const handleNavigate = (id) => {
+    if (clickedOnce) {
+      redirectToInsight(id);
+      clearTimeout(timer);
+      setClickedOnce(false);
+    } else {
+      setClickedOnce(true);
+      setTimer(
+        setTimeout(() => {
+          setClickedOnce(false);
+        }, 300) 
+      );
+    }
+  };
+  const redirectToInsight = (id) => {
+    navigate(`/researcher/insight/${id}`);
+  };
+
   return (
     <div className={`researcher-content ${resTheme}`}>
       <div className="researcher-menu">
@@ -88,14 +115,26 @@ const ResearchPage = () => {
                 <h1 className="text-3xl font-bold hidden 531:grid">Research</h1>
                 <div className=" flex gap-2 flex-col 237:flex-row">
                   {/* status */}
+                  <DropdownSelect
+                    selectedStatus={selectedStatus}
+                    setSelectedStatus={setSelectedStatus}
+                    statusOptions={statusOptions}
+                    selectedTimePeriod={selectedTimePeriod}
+                    setSelectedTimePeriod={setSelectedTimePeriod}
+                    timePeriodOptions={timePeriodOptions}
+                    resTheme={resTheme}
+                  />
                   <select
                     value={selectedStatus}
                     onChange={(e) => setSelectedStatus(e.target.value)}
-                    className={`py-2 hidden md:grid outline-none rounded-md border-[2px] ${switchTheme(
+                    className={`w-[70px] py-2 outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
                       resTheme
                     )}`}
+                    style={{
+                      display: selectedDropdown === "Status" ? "block" : "none",
+                    }}
                   >
                     {statusOptions.map((option, index) => (
                       <option key={index} value={option.value}>
@@ -107,11 +146,15 @@ const ResearchPage = () => {
                   <select
                     value={selectedResearchType}
                     onChange={(e) => setSelectedResearchType(e.target.value)}
-                    className={`py-2 outline-none rounded-md border-[2px] ${switchTheme(
+                    className={`py-2 w-[130px] outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
                       resTheme
                     )}`}
+                    style={{
+                      display:
+                        selectedDropdown === "Research Type" ? "block" : "none",
+                    }}
                   >
                     {researchTypeOptions.map((option, index) => (
                       <option key={index} value={option.value}>
@@ -123,11 +166,15 @@ const ResearchPage = () => {
                   <select
                     value={selectedTimePeriod}
                     onChange={(e) => setSelectedTimePeriod(e.target.value)}
-                    className={`hidden md:grid py-2 outline-none rounded-md border-[2px] ${switchTheme(
+                    className={`w-[90px] py-2 outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
                       resTheme
                     )}`}
+                    style={{
+                      display:
+                        selectedDropdown === "This Year" ? "block" : "none",
+                    }}
                   >
                     {timePeriodOptions.map((option, index) => (
                       <option key={index} value={option.value}>
@@ -135,11 +182,11 @@ const ResearchPage = () => {
                       </option>
                     ))}
                   </select>
-
                   {/* filter */}
                   <select
-                    defaultValue="Filter"
-                    className={`md:hidden grid py-2 outline-none rounded-md border-[2px] border-gray-300
+                    value={selectedDropdown}
+                    onChange={(e) => setSelectedDropdown(e.target.value)}
+                    className={`grid md:hidden py-2 outline-none rounded-md border-[2px] border-gray-300
                     ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
@@ -198,28 +245,33 @@ const ResearchPage = () => {
                       }
                     })
                     .map((research, index) => (
-                      <ResearchCard
-                        key={index}
-                        status={research.status}
-                        statusColorBg={
-                          research.status === "completed"
-                            ? "#C7FBC6"
-                            : research.status === "paused"
-                            ? "#FBF9C6"
-                            : "#E9DFFF"
-                        }
-                        statusColorText={
-                          research.status === "completed"
-                            ? "green"
-                            : research.status === "paused"
-                            ? "#B7B00E"
-                            : "purple"
-                        }
-                        title={research.title}
-                        researchType={research.researchType}
-                        numberReached={research.numberReached}
-                        amountSpent={research.amountSpent}
-                      />
+                      <div
+                      key={index}
+                      onClick={() => handleNavigate(research.id)}
+                      onDoubleClick={() => redirectToInsight(research.id)}
+                      >
+                        <ResearchCard
+                          status={research.status}
+                          statusColorBg={
+                            research.status === "completed"
+                              ? "#C7FBC6"
+                              : research.status === "paused"
+                              ? "#FBF9C6"
+                              : "#E9DFFF"
+                          }
+                          statusColorText={
+                            research.status === "completed"
+                              ? "green"
+                              : research.status === "paused"
+                              ? "#B7B00E"
+                              : "purple"
+                          }
+                          title={research.title}
+                          researchType={research.researchType}
+                          numberReached={research.numberReached}
+                          amountSpent={research.amountSpent}
+                        />
+                      </div>
                     ))
                 )}
               </div>

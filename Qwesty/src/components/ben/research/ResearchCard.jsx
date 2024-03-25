@@ -36,7 +36,7 @@ const ResearchCard = ({
   }, [open]);
 
   return (
-    <div className={`rounded-2xl w-full ${tailwindEffect} p-5 border-[1px] mb-5 ${switchTheme('bg-white border-gray-400', darkTheme + " text-white border-gray-700", resTheme)}`}>
+    <div className={`cursor-pointer rounded-2xl w-full ${tailwindEffect} p-5 border-[1px] mb-5 ${switchTheme('bg-white border-gray-400', darkTheme + " text-white border-gray-700", resTheme)}`}>
       <div className="flex justify-between relative">
         <span
           className={`inline-flex items-center justify-center gap-1 rounded-full px-2.5 py-0.5`}

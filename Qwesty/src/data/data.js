@@ -28,14 +28,14 @@ export const timePeriodOptions = [
 ];
 
 export const filterOptions = [
-  { value: "Filter", label: "Filter" },
-  { value: "Status", label: "Status" },
   { value: "Research Type", label: "Research Type" },
+  { value: "Status", label: "Status" },
   { value: "This Year", label: "This Year" },
 ];
 
 export const ResearchPageData = [
   {
+    id: 1,
     status: "completed",
     title: "Product validation research",
     researchType: "survey",
@@ -44,6 +44,7 @@ export const ResearchPageData = [
     date: "Last week",
   },
   {
+    id: 2,
     status: "paused",
     title: "Product marketing research",
     researchType: "interview",
@@ -52,6 +53,7 @@ export const ResearchPageData = [
     date: "Last month",
   },
   {
+    id: 3,
     status: "ongoing",
     title: "Product validation research",
     researchType: "survey",
