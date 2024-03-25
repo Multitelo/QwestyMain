@@ -23,6 +23,7 @@ const ResearchPage = () => {
   const [selectedStatus, setSelectedStatus] = useState("Status");
   const [selectedResearchType, setSelectedResearchType] =
     useState("Research Type");
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState("This Year");
 
   // descending order
   const sortArrowDown = () => {
@@ -34,15 +35,33 @@ const ResearchPage = () => {
     setSortType("active");
     setSortBy("asc");
   };
-  // Filtered research data based on selected status
+
+  // Filtered research data based on selected status, research type, and time period
   const filteredResearchData = ResearchPageData.filter(
     (research) =>
-      selectedStatus === "Status" ||
-      research.status.toLowerCase() === selectedStatus.toLowerCase()
+      (selectedStatus === "Status" ||
+        research.status.toLowerCase() === selectedStatus.toLowerCase()) &&
+      (selectedResearchType === "Research Type" ||
+        research.researchType.toLowerCase() ===
+          selectedResearchType.toLowerCase()) &&
+      (selectedTimePeriod === "This Year" ||
+        research.date.toLowerCase() === selectedTimePeriod.toLowerCase())
   );
-  // Message to display when no research is found for selected status
-  const noResearchMessage =
-    selectedStatus === "Status" ? "" : `No ${selectedStatus} status is found`;
+
+  // Message to display when no research is found for selected status, research type, or time period
+  let noResearchMessage = "";
+  if (selectedStatus !== "Status" && filteredResearchData.length === 0) {
+    noResearchMessage = `No research found for ${selectedStatus} status`;
+  }
+  if (
+    selectedResearchType !== "Research Type" &&
+    filteredResearchData.length === 0
+  ) {
+    noResearchMessage = `No research found for ${selectedResearchType} research type`;
+  }
+  if (selectedTimePeriod !== "This Year" && filteredResearchData.length === 0) {
+    noResearchMessage = `No research found for ${selectedTimePeriod}`;
+  }
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -102,7 +121,8 @@ const ResearchPage = () => {
                   </select>
                   {/* This year */}
                   <select
-                    defaultValue="This Year"
+                    value={selectedTimePeriod}
+                    onChange={(e) => setSelectedTimePeriod(e.target.value)}
                     className={`hidden md:grid py-2 outline-none rounded-md border-[2px] ${switchTheme(
                       "border-gray-300",
                       darkTheme + " text-gray-400 border-gray-700",
@@ -115,6 +135,7 @@ const ResearchPage = () => {
                       </option>
                     ))}
                   </select>
+
                   {/* filter */}
                   <select
                     defaultValue="Filter"
