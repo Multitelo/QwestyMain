@@ -1,13 +1,15 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
 header("Content-type:application/json");
 
+
+
 include "./cone.php"; // Ensure this path is correct
 require './send_otp_mail.php';
 require './send_welcome_email.php';
-
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usertype'], $_POST['username'], $_POST['password'])) {
@@ -32,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['usert
         echo json_encode(["error" => "Invalid user type."]);
         exit;
     }
-
+   
     $email = mysqli_real_escape_string($conn, $email);
     $username = mysqli_real_escape_string($conn, $username);
 
