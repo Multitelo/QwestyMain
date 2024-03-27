@@ -6,7 +6,7 @@ const SubInsight = ({ iconColor, iconBg, icon, label, isActive, onClick }) => {
     <div
       className="rounded-lg cursor-pointer flex-shrink-0  w-[200px] md:w-[250px] h-[100px] relative shadow-md bg-slate-100"
       style={{
-        border: isActive ? `2px solid ${iconBg}` : `2px solid transparent`,
+        border: isActive ? `1px solid ${iconBg}` : `1px solid transparent`,
       }}
       onClick={onClick}
     >
