@@ -144,3 +144,35 @@ export const insigthGridCard = [
   { label: "Number of devices", value: "8" },
   { label: "completion rate", value: "88%" },
 ];
+
+// TotalResponse table head
+export const TotalResponseHeading = {
+  perDay: {
+    text: "Per Day",
+  },
+  responses: {
+    text: "No of Responses",
+  },
+  perState: {
+    text: "Per State",
+  },
+};
+
+// TotalResponse table body
+export const TotalResponseBody = [
+  {
+    perDay: `1st March 2024`,
+    responses: `5`,
+    perState: `2`,
+  },   
+  {
+    perDay: `2nd March 2024`,
+    responses: `8`,
+    perState: `3`,
+  },   
+  {
+    perDay: `3rd March 2024`,
+    responses: `12`,
+    perState: `4`,
+  }
+];

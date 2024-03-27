@@ -8,7 +8,7 @@ const GridCard = ({ label, value, borderColor }) => {
   >
       <p className="pt-2 pl-2 font-bold">{label}</p>
       <h1
-        className={`font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl absolute left-1/2 -bottom-0 -translate-x-1/2 -translate-y-1/2 transform`}
+        className={`font-bold text-4xl md:text-5xl absolute left-1/2 -bottom-0 -translate-x-1/2 -translate-y-1/2 transform`}
         style={{ color: `${borderColor}` }}
       >
         {value}
