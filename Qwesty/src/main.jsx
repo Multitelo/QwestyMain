@@ -22,7 +22,9 @@ import {
   PreviewSurvey,
   NewResearch,
   ScheduledResearch,
-  Create
+  Create,
+  Insights,
+  Verify
 } from "./routes/Index.jsx";
 
 import { useEffect } from "react";
@@ -67,7 +69,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Reset" element={<Reset />} />
             <Route path="/SignUp" element={<Signup />} />
-
+            <Route path='/verify' element={<Verify/>} />
             {/* Route for Researcher's page */}
             <Route path="/researcher/home" element={<HomePage />} />
             <Route path="/researcher/settings" element={<SettingsRes />} />
@@ -79,6 +81,8 @@ function App() {
             <Route path="/researcher/new-research" element={<NewResearch/>} />
             <Route path="researcher/Scheduled-researches" element={<ScheduledResearch/>} />
             <Route path='researcher/create' element={<Create/>} />
+            <Route path='researcher/insight/:parameter' element={<Insights/>} />
+
             
             {/* Route for Participant's page */}
             <Route path="/signedUp/Settings" element={<Settings />} />

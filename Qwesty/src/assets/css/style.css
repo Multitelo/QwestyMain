@@ -506,6 +506,7 @@ line-height: 24px;
   justify-content: center;
   width: 100%;
   grid-template-areas: "header header"
+                        "fst sec"
                        "faq-item-0 faq-item-1"
                        "faq-item-2 faq-item-3"
                        "faq-item-4 faq-item-5"
@@ -526,7 +527,19 @@ line-height: 24px;
   justify-self: center;
   margin-bottom: 40px;
 }
+.faq-container h3{
 
+  color: #F8F8F8;
+  font-family: Outfit;
+  justify-self: center;
+  margin-bottom: 40px;
+}
+.faq-container h3:first-child{
+  grid-area: fst;
+}
+.faq-container h3:nth-child(2){
+  grid-area: sec;
+}
 .faq-items{
   border-radius: 15px;
   border: 1px solid #FFF;
@@ -944,10 +957,12 @@ button img, img#close-bar{
     grid-template-columns: 70vw;
     justify-content: center;
     grid-template-areas: "header"
+                          "fst"
                          "faq-item-0"
                          "faq-item-1"
                          "faq-item-2"
                          "faq-item-3"
+                         "sec"
                          "faq-item-4"
                          " faq-item-5"
                          "faq-item-6"

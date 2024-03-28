@@ -5,8 +5,8 @@
     header("Content-type:application/json");
 // Database 1 connection parameters
     $db1_servername = "localhost";
-    $db1_username = "Multitelo";
-    $db1_password = "k77359095";
+    $db1_username = "root";
+    $db1_password = "";
     $db1_database = "qwestyparti";
 
     // // Database 2 connection parameters

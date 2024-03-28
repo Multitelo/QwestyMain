@@ -5,16 +5,16 @@ import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
-import CalendarM from "../../components/mahtot/CalendarMu.jsx";
+// import CalendarM from "../../components/mahtot/CalendarMu.jsx";
 import dayjs from 'dayjs';
 import * as React from 'react';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+// import Popover from '@mui/material/Popover';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import Box from '@mui/material/Box';
+// import Modal from '@mui/material/Modal';
 import { useState } from "react";
-import AlertDialog from "../../components/mahtot/Alert.jsx";
+// import AlertDialog from "../../components/mahtot/Alert.jsx";
 
 function PreviewSurvey() {
     const {resTheme} = useTheme();
@@ -71,29 +71,17 @@ function PreviewSurvey() {
                 ))
             }
                 </div>
-                <div>
-      <Button onClick={handleOpen}>set deadline</Button> (optional)
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-         
-          <Typography id="modal-modal-description" sx={{ mt: 1 }}>
-          <CalendarM deadline={deadline} 
-              setDeadline={setDeadline}
-             handleClose={handleClose}/>          </Typography>
-        </Box>
-      </Modal>
+                <div className="preview">
+          <button >
+        set deadline</button> (optional)
+             
+      
     </div>
                
              
   
             <div className="end-btns">
-               <AlertDialog/>
-                
+               
                 <button>Schedule research</button>
                 <button>Save research</button>
             </div>
