@@ -5,26 +5,22 @@ import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
-// import CalendarM from "../../components/mahtot/CalendarMu.jsx";
-import dayjs from 'dayjs';
 import * as React from 'react';
-// import Popover from '@mui/material/Popover';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
-// import Box from '@mui/material/Box';
-// import Modal from '@mui/material/Modal';
+import CalendarMu from "../../components/mahtot/CalendarMu";
+import Modal from "../../components/mahtot/Modal";
 import { useState } from "react";
-// import AlertDialog from "../../components/mahtot/Alert.jsx";
 
 function PreviewSurvey() {
     const {resTheme} = useTheme();
-    const [deadline, setDeadline] = useState(dayjs());
-   
+    const [deadline, setDeadline] = useState();
+    const [isOpen,setIsOpen] = useState({deadline:false, startResearch:false})
+    const [Schedule, setSchedule] = useState(null)
+    const [startResearch, setStartResearch] = useState(false)
+    
+    const onClose = ()=>{
+        setIsOpen(false)
+      }
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-   
     const style = {
       position: 'absolute',
       top: '50%',
@@ -70,25 +66,32 @@ function PreviewSurvey() {
                             key={index}/>
                 ))
             }
+            {/* {<CalendarMu date={deadline} setDate={setDeadline}/>} */}
+                {deadline}
                 </div>
-                <div className="preview">
-          <button >
+                <div className="pmreview">
+          <button onClick={()=>setIsOpen({...isOpen, deadline:true})}>
         set deadline</button> (optional)
-             
+        <Modal open={isOpen} onClose={onClose} setStartResearch={setStartResearch}>
+           {<CalendarMu onClose={onClose}/>}
+           
+        </Modal>
       
     </div>
                
              
   
             <div className="end-btns">
-               
+               <button style={{backgroundColor:'#8E5DF5', color:'#fff'}}
+                       onClick={()=>setIsOpen({...isOpen, startResearch:true})} >
+                Start Research</button>
                 <button>Schedule research</button>
                 <button>Save research</button>
             </div>
             </div>
       
       
-    </div>
+    </div> 
     <div className="research-footer">
     <Footer />
   </div>  
