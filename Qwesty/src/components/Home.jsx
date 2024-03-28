@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Faq from './Faq';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
   const[isHovoured, setIsHovoured] = useState({
@@ -52,7 +53,26 @@ function Home() {
     
     <>
     
-  
+    <div id="grid-container-first">
+      <div id="desc">
+        <h1 id="title">
+            User <span> research </span> has never been so fun and fast
+        </h1>
+      <p>
+    Qwesty help UX Researchers get useful data in order to make the market
+     desire their product while helping the participants enjoy and get rewards for the data they share
+   </p>
+    </div>
+
+    <div id="vid">
+      <img src={vid}/>
+    </div>
+
+    <Link to='/SignUp'><div id="btn-join">
+      <button id="btn"><span>Join Us</span></button> 
+    </div></Link>
+
+    </div>
 
     <div id="grid-container-second">
       <div id="heading">

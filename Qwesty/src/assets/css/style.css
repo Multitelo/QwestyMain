@@ -785,6 +785,7 @@ button img, img#close-bar{
   }
   #third-item{
     grid-area: third;
+    display: flex;
    
   }
   #fourth-item{

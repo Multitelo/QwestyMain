@@ -20,7 +20,15 @@ const OVERLAY_STYLES = {
 
 
 
-export default function Modal({open, children, onClose, setStartResearch}) {
+export default function Modal({open,
+                              children,
+                              onClose, 
+                              setStartResearch,
+                              deadline,
+                              setDeadline,
+                              schedule,
+                              setSchedule
+                            }) {
 
   if(!(open.deadline || open.startResearch)) return null
   
@@ -82,7 +90,10 @@ export default function Modal({open, children, onClose, setStartResearch}) {
         <div className='modal-container'>
             <div style={MODAL_STYLES} className='pp'>
             {
-                open.deadline?<CalendarMu onClose={onClose}/>:
+                open.deadline?
+                <CalendarMu onClose={onClose}
+                            date={deadline}
+                            setDate={setDeadline}/>:
                 open.startResearch?<Alert setStartResearch={setStartResearch}  onClose={onClose}/> :''
             }
             </div>
