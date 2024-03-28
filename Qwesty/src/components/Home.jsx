@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react'
 import Faq from './Faq';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
-
+import ReactPlayer from 'react-player'
+import video from '../../src/assets/Solvtey_vid/vid.mp4';
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
   const[isHovoured, setIsHovoured] = useState({
@@ -65,7 +66,13 @@ function Home() {
     </div>
 
     <div id="vid">
-      <img src={vid}/>
+      <ReactPlayer 
+          url={video}
+          playing={true}
+          controls={true}
+          width={800}
+          height={'auto'}
+      />
     </div>
 
     <Link to='/SignUp'><div id="btn-join">

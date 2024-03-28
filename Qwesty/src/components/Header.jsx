@@ -6,6 +6,8 @@ import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';
 import { Routes, Route, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
+import { TiArrowSortedDown } from "react-icons/ti";
+import { IoMdClose } from "react-icons/io";
 import Main from './Main';
 
 function Header() {
@@ -24,15 +26,20 @@ function Header() {
      setBarClicked(false);
     };
 
-    useEffect(()=>{
-     
-      document.addEventListener("scroll", closeAnswers);
+    useEffect(() => {
+      document.addEventListener('mousedown', handleOutsideClick);
+  
       return () => {
-        document.removeEventListener("scroll", closeAnswers);
+        document.removeEventListener('mousedown', handleOutsideClick);
       };
+    }, [barClicked]);
+    
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest('#medi')) {
+        closeAnswers();
+      }
+    };
 
-      
-    })
 
     useEffect(() => {
     const handleResize = () => {
@@ -49,7 +56,7 @@ function Header() {
   return (
     <>
    
-   
+   <div id='medi'>
    <div className='nav-medium-devices'>
       
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
@@ -63,22 +70,22 @@ function Header() {
             
           <Link to='/' className='items logo'><img src={Logo}></img></Link>
           {
-            barClicked&& <img src={x} id="close-bar" onClick={handleClick}/>
+            barClicked&&  <IoMdClose id="close-bar" onClick={handleClick} size={'3rem'}/>
           } 
           <Link to='/researcher/home'className='items' id="first-item">about us</Link>
-          <Link to='/signedUp/rewards'className='items' id="second-item">contact us</Link>
-          <Link to='/verify'className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+          <Link to='/signedUp/rewards'className='items' id="second-item">  contact us</Link>
+          <Link to='/verify'className='items' id="third-item">  services<TiArrowSortedDown id="arrow" /></Link>
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
-                         
+      </div>       
         <nav id="nav-bar">
             
             <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
             <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/verify' className='items' id="third-item">services<img src={arrow} id="arrow"/></Link>
+            <Link to='/verify' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link>
             <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>
