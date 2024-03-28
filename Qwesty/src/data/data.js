@@ -164,15 +164,68 @@ export const TotalResponseBody = [
     perDay: `1st March 2024`,
     responses: `5`,
     perState: `2`,
-  },   
+  },
   {
     perDay: `2nd March 2024`,
     responses: `8`,
     perState: `3`,
-  },   
+  },
   {
     perDay: `3rd March 2024`,
     responses: `12`,
     perState: `4`,
-  }
+  },
 ];
+
+// Insights Response Placeholder Data
+
+export const ResponseByParticipants = [
+  {
+    avatar: "/actokuyt/sky-avatar.png",
+    name: "Skyrose",
+    date: "Dec 15, 2023",
+    time: "5:31pm",
+    duration: "7mins",
+  },
+  {
+    avatar: "/actokuyt/mul-avatar.png",
+    name: "Multitelo",
+    date: "Dec 15, 2023",
+    time: "5:31pm",
+    duration: "11mins",
+  },
+  {
+    avatar: "/actokuyt/mike-avatar.png",
+    name: "Mike",
+    date: "Dec 15, 2023",
+    time: "5:31pm",
+    duration: "9mins",
+  },
+];
+
+export const ResponseByQuestions = [
+  {
+    title: "Question 1",
+    averageTime: "32secs",
+  },
+  {
+    title: "Question 2",
+    averageTime: "33secs",
+  },
+  {
+    title: "Question 1",
+    averageTime: "25secs",
+  },
+  {
+    title: "Question 1",
+    averageTime: "36secs",
+  },
+  {
+    title: "Question 1",
+    averageTime: "12secs",
+  },
+  {
+    title: "Question 1",
+    averageTime: "23secs",
+  },
+]
