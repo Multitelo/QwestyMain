@@ -1,8 +1,11 @@
 import React from "react";
+import { darkTheme, switchTheme } from "../../../data/data";
+import { useTheme } from "../../../context/ThemeContext";
 
 const TotalResponse = ({TableBody, TableHeading}) => {
+  const { resTheme } = useTheme()
   return (
-    <section className="w-full 785:w-[40%] bg-white rounded-xl h-fit">
+    <section className={`w-full ${switchTheme('bg-white', darkTheme, resTheme)} 785:w-[40%] rounded-xl h-fit mx-2 md:mx-0`}>
       <div className="bg-[#8E5DF5] rounded-xl py-5">
         <p className="text-center py-3 text-white">
           Total responses (participants)
