@@ -1,10 +1,13 @@
-import { MessageCircle } from "lucide-react";
 import React from "react";
+import { darkTheme, switchTheme } from "../../../data/data";
+import { useTheme } from "../../../context/ThemeContext";
+
 
 const SubInsight = ({ iconColor, iconBg, icon, label, isActive, onClick }) => {
+  const  { resTheme } = useTheme()
   return (
     <div
-      className="rounded-lg cursor-pointer flex-shrink-0  w-[200px] md:w-[250px] h-[100px] relative shadow-md bg-slate-100"
+      className={`rounded-lg ${switchTheme('bg-slate-100', darkTheme, resTheme)} cursor-pointer flex-shrink-0  w-[200px] md:w-[250px] h-[100px] relative shadow-md`}
       style={{
         border: isActive ? `1px solid ${iconBg}` : `1px solid transparent`,
       }}
