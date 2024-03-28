@@ -94,8 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['otp'
                     }
                 }
             }
-
-
             // Continue with the rest of your script...
 
             // Alternatively, if you prefer marking the OTP as used instead of deleting,
@@ -105,8 +103,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['otp'
             // $updateStmt->execute();
     
             // Proceed to create JWT
-            create_jwt($userId, $email); // Now you have the email for JWT creation
-            echo json_encode(["message" => "OTP verified successfully. Account activated.", "email" => $email]);
+            // Proceed to create JWT
+            $jwt = create_jwt($userId, $email, $usertype); // Pass usertype as a parameter
+            echo json_encode(["message" => "OTP verified successfully. Account activated.", "email" => $email, "jwt" => $jwt]);
+
         } else {
             http_response_code(401); // Unauthorized
             echo json_encode(["error" => "OTP is invalid or expired."]);

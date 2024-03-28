@@ -1,5 +1,4 @@
 <?php
-
 include "./cone.php"; // Ensure this path is correct
 require './vendor/autoload.php'; // Adjust this path if necessary
 
@@ -11,7 +10,11 @@ function decode_jwt($receivedToken) {
     try {
         $decoded = JWT::decode($receivedToken, new Key($secretKey, 'HS256'));
         // Convert the object to an associative array
-        return (array) $decoded;
+        $decodedArray = (array) $decoded;
+        // echo 'User ID: ' . $decodedArray['userId'] . PHP_EOL;
+        // echo 'email: ' . $decodedArray['email'] . PHP_EOL;
+        // echo 'Usertype: ' . $decodedArray['usertype'] . PHP_EOL;
+        return $decodedArray;
     } catch (Exception $e) {
         // Return error or false if token is invalid or expired
         return false;

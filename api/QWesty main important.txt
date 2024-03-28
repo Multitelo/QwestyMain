@@ -2,14 +2,32 @@ curl -X POST http://localhost/qwestymain/api/login.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "email=emenikeaugustine301@gmail.com&password=K@vp7QK5XXZ2efd&usertype=researcher"
 
+curl -X POST http://localhost/qwestymain/api/login.php \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "email=emenikeaugustine301@gmail.com&password=example321&usertype=participant"
 
+curl -X POST http://localhost/qwestymain/api/forgot.php \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "email=emenikeaugustine301@gmail.com&usertype=researcher"
 
 
 Your account securemail@qwestyty.site has been setup. In your e-mail program, use:
 Username:	securemail@qwesty.site
-Password:	Qwesty#secure1
+Password:	Qwestyteam2023.
 POP/IMAP Server:	mail.qwesty.site
 SMTP Server:	mail.qwesty.site port 587
+
+
+participant token
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzOTAwNjEsImV4cCI6MTcxMTM5MzY2MSwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.StDMGG9YQjYt_5mG8OhO25YNMFU9WSLPmdpZ2mO6QCo
+
+
+researcher token
+
+
+curl -X POST \
+  -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODE0MzgsImV4cCI6MTcxMTM4NTAzOCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.LljL91RLC-i4QbPxBkZyEkZpt6TCS2qIBHvhc6DQZBU" \
+  http://localhost/qwestymain/api/decode.php
 
 
 
@@ -26,13 +44,67 @@ CREATE TABLE `user_otp` (
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=6&otp=42384&usertype=researcher"
+-d "userId=16&otp=45391&usertype=participant"
+
+curl -X POST http://localhost/qwestymain/api/verify_otp.php \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "userId=16&otp=88226&usertype=researcher"
+
+
+curl -X POST \
+  http://localhost/qwestymain/api/saveans.php \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODE0MzgsImV4cCI6MTcxMTM4NTAzOCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.LljL91RLC-i4QbPxBkZyEkZpt6TCS2qIBHvhc6DQZBU' \
+  -d '{
+        "survey_id": 6,
+        "participant_id": 456,
+        "answers": [
+            {
+                "question_id": 1,
+                "answer_text": "This is answer 1"
+            },
+            {
+                "question_id": 2,
+                "answer_option": "Option A"
+            },
+            {
+                "question_id": 3,
+                "answer_image_url": "https://example.com/image.jpg"
+            }
+        ]
+    }'
+
+
+curl -X GET 'http://localhost/qwestymain/api/selectques.php?survey_id=6' -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODcxNTYsImV4cCI6MTcxMTM5MDc1NiwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.RUhxsgzEpzmEK4KIi0DHEbirIZhiQxNeMC6t4bjlexY'
+
+
+curl -X POST \
+  http://localhost/qwestymain/api/saveans.php?survey_id=6 \
+  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzOTUwMDYsImV4cCI6MTcxMTM5ODYwNiwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.OL8nfak4j0-WmsOR3rG9r1-o4wT_GpjTZCS837XbhZI' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "answers": [
+        {
+            "question_id": 1,
+            "answer_text": "Sample answer 1"
+        },
+        {
+            "question_id": 2,
+            "answer_text": "Sample answer 2"
+        }
+    ]
+}'
 
 
 
+curl -X POST \
+  'http://localhost/qwestymain/api/signin.php' \
+  -d 'email=emenikeaugustine301@gmail.com' \
+  -d 'usertype=participant' \
+  -d 'username=Multitelo3' \
+  -d 'password=example321'
 
 
-curl -X POST -H "Content-Type: application/json" -d '{"email":"user@example.com", "password":"yourPassword", "usertype":"participant"}' http://localhost/qwestymain/api/signin.php
 
 
 
@@ -61,23 +133,132 @@ $picture_url = $_POST['picture_url'];
 GBDQ5IIXTGUULUFQ3CYACCBBSIAOCSHCQSVOTNKKADYP3WWLQ4S5UWKG
 
 
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEyMTQzNTMsImV4cCI6MTcxMTIxNzk1MywidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ.9-U63E_ZfDtmnfJXQ3eVZ6oRcT2_QSYFUAQSjJjwwoE
 
 curl -X POST http://localhost/qwestymain/api/createsur.php \
--H "Authorization: Bearer <eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU>" \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODE0MzgsImV4cCI6MTcxMTM4NTAzOCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.LljL91RLC-i4QbPxBkZyEkZpt6TCS2qIBHvhc6DQZBU" \
 -H "Content-Type: application/json" \
 -d '{"survey_type": "Online", "title": "Climate Change Awareness Survey", "field_of_research": "Environmental Science", "description": "A survey to assess public awareness on climate change."}'
 
 
 
 curl -X POST http://localhost/qwestymain/api/saveques.php \
--H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA5NDE5MTAsImV4cCI6MTcxMDk0NTUxMCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ._EdFLwTyoFt20w-YWVm6VNS31agZdKvWdc-Eu0C4InU" \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEyMDk5OTEsImV4cCI6MTcxMTIxMzU5MSwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ.nqLM_5galpghHvRcuf7tXSRhsrHL2YZs9gyLK10lodc" \
 -H "Content-Type: application/json" \
 -d '{
-  "survey_id": "4",
+  "survey_id": "6",
   "questions": [
     {"question_text": "What is your opinion on climate change?", "question_order": 1},
     {"question_text": "How often do you use public transportation?", "question_order": 2},
     {"question_text": "Do you recycle?", "question_order": 3}
   ]
-}
+}'
+
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEyMTQzNTMsImV4cCI6MTcxMTIxNzk1MywidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ.9-U63E_ZfDtmnfJXQ3eVZ6oRcT2_QSYFUAQSjJjwwoE" -d '{
+  "survey_id": "6",
+  "questions": [
+    {
+      "question_text": "What is your favorite color?",
+      "question_order": 1,
+      "question_type": "multiple_choice",
+      "options": ["Red", "Blue", "Green", "Yellow"]
+    },
+    {
+      "question_text": "What do you see in the image?",
+      "question_order": 2,
+      "question_type": "image",
+      "image_data": "base64_encoded_image_data_here",
+      "options": ["Red", "Blue", "Green", "Yellow"]
+    }
+  ]
+}' http://localhost/QwestyMain/api/saveques.php
+
+
+
+
+
+curl -X GET http://localhost/QwestyMain/api/get.php -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEwNTkxNzcsImV4cCI6MTcxMTA2Mjc3NywidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20ifQ.TdTVl0F-Q6yVFSSWz_gaq3XI-8iZUirRJzlkHlg9olY"
+
+
+https://qwesty.site?' . $refid . '.
+<b>' . $username . '!</b>
+&apos;
+<br>
+
+
+ALTER TABLE resea
+ADD COLUMN welcome_email_sent INT DEFAULT 0;
+
+ALTER TABLE parti
+DROP COLUMN welcome_email_sent;
+
+
+
+godwinpraise05@gmail.com
+umorujoyobe@gmail.com
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"survey_id": "your_survey_id", "questions": [{"question_text": "What is your favorite color?", "question_type": "multiple_choice", "options": ["Red", "Blue", "Green", "Yellow"]} ]}' http://localhost/QwestyMain/api/saveques.php
+
+
+
+CREATE TABLE `surveys` (
+  `SurveyID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(255) NOT NULL,
+  `Description` text DEFAULT NULL,
+  `SurveyType` varchar(255) DEFAULT NULL,
+  `FieldOfResearch` varchar(255) DEFAULT NULL,
+  `ResearcherID` bigint(20) NOT NULL,
+  `DateCreated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `LastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`SurveyID`),
+  KEY `ResearcherID` (`ResearcherID`),
+  CONSTRAINT `surveys_ibfk_1` FOREIGN KEY (`ResearcherID`) REFERENCES `researcherregistry` (`researcher_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `surveys`
+ADD COLUMN `DateCreated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `LastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+
+CREATE TABLE `participantregistry` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `participant_id` bigint(20) NOT NULL,
+  `registered_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+CREATE TABLE `surveyquestions` (
+  `QuestionID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `SurveyID` bigint(20) NOT NULL,
+  `QuestionText` text DEFAULT NULL,
+  `QuestionOrder` int(11) DEFAULT NULL,
+  `QuestionType` varchar(20) NOT NULL DEFAULT 'single_choice',
+  `Options` longtext DEFAULT NULL,
+  `ImageURL` varchar(255) DEFAULT NULL,
+  `DateCreated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `LastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`QuestionID`),
+  KEY `SurveyID` (`SurveyID`),
+  CONSTRAINT `surveyquestions_ibfk_1` FOREIGN KEY (`SurveyID`) REFERENCES `surveys` (`SurveyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `surveyquestions`
+ADD COLUMN `DateCreated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN `LastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+
+CREATE TABLE ParticipantAnswers (
+    `AnswerID` bigint(20) NOT NULL AUTO_INCREMENT,
+    `SurveyID` bigint(20) NOT NULL,
+    `ParticipantID` bigint(20) NOT NULL,
+    `QuestionID` bigint(20) NOT NULL,
+    AnswerText TEXT,
+    AnswerOption INT,
+    AnswerImageURL VARCHAR(255),
+    AnswerDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (SurveyID) REFERENCES surveys(SurveyID),
+    FOREIGN KEY (ParticipantID) REFERENCES participantregistry(participant_id),
+    FOREIGN KEY (QuestionID) REFERENCES surveyquestions(QuestionID)
+)ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

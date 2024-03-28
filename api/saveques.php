@@ -37,15 +37,27 @@ $survey_id = $data['survey_id'];
 $questions = $data['questions'];
 
 // Prepare the statement for inserting questions
-$stmt = $conn3->prepare("INSERT INTO SurveyQuestions (SurveyID, QuestionText, QuestionOrder) VALUES (?, ?, ?)");
+$stmt = $conn3->prepare("INSERT INTO SurveyQuestions (SurveyID, QuestionText, QuestionOrder, QuestionType, Options, ImageURL) VALUES (?, ?, ?, ?, ?, ?)");
 
 $success = true;
 foreach ($questions as $question) {
-    // Extract question text and order, default order to 0 if not provided
+    // Extract question text, order, type, options, and image URL
     $question_text = $question['question_text'];
     $question_order = isset($question['question_order']) ? $question['question_order'] : 0;
+    $question_type = $question['question_type']; // Assuming question type is provided
+    $options = isset($question['options']) ? json_encode($question['options']) : null; // JSON encode options if available
+    $image_url = null;
 
-    $stmt->bind_param("isi", $survey_id, $question_text, $question_order);
+    // Handle image upload if present
+    if ($question_type === 'image') {
+        if (isset($question['image_data'])) {
+            // Handle image upload, store image data and get the URL
+            $image_data = $question['image_data']; // Assuming image data is base64 encoded
+            $image_url = saveImageAndGetURL($image_data); // Implement this function to save the image and return its URL
+        }
+    }
+
+    $stmt->bind_param("isisss", $survey_id, $question_text, $question_order, $question_type, $options, $image_url);
     if (!$stmt->execute()) {
         $success = false;
         break; // Stop on first error
@@ -60,4 +72,27 @@ if ($success) {
 
 $stmt->close();
 $conn3->close();
+
+// Function to save image data and return its URL
+function saveImageAndGetURL($image_data) {
+    // Define the directory where images will be stored
+    $upload_dir = 'uploads/';
+
+    // Generate a unique filename for the image
+    $image_filename = uniqid() . '.jpg'; // You can use other file formats as needed
+
+    // Specify the path where the image will be saved
+    $image_path = $upload_dir . $image_filename;
+
+    // Decode the base64 image data and save it to the specified path
+    $decoded_image_data = base64_decode($image_data);
+    if (file_put_contents($image_path, $decoded_image_data)) {
+        // Return the URL of the saved image
+        return $image_path;
+    } else {
+        // If failed to save the image, return null or handle the error accordingly
+        return null;
+    }
+}
+
 ?>
