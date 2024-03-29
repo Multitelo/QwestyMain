@@ -18,6 +18,7 @@ import ResearchCardToast from "../../components/ben/research/ResearchCardToast";
 import DropdownSelect from "../../components/ben/research/DropdownSelect";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { getSelectsur } from "../../api/axios";
 
 const ResearchPage = () => {
   const { resTheme } = useTheme();
@@ -34,6 +35,8 @@ const ResearchPage = () => {
   const [clickedOnce, setClickedOnce] = useState(false);
   const [timer, setTimer] = useState(null);
   const navigate = useNavigate();
+  // useState for ResearchPageData
+  const [data, setData] = useState([]);
 
   // descending order
   const sortArrowDown = () => {
@@ -103,19 +106,56 @@ const ResearchPage = () => {
   function getOptionsForCard(status) {
     switch (status) {
       case "completed":
-        return ["Edit", "Delete", "View Insight","Duplicate", new Date().toLocaleString('en-US', timeProperties)];
+        return [
+          "Edit",
+          "Delete",
+          "View Insight",
+          "Duplicate",
+          new Date().toLocaleString("en-US", timeProperties),
+        ];
       case "ongoing":
-        return ["Edit", "Delete", "View Insight","Duplicate", "Resume ", "End", new Date().toLocaleString('en-US', timeProperties)];
+        return [
+          "Edit",
+          "Delete",
+          "View Insight",
+          "Duplicate",
+          "End",
+          "Pause",
+          new Date().toLocaleString("en-US", timeProperties),
+        ];
       case "paused":
-        return ["Edit", "Delete", "View Insight","Duplicate", "End", "Pause", new Date().toLocaleString('en-US', timeProperties)];
+        return [
+          "Edit",
+          "Delete",
+          "View Insight",
+          "Duplicate",
+          "Resume ",
+          "End",
+          new Date().toLocaleString("en-US", timeProperties),
+        ];
       default:
         return [];
     }
   }
 
-  useEffect(() => {
-    getOptionsForCard();
-  }, [getOptionsForCard]);
+
+  // fetching selectur.php data
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const responseData = await getSelectsur(); 
+  //       setData(responseData);
+  //       console.log(responseData);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+
+  useEffect(() => {}, [getOptionsForCard]);
 
   return (
     <div className={`researcher-content ${resTheme}`}>
