@@ -8,6 +8,7 @@ import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player'
 import video from '../../src/assets/Solvtey_vid/vid.mp4';
+
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
   const[isHovoured, setIsHovoured] = useState({
@@ -18,18 +19,18 @@ function Home() {
   const solutions = [{
     problem: ' "This form is so long, I\'m starting'+'\n'+' to think I\'m applying for a job."',
     identity:'A typical Participant\'s day',
-    solution: 'Qwesty is so fun, you\'ll forget'+'\n'+'  you\'re giving feedback'
+    solution: 'Solvety is so fun, you\'ll forget'+'\n'+'  you\'re giving feedback'
   },
   {
     problem:'"These responses are so empty, that'+'\n'+'  I wonder if the participants are forced to respond."',
     identity:'A typical Product Manager\'s day',
-    solution:'Qwesty is the only way to'+'\n'+'  find out what your users really think, even if they don\'t want to tell you.'
+    solution:'Solvety is the only way to'+'\n'+'  find out what your users really think, even if they don\'t want to tell you.'
  
   },
   {
     problem: '“I know what my target audience want'+'\n'+'  but but it\'s still not kinda helpful”',
     identity: 'A typical Content Strategist\'s day',
-    solution:'Qwesty not only tells you'+'\n'+'  What but also tells you Why'
+    solution:'Solvety not only tells you'+'\n'+'  What but also tells you Why'
      }
 ]
   useEffect(() => {
@@ -60,15 +61,15 @@ function Home() {
             User <span> research </span> has never been so fun and fast
         </h1>
       <p>
-    Qwesty help UX Researchers get useful data in order to make the market
+    Solvety help UX Researchers get useful data in order to make the market
      desire their product while helping the participants enjoy and get rewards for the data they share
    </p>
     </div>
 
-    <div id="vid">
+    <div id="vid" style={{ border: 'none', padding: '0' }}>
       <ReactPlayer 
           url={video}
-          playing={true}
+          playing={false}
           controls={true}
           width={'90%'}
           height={'auto'}
@@ -92,7 +93,7 @@ function Home() {
         <img src={womanPic} />
         </div>
         <div id="item3">
-      Qwesty
+      Solvety
       </div>
       <div className='item-box first'>
         <div className='first-item'

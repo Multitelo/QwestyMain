@@ -146,7 +146,7 @@ function SignUpPage() {
         formData.append('password', password.value);
     
         try {
-            const response = await fetch('http://localhost/qwestymain/api/signin.php', {
+            const response = await fetch('http://solvety.info/api/signin.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -157,15 +157,7 @@ function SignUpPage() {
         console.log(response)
             const data = await response.json();
          
-            if (data.token) {
-                localStorage.setItem('userToken', data.token);
-                console.log('Signup successful, token:', data.token);
-                
-                window.location.href = '/verify'; // Make sure this matches your route
-            } else {
-                console.error('Signup failed:', data.error || 'Unknown error');
-                setErrE(data.error || 'An error occurred.');
-            }
+            
         } catch (error) {
             console.error('Network error:', error.message);
             setErrE("A network error occurred. Please try again.");

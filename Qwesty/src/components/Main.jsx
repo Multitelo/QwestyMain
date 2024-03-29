@@ -4,6 +4,8 @@ import pic2 from '../assets/images/pic2.jpg'
 import pic3 from '../assets/images/pic3.jpg'
 import pic4 from '../assets/images/picc4.png'
 import pic5 from '../assets/images/pic5.png'
+import avatar from '../assets/images/solvety-avatar.png'
+
 function Main() {
     const [images, setImages] = useState([pic1, pic2, pic3, pic4, pic5])
     const [captions, setCaptions] = useState([{
@@ -27,7 +29,7 @@ function Main() {
     ])
 
     const [convos, setConvos] = useState([
-        "We understand that sharing data can sometimes feel like a chore, so that's why Qwesty is designed to make it fun! We know that users have busy lives, so we want to make it easy for them to share their data without feeling like they're sacrificing their time.",
+        "We understand that sharing data can sometimes feel like a chore, so that's why Solvety is designed to make it fun! We know that users have busy lives, so we want to make it easy for them to share their data without feeling like they're sacrificing their time.",
         "We want them to understand they're getting something out of it, and that they're making a valuable contribution to the businesses that use their data. Therefore, our product helps a targeted audience share data through a fun and engaging process, while also ensuring that the data is useful and reliable. We're seeking a win-win for everyone!",
         "That is to say that, On one hand, users get to have fun while sharing useful data, and on the other hand, businesses get accurate and reliable data to help them make their products and services worthwhile."
 
@@ -37,13 +39,13 @@ function Main() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // Increment index, reset to 0 if reached the end
+     
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5000 milliseconds (5 seconds)
+    }, 5000); 
 
-    // Clear the interval on component unmount to prevent memory leaks
+    
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, []); 
 
 
   const [visibleConvos, setVisibleConvos] = useState([]);
@@ -104,7 +106,8 @@ function Main() {
     </div>
     
     <div className="convo-list">
-      <p id="first-greeting"> Hello!, qwesty here 👋</p>
+      <div id="solvety-avatar"><img src={avatar}/></div>
+      <p id="first-greeting"> Hello!, Solvety here 👋</p>
       {convos.map((convo, index) => (
         <div
           key={index}
