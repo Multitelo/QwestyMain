@@ -165,9 +165,13 @@ nav #arrow{
 }
 
 #vid {
-  width: 60vw; 
+  width: 75vw; 
   display: flex;
+  /* height: 1000px; */
   justify-content: center;
+}
+#vid-player{
+  height: 100000px;
 }
 
 #vid img {
@@ -204,7 +208,7 @@ nav #arrow{
   font-size: 20px;
   opacity: 0.75;
   text-align: center;
-  width: 50%;
+  width: 60%;
 }
 
 #btn-join button {
@@ -532,10 +536,12 @@ line-height: 24px;
 }
 .faq-container h3{
 
-  color: #F8F8F8;
+  color: #FFF3C7;
   font-family: Outfit;
   justify-self: center;
-  margin-bottom: 40px;
+  margin:10px 0 40px;
+  font-size: 32px;
+
 }
 .faq-container h3:first-child{
   grid-area: fst;
@@ -597,19 +603,22 @@ line-height: 24px;
   left: 0;
   overflow: hidden; 
   max-height: 0; 
+  height: auto;
   transition: max-height 0.3s ease;
 }
 
 .faq-items.open .answer {
   height: auto;
   padding: 20px;
-  max-height: 500px;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .faq-items.open{
   border-bottom: 0;
  
 }
+
 
 .faq-items.answer{
   height: 100vh;
@@ -668,6 +677,9 @@ letter-spacing: -0.483px;
   font-size: 20px;
 
 }
+.flex-items-lists .list-items{
+  cursor: pointer;
+}
 
 #last-item{
   display: flex;
@@ -682,14 +694,16 @@ letter-spacing: -0.483px;
   line-height: 24px; 
 }
 
-
+::-webkit-scrollbar-button {
+  display: none;
+}
 
 
 /*  media query for small screens */
 @media screen and (max-width: 1024px) {
   #nav-bar-small {
   display: grid;
-  grid-template-columns: 40vw;
+  grid-template-columns: 50vw;
   grid-template-rows: repeat(5,50px);
   grid-template-areas:  "close"
                         "first"
@@ -954,6 +968,7 @@ button img, img#close-bar{
 
 #desc p{
   font-size: 16px;
+  width: 70vw;
 }
 
 #desc span {
@@ -962,27 +977,68 @@ button img, img#close-bar{
   padding-right: 30px;
 
 }
+
+#vid {
+  width: 95vw; 
+  display: flex;
+ 
+  justify-content: center;
+}
+
 .convo-item.visible {
   opacity: 1;
   transform: translateX(0px);
 }
 
+#faq-item-0{
+  grid-area:r1 ;
+}
+#faq-item-1{
+  grid-area:p1 ;
+}
+#faq-item-2{
+  grid-area:r2 ;
+}
+
+#faq-item-3{
+  grid-area:p2 ;
+}
+#faq-item-4{
+  grid-area:r3 ;
+}
+#faq-item-5{
+  grid-area:p3 ;
+}
+#faq-item-6{
+  grid-area:r4 ;
+}
+#faq-item-7{
+  grid-area:p4 ;
+}
+#faq-item-8{
+  grid-area:r5 ;
+}
+
+.faq-container h3{
+  margin: 40px;
+}
   .faq-container{
     display: grid;
     grid-template-rows: repeat(9, min-content);
     grid-template-columns: 70vw;
     justify-content: center;
     grid-template-areas: "header"
-                          "fst"
-                         "faq-item-0"
-                         "faq-item-1"
-                         "faq-item-2"
-                         "faq-item-3"
-                         "sec"
-                         "faq-item-4"
-                         " faq-item-5"
-                         "faq-item-6"
-                         " faq-item-7"
+                          "sec"
+                         "p1"
+                         "p2"
+                         "p3"
+                         "p4"
+
+                         "fst"
+                         "r1"
+                         " r2"
+                         "r3"
+                         " r4"
                           ;
     margin-bottom: 100px;
     column-gap: 0px;
@@ -1166,4 +1222,29 @@ button img, img#close-bar{
   top:135px;
 }
 
+}
+
+
+
+/* Hide scrollbar buttons */
+.faq-container ::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Customize scrollbar */
+.faq-container ::-webkit-scrollbar {
+  width: 5px; 
+  height: 5px; 
+}
+
+/* Customize scrollbar track */
+.faq-container ::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+  border-radius: 15px; 
+}
+
+/* Customize scrollbar thumb */
+.faq-container ::-webkit-scrollbar-thumb {
+  background-color: #b29be2; 
+  border-radius: 15px; 
 }

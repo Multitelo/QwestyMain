@@ -6,9 +6,17 @@ function Faq() {
   const [isClicked, setIsClicked] = useState([false, false, false, false, false, false, false, false]);
   const faqs = [
     {
-      question: 'How does this product differ from other data collection methods?',
-      answer: 'Our product stands out by prioritizing user privacy. Unlike traditional methods, we implement advanced anonymization techniques and encryption protocols to protect your data. Additionally, our user-centric approach ensures transparency and control over how your information is used.',
-    },
+      question: 'What does Solvety offer?',
+      answer:  (
+        <div dangerouslySetInnerHTML={{ __html: `You want to understand your audience in order to draft compelling and relatable copies?
+        Or you desire to dominate and lead in your industry with your user-friendly designs.<br>
+        What if you wish to launch outstanding products to increase your confidence level in your game.
+        <br><br>
+        Solvety is offering solutions designed for businesses and individuals with those needs that 
+        are building specifically for Nigerian audience through the use of our advanced User Research.
+      <br><br>
+      `}}/>
+    ) },
     {
       question: 'What do I stand to gain from joining Solvety? ',
       answer: 
@@ -20,10 +28,36 @@ function Faq() {
       Now that's what Solvety gives you on a platter of gold.
       The best part of the process is that you get rewards for doing something you enjoy.`}}/>
     )},
-    {
-      question: 'What security measures are in place to prevent data breaches?',
-      answer: 'We employ state-of-the-art security measures, including robust encryption, regular security audits, and strict access controls. These measures are designed to minimize the risk of data breaches and unauthorized access, ensuring the integrity and confidentiality of your information.',
-    },
+    
+    {  question: `How does Solvety differ from other data collection platforms?
+    `,
+    answer:  (
+      <div dangerouslySetInnerHTML={{ __html: `Unlike other Platforms, Our Product is unique because 
+      <br><br>
+      
+      First, we use gamification to make data collection more engaging and fun for users, and to ensure that you obtain accurate, complete and reliable data. This makes our approach unique and effective.
+      <br><br>
+      
+      Second, We provide a range of research methods, including Surveys, Interviews, Card Sorting, Focus group, Product testing and more to meet your specific needs and give you flexibility.
+      <br><br>
+      
+      Third, We've developed a robust platform for finding and engaging with your target audience.
+      This allows you to create highly targeted research and distribute them to your ideal audience, ensuring that your user research is as useful and impactful as possible.
+      <br><br>
+      
+      Fourth, Our platform is designed with newbies in mind, with a simple and intuitive interface, anyone can create and launch research, even if they have no prior experience.
+      This makes it easy for anyone to get started with user research.
+      <br><br>
+      Fifth, We have powerful data analysis and visualization tools to help you track key metrics, compare results, and to get the most out of your collected data. 
+      <br><br>
+      Sixth, Our fast research model allows you to get the insights you need in a fraction of the time it would take with traditional methods.
+      <br><br>
+      Seventh, We focus specifically on Nigerian users at the moment, tailoring a high-quality and localized experience that is truly unique.
+      And more....
+      <br><br>
+      
+      Our goal is to help you make better decisions and improve your product' ideas, designs or copies, so you can achieve success in your industry, through high-quality data collection and analysis.`}}/>
+  ) },
     {
       question: 'How is Solvety different from Survey Platforms?',
       answer: (
@@ -93,10 +127,8 @@ function Faq() {
   };
 
   useEffect(() => {
-    // Add a click event listener to the document
     document.addEventListener("click", closeAnswers);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener("click", closeAnswers);
     };
@@ -104,7 +136,7 @@ function Faq() {
 
   return (<div className="faq-container">
   <h2>FAQ</h2>
-  <h3>Researcher's </h3> <h3>Participant's</h3>
+  <h3>Participant's </h3> <h3>Researcher's</h3>
   {faqs.map((faq, index) => (
     <div
       key={index}

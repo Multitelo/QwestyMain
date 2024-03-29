@@ -70,8 +70,10 @@ function Home() {
           url={video}
           playing={true}
           controls={true}
-          width={800}
+          width={'90%'}
           height={'auto'}
+          className='vid-player'
+         
       />
     </div>
 
