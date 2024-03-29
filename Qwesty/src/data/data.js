@@ -186,26 +186,79 @@ export const ResponseByParticipants = [
     date: "Dec 15, 2023",
     time: "5:31pm",
     duration: "7mins",
+    questions: [
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+    ],
   },
   {
     avatar: "/actokuyt/mul-avatar.png",
-    name: "Multitelo",
+    name: "Multilelo",
     date: "Dec 15, 2023",
     time: "5:31pm",
-    duration: "11mins",
+    duration: "7mins",
+    questions: [
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+    ],
   },
   {
     avatar: "/actokuyt/mike-avatar.png",
     name: "Mike",
     date: "Dec 15, 2023",
     time: "5:31pm",
-    duration: "9mins",
+    duration: "7mins",
+    questions: [
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+      {
+        type: "Multiple Choice",
+        question:"What's your favourite color?",
+        answer: "Yellow Orange and Purple",
+      },
+    ],
   },
 ];
 
 export const ResponseByQuestions = [
   {
     title: "Question 1",
+    type: "Multiple Choice",
+    question: "What's your favourite color?",
     averageTime: "32secs",
   },
   {

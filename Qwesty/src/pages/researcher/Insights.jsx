@@ -20,6 +20,7 @@ import {
   MessageCircle,
   TrendingUp,
   Zap,
+  ListOrdered,
 } from "lucide-react";
 import {
   GridCard,
@@ -28,6 +29,9 @@ import {
   TotalResponse,
 } from "../../components/ben/insights";
 import ResponseSortSelect from "../../components/actokuyt/response-sort-select";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 const Insights = () => {
   const { resTheme } = useTheme();
@@ -45,6 +49,14 @@ const Insights = () => {
     { value: "Analytics", icon: <TrendingUp size={26} /> },
   ];
 
+  const [open, setOpen] = React.useState(false);
+  const [modalTriggerId, setModalTriggerId] = React.useState("");
+
+  function handleModalTrigger(triggerId) {
+    setModalTriggerId(triggerId);
+    setOpen(true);
+  }
+  const handleClose = () => setOpen(false);
   const [activeCard, setActiveCard] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
 
@@ -265,25 +277,92 @@ const Insights = () => {
                       </div>
                       <div>
                         {ResponseByParticipants.map((participant, index) => (
-                          <div
-                            key={index}
-                            className="flex flex-row border-t-2 px-4 py-2 items-center"
-                          >
-                            <img
-                              src={participant.avatar}
-                              alt={participant.name}
-                              className="w-[50px] h-[50px]"
-                            />
-                            <div className="w-[70%] py-2 px-4">
-                              <h4 className=" font-semibold">
-                                {participant.name}
-                              </h4>
-                              <div className="text-[#856B0C] text-xs">
-                                <h6 className="">{participant.date}</h6>
-                                <h6>{participant.time}</h6>
+                          <div key={index}>
+                            <div
+                              className="flex flex-row border-t-2 px-4 py-2 items-center"
+                              onClick={() =>
+                                handleModalTrigger(participant.name)
+                              }
+                            >
+                              <img
+                                src={participant.avatar}
+                                alt={participant.name}
+                                className="w-[50px] h-[50px]"
+                              />
+                              <div className="w-[70%] py-2 px-4">
+                                <h4 className=" font-semibold">
+                                  {participant.name}
+                                </h4>
+                                <div className="text-[#856B0C] text-xs">
+                                  <h6 className="">{participant.date}</h6>
+                                  <h6>{participant.time}</h6>
+                                </div>
                               </div>
+                              <h6>{participant.duration}</h6>
                             </div>
-                            <h6>{participant.duration}</h6>
+                            <Modal
+                              open={open}
+                              onClose={handleClose}
+                              aria-labelledby="modal-modal-title"
+                              aria-describedby="modal-modal-description"
+                            >
+                              <Box className="bg-white absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:right-0 md:max-w-[35%] md:max-h-[95%] md:-translate-x-0 md:mr-12">
+                                {ResponseByParticipants.map(
+                                  (participant, index) => {
+                                    if (participant.name === modalTriggerId) {
+                                      return (
+                                        <div>
+                                          <div className="my-4">
+                                            <h1 className="text-2xl font-semibold">
+                                              {`Viewing ${participant.name}`}{" "}
+                                            </h1>
+                                            <p className="text-sm text-[#9A9696]">
+                                              Participants answers are
+                                              highlighted in yellow
+                                            </p>
+                                          </div>
+                                          <div className="flex flex-col ">
+                                            {participant.questions.map(
+                                              (question, index) => {
+                                                return (
+                                                  <div
+                                                    key={index}
+                                                    className="flex flex-row items-center mb-4"
+                                                  >
+                                                    <span className="bg-[#E3E3FF] p-4 h-16 w-16 rounded-lg mr-4">
+                                                      <ListOrdered size={35} />
+                                                    </span>
+                                                    <div>
+                                                      <h1 className="font-semibold mb-2">{`Q ${
+                                                        index + 1
+                                                      }`}</h1>
+                                                      <p className="text-[#636387] text-sm">
+                                                        {question.type}
+                                                      </p>
+                                                      <p className="text-[#636387] text-sm mb-4">
+                                                        {question.question}
+                                                      </p>
+                                                      <span className="text-[#636387] text-sm">
+                                                        <span className="mr-2 text-[#37D8AD]">
+                                                          Ans:
+                                                        </span>
+                                                        <span className="bg-[#FFF3C7] text-[#574505] p-2">
+                                                          {question.answer}
+                                                        </span>
+                                                      </span>
+                                                    </div>
+                                                  </div>
+                                                );
+                                              }
+                                            )}
+                                          </div>
+                                        </div>
+                                      );
+                                    }
+                                  }
+                                )}
+                              </Box>
+                            </Modal>
                           </div>
                         ))}
                       </div>
@@ -324,6 +403,69 @@ const Insights = () => {
                           </div>
                         ))}
                       </div>
+                      <Modal
+                              open={open}
+                              onClose={handleClose}
+                              aria-labelledby="modal-modal-title"
+                              aria-describedby="modal-modal-description"
+                            >
+                              <Box className="bg-white absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:right-0 md:max-w-[35%] md:max-h-[95%] md:-translate-x-0 md:mr-12">
+                                {ResponseByQuestions.map(
+                                  (question, index) => {
+                                    if (question.title === modalTriggerId) {
+                                      return (
+                                        <div>
+                                          <div className="my-4">
+                                            <h1 className="text-2xl font-semibold">
+                                              {`Viewing ${participant.name}`}{" "}
+                                            </h1>
+                                            <p className="text-sm text-[#9A9696]">
+                                              Participants answers are
+                                              highlighted in yellow
+                                            </p>
+                                          </div>
+                                          <div className="flex flex-col ">
+                                            {participant.questions.map(
+                                              (question, index) => {
+                                                return (
+                                                  <div
+                                                    key={index}
+                                                    className="flex flex-row items-center mb-4"
+                                                  >
+                                                    <span className="bg-[#E3E3FF] p-4 h-16 w-16 rounded-lg mr-4">
+                                                      <ListOrdered size={35} />
+                                                    </span>
+                                                    <div>
+                                                      <h1 className="font-semibold mb-2">{`Q ${
+                                                        index + 1
+                                                      }`}</h1>
+                                                      <p className="text-[#636387] text-sm">
+                                                        {question.type}
+                                                      </p>
+                                                      <p className="text-[#636387] text-sm mb-4">
+                                                        {question.question}
+                                                      </p>
+                                                      <span className="text-[#636387] text-sm">
+                                                        <span className="mr-2 text-[#37D8AD]">
+                                                          Ans:
+                                                        </span>
+                                                        <span className="bg-[#FFF3C7] text-[#574505] p-2">
+                                                          {question.answer}
+                                                        </span>
+                                                      </span>
+                                                    </div>
+                                                  </div>
+                                                );
+                                              }
+                                            )}
+                                          </div>
+                                        </div>
+                                      );
+                                    }
+                                  }
+                                )}
+                              </Box>
+                            </Modal>
                     </div>
                   </div>
                 </div>
