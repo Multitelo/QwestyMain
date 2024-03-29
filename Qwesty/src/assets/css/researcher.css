@@ -863,6 +863,7 @@ background-color: #363334 !important;
         z-index: 1;
         padding: 20px 20px;
         transition: all 0.5s;
+        width: 50vw;
       }
       
     .researcher-bar .side-links.small.display{
@@ -1160,6 +1161,16 @@ background-color: #363334 !important;
     font-size: 36px;
 }
 .research-support #term{
+    font-size: 14px;
+}
+.researcher-bar .side-links.small {
+    width:60vw;
+}
+.side-link,
+.researcher-bar .flex-search{
+    width: 200px;
+}
+#toggle-theme p{
     font-size: 14px;
 }
 }
