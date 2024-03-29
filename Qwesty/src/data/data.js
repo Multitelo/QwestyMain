@@ -257,28 +257,142 @@ export const ResponseByParticipants = [
 export const ResponseByQuestions = [
   {
     title: "Question 1",
-    type: "Multiple Choice",
-    question: "What's your favourite color?",
     averageTime: "32secs",
+    question: "What do you think about the homepage?",
+    participants: [
+      {
+        participant: "Skyrose",
+        avatar: "/actokuyt/sky-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Multilelo",
+        avatar: "/actokuyt/mul-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Mike",
+        avatar: "/actokuyt/mike-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+    ]
   },
   {
     title: "Question 2",
-    averageTime: "33secs",
+    averageTime: "32secs",
+    question: "What do you think about the homepage?",
+    participants: [
+      {
+        participant: "Skyrose",
+        avatar: "/actokuyt/sky-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Multilelo",
+        avatar: "/actokuyt/mul-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Mike",
+        avatar: "/actokuyt/mike-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+    ]
   },
   {
-    title: "Question 1",
-    averageTime: "25secs",
+    title: "Question 3",
+    averageTime: "32secs",
+    question: "What do you think about the homepage?",
+    participants: [
+      {
+        participant: "Skyrose",
+        avatar: "/actokuyt/sky-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Multilelo",
+        avatar: "/actokuyt/mul-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Mike",
+        avatar: "/actokuyt/mike-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+    ]
   },
   {
-    title: "Question 1",
-    averageTime: "36secs",
+    title: "Question 4",
+    averageTime: "32secs",
+    question: "What do you think about the homepage?",
+    participants: [
+      {
+        participant: "Skyrose",
+        avatar: "/actokuyt/sky-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Multilelo",
+        avatar: "/actokuyt/mul-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Mike",
+        avatar: "/actokuyt/mike-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+    ]
   },
   {
-    title: "Question 1",
-    averageTime: "12secs",
-  },
-  {
-    title: "Question 1",
-    averageTime: "23secs",
+    title: "Question 5",
+    averageTime: "32secs",
+    question: "What do you think about the homepage?",
+    participants: [
+      {
+        participant: "Skyrose",
+        avatar: "/actokuyt/sky-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Multilelo",
+        avatar: "/actokuyt/mul-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+      {
+        participant: "Mike",
+        avatar: "/actokuyt/mike-avatar.png",
+        answer: "I like the the layout of the homepage, it's simple and easy to navigate",
+        date: "dec 15, 2023",
+        time: "5:31pm"
+      },
+    ]
   },
 ]
