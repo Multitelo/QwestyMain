@@ -17,6 +17,7 @@ import { useTheme } from "../../context/ThemeContext";
 import ResearchCardToast from "../../components/ben/research/ResearchCardToast";
 import DropdownSelect from "../../components/ben/research/DropdownSelect";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ResearchPage = () => {
   const { resTheme } = useTheme();
@@ -82,13 +83,39 @@ const ResearchPage = () => {
       setTimer(
         setTimeout(() => {
           setClickedOnce(false);
-        }, 300) 
+        }, 300)
       );
     }
   };
   const redirectToInsight = (id) => {
     navigate(`/researcher/insight/${id}`);
   };
+
+  // timeProperties
+  const timeProperties = {
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  function getOptionsForCard(status) {
+    switch (status) {
+      case "completed":
+        return ["Edit", "Delete", "View Insight","Duplicate", new Date().toLocaleString('en-US', timeProperties)];
+      case "ongoing":
+        return ["Edit", "Delete", "View Insight","Duplicate", "Resume ", "End", new Date().toLocaleString('en-US', timeProperties)];
+      case "paused":
+        return ["Edit", "Delete", "View Insight","Duplicate", "End", "Pause", new Date().toLocaleString('en-US', timeProperties)];
+      default:
+        return [];
+    }
+  }
+
+  useEffect(() => {
+    getOptionsForCard();
+  }, [getOptionsForCard]);
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -152,8 +179,7 @@ const ResearchPage = () => {
                       resTheme
                     )}`}
                     style={{
-                      display:
-                        selectedDropdown === "Filter" ? "block" : "none",
+                      display: selectedDropdown === "Filter" ? "block" : "none",
                     }}
                   >
                     {researchTypeOptions.map((option, index) => (
@@ -226,7 +252,7 @@ const ResearchPage = () => {
                 </div>
               </div>
               {/* main */}
-              <div className="w-full px-2 531:px-10">
+              <div className="w-full px-2 531:px-10 h-screen">
                 {filteredResearchData.length === 0 ? (
                   <ResearchCardToast noResearchMessage={noResearchMessage} />
                 ) : (
@@ -246,12 +272,13 @@ const ResearchPage = () => {
                     })
                     .map((research, index) => (
                       <div
-                      key={index}
-                      onClick={() => handleNavigate(research.id)}
-                      onDoubleClick={() => redirectToInsight(research.id)}
+                        key={index}
+                        onClick={() => handleNavigate(research.id)}
+                        onDoubleClick={() => redirectToInsight(research.id)}
                       >
                         <ResearchCard
                           status={research.status}
+                          index={index}
                           statusColorBg={
                             research.status === "completed"
                               ? "#C7FBC6"
@@ -270,6 +297,7 @@ const ResearchPage = () => {
                           researchType={research.researchType}
                           numberReached={research.numberReached}
                           amountSpent={research.amountSpent}
+                          options={getOptionsForCard(research.status)}
                         />
                       </div>
                     ))
