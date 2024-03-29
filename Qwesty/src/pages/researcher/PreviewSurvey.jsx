@@ -9,12 +9,13 @@ import * as React from 'react';
 import CalendarMu from "../../components/mahtot/CalendarMu";
 import Modal from "../../components/mahtot/Modal";
 import { useState } from "react";
+import dayjs from 'dayjs';
 
 function PreviewSurvey() {
     const {resTheme} = useTheme();
-    const [deadline, setDeadline] = useState();
+    const [deadline, setDeadline] = useState(new Date());
     const [isOpen,setIsOpen] = useState({deadline:false, startResearch:false})
-    const [Schedule, setSchedule] = useState(null)
+    const [schedule, setSchedule] = useState()
     const [startResearch, setStartResearch] = useState(false)
     
     const onClose = ()=>{
@@ -66,16 +67,23 @@ function PreviewSurvey() {
                             key={index}/>
                 ))
             }
-            {/* {<CalendarMu date={deadline} setDate={setDeadline}/>} */}
-                {deadline}
+          
                 </div>
                 <div className="pmreview">
           <button onClick={()=>setIsOpen({...isOpen, deadline:true})}>
         set deadline</button> (optional)
-        <Modal open={isOpen} onClose={onClose} setStartResearch={setStartResearch}>
+        <Modal open={isOpen} 
+               onClose={onClose} 
+               setStartResearch={setStartResearch}
+               deadline={deadline}
+               setDeadline={setDeadline}
+               schedule={schedule}
+               setSchedule={setSchedule}
+               >
            {<CalendarMu onClose={onClose}/>}
            
         </Modal>
+      
       
     </div>
                

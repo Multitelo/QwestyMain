@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 import Faq from './Faq';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player'
+import video from '../../src/assets/Solvtey_vid/vid.mp4';
 function Home() {
   const [isTouched, setIsTouched] = useState(false);
   const[isHovoured, setIsHovoured] = useState({
@@ -52,7 +54,34 @@ function Home() {
     
     <>
     
-  
+    <div id="grid-container-first">
+      <div id="desc">
+        <h1 id="title">
+            User <span> research </span> has never been so fun and fast
+        </h1>
+      <p>
+    Qwesty help UX Researchers get useful data in order to make the market
+     desire their product while helping the participants enjoy and get rewards for the data they share
+   </p>
+    </div>
+
+    <div id="vid">
+      <ReactPlayer 
+          url={video}
+          playing={true}
+          controls={true}
+          width={'90%'}
+          height={'auto'}
+          className='vid-player'
+         
+      />
+    </div>
+
+    <Link to='/SignUp'><div id="btn-join">
+      <button id="btn"><span>Join Us</span></button> 
+    </div></Link>
+
+    </div>
 
     <div id="grid-container-second">
       <div id="heading">

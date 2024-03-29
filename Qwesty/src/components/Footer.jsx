@@ -2,6 +2,7 @@ import logo from '../assets/images/logoW.svg'
 import fbIcon from '../assets/images/fb.svg'
 import igIcon from '../assets/images/ig.svg'
 import linkedinIcon from '../assets/images/linkedin.svg'
+
 function Footer() {
   return (
 <>
@@ -11,17 +12,19 @@ function Footer() {
                   alt="Qwesty'logo"/></div>
          <div className='social-links'>
         <div className='flex-items'>
+           <a href='https://www.facebook.com/profile.php?id=61553683791897'> 
             <img src={fbIcon}
-                 alt="Facebook icon"/>
+                 alt="Facebook icon"/></a>
         </div>
         <div className='flex-items'>
-            <img src={linkedinIcon}
+           <a href="https://www.linkedin.com/company/qwesty-biz/about/"> <img src={linkedinIcon}
                  alt="Linkedin icon"/>
-        
+        </a>
         </div>
         <div className='flex-items'>
-            <img src={igIcon}
+            <a href="https://www.instagram.com/solvety.info?igsh=OWI5YW9qdjlxYjNz"><img src={igIcon}
                  alt="Instagram icon"/>
+                 </a>
         </div>
        
         </div>
