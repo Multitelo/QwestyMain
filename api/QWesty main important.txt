@@ -1,3 +1,5 @@
+
+
 curl -X POST http://localhost/qwestymain/api/login.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "email=emenikeaugustine301@gmail.com&password=K@vp7QK5XXZ2efd&usertype=researcher"
@@ -19,10 +21,12 @@ SMTP Server:	mail.qwesty.site port 587
 
 
 participant token
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzOTAwNjEsImV4cCI6MTcxMTM5MzY2MSwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.StDMGG9YQjYt_5mG8OhO25YNMFU9WSLPmdpZ2mO6QCo
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI1OTYsImV4cCI6MTcxMTYyNjE5NiwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.ueB12RsCQ46dKmwffMivgJpH4ukChYJU4S30JzH8EGY
+
 
 
 researcher token
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI4NzAsImV4cCI6MTcxMTYyNjQ3MCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.ib6DiE-gutRLM-UBbrg9uT0SjYinh7BuSEcnyNbGvlQ
 
 
 curl -X POST \
@@ -44,11 +48,16 @@ CREATE TABLE `user_otp` (
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=16&otp=45391&usertype=participant"
+-d "userId=16&otp=72560&usertype=participant"
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=16&otp=88226&usertype=researcher"
+-d "userId=6&otp=39732&usertype=researcher"
+
+
+curl -X GET http://localhost/qwestymain/api/get.php \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI1OTYsImV4cCI6MTcxMTYyNjE5NiwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.ueB12RsCQ46dKmwffMivgJpH4ukChYJU4S30JzH8EGY"
+
 
 
 curl -X POST \
@@ -78,22 +87,19 @@ curl -X POST \
 curl -X GET 'http://localhost/qwestymain/api/selectques.php?survey_id=6' -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODcxNTYsImV4cCI6MTcxMTM5MDc1NiwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.RUhxsgzEpzmEK4KIi0DHEbirIZhiQxNeMC6t4bjlexY'
 
 
-curl -X POST \
-  http://localhost/qwestymain/api/saveans.php?survey_id=6 \
-  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzOTUwMDYsImV4cCI6MTcxMTM5ODYwNiwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.OL8nfak4j0-WmsOR3rG9r1-o4wT_GpjTZCS837XbhZI' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "answers": [
-        {
-            "question_id": 1,
-            "answer_text": "Sample answer 1"
-        },
-        {
-            "question_id": 2,
-            "answer_text": "Sample answer 2"
-        }
-    ]
-}'
+curl -X POST "http://localhost/qwestymain/api/selectques.php?save_answers=true&survey_id=6" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE1NjIxMDAsImV4cCI6MTcxMTU2NTcwMCwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.v82H63TgfHcw_kJHTouwfcDM0KedJkO5bYGlacBqXHc" \
+     -d '[
+            {
+                "question_id": 39,
+                "answer_text": "Answer to question 1"
+            },
+            {
+                "question_id": 40,
+                "answer_text": "Answer to question 2"
+            }
+         ]'
 
 
 
