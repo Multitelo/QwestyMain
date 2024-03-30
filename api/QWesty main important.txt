@@ -26,13 +26,17 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI1OTYsImV4cCI6MTcxMTYyNjE
 
 
 researcher token
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI4NzAsImV4cCI6MTcxMTYyNjQ3MCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.ib6DiE-gutRLM-UBbrg9uT0SjYinh7BuSEcnyNbGvlQ
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE3MjE0MTEsImV4cCI6MTcxMTcyNTAxMSwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.Op7kNU2A8ze9NhV8gsfHXOo5HNvRpreCdMtN8ghShm8
 
 
 curl -X POST \
   -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTEzODE0MzgsImV4cCI6MTcxMTM4NTAzOCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.LljL91RLC-i4QbPxBkZyEkZpt6TCS2qIBHvhc6DQZBU" \
   http://localhost/qwestymain/api/decode.php
 
+
+curl -X POST http://localhost/qwestymain/api/selectsur.php \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE3MjE0MTEsImV4cCI6MTcxMTcyNTAxMSwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.Op7kNU2A8ze9NhV8gsfHXOo5HNvRpreCdMtN8ghShm8"
 
 
 
@@ -52,7 +56,7 @@ curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=6&otp=39732&usertype=researcher"
+-d "userId=6&otp=51373&usertype=researcher"
 
 
 curl -X GET http://localhost/qwestymain/api/get.php \
@@ -191,6 +195,7 @@ https://qwesty.site?' . $refid . '.
 <b>' . $username . '!</b>
 &apos;
 <br>
+support@hostking.host
 
 
 ALTER TABLE resea

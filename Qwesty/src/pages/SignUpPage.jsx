@@ -54,7 +54,7 @@ function SignUpPage() {
         formData.append('usertype', usertype);
         
         try {
-            const response = await fetch('http://localhost/qwestymain/api/email.php', {
+            const response = await fetch('https://solvety.info/api/email.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -87,7 +87,7 @@ function SignUpPage() {
         formData.append('usertype', usertype);
     
         try {
-            const response = await fetch('http://localhost/qwestymain/api/uname.php', {
+            const response = await fetch('https://solvety.info/api/uname.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -148,7 +148,7 @@ function SignUpPage() {
         formData.append('password', password.value);
     
         try {
-            const response = await fetch('http://localhost/qwestymain/api/signin.php', {
+            const response = await fetch('https://solvety.info/api/signin.php', {
                 method: 'POST',
                 body: formData,
             });
