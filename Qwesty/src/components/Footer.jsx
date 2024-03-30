@@ -1,4 +1,4 @@
-import logo from '../assets/images/logoW.svg'
+import logo from '../assets/images/Solvety_logo_white.png'
 import fbIcon from '../assets/images/fb.svg'
 import igIcon from '../assets/images/ig.svg'
 import linkedinIcon from '../assets/images/linkedin.svg'
@@ -30,11 +30,11 @@ function Footer() {
         </div>
 
         <div className='flex-items-lists'>
-            <div className='list-items'>Terms</div>
+            {/* <div className='list-items'>Terms</div>
             <div className='list-items'>help</div>
             <div className='list-items'>about</div>
             <div className='list-items'>privacy</div>
-            <div className='list-items'>features</div>
+            <div className='list-items'>features</div> */}
 
 
         </div>

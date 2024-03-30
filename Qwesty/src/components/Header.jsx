@@ -1,6 +1,6 @@
 import '../assets/css/style.css';
 import Home from './Home'
-import Logo from '../assets/images/Logo.png';
+import Logo from '../assets/images/Solvety_logo_white.png';
 import arrow from '../assets/images/down-arrow.png'
 import bars from '../assets/images/bars.svg'
 import x from '../assets/images/x.svg';
@@ -56,7 +56,7 @@ function Header() {
   return (
     <>
    
-   <div id='medi'>
+   {/* <div id='medi'>
    <div className='nav-medium-devices'>
       
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
@@ -74,18 +74,18 @@ function Header() {
           } 
           <Link to='/researcher/home'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">  contact us</Link>
-          <Link to='/verify'className='items' id="third-item">  services<TiArrowSortedDown id="arrow" /></Link>
+          <Link to='/'className='items' id="third-item">  services<TiArrowSortedDown id="arrow" /></Link>
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
-      </div>       
-        <nav id="nav-bar">
+      </div>        */}
+        <nav className="nav-bar temp">
             
-            <Link to='/' className='items logo'><img src={Logo}></img></Link>
+            <Link to='/' className='items logo' id="temp-solvety-logo"><img src={Logo}></img></Link>
          
-            <Link to='/researcher/home' className='items' id="first-item">about us</Link>
+            {/* <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/verify' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link>
+            <Link to='/' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link> */}
             <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>

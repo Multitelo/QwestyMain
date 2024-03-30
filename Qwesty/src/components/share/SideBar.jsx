@@ -18,7 +18,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import ToggleInput from "../ToggleInput";
 
 function SideBar() {
-        const {resTheme, researcherTheme, dropdown} = useTheme();
+        const {resTheme, researcherTheme, dropdown,setDropdown } = useTheme();
 
         const [search, setSearch] = useState('')
         const location = useLocation();
@@ -27,7 +27,7 @@ function SideBar() {
           {
               path: "/researcher/home" ,
               name: "Home",
-              icon: resTheme === "dark" || location.pathname === "/researcher/home"||"/researcher/profile" ? gridW : gridB,
+              icon: resTheme === "dark" || location.pathname === "/researcher/home" ? gridW : gridB,
           },
        
           {
@@ -59,7 +59,20 @@ function SideBar() {
             document.body.classList.remove('fixed-body');
           };
         }, [dropdown]);
+      
+        useEffect(() => {
+          document.addEventListener('mousedown', handleOutsideClick);
+      
+          return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+          };
+        }, [dropdown]);
         
+        const handleOutsideClick = (event) => {
+          if (!event.target.closest('.side-links')) {
+               setDropdown(false);
+          }
+        };
   return (
     <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}`}>
         <div className="logo">

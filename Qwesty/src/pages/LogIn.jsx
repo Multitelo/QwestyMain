@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logoBlack.png';
+import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
 import '../assets/css/login-signup.css';
@@ -101,12 +101,14 @@ function LogIn() {
             const data = await response.json();
 
             console.log('response data:', data)
+            window.location.href = '/researcher/home'; 
+
         } catch(e){
             console.log('Error: ', e)
             setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
 
         }
-        handleNext
+        // handleNext
     }
 
     const handlePwd = (e) => {
