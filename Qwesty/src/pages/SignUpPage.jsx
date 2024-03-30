@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logoBlack.png';
+import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
@@ -23,6 +23,8 @@ function SignUpPage() {
     const [btnState, setBtnState] = useState(true)
     const [errE, setErrE] = useState('')
     const [unameE, setUnameE] = useState('')
+    const [userId, setUserId] = useState('')
+
     const handleContent = (content) => {
         setContent((prevState) =>
             prevState === 'second'
@@ -35,7 +37,7 @@ function SignUpPage() {
         );        
     };
 
-    
+   
     const handleEmail = async (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setErrE('');
@@ -90,9 +92,9 @@ function SignUpPage() {
                 body: formData,
             });
             console.log(response);
-            const data = await response.json(); // Assuming the server responds with JSON
+            const data = await response.json(); 
     
-            console.log("Response data:", data); // Log the response data for debugging
+            console.log("Response data:", data); 
     
             if (!data.isAvailable) {
                 // Username is not available, set error message
@@ -146,7 +148,7 @@ function SignUpPage() {
         formData.append('password', password.value);
     
         try {
-            const response = await fetch('http://solvety.info/api/signin.php', {
+            const response = await fetch('http://localhost/qwestymain/api/signin.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -154,9 +156,12 @@ function SignUpPage() {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-        console.log(response)
+            console.log(response)
             const data = await response.json();
-         
+            setUserId(data.newUserId)
+            const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
+            window.location.href = redirectToVerify;
+
             
         } catch (error) {
             console.error('Network error:', error.message);

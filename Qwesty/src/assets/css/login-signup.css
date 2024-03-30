@@ -18,6 +18,7 @@
 }
 .signUp-left #logo-container{
     padding: 20px;
+    width: 200px;
 }
 .signUp-left main{
     align-self: center;

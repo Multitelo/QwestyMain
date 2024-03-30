@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logoBlack.png';
+import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
 import '../assets/css/login-signup.css';

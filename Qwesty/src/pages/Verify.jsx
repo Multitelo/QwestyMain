@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import logo from '../assets/images/logoEdited.jpg';
+import React, { useState, useEffect } from 'react';
+import logo from '../assets/images/Logo.png';
 import '../assets/css/verify.css'; 
 import { Link } from 'react-router-dom';
 
 const Verify = () => {
   const [otpValues, setOTPValues] = useState(['', '', '', '', '']); 
+  const [userId, setUserId] = useState('');
+  const [userType, setUserType] = useState('');
 
   const handleChange = (index, value) => {
     if (!isNaN(value) && value >= 0) {
@@ -32,13 +34,19 @@ const Verify = () => {
 
   const handleVerify = async () => {
     try {
+      const requestBody = {
+        userId: userId,
+        otp: otpValues,
+        usertype: userType,
+        
+      };
+
       const response = await fetch('http://localhost/qwestymain/api/verify_otp.php', {
-        mode: 'no-cors',
-            method: "post",
-            headers: {
-                 "Content-Type": "application/json"
-            },
-        body: JSON.stringify(otpValues),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
       });
   
       if (response.ok) {
@@ -51,6 +59,14 @@ const Verify = () => {
     }
   };
   
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userIdParam = urlParams.get('userId');
+    const userTypeParam = urlParams.get('usertype');
+
+    setUserId(userIdParam);
+    setUserType(userTypeParam);
+  }, []);
 
   // Function to check if all OTP values are filled
   const isAllValuesFilled = otpValues.every(value => value !== '');
@@ -85,11 +101,9 @@ const Verify = () => {
             onClick={handleVerify} 
             disabled={!isAllValuesFilled}
             className={isAllValuesFilled ? 'not' : 'disabled-button'}>
-
-  Verify
-</button>
-<button>Resend</button>
-
+              Verify
+            </button>
+            <button>Resend</button>
           </div>
         </div>
       </div>

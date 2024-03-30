@@ -86,18 +86,16 @@ nav .items:last-child{
   margin-left: auto;
   height: 60px;
   width:156px;
- 
- 
   color: #FFF;
   text-align: center;
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
   line-height: 28px; /* 155.556% */
-  display: flex;
-  padding: 16px 28px;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  padding: 16px 8px;
+  /* justify-content: center;
+  align-items: center; */
   gap: 8px;
   font-weight: 600;
   border-radius: 15px;
@@ -773,15 +771,22 @@ padding: 10px;
    padding: 20px 70px;
   }
 
-.logo{
+/* .logo{
   width: 0;
-}
+} */
 .small-logo{
   margin-right: auto;
   width: 30vw;
   position: absolute;
   top:4vh;
   left:8vw;
+}
+#temp-solvety-logo{
+  margin-right: auto;
+  width: 150px;
+  position: absolute;
+  top:-10px;
+  left:1vw;
 }
 
 #dropdown-btn{
@@ -851,7 +856,30 @@ button img, img#close-bar{
     height: 50px;
     font-size: 16px;
   }
-
+  nav{
+    padding: 10px;
+  }
+  .nav-bar.temp{
+    display: flex;
+    justify-content: space-between;
+    gap:100px;
+     padding: 0px 10px;
+  }
+  
+  .items#fourth-item{
+    margin-left: auto;
+    padding: 10px;
+    /* position: absolute; */
+    /* top:20px; */
+    /* justify-self: start; */
+    /* left: -5vw; */
+    /* justify-self: start; */
+    /* margin: 0 auto 10px; */
+    /* bottom:40px; */
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+  }
 .nav-medium-devices #dropdown-btn{
     background: #383434;
     border: 0;
@@ -1094,7 +1122,7 @@ button img, img#close-bar{
   justify-content: start;
   padding: 0 10px;
   grid-template-columns: 90vw;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(2, auto) 0px;
   grid-template-areas: "footerL"
                        "socialLinks"
                         "lists";
@@ -1111,7 +1139,8 @@ button img, img#close-bar{
 }
 .flex-items-1 img{
   
-  width: 400px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .social-links {
