@@ -29,7 +29,7 @@ import {
   SubInsight,
   TotalResponse,
 } from "../../components/ben/insights";
-import ResponseSortSelect from "../../components/actokuyt/Response-sort-select";
+import ResponseSortSelect from "../../components/actokuyt/response-sort-select";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
