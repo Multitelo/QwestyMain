@@ -7,6 +7,7 @@ import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
 import { useTheme} from '../context/ThemeContext'
 import Verify from './Verify';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
     const {usertype, setUsertype} = useTheme();
@@ -24,6 +25,7 @@ function SignUpPage() {
     const [errE, setErrE] = useState('')
     const [unameE, setUnameE] = useState('')
     const [userId, setUserId] = useState('')
+    const navigateTo = useNavigate();
 
     const handleContent = (content) => {
         setContent((prevState) =>
@@ -97,22 +99,17 @@ function SignUpPage() {
             console.log("Response data:", data); 
     
             if (!data.isAvailable) {
-                // Username is not available, set error message
                 setErrors(prevErrors => ({ ...prevErrors, unameErr: 'err' }));
-                // Assuming you want to display a specific error message for username availability
-                setUnameE('Username taken.'); // Update your state or method to display this error message
+                setUnameE('Username taken.'); 
+
             } else {
-                // Username is available, clear any existing error messages
                 setErrors(prevErrors => ({ ...prevErrors, unameErr: 'correct' }));
-                setUnameE(''); // Clear the error message
-                // Proceed to the next step or update the UI accordingly
-                // For example, if you are moving through a multi-step form, you might set the content to the next step here
-                setContent('third'); // Adjust based on your application's flow
+                setUnameE(''); 
+                setContent('third');
             }
         } catch (error) {
             console.error('Error:', error);
             setErrors(prevErrors => ({ ...prevErrors, unameErr: true }));
-            // Update your state or method to display a generic error message
             setErrMsg('An error occurred. Please try again.');
         }
     };
@@ -159,9 +156,10 @@ function SignUpPage() {
             console.log(response)
             const data = await response.json();
             setUserId(data.newUserId)
-            const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
-            window.location.href = redirectToVerify;
-
+            console.log(userId)
+            // const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
+            // window.location.href = redirectToVerify;
+            navigateTo('/researcher/research')
             
         } catch (error) {
             console.error('Network error:', error.message);
@@ -175,6 +173,7 @@ function SignUpPage() {
     return (
         <div className="signUp-container">
             <div className="signUp-left">
+               
                 <div id="logo-container">
                     <Link to='/'>
                         <img src={logo} alt="A logo of Qwesty" />
@@ -311,7 +310,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
             className={handleBtnState() ? 'disabled' : 'enabled'}>
              Ok
             </button>
-            <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
+            {/* <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p> */}
         </div>
     )
 }

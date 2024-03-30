@@ -1,15 +1,26 @@
-// ProtectedRoute.jsx
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const token = localStorage.getItem('userToken');
-  const isAuthenticated = !!token;
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ children }) => {
+
+
+  const isAuthenticated = () => {
+    const token = localStorage.getItem('jwtToken');
+    return token !== null; 
+  };
 
   return (
-    <Route {...rest} render={
-      props => isAuthenticated ? (<Component {...props} />) : (<Redirect to="/Login" />)
-    } />
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated() ? 
+          <>{children}</>
+          : 
+          <Navigate to="/login" />
+        
+      }
+    />
   );
 };
 

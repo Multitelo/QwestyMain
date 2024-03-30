@@ -2,12 +2,24 @@ import React, { useState, useEffect } from 'react';
 import logo from '../assets/images/Logo.png';
 import '../assets/css/verify.css'; 
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Verify = () => {
   const [otpValues, setOTPValues] = useState(['', '', '', '', '']); 
   const [userId, setUserId] = useState('');
   const [userType, setUserType] = useState('');
+  const navigateTo = useNavigate();
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userIdParam = urlParams.get('userId');
+    const userTypeParam = urlParams.get('usertype');
+
+    setUserId(userIdParam);
+    setUserType(userTypeParam);
+  }, []);
+
+  
   const handleChange = (index, value) => {
     if (!isNaN(value) && value >= 0) {
       const newValues = [...otpValues];
@@ -15,7 +27,7 @@ const Verify = () => {
       setOTPValues(newValues);
     }
   };
-
+  
   const handleKeyDown = (event, index) => {
     if (event.key === 'Backspace' && otpValues[index] === '') {
       if (index > 0) {
@@ -48,9 +60,14 @@ const Verify = () => {
         },
         body: JSON.stringify(requestBody),
       });
-  
+    
       if (response.ok) {
         console.log('OTP verification successful');
+        const data = await response.json();
+        const { token } = data; 
+        localStorage.setItem('jwtToken', token); 
+        navigateTo('/researcher/home')
+
       } else {
         console.error('Error verifying OTP:', response.statusText);
       }
@@ -59,14 +76,7 @@ const Verify = () => {
     }
   };
   
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userIdParam = urlParams.get('userId');
-    const userTypeParam = urlParams.get('usertype');
-
-    setUserId(userIdParam);
-    setUserType(userTypeParam);
-  }, []);
+ 
 
   // Function to check if all OTP values are filled
   const isAllValuesFilled = otpValues.every(value => value !== '');
@@ -74,6 +84,7 @@ const Verify = () => {
   return (
     <div style={{width:'100%', height:'100%', minHeight:'100vh', backgroundColor:'white'}}>
       <div className='verify-container'>
+       
         <Link to='/'> <img src={logo} alt="Logo of qwesty"/></Link>
         <h1>OTP Verification</h1>
         <div id='verify-box'> {otpValues}
