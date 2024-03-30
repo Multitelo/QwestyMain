@@ -6,6 +6,7 @@ import '../assets/css/login-signup.css';
 import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function LogIn() {
     const [email, setEmail] = useState({value:'', touched:false})
@@ -18,20 +19,37 @@ function LogIn() {
     const [btnState, setBtnState] = useState(true)
     const [showPwd, setShowPwd] = useState(false)
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
+    const [token, setToken] = useState('')
+    const navigateTo = useNavigate(); 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Send form data to PHP script using Axios
-        axios.post('./php/login.php', { email, password })
-            .then((response) => {
-                console.log(response.data);
-                // Handle successful login, e.g., redirect to dashboard
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                // Handle error, e.g., show an error message
-            });
-    };
+    const handleSubmit = async () => {
+        try {
+          const response = await fetch('https://solvety.info/api/login.php', {
+            method: 'POST',
+            body: JSON.stringify({ email: email, password: password, usertype:usertype }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+    
+          if (response.ok) {
+            
+            const data = await response.json();
+            // const jwtToken = data.token;
+    
+            // JWT TOKEN in local
+            // localStorage.setItem('jwtToken', jwtToken);
+    
+            // setToken(jwtToken);
+            navigateTo('/researcher/research');
+
+          } else {
+            console.error('Login failed');
+          }
+        } catch (error) {
+          console.error('Error :', error);
+        }
+      };
 
 
     const handleEmail = (e) => {
@@ -85,31 +103,31 @@ function LogIn() {
         setUsertype(event.target.value)
     }
     
-    const handleEmailSubmit = async () => {
-        const formData  = new FormData();
-        formData.append('email', email.value);
-        formData.append('usertype', usertype);
-        formData.append('rememberDetails', rememberDetails);
+    // const handleEmailSubmit = async () => {
+    //     const formData  = new FormData();
+    //     formData.append('email', email.value);
+    //     formData.append('usertype', usertype);
+    //     formData.append('rememberDetails', rememberDetails);
 
-        try {
-            const response = await fetch('http://localhost/qwestymain/api/login.php', {
-                method: 'POST',
-                body:formData,
-            });
+    //     try {
+    //         const response = await fetch('https://solvety.info/api/login.php', {
+    //             method: 'POST',
+    //             body:formData,
+    //         });
 
-            console.log(response)
-            const data = await response.json();
+    //         console.log(response)
+    //         const data = await response.json();
 
-            console.log('response data:', data)
-            window.location.href = '/researcher/home'; 
+    //         console.log('response data:', data)
+    //         // window.location.href = '/researcher/home'; 
+    //         handleNext
+    //     } catch(e){
+    //         console.log('Error: ', e)
+    //         setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
 
-        } catch(e){
-            console.log('Error: ', e)
-            setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
-
-        }
-        // handleNext
-    }
+    //     }
+      
+    // }
 
     const handlePwd = (e) => {
 
@@ -184,7 +202,7 @@ function LogIn() {
                             Remember for 30 days
                         </label>
 
-                            <button onClick={()=> handleEmailSubmit().then().catch()}
+                            <button onClick={handleNext}
                                     disabled={handleBtnState()}
                                     className={handleBtnState() ? 'disabled' : 'enabled'}>
                                 Next</button>
@@ -193,7 +211,7 @@ function LogIn() {
 
                     ) : content === 'password' ? (
                         <div className='second-content login'>
-                                <h2>Welcome back {email}</h2>
+                                <h2>Welcome back</h2>
 
                             <label htmlFor='pwd'>Enter your Password</label>
 
@@ -203,6 +221,7 @@ function LogIn() {
                                id="pwd"
                                name="password"
                                value={password.value}
+                               style={{color:'black'}}
                                placeholder='**********'
                                onChange={handlePwd}
                                onBlur={()=> {if (!password.value) {
@@ -220,10 +239,9 @@ function LogIn() {
                         </div>
                         <div className='errMsg'>{errors.pwdErr==="err"?errMsg:""}</div>
 
-                            <Link to='/signedUp/Settings'
-                                  id="loginBtn"><button>
+                           <button onClick={handleSubmit}>
                                 Log In
-                                </button></Link>
+                                </button>
                             <Link to="/Reset" 
                                   id="forgotLink"> <p>forgot password?</p></Link>
                         </div>
