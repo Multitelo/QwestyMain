@@ -26,6 +26,8 @@ export const Btn = ({ children, onClick, theme, width, padding }) => {
 const Survey = () => {
   const { resTheme } = useTheme();
   const [questions, setQuestions] = useState([1]);
+  const progress = questions.length + 1 
+
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -58,13 +60,10 @@ const Survey = () => {
             {/* subtitle */}
             <div className="my-2">
               <p className="text-gray-500">
-                <span>{"survey info:".toLocaleUpperCase()}</span> personal
-                questions
+              The impact of covid-19 on the tourism industry
               </p>
               <p className="text-gray-500 py-2">
-                This is how your questions will appear to participants. Use the
-                buttons below to navigate between questions and preview
-                different question types.
+              This research paper explores the impact ot COVID-19 on the global tourism industry. including changes in consumer behavior, travel restrictions, and the long-term economic consequences
               </p>
             </div>
             {/* set question */}
@@ -77,64 +76,31 @@ const Survey = () => {
                   resTheme
                 )}`}
               >
-                <p>Questions 1 of 10</p>
-                <h3 className={`font-bold py-2`}>
-                  What is your favorite food?
-                </h3>
-
-                {/* button fex */}
-                <section className="my-5 grid grid-cols-1 280:grid-cols-2 gap-10 md:gap-4 w-full 627:w-1/2 1157:w-1/3 1320:w-1/4">
-                  <button
-                    className={`${switchTheme(
-                      "bg-gray-200",
-                      "bg-[#43433F]",
-                      resTheme
-                    )} w-full text-sm whitespace-nowrap font-bold shadow-md px-5 rounded-lg py-1`}
-                  >
-                    Multiple choice
-                  </button>
-                  <button
-                    className={`${switchTheme(
-                      "bg-gray-200",
-                      "bg-[#43433F]",
-                      resTheme
-                    )} w-full text-sm whitespace-nowrap font-bold shadow-md px-5 rounded-lg py-1`}
-                  >
-                    Short text
-                  </button>
-                  <Btn
-                    width={`100%`}
-                    padding={`0.75rem 55px`}
-                    theme={switchTheme(
-                      "bg-[#8E5DF5] text-white",
-                      "bg-[#8E5DF5] text-white",
-                      resTheme
-                    )}
-                  >
-                    Next
-                  </Btn>
-                  <Btn
-                    width={`100%`}
-                    padding={`0.75rem 13px`}
-                    theme={switchTheme(
-                      "bg-white text-black",
-                      "bg-[#43433F] text-white",
-                      resTheme
-                    )}
-                  >
-                    Delete Question
-                  </Btn>
-                </section>
-
+                <div className="uploadFile my-20">
+                <label
+          htmlFor="file-upload"
+          className={`${switchTheme(
+            "transparent",
+            darkTheme,
+            resTheme
+          )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border-[1px] border-gray-500  px-5 py-1 cursor-pointer`} // Styling for the upload image badge
+        >
+          upload file 
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            className="hidden"  />
+        </label>
+                </div>
                 {/* create question */}
                 <section
-                  className={`${switchTheme(
+                  className={`mb-10 ${switchTheme(
                     "text-black",
                     "text-white",
                     resTheme
-                  )} mt-[100px]`}
+                  )} `}
                 >
-                  <h1 className="font-bold text-xl mb-5">Page 1 of 3</h1>
                   {/* input */}
                   <section className="flex flex-col gap-10">
                     <div className="flex flex-col md:flex-row h-fit items-center gap-10 w-full">
@@ -174,7 +140,7 @@ const Survey = () => {
               Total Questions
             </p>
             <div className="flex flex-col md:flex-row gap-10 md:gap-40 justify-center md:justify-between items-center w-full mb-20">
-              <ProgressBar progress={10} label={10} />
+              <ProgressBar progress={progress} label={progress} />
               <Link to="/researcher/preview-survey">
               <Btn
                 padding={`0.7rem 20px`}

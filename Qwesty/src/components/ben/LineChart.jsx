@@ -61,8 +61,8 @@ const LineChart = () => {
     <div className={`${switchTheme('bg-white', darkTheme, resTheme)} rounded-md w-full my-5`}>
       <div className='flex justify-between p-5'>
       <select onChange={handleSortChange} defaultValue="All" className={`${switchTheme('text-gray-500', darkTheme + " text-gray-600", resTheme)} py-2 outline-none px-10 rounded-md border-[2px] border-gray-300`}>
-        <option value="One">One</option>
-        <option value="Two">Two</option>
+        {/* <option value="One">One</option> */}
+        {/* <option value="Two">Two</option> */}
         <option value="All">All</option>
       </select>
       <div className="md:flex gap-5 hidden">

@@ -29,7 +29,7 @@ import {
   SubInsight,
   TotalResponse,
 } from "../../components/ben/insights";
-import ResponseSortSelect from "../../components/actokuyt/Response-sort-select";
+import ResponseSortSelect from "../../components/actokuyt/response-sort-select";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -470,7 +470,7 @@ const Insights = () => {
                                         return (
                                           <div
                                             key={index}
-                                            className="flex flex-row items-center mb-4 pdx-4 py-2 items-center"
+                                            className="flex flex-row items-center mb-4 pdx-4 py-2"
                                           >
                                             <img
                                               src={participant.avatar}
@@ -516,10 +516,10 @@ const Insights = () => {
             ) : activeCard === 2 ? (
               <div>
                 <div className="grid grid-cols-2 gap-4 w-[90%] mx-auto">
-                  <button className="bg-white w-[9em] py-[0.8em] rounded-xl drop-shadow-md" >
+                  <button className="bg-white w-[9em] py-[0.8em] rounded-xl drop-shadow-md">
                     Table Chart
                   </button>
-                  <button className="bg-white w-[9em] py-[0.8em] rounded-xl drop-shadow-md" >
+                  <button className="bg-white w-[9em] py-[0.8em] rounded-xl drop-shadow-md">
                     Visualization Style
                   </button>
                 </div>
