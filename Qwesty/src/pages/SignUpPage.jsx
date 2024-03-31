@@ -159,7 +159,8 @@ function SignUpPage() {
             console.log(userId)
             // const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
             // window.location.href = redirectToVerify;
-            navigateTo('/researcher/research')
+            // navigateTo('/researcher/research')
+            alert('Signed up successful! Thank you.');
             
         } catch (error) {
             console.error('Network error:', error.message);
