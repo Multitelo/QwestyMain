@@ -6,21 +6,24 @@ import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import * as React from "react";
-import CalendarMu from "../../components/mahtot/CalendarMu";
+import ResponsiveDateTimePickers from "../../components/mahtot/CalendarMu";
 import Modal from "../../components/mahtot/Modal";
 import { useState } from "react";
-import dayjs from 'dayjs';
 
 function PreviewSurvey() {
-    const {resTheme} = useTheme();
-    const [deadline, setDeadline] = useState(new Date());
-    const [isOpen,setIsOpen] = useState({deadline:false, startResearch:false})
-    const [schedule, setSchedule] = useState()
-    const [startResearch, setStartResearch] = useState(false)
-    
-    const onClose = ()=>{
-        setIsOpen(false)
-      }
+  const { resTheme } = useTheme();
+  const [deadline, setDeadline] = useState();
+  const [calendarIsOpen, setCalendarIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState({
+    deadline: false,
+    startResearch: false,
+  });
+  const [Schedule, setSchedule] = useState(null);
+  const [startResearch, setStartResearch] = useState(false);
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
 
   const style = {
     position: "absolute",
@@ -60,35 +63,24 @@ function PreviewSurvey() {
             <p> You'll be able to edit this draft before you send it out.</p>
             <h2>Questions</h2>
             <div className="question-component">
-            {
-                questionTypes.map((item, index)=>(
-                    <Question title={item.title}
-                            type={item.type}
-                            key={index}/>
-                ))
-            }
-          
-                </div>
-                <div className="pmreview">
-          <button onClick={()=>setIsOpen({...isOpen, deadline:true})}>
-        set deadline</button> (optional)
-        <Modal open={isOpen} 
-               onClose={onClose} 
-               setStartResearch={setStartResearch}
-               deadline={deadline}
-               setDeadline={setDeadline}
-               schedule={schedule}
-               setSchedule={setSchedule}
-               >
-           {<CalendarMu onClose={onClose}/>}
-           
-        </Modal>
-      
-      
-    </div>
-               
-             
-  
+              {questionTypes.map((item, index) => (
+                <Question title={item.title} type={item.type} key={index} />
+              ))}
+              {/* {<CalendarMu date={deadline} setDate={setDeadline}/>} */}
+              {/* {deadline} */}
+            </div>
+            <div className="pmreview">
+              <button onClick={() => setCalendarIsOpen(!calendarIsOpen)}  className="bg-[#F0F0F5] p-[0.7em] rounded-xl">
+                set deadline
+              </button>{" "}
+              <span>(optional)</span>
+              {calendarIsOpen ? (
+                <ResponsiveDateTimePickers />
+              ):(
+                <></>
+              )}
+            </div>
+
             <div className="end-btns">
               <button
                 style={{ backgroundColor: "#8E5DF5", color: "#fff" }}

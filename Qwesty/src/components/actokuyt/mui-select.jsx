@@ -5,8 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function ResponseSortSelect() {
-  const [sort, setSort] = React.useState('completed');
+export default function MuiSelect({defaultState, label, options }) {
+  const [sort, setSort] = React.useState(defaultState);
 
   const handleChange = (event) => {
     setSort(event.target.value);
@@ -15,7 +15,7 @@ export default function ResponseSortSelect() {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -26,8 +26,11 @@ export default function ResponseSortSelect() {
             height: 45,
           }}
         >
-          <MenuItem value={"completed"}>Completed</MenuItem>
-          <MenuItem value={"uncompleted"}>Uncompleted</MenuItem>
+          {options.map((option, index) => {
+            return(
+              <MenuItem key = {index} value={option}>{option}</MenuItem>
+            )
+          })}
         </Select>
       </FormControl>
     </Box>

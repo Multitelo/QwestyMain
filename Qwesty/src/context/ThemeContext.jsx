@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }) => {
   })
   const [usertype, setUsertype] = useState('');
   const [dropdown, setDropdown] = useState(false);
-console.log(resTheme)
+// console.log(resTheme)
 
   useEffect(()=>{
       localStorage.setItem('resTheme', resTheme);

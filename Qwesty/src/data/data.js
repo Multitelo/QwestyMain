@@ -396,3 +396,21 @@ export const ResponseByQuestions = [
     ]
   },
 ]
+
+
+// Analytics charts data
+
+export const chartData = [
+  {
+    name: "yes",
+    data: [44, 55, 41, 67, 22, 43, 21, 14, 13, 23, 20, 8,],
+  },
+  {
+    name: "no",
+    data: [13, 23, 20, 8, 13, 27, 67, 22, 43, 21, 14, 13,],
+  },
+  {
+    name: "other",
+    data: [11, 17, 15, 15, 21, 14, 13, 23, 20, 8, 13, 27],
+  },
+]

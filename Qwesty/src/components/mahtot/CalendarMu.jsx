@@ -1,20 +1,30 @@
-import * as React from 'react';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
-import dayjs from 'dayjs';
+import * as React from "react";
+import dayjs from "dayjs";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-export default function CalendarMu({ date, setDate }) {
-  console.log(date);
 
+export default function ResponsiveDateTimePickers() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StaticDateTimePicker 
-        value={dayjs(date)}
-        onChange={setDate} 
-        minDate={dayjs(new Date())}
-        // maxDate={dayjs('2022-12-31')}
-      />
+      <DemoContainer
+        components={[
+          "DateTimePicker",
+          "MobileDateTimePicker",
+          "DesktopDateTimePicker",
+          "StaticDateTimePicker",
+        ]}
+      >
+        <DemoItem>
+          <DateTimePicker
+            defaultValue={dayjs("2024-04-17T15:30")}
+            disablePast={true}
+            closeOnSelect={false}
+          />
+        </DemoItem>
+      </DemoContainer>
     </LocalizationProvider>
   );
 }
