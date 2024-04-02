@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { XIcon } from "lucide-react";
+import { Clock4, XIcon } from "lucide-react";
 import { switchTheme } from "../../../../data/data";
 import { useTheme } from "../../../../context/ThemeContext";
 
@@ -33,7 +33,7 @@ const Time = () => {
       <div className="flex items-center mb-2">
         <input
           type="text"
-          className={`border-x-0 ${switchTheme('placeholder:text-[#636387] border-gray-400','placeholder:text-[#7673D8] border-b-[#7673D8]', resTheme)}   placeholder:text-xl  border-b-[1px] focus:outline-none bg-transparent  px-2 py-1 mr-2`}
+          className={`border-x-0  ${switchTheme('placeholder:text-[#636387] border-gray-400','placeholder:text-[#7673D8] border-b-[#7673D8]', resTheme)}   placeholder:text-xl  border-b-[1px] focus:outline-none bg-transparent  px-2 py-1 mr-2`}
           disabled={true}
           value={longText}
           placeholder={placeholder}
@@ -41,6 +41,7 @@ const Time = () => {
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
+        <Clock4 color={switchTheme('black','white',resTheme)} />
         {isFocused && (
           <XIcon
             size={20}
