@@ -5,6 +5,8 @@ import { darkTheme, switchTheme } from "../../../data/data";
 import MultipleChoiceQestion from "./questions/MultipleChoiceQestion";
 import QuestionComponent from "./QuestionComponent";
 import CheckBoxes from "./questions/CheckBoxes";
+import OpenEndedText from "./questions/OpenEndedText";
+import FileUpload from "./questions/FileUpload";
 
 const QuestionInput = ({ resTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,9 +40,9 @@ const QuestionInput = ({ resTheme }) => {
     "Single select text": <QuestionComponent questionType={selectedOption} />,
     Checkboxes: <CheckBoxes />,
     Multichoice: <MultipleChoiceQestion />,
-    "Open ended text": <QuestionComponent questionType={selectedOption} />,
+    "Open ended text": <OpenEndedText />,
     "Open ended number": <QuestionComponent questionType={selectedOption} />,
-    "File upload": <QuestionComponent questionType={selectedOption} />,
+    "File upload": <FileUpload />,
     Dropdown: <QuestionComponent questionType={selectedOption} />,
     "Linear scale": <QuestionComponent questionType={selectedOption} />,
     "Multi choice group": <QuestionComponent questionType={selectedOption} />,

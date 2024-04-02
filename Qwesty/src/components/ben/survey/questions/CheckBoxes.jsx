@@ -41,7 +41,8 @@ const CheckBoxes = () => {
     <div className="px-3 py-2">
       {options.map((option, index) => (
         <div key={index} className="flex items-center mb-2">
-          <div className="relative">
+          {/* checkbox */}
+          <div className="relative mr-2 cursor-pointer">
             <input
               type="checkbox"
               className="relative peer shrink-0 appearance-none w-6 h-6 border-2 border-none outline-none rounded-md bg-gray-300 mt-1"
@@ -54,7 +55,7 @@ const CheckBoxes = () => {
           </div>
           <input
             type="text"
-            className="border-x-0 w-1/2 focus:border-b-[1px] focus:outline-none bg-transparent border-gray-400  px-2 py-1 mr-2"
+            className="border-x-0 w-full md:w-[70%] focus:border-b-[1px] focus:outline-none bg-transparent border-gray-400  px-2 py-1 mr-2"
             value={option}
             placeholder={getPlaceholder(index)}
             onChange={(e) => handleOptionChange(index, e.target.value)}

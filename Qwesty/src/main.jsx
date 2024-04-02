@@ -26,11 +26,13 @@ import {
   Insights,
   Verify,
 } from "./routes/Index.jsx";
+import SurveyProviders from "./context/Survey/SurveyProviders";
 
 function App() {
   return (
     <ThemeProvider>
-      <React.StrictMode>
+      <SurveyProviders>      
+        <React.StrictMode>
         <BrowserRouter>
           <Routes>
             
@@ -63,6 +65,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
+      </SurveyProviders>
     </ThemeProvider>
   );
 }
