@@ -2,8 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import { Btn } from "../../../pages/researcher/Survey";
 import { ChevronDown, CirclePlus } from "lucide-react";
 import { darkTheme, switchTheme } from "../../../data/data";
-import MultipleChoiceQestion from "./MultipleChoiceQestion";
+import MultipleChoiceQestion from "./questions/MultipleChoiceQestion";
 import QuestionComponent from "./QuestionComponent";
+import CheckBoxes from "./questions/CheckBoxes";
+import OpenEndedText from "./questions/OpenEndedText";
+import FileUpload from "./questions/FileUpload";
 
 const QuestionInput = ({ resTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,17 +38,17 @@ const QuestionInput = ({ resTheme }) => {
 
   const optionComponents = {
     "Single select text": <QuestionComponent questionType={selectedOption} />,
-    "Checkboxes": <QuestionComponent questionType={selectedOption} />,
-    "Multichoice": <MultipleChoiceQestion />,
-    "Open ended text": <QuestionComponent questionType={selectedOption} />,
+    Checkboxes: <CheckBoxes />,
+    Multichoice: <MultipleChoiceQestion />,
+    "Open ended text": <OpenEndedText />,
     "Open ended number": <QuestionComponent questionType={selectedOption} />,
-    "File upload": <QuestionComponent questionType={selectedOption} />,
-    "Dropdown": <QuestionComponent questionType={selectedOption} />,
+    "File upload": <FileUpload />,
+    Dropdown: <QuestionComponent questionType={selectedOption} />,
     "Linear scale": <QuestionComponent questionType={selectedOption} />,
     "Multi choice group": <QuestionComponent questionType={selectedOption} />,
     "Test completion": <QuestionComponent questionType={selectedOption} />,
-    "Date": <QuestionComponent questionType={selectedOption} />,
-    "Time": <QuestionComponent questionType={selectedOption} />
+    Date: <QuestionComponent questionType={selectedOption} />,
+    Time: <QuestionComponent questionType={selectedOption} />,
   };
 
   useEffect(() => {
@@ -93,10 +96,14 @@ const QuestionInput = ({ resTheme }) => {
           </label>
           <div className="absolute z-50 transform left-[88%] top-[20.7rem] -translate-x-1/2 -translate-y-1/2">
             {isOpen && (
-              <div className={`option bg-white text-black rounded-lg py-2  shadow-md`}>
+              <div
+                className={`option bg-white text-black rounded-lg py-2  shadow-md`}
+              >
                 {options.map((value, index) => (
                   <p
-                    className="cursor-pointer  px-10 font-semibold pt-1 border-[1px] border-x-transparent border-t-transparent hover:border-b-[#763cbd] border-b-gray-300"
+                    className={`cursor-pointer px-10 font-semibold pt-1 border-[1px] border-x-transparent border-t-transparent hover:border-b-[#763cbd] border-b-gray-300 ${
+                      selectedOption === value ? "text-[#8E5DF5]" : ""
+                    }`}
                     key={index}
                     onClick={() => handleOptionClick(value)}
                   >
@@ -108,7 +115,8 @@ const QuestionInput = ({ resTheme }) => {
           </div>
         </div>
       </div>
-      {optionComponents[selectedOption]} 
+      {/* question setting type */}
+      <div>{optionComponents[selectedOption]}</div>
     </section>
   );
 };

@@ -149,7 +149,7 @@ const ResearchPage = () => {
         console.log(responseData);
       } catch (error) {
         console.error('Error fetching data:', error);
-        toast.error('Error fetching data:', error);
+        toast.error('Error fetching data');
       }
     };
     fetchData();
