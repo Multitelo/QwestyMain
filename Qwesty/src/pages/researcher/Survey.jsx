@@ -26,8 +26,7 @@ export const Btn = ({ children, onClick, theme, width, padding }) => {
 const Survey = () => {
   const { resTheme } = useTheme();
   const [questions, setQuestions] = useState([1]);
-  const progress = questions.length + 1 
-
+  const progress = questions.length + 1;
 
   return (
     <div className={`researcher-content ${resTheme}`}>
@@ -59,11 +58,25 @@ const Survey = () => {
             </h1>
             {/* subtitle */}
             <div className="my-2">
-              <p className="text-gray-500">
-              The impact of covid-19 on the tourism industry
+              <p
+                className={`${switchTheme(
+                  "text-gray-500",
+                  "text-[#199AE2]",
+                  resTheme
+                )} font-bold text-xl`}
+              >
+                The impact of covid-19 on the tourism industry
               </p>
-              <p className="text-gray-500 py-2">
-              This research paper explores the impact ot COVID-19 on the global tourism industry. including changes in consumer behavior, travel restrictions, and the long-term economic consequences
+              <p
+                className={`${switchTheme(
+                  "text-gray-500",
+                  "text-[#85B3CD]",
+                  resTheme
+                )} py-2`}
+              >
+                This research paper explores the impact ot COVID-19 on the
+                global tourism industry. including changes in consumer behavior,
+                travel restrictions, and the long-term economic consequences
               </p>
             </div>
             {/* set question */}
@@ -77,21 +90,22 @@ const Survey = () => {
                 )}`}
               >
                 <div className="uploadFile my-20">
-                <label
-          htmlFor="file-upload"
-          className={`${switchTheme(
-            "transparent",
-            darkTheme,
-            resTheme
-          )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border-[1px] border-gray-500  px-5 py-1 cursor-pointer`} // Styling for the upload image badge
-        >
-          upload file 
-          <input
-            id="file-upload"
-            type="file"
-            accept="image/*"
-            className="hidden"  />
-        </label>
+                  <label
+                    htmlFor="file-upload"
+                    className={`${switchTheme(
+                      "transparent",
+                      darkTheme,
+                      resTheme
+                    )} rounded-2xl h-fit shadow-md  whitespace-nowrap font-semibold  border-[1px] border-gray-500  px-5 py-1 cursor-pointer`} // Styling for the upload image badge
+                  >
+                    upload file
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                    />
+                  </label>
                 </div>
                 {/* create question */}
                 <section
@@ -119,10 +133,10 @@ const Survey = () => {
                         <span>Add</span>
                       </button>
                     </div>
-                    {/* additonal buttons down here */}
-                    {questions.map((questionIndex) => (
+                    {/* additonal question input down here */}
+                     {questions.map((questionIndex) => (
                       <QuestionInput key={questionIndex} resTheme={resTheme} />
-                    ))}
+                    ))} 
                   </section>
                 </section>
               </div>
@@ -142,16 +156,16 @@ const Survey = () => {
             <div className="flex flex-col md:flex-row gap-10 md:gap-40 justify-center md:justify-between items-center w-full mb-20">
               <ProgressBar progress={progress} label={progress} />
               <Link to="/researcher/preview-survey">
-              <Btn
-                padding={`0.7rem 20px`}
-                theme={switchTheme(
-                  "bg-[#8E5DF5] text-white",
-                  "bg-[#8E5DF5] text-white",
-                  resTheme
-                )}
-              >
-                Preview survey
-              </Btn>
+                <Btn
+                  padding={`0.7rem 20px`}
+                  theme={switchTheme(
+                    "bg-[#8E5DF5] text-white",
+                    "bg-[#8E5DF5] text-white",
+                    resTheme
+                  )}
+                >
+                  Preview survey
+                </Btn>
               </Link>
             </div>
           </section>

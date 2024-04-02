@@ -3,9 +3,9 @@ import { XIcon } from "lucide-react";
 import { switchTheme } from "../../../../data/data";
 import { useTheme } from "../../../../context/ThemeContext";
 
-const OpenEndedText = () => {
+const Time = () => {
   const [longText, setLongText] = useState("");
-  const [placeholder, setPlaceholder] = useState("Your participant's answer here");
+  const [placeholder, setPlaceholder] = useState("00-00");
   const [isFocused, setIsFocused] = useState(false);
   const { resTheme } = useTheme();
 
@@ -33,7 +33,7 @@ const OpenEndedText = () => {
       <div className="flex items-center mb-2">
         <input
           type="text"
-          className={`${switchTheme('placeholder:text-[#636387] border-gray-400','placeholder:text-[#7673D8] border-b-[#7673D8]', resTheme)} border-x-0 w-full placeholder:text-xl md:w-[70%] border-b-[1px] focus:outline-none bg-transparent px-2 py-1 mr-2`}
+          className={`border-x-0 ${switchTheme('placeholder:text-[#636387] border-gray-400','placeholder:text-[#7673D8] border-b-[#7673D8]', resTheme)}   placeholder:text-xl  border-b-[1px] focus:outline-none bg-transparent  px-2 py-1 mr-2`}
           disabled={true}
           value={longText}
           placeholder={placeholder}
@@ -54,4 +54,4 @@ const OpenEndedText = () => {
   );
 };
 
-export default OpenEndedText;
+export default Time;
