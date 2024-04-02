@@ -29,7 +29,7 @@ const OpenEndedText = () => {
   };
 
   return (
-    <div className="px-3 py-2">
+    <div className="px-3 py-3 mt-5 md:mt-3">
       <div className="flex items-center mb-2">
         <input
           type="text"
