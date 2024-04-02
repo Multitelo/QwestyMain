@@ -55,7 +55,7 @@ const CheckBoxes = () => {
           </div>
           <input
             type="text"
-            className="border-x-0 w-full md:w-[70%] focus:border-b-[1px] focus:outline-none bg-transparent border-gray-400  px-2 py-1 mr-2"
+            className={`border-x-0 ${switchTheme('placeholder:text-[#636387] border-b-gray-400','placeholder:text-[#7673D8] border-b-[#7673D8]', resTheme)} w-full md:w-[70%] focus:border-b-[1px] focus:outline-none bg-transparent px-2 py-1 mr-2`}
             value={option}
             placeholder={getPlaceholder(index)}
             onChange={(e) => handleOptionChange(index, e.target.value)}

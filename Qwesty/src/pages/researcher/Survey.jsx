@@ -134,9 +134,9 @@ const Survey = () => {
                       </button>
                     </div>
                     {/* additonal question input down here */}
-                    {/* {questions.map((questionIndex) => (
+                     {questions.map((questionIndex) => (
                       <QuestionInput key={questionIndex} resTheme={resTheme} />
-                    ))} */}
+                    ))} 
                   </section>
                 </section>
               </div>

@@ -64,10 +64,10 @@ const MultiChoiceGroup = () => {
                 <input
                   type="text"
                   className={`${switchTheme(
-                    "placeholder:text-gray-400",
-                    "placeholder:text-[#7673D8]",
+                    "placeholder:text-gray-400 border-gray-400",
+                    "placeholder:text-[#7673D8] border-[#7673D8]",
                     resTheme
-                  )} border-x-0 placeholder:font-bold placeholder:text-lg w-full md:w-1/2 focus:border-b-[1px] focus:outline-none bg-transparent border-gray-400 px-2 py-1 mr-2`}
+                  )} border-x-0 placeholder:font-bold placeholder:text-lg w-full md:w-1/2 focus:border-b-[1px] focus:outline-none bg-transparent px-2 py-1 mr-2`}
                   placeholder={getPlaceholder1(groupIndex)}
                   onChange={(e) =>
                     handleOptionChange(groupIndex, 0, e.target.value)
@@ -90,10 +90,10 @@ const MultiChoiceGroup = () => {
                   <input
                     type="text"
                     className={`border-x-0 w-full ${switchTheme(
-                      "placeholder:text-black",
-                      "placeholder:text-white",
+                      "placeholder:text-black border-gray-400",
+                      "placeholder:text-white border-[#7673D8]",
                       resTheme
-                    )}  md:w-1/2 focus:border-b-[1px] focus:outline-none bg-transparent border-gray-400 px-2 py-1 mr-2`}
+                    )}  md:w-1/2 focus:border-b-[1px] focus:outline-none bg-transparent  px-2 py-1 mr-2`}
                     value={option}
                     placeholder={getPlaceholder2(optionIndex)}
                     onChange={(e) =>

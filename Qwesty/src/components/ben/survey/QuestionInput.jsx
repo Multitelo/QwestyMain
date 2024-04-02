@@ -2,12 +2,21 @@ import React, { useEffect, useState, useRef } from "react";
 import { Btn } from "../../../pages/researcher/Survey";
 import { ChevronDown, CirclePlus } from "lucide-react";
 import { darkTheme, switchTheme } from "../../../data/data";
-import { CheckBoxes, FileUpload, LinearScale, MultiChoiceGroup, MultipleChoiceQuestion, OpenEndedText, QuestionComponent } from "./questions";
-
+import {
+  CheckBoxes,
+  Date,
+  FileUpload,
+  LinearScale,
+  MultiChoiceGroup,
+  MultipleChoiceQuestion,
+  OpenEndedText,
+  QuestionComponent,
+  Time,
+} from "./questions";
 
 const QuestionInput = ({ resTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Multichoice"); 
+  const [selectedOption, setSelectedOption] = useState("Multichoice");
   const options = [
     "Single select text",
     "Checkboxes",
@@ -44,8 +53,8 @@ const QuestionInput = ({ resTheme }) => {
     "Linear scale": <LinearScale />,
     "Multi choice group": <MultiChoiceGroup />,
     "Test completion": <QuestionComponent questionType={selectedOption} />,
-    Date: <QuestionComponent questionType={selectedOption} />,
-    Time: <QuestionComponent questionType={selectedOption} />,
+    Date: <Date />,
+    Time: <Time />,
   };
 
   useEffect(() => {
