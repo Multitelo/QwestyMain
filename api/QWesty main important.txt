@@ -204,10 +204,10 @@ ADD COLUMN welcome_email_sent INT DEFAULT 0;
 ALTER TABLE parti
 DROP COLUMN welcome_email_sent;
 
+UPDATE parti
+SET welcome_email_sent = 0
+WHERE welcome_email_sent = 1;
 
-
-godwinpraise05@gmail.com
-umorujoyobe@gmail.com
 
 
 curl -X POST -H "Content-Type: application/json" -d '{"survey_id": "your_survey_id", "questions": [{"question_text": "What is your favorite color?", "question_type": "multiple_choice", "options": ["Red", "Blue", "Green", "Yellow"]} ]}' http://localhost/QwestyMain/api/saveques.php
