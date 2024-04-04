@@ -4,6 +4,8 @@ import ApexCharts from "./apex-chart";
 import MuiSelect from "./mui-select";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import { switchTheme } from "../../data/data";
+import { useTheme } from "../../context/ThemeContext";
 
 function TabButton({ className, isActive, label, onClick }) {
   return (
@@ -49,6 +51,8 @@ const questionButtons = [
 ];
 
 export default function InsightsAnalyticsTab(params) {
+  const { resTheme } = useTheme();
+
   const [activeTab, setActiveTab] = React.useState(0);
 
   function handleTabClick(index) {
@@ -63,6 +67,11 @@ export default function InsightsAnalyticsTab(params) {
   const handleCompareOpen = () => setCompareOpen(true);
   const handleCompareClose = () => setCompareOpen(false);
 
+  const bgColor = switchTheme("bg-white", "bg-[#2a2a27]", resTheme);
+  const textColor = switchTheme("text-black", "text-white", resTheme);
+  const borderColor = switchTheme("border-gray-800", "border-[#9a9a98]", resTheme)
+
+
   return (
     <div>
       <div className="grid grid-cols-2 gap-4 justify-center md:w-2/5">
@@ -73,7 +82,7 @@ export default function InsightsAnalyticsTab(params) {
               isActive={activeTab === index}
               label={analyticTab.label}
               onClick={() => handleTabClick(index)}
-              className="bg-white py-[0.8em] rounded-xl drop-shadow-md"
+              className={`${bgColor} ${textColor} py-[0.8em] rounded-xl drop-shadow-md`}
             />
           );
         })}
@@ -128,7 +137,7 @@ export default function InsightsAnalyticsTab(params) {
               <div className=" hidden md:block">
                 <button
                   onClick={handleCompareOpen}
-                  className="text-gray-700 rounded-xl border-[1px] border-gray-500 flex bg-white drop-shadow-md px-4 py-2 mr-4"
+                  className={`${bgColor} ${textColor} text-gray-700 rounded-xl border-[1px] border-gray-500 flex drop-shadow-md px-4 py-2 mr-4`}
                 >
                   <span className="mr-2">
                     <GitCompareArrows />
@@ -147,11 +156,10 @@ export default function InsightsAnalyticsTab(params) {
                       top: "50%",
                       left: "50%",
                       transform: "translate(-50%, -50%)",
-                      bgcolor: "background.paper",
                       boxShadow: 24,
                       p: 4,
                     }}
-                    className="w-[70%] mx-auto rounded-lg"
+                    className={`${bgColor} ${textColor} w-[70%] mx-auto rounded-lg`}
                   >
                     <span
                       onClick={handleCompareClose}
@@ -160,7 +168,7 @@ export default function InsightsAnalyticsTab(params) {
                       <X />
                     </span>
 
-                    <div className="grid grid-cols-2 gap-16" >
+                    <div className="grid grid-cols-2 gap-16">
                       <div>
                         <h1 className="text-xl font-semibold mb-8">
                           Compare This
@@ -169,7 +177,7 @@ export default function InsightsAnalyticsTab(params) {
                         <div className="flex flex-row flex-wrap justify-center mb-8">
                           {questionButtons.map((question, index) => {
                             return (
-                              <button className="p-4 pdx-2 bg-[#F0F0F5] rounded-2xl m-2 ">
+                              <button className={`${bgColor} ${textColor} ${borderColor} border-[1px] px-4 py-2 rounded-2xl m-2`}>
                                 {question.label}
                               </button>
                             );
@@ -203,7 +211,7 @@ export default function InsightsAnalyticsTab(params) {
                         <div className="flex flex-row flex-wrap justify-center mb-8">
                           {questionButtons.map((question, index) => {
                             return (
-                              <button className="p-4 pdx-2 bg-[#F0F0F5] rounded-2xl m-2 ">
+                              <button className={`${bgColor} ${textColor} ${borderColor} border-[1px] px-4 py-2 rounded-2xl m-2`}>
                                 {question.label}
                               </button>
                             );
@@ -236,7 +244,7 @@ export default function InsightsAnalyticsTab(params) {
               <div>
                 <button
                   onClick={handleFilterOpen}
-                  className="text-gray-700 rounded-xl border-[1px] border-gray-500 flex bg-white drop-shadow-md px-4 py-2"
+                  className={`${bgColor} ${textColor} text-gray-700 rounded-xl border-[1px] border-gray-500 flex drop-shadow-md px-4 py-2`}
                 >
                   <span className="mr-2">
                     <ListFilter />
@@ -255,11 +263,10 @@ export default function InsightsAnalyticsTab(params) {
                       top: "50%",
                       left: "50%",
                       transform: "translate(-50%, -50%)",
-                      bgcolor: "background.paper",
                       boxShadow: 24,
                       p: 4,
                     }}
-                    className="w-[90%] mx-auto rounded-lg md:w-[30%]"
+                    className={`${bgColor} ${textColor} w-[90%] mx-auto rounded-lg md:w-[30%]`}
                   >
                     <span
                       onClick={handleFilterClose}
@@ -275,7 +282,7 @@ export default function InsightsAnalyticsTab(params) {
                       <div className="flex flex-row flex-wrap justify-center mb-8">
                         {questionButtons.map((question, index) => {
                           return (
-                            <button className="p-4 pdx-2 bg-[#F0F0F5] rounded-2xl m-2 ">
+                            <button className={`${bgColor} ${textColor} ${borderColor} border-[1px] px-4 py-2 rounded-2xl m-2`}>
                               {question.label}
                             </button>
                           );
@@ -284,17 +291,14 @@ export default function InsightsAnalyticsTab(params) {
 
                       <div className="grid grid-cols-1 gap-4">
                         <MuiSelect
-                          defaultState={"male"}
                           label={"By Participants Gender"}
                           options={["male", "female", "other"]}
                         />
                         <MuiSelect
-                          defaultState={"Lagos"}
                           label={"By Location"}
                           options={["Lagos", "Abuja", "Anambra"]}
                         />
                         <MuiSelect
-                          defaultState={"Andriod"}
                           label={"By Device Used"}
                           options={["Andriod", "iOS", "other"]}
                         />
@@ -307,7 +311,7 @@ export default function InsightsAnalyticsTab(params) {
           </div>
 
           <div className="grid grid-cols-1 gap-8 mb-8">
-            <div className="bg-white rounded-xl ">
+            <div className={`${bgColor} ${textColor} rounded-xl`}>
               <div className="mb-8">
                 <h1 className="text-lg font-semibold py-6 px-2">
                   Question 1
@@ -318,7 +322,7 @@ export default function InsightsAnalyticsTab(params) {
                 <p className="px-2 mb-6">
                   How inspired are you to be your best here?
                 </p>
-                <span className="px-2 py-4 ml-2 rounded-lg bg-[#FFF3C7] ">
+                <span className="text-black px-2 py-4 ml-2 rounded-lg bg-[#FFF3C7] ">
                   28 answered
                 </span>
                 <span className="px-2 py-4 ml-8 rounded-lg bg-[#FFCACA] text-[#9A0A0A] ">
@@ -330,7 +334,7 @@ export default function InsightsAnalyticsTab(params) {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl ">
+            <div className={`${bgColor} ${textColor} rounded-xl`}>
               <div className="mb-8">
                 <h1 className="text-lg font-semibold py-6 px-2">
                   Question 1
@@ -341,7 +345,7 @@ export default function InsightsAnalyticsTab(params) {
                 <p className="px-2 mb-6">
                   How inspired are you to be your best here?
                 </p>
-                <span className="px-2 py-4 ml-2 rounded-lg bg-[#FFF3C7] ">
+                <span className="text-black px-2 py-4 ml-2 rounded-lg bg-[#FFF3C7] ">
                   28 answered
                 </span>
                 <span className="px-2 py-4 ml-8 rounded-lg bg-[#FFCACA] text-[#9A0A0A] ">

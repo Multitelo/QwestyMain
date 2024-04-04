@@ -40,29 +40,44 @@ export default function InsightsResponseTab() {
     "uncompleted",
   ]
 
+  const bgColor = switchTheme("bg-white", "bg-[#2a2a27]", resTheme)
+  const textColor = switchTheme("text-black", "text-white", resTheme)
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5em] mb-[5em]">
-        <div className="bg-white min-h-[30em] rounded-2xl">
+
+        <div className={`${bgColor} min-h-[30em] rounded-2xl`}>
+
           <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+
             <span className="bg-[#EAE1FF] text-[#410FA8] w-[65%] md:w-[83%] text-lg rounded-full  h-[2.8em] flex items-center">
+
               <p className="inline p-4">By Participants</p>
+
               <span className="bg-[#CBB5FF] rounded-full py-[0.5em] px-[1em]">
                 {ResponseByParticipants.length}
               </span>
+
             </span>
+
             <span className="w-[50%] md:justify-self-end">
               <MuiSelect defaultState = {defaultState} label = {label} options = {options}/>
             </span>
+
           </div>
+
           <div className="w-full">
             <div className="grid grid-cols-2 w-[90%] mx-auto p-4">
+
               <div className="justify-self-center">
                 <h6 className="font-semibold">Names</h6>
               </div>
+
               <div className="justify-self-end">
                 <h6 className="font-semibold">Time</h6>
               </div>
+
             </div>
             <div>
               {ResponseByParticipants.map((participant, index) => (
@@ -100,10 +115,10 @@ export default function InsightsResponseTab() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                   >
-                    <Box className="bg-white absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:right-0 md:max-w-[35%] md:max-h-[100%] md:-translate-x-0 md:mr-12">
+                    <Box className={`${bgColor} absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:right-0 md:max-w-[35%] md:max-h-[100%] md:-translate-x-0 md:mr-12`}>
                       <span
                         onClick={handleParticipantsModalClose}
-                        className="block w-[24px] p-2 absolute right-8"
+                        className={` ${textColor} block w-[24px] p-2 absolute right-8`}
                       >
                         <X />
                       </span>
@@ -112,7 +127,7 @@ export default function InsightsResponseTab() {
                           return (
                             <div>
                               <div className="my-4">
-                                <h1 className="text-2xl font-semibold">
+                                <h1 className={`${textColor} font-semibold`}>
                                   {`Viewing ${participant.name}`}{" "}
                                 </h1>
                                 <p className="text-sm text-[#9A9696]">
@@ -131,7 +146,7 @@ export default function InsightsResponseTab() {
                                           <ListOrdered size={35} />
                                         </span>
                                         <div>
-                                          <h1 className="font-semibold mb-2">{`Q ${
+                                          <h1 className={`${textColor} font-semibold mb-2`}>{`Q ${
                                             index + 1
                                           }`}</h1>
                                           <p className="text-[#636387] text-sm">
@@ -166,7 +181,7 @@ export default function InsightsResponseTab() {
           </div>
         </div>
 
-        <div className="bg-white min-h-[30em] rounded-2xl">
+        <div className={`${bgColor} min-h-[30em] rounded-2xl`}>
           <div className="p-4 grid grid-cols-2">
             <span className="bg-[#EAE1FF] text-[#410FA8] w-[121%] md:w-[75%] text-lg rounded-full  h-[2.8em] flex items-center">
               <p className="inline p-4">By Questions</p>
@@ -205,10 +220,10 @@ export default function InsightsResponseTab() {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box className="bg-white absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:left-[19em] md:max-w-[35%] md:max-h-[95%] md:-translate-x-0 md:ml-12">
+              <Box className={`${bgColor} absolute top-[50%] left-[50%] w-[98%] rounded-xl shadow-black -translate-y-1/2 -translate-x-1/2 mx-auto p-4  md:left-[19em] md:max-w-[35%] md:max-h-[95%] md:-translate-x-0 md:ml-12`}>
                 <span
                   onClick={handleQuestionsModalClose}
-                  className="block w-[24px] p-2 absolute right-8"
+                  className={` ${textColor} block w-[24px] p-2 absolute right-8`}
                 >
                   <X />
                 </span>
@@ -217,7 +232,7 @@ export default function InsightsResponseTab() {
                     return (
                       <div>
                         <div className="my-4">
-                          <h1 className="text-2xl font-semibold">
+                          <h1 className={`${textColor} text-2xl font-semibold`}>
                             {`Viewing ${question.title}`}{" "}
                           </h1>
                           <p className="text-[#636387]">{question.question}</p>
@@ -238,7 +253,7 @@ export default function InsightsResponseTab() {
                                   className="w-[50px] h-[50px]"
                                 />
                                 <div className="w-[70%] py-2 px-4">
-                                  <h4 className=" font-semibold">
+                                  <h4 className={`${textColor} font-semibold`}>
                                     {participant.participant}
                                   </h4>
                                   <div className="text-[#856B0C] text-xs">

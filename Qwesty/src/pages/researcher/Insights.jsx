@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import { useInsightsContext } from "../../context/actokuyt/Insights-context";
-import { switchTheme, ResearchPageData } from "../../data/data";
+import { switchTheme } from "../../data/data";
 import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import InsightsTabs from "../../components/actokuyt/insights-tabs";
