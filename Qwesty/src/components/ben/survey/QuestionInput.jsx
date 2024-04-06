@@ -2,15 +2,21 @@ import React, { useEffect, useState, useRef } from "react";
 import { Btn } from "../../../pages/researcher/Survey";
 import { ChevronDown, CirclePlus } from "lucide-react";
 import { darkTheme, switchTheme } from "../../../data/data";
-import MultipleChoiceQestion from "./questions/MultipleChoiceQestion";
-import QuestionComponent from "./QuestionComponent";
-import CheckBoxes from "./questions/CheckBoxes";
-import OpenEndedText from "./questions/OpenEndedText";
-import FileUpload from "./questions/FileUpload";
+import {
+  CheckBoxes,
+  Date,
+  FileUpload,
+  LinearScale,
+  MultiChoiceGroup,
+  MultipleChoiceQuestion,
+  OpenEndedText,
+  QuestionComponent,
+  Time,
+} from "./questions";
 
 const QuestionInput = ({ resTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Multichoice"); // Default to "Multichoice"
+  const [selectedOption, setSelectedOption] = useState("Multichoice");
   const options = [
     "Single select text",
     "Checkboxes",
@@ -39,16 +45,16 @@ const QuestionInput = ({ resTheme }) => {
   const optionComponents = {
     "Single select text": <QuestionComponent questionType={selectedOption} />,
     Checkboxes: <CheckBoxes />,
-    Multichoice: <MultipleChoiceQestion />,
+    Multichoice: <MultipleChoiceQuestion />,
     "Open ended text": <OpenEndedText />,
     "Open ended number": <QuestionComponent questionType={selectedOption} />,
     "File upload": <FileUpload />,
     Dropdown: <QuestionComponent questionType={selectedOption} />,
-    "Linear scale": <QuestionComponent questionType={selectedOption} />,
-    "Multi choice group": <QuestionComponent questionType={selectedOption} />,
+    "Linear scale": <LinearScale />,
+    "Multi choice group": <MultiChoiceGroup />,
     "Test completion": <QuestionComponent questionType={selectedOption} />,
-    Date: <QuestionComponent questionType={selectedOption} />,
-    Time: <QuestionComponent questionType={selectedOption} />,
+    Date: <Date />,
+    Time: <Time />,
   };
 
   useEffect(() => {
@@ -68,10 +74,10 @@ const QuestionInput = ({ resTheme }) => {
     <section className="relative w-full 1320:w-[70%] px-2 focus-within:border-[#8E5DF5] rounded-lg border-gray-400 bg-transparent border-2">
       <div className="relative flex flex-col md:flex-row w-full rounded-lg bg-transparent">
         <textarea
-          className="focus:outline-none bg-transparent p-5 w-[70%] h-40 md:h-20 placeholder:font-bold resize-none overflow-hidden"
+          className="focus:outline-none bg-transparent placeholder:text-lg p-5 w-[70%] h-40 md:h-20 placeholder:font-bold resize-none overflow-hidden"
           placeholder="Add a question"
         />
-        <div className="flex flex-col 344:flex-row gap-2 justify-center md:justify-normal items-center pb-3 md:pb-0  md:pr-3">
+        <div className="flex flex-col 344:flex-row gap-2 sm:pl-4 md:pl-0 justify-center sm:justify-start md:justify-normal items-center pb-3 md:pb-0  md:pr-3">
           <label
             className={`${switchTheme(
               "transparent",
@@ -88,7 +94,7 @@ const QuestionInput = ({ resTheme }) => {
             />
           </label>
           <label
-            className="rounded-2xl flex items-center gap-1 shadow-md h-fit whitespace-nowrap font-semibold text-white bg-[#636387]  border-gray-[#636387] px-3 py-1 cursor-pointer"
+            className="rounded-2xl flex  items-center gap-1 shadow-md h-fit whitespace-nowrap font-semibold text-white bg-[#636387]  border-gray-[#636387] px-3 py-1 cursor-pointer"
             onClick={toggleDropdown}
             ref={dropdownRef}
           >
