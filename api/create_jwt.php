@@ -7,7 +7,7 @@ use Firebase\JWT\Key;
 function create_jwt($userId, $email, $usertype) {
     date_default_timezone_set('Africa/Lagos');
     $issuedAt = time();
-    $expirationTime = $issuedAt + 3600; // Token valid for 1 hour
+    $expirationTime = $issuedAt + 7200; // Token valid for 1 hour
     $payload = [
         'iat' => $issuedAt,
         'exp' => $expirationTime,
@@ -18,6 +18,7 @@ function create_jwt($userId, $email, $usertype) {
 
     $secretKey = 'Multitelo_Qwesty';
     $jwt = JWT::encode($payload, $secretKey, 'HS256');
-    echo json_encode(['message' => "Signin successful", 'token' => $jwt]);
+    // echo json_encode(['message' => "Signin successful", 'token' => $jwt]);
+    return $jwt;
 }
 ?>

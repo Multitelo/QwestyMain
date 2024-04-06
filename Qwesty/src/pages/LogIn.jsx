@@ -24,7 +24,7 @@ function LogIn() {
 
     const handleSubmit = async () => {
         try {
-          const response = await fetch('https://solvety.info/api/login.php', {
+          const response = await fetch('http://localhost/qwestymain/api/login.php', {
             method: 'POST',
             body: JSON.stringify({ email: email, password: password, usertype:usertype }),
             headers: {
@@ -35,12 +35,12 @@ function LogIn() {
           if (response.ok) {
             
             const data = await response.json();
-            // const jwtToken = data.token;
+            const jwtToken = data.token;
     
             // JWT TOKEN in local
-            // localStorage.setItem('jwtToken', jwtToken);
+            localStorage.setItem('jwtToken', jwtToken);
     
-            // setToken(jwtToken);
+            setToken(jwtToken);
             navigateTo('/researcher/research');
 
           } else {
