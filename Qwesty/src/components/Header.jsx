@@ -56,7 +56,7 @@ function Header() {
   return (
     <>
    
-   {/* <div id='medi'>
+   <div id='medi'>
    <div className='nav-medium-devices'>
       
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
@@ -78,15 +78,15 @@ function Header() {
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
-      </div>        */}
-        <nav className="nav-bar temp">
+      </div>       
+        <nav id="nav-bar">
             
-            <Link to='/' className='items logo' id="temp-solvety-logo"><img src={Logo}></img></Link>
+            <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            {/* <Link to='/researcher/home' className='items' id="first-item">about us</Link>
+            <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link> */}
-            {/* <Link to='/login' className='items' id="fourth-item">LogIn</Link> */}
+            <Link to='/' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link>
+            <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>
 

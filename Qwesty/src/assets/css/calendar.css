@@ -1,6 +1,12 @@
+/* styles for calendar
+
+*/
 
 
-  /* Styles for alert research box */
+
+
+
+/* Styles for alert research box */
   .alert-research-box{
       display: flex;
       flex-direction: column;

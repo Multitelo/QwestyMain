@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import '../assets/css/login-signup.css';
@@ -28,6 +28,9 @@ function SignUpPage() {
     const navigateTo = useNavigate();
 
     const handleContent = (content) => {
+        // if (content){
+        //     setContent(content)
+        // }
         setContent((prevState) =>
             prevState === 'second'
                 ? 'first'
@@ -56,7 +59,7 @@ function SignUpPage() {
         formData.append('usertype', usertype);
         
         try {
-            const response = await fetch('https://solvety.info/api/email.php', {
+            const response = await fetch('http://localhost/qwestymain/api/email.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -89,7 +92,7 @@ function SignUpPage() {
         formData.append('usertype', usertype);
     
         try {
-            const response = await fetch('https://solvety.info/api/uname.php', {
+            const response = await fetch('http://localhost/qwestymain/api/uname.php', {
                 method: 'POST',
                 body: formData,
             });
@@ -144,29 +147,34 @@ function SignUpPage() {
         formData.append('username', username.value);
         formData.append('password', password.value);
     
-        try {
-            const response = await fetch('https://solvety.info/api/signin.php', {
-                method: 'POST',
-                body: formData,
-            });
-    
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+       
+            try {
+                const response = await fetch('http://localhost/qwestymain/api/signin.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+        
+                const data = await response.json();
+                setUserId(data.newUserId);
+            } catch (error) {
+                console.error('Network error:', error.message);
+                setErrE("A network error occurred. Please try again.");
             }
-            console.log(response)
-            const data = await response.json();
-            setUserId(data.newUserId)
-            console.log(userId)
-            // const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
-            // window.location.href = redirectToVerify;
-            navigateTo('/researcher/research')
-            
-        } catch (error) {
-            console.error('Network error:', error.message);
-            setErrE("A network error occurred. Please try again.");
-        }
-    };
-    
+        };
+
+        useEffect(() => {
+            if (userId) {
+                const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
+                window.location.href = redirectToVerify;
+            }
+        }, [userId]);
+        
+   
+        
     
     
     
@@ -193,13 +201,14 @@ function SignUpPage() {
                             handleBtnState={handleBtnState}
                             btnState={btnState}
                             handleEmailCheck={handleEmailCheck} 
-                            errE = {errE}// Pass the function here
+                            errE = {errE}
                         />                    
                     ) : content === 'second' ? (
                         <SecondSignupcontent
                             username={username}
                             setUsername={setUsername}
                             setContent={setContent}
+                            handleContent={handleContent}
                             errors={errors}
                             setErrors={setErrors}
                             handleBtnState={handleBtnState}
@@ -256,6 +265,7 @@ function SignUpPage() {
 
 export default SignUpPage;
 
+
 const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, errE, handleEmailCheck})=>{
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
@@ -305,7 +315,9 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
                 
             </div>
 
-            <button  onClick={() => handleEmailCheck().then().catch()}
+            <button  
+                    onClick={() => handleEmailCheck().then().catch()}
+                    // onClick ={()=>{handleContent('second')}}
                     disabled={handleBtnState()}
             className={handleBtnState() ? 'disabled' : 'enabled'}>
              Ok
@@ -315,7 +327,7 @@ const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleConte
     )
 }
 
-const SecondSignupcontent = ({username, setUsername, setContent, errors, setErrors, handleBtnState, handleUsernameCheck, unameE}) => {
+const SecondSignupcontent = ({username, setUsername, handleContent, errors, setErrors, handleBtnState, handleUsernameCheck, unameE}) => {
     
     const [errMsg, setErrMsg] = useState('')
 
@@ -357,7 +369,9 @@ const SecondSignupcontent = ({username, setUsername, setContent, errors, setErro
 
               <span id="errMsg"> {unameE}</span>  
 
-              <button onClick={() => handleUsernameCheck().then().catch(() => {})}
+              <button 
+              onClick={() => handleUsernameCheck().then().catch(() => {})}
+            //   onClick={()=>handleContent('third')}
               disabled={handleBtnState()}
               className={handleBtnState() ? 'disabled' : 'enabled'}>
                     Next

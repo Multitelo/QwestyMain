@@ -4,17 +4,19 @@ import '../assets/css/verify.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+
 const Verify = () => {
   const [otpValues, setOTPValues] = useState(['', '', '', '', '']); 
   const [userId, setUserId] = useState('');
   const [userType, setUserType] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+
   const navigateTo = useNavigate();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const userIdParam = urlParams.get('userId');
     const userTypeParam = urlParams.get('usertype');
-
     setUserId(userIdParam);
     setUserType(userTypeParam);
   }, []);
@@ -45,31 +47,52 @@ const Verify = () => {
   };
 
   const handleVerify = async () => {
+    const otpString = otpValues.join('');
+    const otpConcatenated = parseInt(otpValues.join(''), 10);
+
     try {
-      const requestBody = {
-        userId: userId,
-        otp: otpValues,
-        usertype: userType,
-        
-      };
+      const userIdNumber = parseInt(userId, 10);
+
+     
+          const requestBody = {
+              userId: userIdNumber, 
+              otp: otpConcatenated,      
+              usertype: userType,
+          };
+      
+          const formData = new FormData();
+          formData.append('userId', userId);
+          formData.append('otp', otpValues.join('')); 
+          formData.append('usertype', userType);
 
       const response = await fetch('http://localhost/qwestymain/api/verify_otp.php', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
+        body: formData,
       });
     
       if (response.ok) {
         console.log('OTP verification successful');
+       
         const data = await response.json();
-        const { token } = data; 
-        localStorage.setItem('jwtToken', token); 
-        navigateTo('/researcher/home')
+        console.log(data)
 
-      } else {
+
+        if (data) {
+        const { token } = data; 
+
+        if (token) {
+            localStorage.setItem('jwtToken', token); 
+            navigateTo('/researcher/home');
+        } else {
+            console.error('Token not found in response data');
+        }
+    } else {
+        console.error('Invalid response data');
+        
+    }
+} else {
         console.error('Error verifying OTP:', response.statusText);
+        setErrMsg('Wrong Input')
       }
     } catch (error) {
       console.error('Error verifying OTP:', error);
@@ -77,7 +100,6 @@ const Verify = () => {
   };
   
  
-
   // Function to check if all OTP values are filled
   const isAllValuesFilled = otpValues.every(value => value !== '');
 
@@ -87,7 +109,7 @@ const Verify = () => {
        
         <Link to='/'> <img src={logo} alt="Logo of qwesty"/></Link>
         <h1>OTP Verification</h1>
-        <div id='verify-box'> {otpValues}
+        <div id='verify-box'> 
           <p>Please enter the code sent to your email to finish signing up process.</p>
           <div className="otp-input-container">
             {otpValues.map((value, index) => (
@@ -106,7 +128,12 @@ const Verify = () => {
               />
             ))}
           </div>
-          <div><p>Code will expire in 10 minutes.</p></div>
+          <p style={{color:'red'}}>{errMsg}</p>
+          <div>
+            
+            <p>Code will expire in 10 minutes.</p>
+          
+          </div>
           <div style={{display:'flex'}} className='verify-btns'>
             <button 
             onClick={handleVerify} 

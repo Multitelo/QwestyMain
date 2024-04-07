@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import axios from 'axios';
@@ -20,37 +20,49 @@ function LogIn() {
     const [showPwd, setShowPwd] = useState(false)
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const [token, setToken] = useState('')
+    const [userId, setUserId] = useState('')
+    const [submitErr, setSubmitErr] = useState('')
+
     const navigateTo = useNavigate(); 
 
     const handleSubmit = async () => {
+
+        const formData = new FormData();
+        formData.append('email', email.value);
+        formData.append('password', password.value);
+        formData.append('usertype', usertype);
+        
         try {
           const response = await fetch('https://solvety.info/api/login.php', {
-            method: 'POST',
-            body: JSON.stringify({ email: email, password: password, usertype:usertype }),
-            headers: {
-              'Content-Type': 'application/json',
+                    method: 'POST',
+                    body: formData,
             },
-          });
+          );
+
+         
     
           if (response.ok) {
             
             const data = await response.json();
-            // const jwtToken = data.token;
-    
-            // JWT TOKEN in local
-            // localStorage.setItem('jwtToken', jwtToken);
-    
-            // setToken(jwtToken);
-            navigateTo('/researcher/research');
+            setUserId(data.newUserId);
 
           } else {
             console.error('Login failed');
+            setSubmitErr("Incorrect password")
           }
         } catch (error) {
           console.error('Error :', error);
+         
         }
       };
 
+      useEffect(() => {
+        if (userId) {
+            const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
+            window.location.href = redirectToVerify;
+        }
+    }, [userId]);
+    
 
     const handleEmail = (e) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -102,32 +114,7 @@ function LogIn() {
     const handleUserTypeChange = (event)=>{
         setUsertype(event.target.value)
     }
-    
-    // const handleEmailSubmit = async () => {
-    //     const formData  = new FormData();
-    //     formData.append('email', email.value);
-    //     formData.append('usertype', usertype);
-    //     formData.append('rememberDetails', rememberDetails);
-
-    //     try {
-    //         const response = await fetch('https://solvety.info/api/login.php', {
-    //             method: 'POST',
-    //             body:formData,
-    //         });
-
-    //         console.log(response)
-    //         const data = await response.json();
-
-    //         console.log('response data:', data)
-    //         // window.location.href = '/researcher/home'; 
-    //         handleNext
-    //     } catch(e){
-    //         console.log('Error: ', e)
-    //         setErrors(prevErrors => ({ ...prevErrors, emailError: 'An error occurred. Please try again.' }));
-
-    //     }
-      
-    // }
+   
 
     const handlePwd = (e) => {
 
@@ -238,7 +225,7 @@ function LogIn() {
                 />
                         </div>
                         <div className='errMsg'>{errors.pwdErr==="err"?errMsg:""}</div>
-
+                        <p>{submitErr}</p>
                            <button onClick={handleSubmit}>
                                 Log In
                                 </button>

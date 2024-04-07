@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
-import ProtectedRoute from "./auth/ProtectedRoute.jsx";
+import PrivateRoutes from "./auth/PrivateRoutes.jsx";
 
 import {
   Login,
@@ -45,50 +45,29 @@ function App() {
             <Route path="/verify" element={<Verify />} />
 
             {/* Protected Route for Researcher's page */}
-           
-              {/* <Route 
-                  path="/researcher/home" 
-                  element={
-                    <ProtectedRoute>
-                      <HomePage />
-                      </ProtectedRoute>
-                  } />
-              <Route 
-                  path="/researcher/settings" 
-                  element={
-                    <ProtectedRoute>
-                    <SettingsRes />
-                    </ProtectedRoute>} /> */}
+            
+            <Route element={<PrivateRoutes />}>
+                <Route element={<HomePage />} path='/researcher/home' exact/>
+                <Route element={<SettingsRes />} path='/researcher/settings' />
+                <Route path="/researcher/research" element={<Research />} />
+                <Route path="/researcher/draft" element={<Draft />} />
+                <Route path="/researcher/profile" element={<Profile />} />
+                <Route path="/researcher/survey" element={<Survey />} />
+                <Route path="/researcher/preview-survey" element={<PreviewSurvey />} />
+                <Route  path="/researcher/new-research"  element={<NewResearch />}/>
+                <Route path="researcher/Scheduled-researches" element={<ScheduledResearch />}/>
+                <Route path="researcher/create" element={<Create />} />
+                <Route path="researcher/insight/:parameter"  element={<Insights />} />
+             </Route>
+              
 
-              <Route path="/researcher/research" element={<Research />} />
-              <Route path="/researcher/draft" element={<Draft />} />
-              <Route path="/researcher/profile" element={<Profile />} />
-              <Route path="/researcher/survey" element={<Survey />} />
-              <Route
-                path="/researcher/preview-survey"
-                element={<PreviewSurvey />}
-              />
-              <Route
-                path="/researcher/new-research"
-                element={<NewResearch />}
-              />
-              <Route
-                path="researcher/Scheduled-researches"
-                element={<ScheduledResearch />}
-              />
-              <Route path="researcher/create" element={<Create />} />
-              <Route
-                path="researcher/insight/:parameter"
-                element={<Insights />}
-              />
-           
-
+              
             {/* Protected routes for Participant's page */}
-            {/* <ProtectedRoute> */}
+           
               <Route path="/signedUp/Settings" element={<Settings />} />
               <Route path="/signedUp/rewards" element={<Rewards />} />
               <Route path="/signedUp/my-profile" element={<Myprofile />} />
-            {/* </ProtectedRoute> */}
+           
           </Routes>
         </BrowserRouter>
       </React.StrictMode>

@@ -30,11 +30,11 @@ function Footer() {
         </div>
 
         <div className='flex-items-lists'>
-            {/* <div className='list-items'>Terms</div>
+            <div className='list-items'>Terms</div>
             <div className='list-items'>help</div>
             <div className='list-items'>about</div>
             <div className='list-items'>privacy</div>
-            <div className='list-items'>features</div> */}
+            <div className='list-items'>features</div>
 
 
         </div>
