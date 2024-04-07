@@ -19,6 +19,7 @@ import DropdownSelect from "../../components/ben/research/DropdownSelect";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getSelectsur } from "../../api/axios";
+import toast from "react-hot-toast";
 
 const ResearchPage = () => {
   const { resTheme } = useTheme();
@@ -140,19 +141,19 @@ const ResearchPage = () => {
 
 
   // fetching selectur.php data
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const responseData = await getSelectsur(); 
-  //       setData(responseData);
-  //       console.log(responseData);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseData = await getSelectsur(); 
+        setData(responseData);
+        console.log(responseData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        toast.error('Error fetching data');
+      }
+    };
+    fetchData();
+  }, []);
 
 
   useEffect(() => {}, [getOptionsForCard]);
