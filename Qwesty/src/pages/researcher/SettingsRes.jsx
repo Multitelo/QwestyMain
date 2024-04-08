@@ -3,12 +3,21 @@ import Top from '../../components/share/Top'
 import { useTheme } from "../../context/ThemeContext"
 import avatar from '../../assets/images/resAvatar.svg'
 import Footer from "../../components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function SettingsRes() {
-  const {resTheme} = useTheme();
+  const {resTheme, isSupportClicked, setIsSupportClicked} = useTheme();
   const [isAccountClicked, setIsAccountClicked] = useState(true)
-  const [isSupportClicked, setIsSupportClicked] = useState(false)
+
+  useEffect(()=>{
+    if(isSupportClicked==true){
+      setIsAccountClicked(false)
+    }
+
+  else if(isAccountClicked==true){
+      setIsSupportClicked(false)
+    }
+  })
 
   const handleClick = (clicked) =>{
     

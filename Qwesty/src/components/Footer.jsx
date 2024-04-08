@@ -41,7 +41,7 @@ function Footer() {
         
         
         </div>
-        <div id="last-item">©{new Date().getFullYear()} Qwesty. All rights reserved.</div>
+        <div id="last-item">©{new Date().getFullYear()} Solvety. All rights reserved.</div>
         </>
   )
 }

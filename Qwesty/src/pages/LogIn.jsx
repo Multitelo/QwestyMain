@@ -32,8 +32,9 @@ function LogIn() {
         formData.append('password', password.value);
         formData.append('usertype', usertype);
         
+
         try {
-          const response = await fetch('https://solvety.info/api/login.php', {
+          const response = await fetch('http://localhost/qwestymain/api/login.php', {
                     method: 'POST',
                     body: formData,
             },
@@ -44,8 +45,15 @@ function LogIn() {
           if (response.ok) {
             
             const data = await response.json();
-            setUserId(data.newUserId);
 
+            if (data.newUserId){
+                console.log(data)
+                setUserId(data.newUserId);
+            }
+            
+          else{
+            console.log("no user id provided")
+          }
           } else {
             console.error('Login failed');
             setSubmitErr("Incorrect password")

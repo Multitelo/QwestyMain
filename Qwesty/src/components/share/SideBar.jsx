@@ -1,5 +1,5 @@
-import logoBlack from "../../assets/images/logoBlack.svg";
-import logowhite from "../../assets/images/logoW.svg";
+import logoBlack from "../../assets/images/Logo.png";
+import logowhite from "../../assets/images/Solvety_logo_white.png";
 import searchIcon from '../../assets/images/search.svg';
 import settingsW from '../../assets/images/settingsB.svg';
 import settingsB from '../../assets/images/settings.svg';
@@ -16,13 +16,15 @@ import { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { NavLink, useLocation } from "react-router-dom";
 import ToggleInput from "../ToggleInput";
+import { useNavigate } from 'react-router-dom';
 
 function SideBar() {
         const {resTheme, researcherTheme, dropdown,setDropdown } = useTheme();
 
         const [search, setSearch] = useState('')
         const location = useLocation();
-     
+        const navigateTo = useNavigate();
+
         const menuItem = [
           {
               path: "/researcher/home" ,
@@ -73,6 +75,17 @@ function SideBar() {
                setDropdown(false);
           }
         };
+
+  
+         
+        
+          const handleLogout = () => {
+            localStorage.removeItem('jwtToken');
+        
+           navigateTo('/login');
+          };
+
+
   return (
     <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}`}>
         <div className="logo">
@@ -115,7 +128,7 @@ function SideBar() {
           <ToggleInput onChange={researcherTheme} checked={resTheme==='light'?false:true}/>
          </div>
 
-          <div className="logout-btn">
+          <div className="logout-btn" onClick={handleLogout}>
                <img src={resTheme==='light'?logoutB:logoutW}
                     alt="logout icon"/>
                     <p>Log out</p>

@@ -15,8 +15,11 @@ export const ThemeProvider = ({ children }) => {
     return localResearchTheme?localResearchTheme:'light';
   })
   const [usertype, setUsertype] = useState('');
+  const [userId, setUserId] = useState('')
+  
+
   const [dropdown, setDropdown] = useState(false);
-console.log(resTheme)
+  const [isSupportClicked, setIsSupportClicked] = useState(false)
 
   useEffect(()=>{
       localStorage.setItem('resTheme', resTheme);
@@ -37,7 +40,24 @@ console.log(resTheme)
 
 
   return (
-    <ThemeContext.Provider value={{dropdown,setDropdown, handleResearcherDropdown, theme, toggleTheme, usertype, setUsertype, resTheme, researcherTheme}}>
+    <ThemeContext.Provider
+         value={{
+          dropdown,
+          setDropdown,
+          handleResearcherDropdown, 
+          theme, 
+          toggleTheme, 
+          usertype, 
+          setUsertype, 
+          resTheme, 
+          researcherTheme, 
+          isSupportClicked, 
+          setIsSupportClicked,
+          userId,
+          setUserId,
+          usertype,
+          setUsertype}}>
+
       {children}
     </ThemeContext.Provider>
   );

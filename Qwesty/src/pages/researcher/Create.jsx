@@ -5,22 +5,69 @@ import { fieldOptions} from '../../data/data'
 import SideBar from "../../components/share/SideBar";
 import Top from "../../components/share/Top";
 import Footer from "../../components/Footer";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Create() {
     const {resTheme} = useTheme();
     const [researchDetails, setResearchDetails ] = useState({
                                                                 titleOfResearch:'',
                                                                 objectiveOfResearch:'',
-                                                                field:''
+                                                                field:'',
+                                                                customField:''
                         })
     const defaultOption = {value:'', label:'Select a field'}
-   
-
+    const [customInput, setCustomInput] = useState(false)
+    const navigateTo = useNavigate();
 
     const handleResearchDetails = (e) =>{
             setResearchDetails(prevState=>({...prevState, [e.target.name]:e.target.value}))
     }
+
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('survey_type', 'form-surveys')
+        formData.append('title', researchDetails.titleOfResearch);
+        formData.append('description', researchDetails.objectiveOfResearch);
+        formData.append('field_of_research', researchDetails.field.value);
+        // formData.append('customField', researchDetails.customField);
+
+        try {
+            const response = await fetch('http://localhost/qwestymain/api/createsur.php', {
+                method: 'POST',
+                // body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}` 
+                },
+
+                body: JSON.stringify({
+                    survey_type: 'form-surveys',
+                    title: researchDetails.titleOfResearch,
+                    description: researchDetails.objectiveOfResearch,
+                    field_of_research: researchDetails.field.value,
+                }),
+
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log(data)
+            if(data.success){
+                navigateTo('/researcher/home'); 
+            }
+             
+
+        } catch (error) {
+            console.error('Network error:', error.message);
+        }
+    }
+
+
     const customStyles = {
         control: (provided, state) => ({
             ...provided,
@@ -29,7 +76,7 @@ function Create() {
             color: state.isFocused ? 'black' : 'red', 
             borderRadius: '10px',
             padding: '10px',
-            zIndex:'1',
+            zIndex:'1000',
             
                 }),
         singleValue: (provided, state) => ({
@@ -73,7 +120,7 @@ function Create() {
             <div className={`create-survey-container ${resTheme}`}>
                 <h1>Upload research details</h1>
                 <h2>Lets get started with some details about your research</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label>
                         <div>What is the title of your Research? <sup>*</sup></div>
                         <input type="text"
@@ -81,6 +128,7 @@ function Create() {
                             placeholder="Example: The impact of climate change on urban development...."
                             onChange={handleResearchDetails}
                             name="titleOfResearch"
+                            required
                             />
 
                     </label>
@@ -92,6 +140,7 @@ function Create() {
                             onChange={handleResearchDetails} 
                             placeholder="List the main goals of your research"
                             name="objectiveOfResearch"
+                            
                             />
                     </label> 
 
@@ -108,16 +157,28 @@ function Create() {
                                 classNamePrefix="react-select"
                                 menuPlacement="auto"
                                 maxMenuHeight={300}
-                                className="custom-select" // Add a custom class name
+                                className="custom-select" 
+                                required
                             />
 
                         </label>
-                        <p>or input field</p>
+
+                        {/* <p onClick={()=>setCustomInput(true)} id="custom-input">or input field</p>
+
+                      {customInput&&  <label>
+                                <input type="text"
+                                    value={researchDetails.customField}
+                                    placeholder=""
+                                    onChange={handleResearchDetails}
+                                    name="customField"
+                                    />
+                        </label>} */}
                     </div>
                    
                        <button type='submit'>
-                          <Link to="/researcher/survey">
-                            Set survey questions</Link>  
+                          {/* <Link to="/researcher/survey"> */}
+                            Set survey questions
+                            {/* </Link>   */}
                          </button>
                         
                 </form>

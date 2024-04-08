@@ -3,23 +3,23 @@ import logo from '../assets/images/Logo.png';
 import '../assets/css/verify.css'; 
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useTheme} from '../context/ThemeContext'
 
 
 const Verify = () => {
   const [otpValues, setOTPValues] = useState(['', '', '', '', '']); 
-  const [userId, setUserId] = useState('');
-  const [userType, setUserType] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const {usertype,  userId} = useTheme();
 
   const navigateTo = useNavigate();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userIdParam = urlParams.get('userId');
-    const userTypeParam = urlParams.get('usertype');
-    setUserId(userIdParam);
-    setUserType(userTypeParam);
-  }, []);
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   const userIdParam = urlParams.get('userId');
+  //   const userTypeParam = urlParams.get('usertype');
+  //   setUserId(userIdParam);
+  //   setUserType(userTypeParam);
+  // }, []);
 
   
   const handleChange = (index, value) => {
@@ -51,19 +51,19 @@ const Verify = () => {
     const otpConcatenated = parseInt(otpValues.join(''), 10);
 
     try {
-      const userIdNumber = parseInt(userId, 10);
+      // const userIdNumber = parseInt(userId, 10);
 
      
-          const requestBody = {
-              userId: userIdNumber, 
-              otp: otpConcatenated,      
-              usertype: userType,
-          };
+          // const requestBody = {
+          //     userId: userIdNumber, 
+          //     otp: otpConcatenated,      
+          //     usertype: usertype,
+          // };
       
           const formData = new FormData();
-          formData.append('userId', userId);
+          formData.append('userId',userId);
           formData.append('otp', otpValues.join('')); 
-          formData.append('usertype', userType);
+          formData.append('usertype', usertype);
 
       const response = await fetch('http://localhost/qwestymain/api/verify_otp.php', {
         method: 'POST',
@@ -99,8 +99,33 @@ const Verify = () => {
     }
   };
   
+  const handleResend = async () => {
+     
+    try {
+            const formData = new FormData();
+            formData.append('userId', userId);
+            formData.append('usertype', usertype);
+            formData.append('action', 'resend');
+
+        const response = await fetch('http://localhost/qwestymain/api/resendotp.php', {
+          method: 'POST',
+          body: formData,
+      });
+    
+      if (response.ok) {
+          console.log('OTP resend successful');
+        
+          const data = await response.json();
+          console.log(data)
+         alert(data.message)
+      } else {
+          console.error('Error resending OTP:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error resending OTP:', error);
+    }
+  };
  
-  // Function to check if all OTP values are filled
   const isAllValuesFilled = otpValues.every(value => value !== '');
 
   return (
@@ -141,7 +166,8 @@ const Verify = () => {
             className={isAllValuesFilled ? 'not' : 'disabled-button'}>
               Verify
             </button>
-            <button>Resend</button>
+            <button onClick={handleResend}
+            >Resend</button>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body{
@@ -36,6 +37,13 @@ input, Link{
   text-decoration: none;
 }
 
+Link{
+  text-decoration: none;
+}
+
+button{
+  border: 0;
+}
 
 nav{
   display: flex;
@@ -661,26 +669,26 @@ line-height: 24px;
    padding: 0 50px;
    height: 30vh;
    align-items:flex-end;
-   
+  
 }
 
 .footer-container .flex-items{
   width: 5vw;
   row-gap: 0px;
   color: #FFF;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Outfit;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.483px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.483px;
 }
 
 .flex-items-1{
   margin-right: auto;
   align-self: flex-start;
-  width: 20vw;
+  width: 200px;
   /* justify-self: stretch; */
   
 }
@@ -778,6 +786,7 @@ padding: 10px;
 .nav-medium-devices{
    display:flex;
    padding: 20px 70px;
+  height: 100px;
   }
 
 .logo{
@@ -785,7 +794,7 @@ padding: 10px;
 }
 .small-logo{
   margin-right: auto;
-  width: 30vw;
+  width: 200px;
   position: absolute;
   top:4vh;
   left:8vw;
@@ -981,7 +990,9 @@ button img, img#close-bar{
 
 /* Adjust styles for small screens */
 @media screen and (max-width: 768px) {
-
+  .small-logo{
+    width:150px;
+  }
  #connector,  .item-box.first #connector{
   left: -180px;
  }
@@ -1109,16 +1120,14 @@ button img, img#close-bar{
   justify-items: center;
   margin-top: 200px;
   align-items: center;
+  row-gap: 20px;
 }
 .flex-items-1{
   margin-top: 0px;
   grid-area: footerL;
-  width: auto;
+  /* width: auo; */
   align-self: start;
-}
-.flex-items-1 img{
-  
-  width: 400px;
+  margin-bottom: 30px;
 }
 
 .social-links {

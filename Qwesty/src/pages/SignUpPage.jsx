@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
 import { useTheme} from '../context/ThemeContext'
-import Verify from './Verify';
 import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-    const {usertype, setUsertype} = useTheme();
+    const {usertype,
+            setUsertype,
+            userId,
+            setUserId,
+            } = useTheme();
     const [content, setContent] = useState('first');
     const [username, setUsername] = useState({value:'', touched:false });
     const [email, setEmail] = useState({value: '', touched:false});
@@ -24,7 +27,7 @@ function SignUpPage() {
     const [btnState, setBtnState] = useState(true)
     const [errE, setErrE] = useState('')
     const [unameE, setUnameE] = useState('')
-    const [userId, setUserId] = useState('')
+
     const navigateTo = useNavigate();
 
     const handleContent = (content) => {
@@ -159,7 +162,7 @@ function SignUpPage() {
                 }
         
                 const data = await response.json();
-                setUserId(data.newUserId);
+               setUserId(data.newUserId);
             } catch (error) {
                 console.error('Network error:', error.message);
                 setErrE("A network error occurred. Please try again.");
@@ -168,8 +171,7 @@ function SignUpPage() {
 
         useEffect(() => {
             if (userId) {
-                const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
-                window.location.href = redirectToVerify;
+                navigateTo('/verify')
             }
         }, [userId]);
         
@@ -191,7 +193,7 @@ function SignUpPage() {
                     {content === 'first' ? (
                         <FirstSignUpContent
                             email={email}
-                            setEmail={setEmail}
+                            setErrE={setErrE}
                             usertype={usertype}
                             setUsertype={setUsertype}
                             handleContent={handleContent}
@@ -266,8 +268,11 @@ function SignUpPage() {
 export default SignUpPage;
 
 
-const FirstSignUpContent = ({email, setEmail, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, errE, handleEmailCheck})=>{
+const FirstSignUpContent = ({email, setErrE, usertype, setUsertype, handleContent, handleEmail, errors, setErrors, handleBtnState, errE, handleEmailCheck})=>{
     const handleUserTypeChange = (event)=>{
+        setErrE('');
+        setErrors({...errors, emailError:''})
+
         setUsertype(event.target.value)
     }
     const handleBlur = () => {
