@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['user
     }
 
     // Generate a new OTP and expiration time
-    $newOtp = rand(100000, 999999);
+    $newOtp = rand(10000, 99999);
     $newExpiry = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
     // Update the OTP in the database
