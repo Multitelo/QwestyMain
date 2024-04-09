@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'], $_POST['otp'
             // Proceed to create JWT
             // Proceed to create JWT
             $jwt = create_jwt($userId, $email, $usertype); // Pass usertype as a parameter
-            echo json_encode(["message" => "OTP verified successfully. Account activated.", "email" => $email, "jwt" => $jwt]);
+            echo json_encode(["message" => "OTP verified successfully. Account activated.", "email" => $email, "token" => $jwt]);
 
         } else {
             http_response_code(401); // Unauthorized
