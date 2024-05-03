@@ -8,6 +8,9 @@ import {
   Login,
   Signup,
   Reset,
+  EmailSent,
+  ResetSuccess,
+  PasswordInput,
   Header,
   Settings,
   Rewards,
@@ -43,7 +46,9 @@ function App() {
             <Route path="/Reset" element={<Reset />} />
             <Route path="/SignUp" element={<Signup />} />
             <Route path="/verify" element={<Verify />} />
-
+            <Route path="/email-sent" element={<EmailSent />} />
+            <Route path='/password-reset-success' element={<ResetSuccess />} />
+            <Route path='/new-password' element={<PasswordInput />} />
             {/* Protected Route for Researcher's page */}
             
             <Route element={<PrivateRoutes />}>

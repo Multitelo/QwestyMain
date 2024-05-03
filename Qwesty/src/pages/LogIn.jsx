@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import eyeOpen from '../assets/images/eye.jpg';
 import eyeClosed from '../assets/images/hiddenEye.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useTheme} from '../context/ThemeContext'
 
 function LogIn() {
     const [email, setEmail] = useState({value:'', touched:false})
@@ -15,13 +16,16 @@ function LogIn() {
     const [content, setContent] = useState('email');
     const [errors, setErrors] = useState({emailError:'',
                                           pwdErr:false})
-    const [usertype, setUsertype] = useState('')
     const [btnState, setBtnState] = useState(true)
     const [showPwd, setShowPwd] = useState(false)
     const errMsg = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
     const [token, setToken] = useState('')
-    const [userId, setUserId] = useState('')
     const [submitErr, setSubmitErr] = useState('')
+    const {usertype,
+        setUsertype,
+        userId,
+        setUserId,
+        } = useTheme();
 
     const navigateTo = useNavigate(); 
 
@@ -66,8 +70,7 @@ function LogIn() {
 
       useEffect(() => {
         if (userId) {
-            const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
-            window.location.href = redirectToVerify;
+                navigateTo('/verify')
         }
     }, [userId]);
     

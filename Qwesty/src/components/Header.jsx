@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { TiArrowSortedDown } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import Main from './Main';
+import { RiMenu3Fill } from "react-icons/ri";
 
 function Header() {
 
@@ -62,7 +63,7 @@ function Header() {
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
       
       <button onClick={handleClick} 
-                         id="dropdown-btn"><img src={bars}/></button>
+                         id="dropdown-btn" style={{color:'#fff'}}><RiMenu3Fill size={'2.5rem'}/></button>
                          </div>
            
            {barClicked &&              

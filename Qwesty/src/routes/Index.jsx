@@ -17,7 +17,8 @@ export {default as NewResearch} from '../pages/researcher/NewResearch'
 export {default as ScheduledResearch} from '../pages/researcher/ScheduledResearch'
 export {default as Create} from '../pages/researcher/Create'
 export {default as Verify} from '../pages/Verify'
-
-
+export {default as EmailSent} from '../pages/EmailSent'
+export {default as ResetSuccess} from '../pages/ResetSuccess'
+export {default as PasswordInput} from '../pages/PasswordInput'
 
 

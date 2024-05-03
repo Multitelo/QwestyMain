@@ -142,18 +142,40 @@ const ResearchPage = () => {
 
   // fetching selectur.php data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseData = await getSelectsur(); 
-        setData(responseData);
-        console.log(responseData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        toast.error('Error fetching data');
-      }
-    };
-    fetchData();
-  }, []);
+    // const fetchData = async () => {
+    //   try {
+    //     const responseData = await getSelectsur(); 
+    //     setData(responseData);
+    //     console.log(responseData);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     toast.error('Error fetching data');
+    //   }
+    // };
+    // fetchData();
+
+    fetch('http://solvety.info/api/selectsur.php', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}` 
+    },
+
+  })
+  .then(res =>{
+    if(!res.ok){
+        throw new Error('ntk error')
+    }
+
+    return res.json();
+  })
+  .then(data=>{
+    console.log(data)
+  })
+  
+  .catch(error => {
+    console.error('There was a problem with your fetch operation:', error);
+  }), []});
 
 
   useEffect(() => {}, [getOptionsForCard]);

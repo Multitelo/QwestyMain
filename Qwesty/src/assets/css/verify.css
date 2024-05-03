@@ -94,8 +94,56 @@
   button.disabled-button:hover{
     box-shadow: none;
   }
-
+/* Styles for Successful email sent page */
+.email-sent-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+  gap:50px;
+}
   
+.email-sent-container img{
+  height: 80px;
+  width: 200px;
+  margin: 10px;
+}
+
+.email-sent-container .msg{
+  align-self: center;
+  
+}
+
+.email-sent-container .title{
+  display: flex; 
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.email-sent-container h2{
+  font-family: Inter;
+  color: #121212;
+  
+}
+
+.email-sent-container p{
+  font-family: Outfit;
+  padding-left: 20px;
+}
+
+.email-sent-container #link{
+  font-weight: bold;
+  padding-right: 3px;
+}
+.email-sent-container #link:hover{
+  opacity: 0.9;
+}
+@media screen and (max-width:993px){
+  .email-sent-container{
+    gap:50px;
+  }
+}
   @media only screen and  (max-width:790px){
     .verify-container{
         width: 80vw;
@@ -104,9 +152,34 @@
     #verify-box{
         width: 100%;
      }
+
+    .email-sent-container{
+      gap:70px;
+    }
+
+    .email-sent-container img{
+      width:150px;
+      height:70px;
+    }
+
+    .email-sent-container .msg{
+      padding: 20px;
+    }
   }
 
  @media only screen and (max-width:320px){
     .otp-input {
         width: 30px;}
+    
+    .email-sent-container img{
+      width: 100px;
+      height:50px;
+    }
+    .email-sent-container h2{
+      font-size: 20px;
+    }
+
+    .email-sent-container p{
+      font-size: 14px;
+    }
  }

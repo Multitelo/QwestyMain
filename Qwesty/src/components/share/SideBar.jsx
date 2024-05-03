@@ -63,7 +63,7 @@ function SideBar() {
         }, [dropdown]);
       
         useEffect(() => {
-          document.addEventListener('mousedown', handleOutsideClick);
+          document.addEventListener(onC, handleOutsideClick);
       
           return () => {
             document.removeEventListener('mousedown', handleOutsideClick);

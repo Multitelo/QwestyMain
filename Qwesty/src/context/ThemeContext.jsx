@@ -6,20 +6,22 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
+
   const [theme, setTheme] = useState(()=>{
     const localParticipantTheme = localStorage.getItem('theme')
     return localParticipantTheme ? localParticipantTheme:'light'
   });
+
   const [resTheme, setResTheme] = useState( ()=>{
     const localResearchTheme = localStorage.getItem('resTheme')
     return localResearchTheme?localResearchTheme:'light';
   })
+
   const [usertype, setUsertype] = useState('');
   const [userId, setUserId] = useState('')
-  
-
   const [dropdown, setDropdown] = useState(false);
   const [isSupportClicked, setIsSupportClicked] = useState(false)
+  const [emailSent, setEmailSent] = useState(false)
 
   useEffect(()=>{
       localStorage.setItem('resTheme', resTheme);
@@ -55,8 +57,8 @@ export const ThemeProvider = ({ children }) => {
           setIsSupportClicked,
           userId,
           setUserId,
-          usertype,
-          setUsertype}}>
+          emailSent,
+          setEmailSent}}>
 
       {children}
     </ThemeContext.Provider>

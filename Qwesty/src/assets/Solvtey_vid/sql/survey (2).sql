@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 03:52 PM
+-- Generation Time: Apr 12, 2024 at 09:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,6 +50,13 @@ CREATE TABLE `participantregistry` (
   `registered_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `participantregistry`
+--
+
+INSERT INTO `participantregistry` (`id`, `participant_id`, `registered_at`) VALUES
+(2, 16, '2024-03-25 18:07:41');
+
 -- --------------------------------------------------------
 
 --
@@ -82,20 +89,22 @@ CREATE TABLE `surveyquestions` (
   `QuestionOrder` int(11) DEFAULT NULL,
   `QuestionType` varchar(20) NOT NULL DEFAULT 'single_choice',
   `Options` longtext DEFAULT NULL,
-  `ImageURL` varchar(255) DEFAULT NULL
+  `ImageURL` varchar(255) DEFAULT NULL,
+  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `LastUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `surveyquestions`
 --
 
-INSERT INTO `surveyquestions` (`QuestionID`, `SurveyID`, `QuestionText`, `QuestionOrder`, `QuestionType`, `Options`, `ImageURL`) VALUES
-(38, 6, 'What is your favorite color?', 0, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL),
-(39, 6, 'What is your favorite color?', 0, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL),
-(40, 6, 'What is your favorite color?', 1, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL),
-(41, 6, 'What do you see in the image?', 2, 'image', NULL, 'uploads/65ff1260090bc.jpg'),
-(42, 6, 'What is your favorite color?', 1, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL),
-(43, 6, 'What do you see in the image?', 2, 'image', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', 'uploads/65ff1370b91d1.jpg');
+INSERT INTO `surveyquestions` (`QuestionID`, `SurveyID`, `QuestionText`, `QuestionOrder`, `QuestionType`, `Options`, `ImageURL`, `DateCreated`, `LastUpdate`) VALUES
+(38, 6, 'What is your favorite color?', 1, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL, '2024-03-25 20:12:13', '2024-03-25 20:12:13'),
+(39, 6, 'What is your favorite color?', 2, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL, '2024-03-25 20:12:13', '2024-03-25 20:12:13'),
+(40, 6, 'What is your favorite color?', 3, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL, '2024-03-25 20:12:13', '2024-03-25 20:12:13'),
+(41, 6, 'What do you see in the image?', 4, 'image', NULL, 'uploads/65ff1260090bc.jpg', '2024-03-25 20:12:13', '2024-03-25 20:12:13'),
+(42, 6, 'What is your favorite color?', 5, 'multiple_choice', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', NULL, '2024-03-25 20:12:13', '2024-03-25 20:12:13'),
+(43, 6, 'What do you see in the image?', 6, 'image', '[\"Red\",\"Blue\",\"Green\",\"Yellow\"]', 'uploads/65ff1370b91d1.jpg', '2024-03-25 20:12:13', '2024-03-25 20:12:13');
 
 -- --------------------------------------------------------
 
@@ -109,18 +118,24 @@ CREATE TABLE `surveys` (
   `Description` text DEFAULT NULL,
   `SurveyType` varchar(255) DEFAULT NULL,
   `FieldOfResearch` varchar(255) DEFAULT NULL,
-  `ResearcherID` bigint(20) NOT NULL
+  `ResearcherID` bigint(20) NOT NULL,
+  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `LastUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `surveys`
 --
 
-INSERT INTO `surveys` (`SurveyID`, `Title`, `Description`, `SurveyType`, `FieldOfResearch`, `ResearcherID`) VALUES
-(3, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6),
-(4, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6),
-(5, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6),
-(6, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6);
+INSERT INTO `surveys` (`SurveyID`, `Title`, `Description`, `SurveyType`, `FieldOfResearch`, `ResearcherID`, `DateCreated`, `LastUpdate`) VALUES
+(3, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(4, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(5, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(6, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(7, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(8, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(9, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23'),
+(10, 'Climate Change Awareness Survey', 'A survey to assess public awareness on climate change.', 'Online', 'Environmental Science', 6, '2024-03-25 20:13:23', '2024-03-25 20:13:23');
 
 --
 -- Indexes for dumped tables
@@ -171,13 +186,13 @@ ALTER TABLE `surveys`
 -- AUTO_INCREMENT for table `participantanswers`
 --
 ALTER TABLE `participantanswers`
-  MODIFY `AnswerID` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `AnswerID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `participantregistry`
 --
 ALTER TABLE `participantregistry`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `researcherregistry`
@@ -195,7 +210,7 @@ ALTER TABLE `surveyquestions`
 -- AUTO_INCREMENT for table `surveys`
 --
 ALTER TABLE `surveys`
-  MODIFY `SurveyID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `SurveyID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

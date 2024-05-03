@@ -65,7 +65,7 @@ const Verify = () => {
           formData.append('otp', otpValues.join('')); 
           formData.append('usertype', usertype);
 
-      const response = await fetch('http://localhost/qwestymain/api/verify_otp.php', {
+      const response = await fetch('http://solvety.info/api/verify_otp.php', {
         method: 'POST',
         body: formData,
       });

@@ -152,7 +152,7 @@ function SignUpPage() {
     
        
             try {
-                const response = await fetch('http://localhost/qwestymain/api/signin.php', {
+                const response = await fetch('http://solvety.info/api/signin.php', {
                     method: 'POST',
                     body: formData,
                 });
@@ -327,7 +327,7 @@ const FirstSignUpContent = ({email, setErrE, usertype, setUsertype, handleConten
             className={handleBtnState() ? 'disabled' : 'enabled'}>
              Ok
             </button>
-            {/* <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p> */}
+            <p>Already have an account? <span><Link to="/LogIn">Log In</Link></span> </p>
         </div>
     )
 }

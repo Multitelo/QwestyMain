@@ -34,9 +34,8 @@ function Create() {
         // formData.append('customField', researchDetails.customField);
 
         try {
-            const response = await fetch('http://localhost/qwestymain/api/createsur.php', {
+            const response = await fetch('http://solvety.info/api/createsur.php', {
                 method: 'POST',
-                // body: formData,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('jwtToken')}` 
