@@ -1,4 +1,9 @@
 
+curl -X POST http://localhost/qwestymain/api/resendotp.php \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "userId=16&usertype=participant&action=resend"
+
+
 
 curl -X POST http://localhost/qwestymain/api/login.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
@@ -26,7 +31,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI1OTYsImV4cCI6MTcxMTYyNjE
 
 
 researcher token
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE3MjE0MTEsImV4cCI6MTcxMTcyNTAxMSwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.Op7kNU2A8ze9NhV8gsfHXOo5HNvRpreCdMtN8ghShm8
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTIwNTg4NzAsImV4cCI6MTcxMjA2NjA3MCwidXNlcklkIjoiNiIsImVtYWlsIjoiZW1lbmlrZWF1Z3VzdGluZTMwMUBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InJlc2VhcmNoZXIifQ.roEmW9FQ9OX7DiEGT3bOOhYJMhu7Libb115MlftYGnw
 
 
 curl -X POST \
@@ -56,8 +61,9 @@ curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 
 curl -X POST http://localhost/qwestymain/api/verify_otp.php \
 -H "Content-Type: application/x-www-form-urlencoded" \
--d "userId=6&otp=51373&usertype=researcher"
+-d "userId=6&otp=91790&usertype=researcher"
 
+-H "Origin: http://my-curl-origin.com" \
 
 curl -X GET http://localhost/qwestymain/api/get.php \
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTE2MjI1OTYsImV4cCI6MTcxMTYyNjE5NiwidXNlcklkIjoiMTYiLCJlbWFpbCI6ImVtZW5pa2VhdWd1c3RpbmUzMDFAZ21haWwuY29tIiwidXNlcnR5cGUiOiJwYXJ0aWNpcGFudCJ9.ueB12RsCQ46dKmwffMivgJpH4ukChYJU4S30JzH8EGY"
