@@ -4,7 +4,7 @@ import { switchTheme } from '../../../../data/data';
 import { useTheme } from '../../../../context/ThemeContext';
 
 const MultipleChoiceQuestion = () => {
-  const [options, setOptions] = useState([""]); 
+  const [options, setOptions] = useState([]); 
   const { resTheme } = useTheme();
 
   useEffect(() => {
