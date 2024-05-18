@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext"; // Import the ThemeProvider
 
+
 import "./index.css";
 
 import {
@@ -25,13 +26,16 @@ import {
   Create,
   Insights,
   Verify,
+  Qwest,
 } from "./routes/Index.jsx";
 import SurveyProviders from "./context/Survey/SurveyProviders";
+import Providers from "./context/Provider/Providers.jsx";
 
 
 function App() {
   return (
     <ThemeProvider>
+      <Providers>
       <SurveyProviders>      
         <React.StrictMode>
         <BrowserRouter>
@@ -63,10 +67,12 @@ function App() {
             <Route path="/signedUp/Settings" element={<Settings />} />
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element={<Myprofile />} />
+            <Route path="/signedUp/qwest-game" element={< Qwest/>}/>
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
       </SurveyProviders>
+      </Providers>
     </ThemeProvider>
   );
 }

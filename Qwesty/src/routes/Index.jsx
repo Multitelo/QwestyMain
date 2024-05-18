@@ -17,6 +17,7 @@ export {default as NewResearch} from '../pages/researcher/NewResearch'
 export {default as ScheduledResearch} from '../pages/researcher/ScheduledResearch'
 export {default as Create} from '../pages/researcher/Create'
 export {default as Verify} from '../pages/Verify'
+export {default as Qwest} from '../pages/participant/Qwest'
 
 
 
