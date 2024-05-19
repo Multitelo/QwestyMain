@@ -3,12 +3,48 @@ import Top from '../../components/share/Top'
 import { useTheme } from "../../context/ThemeContext"
 import avatar from '../../assets/images/resAvatar.svg'
 import Footer from "../../components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function SettingsRes() {
-  const {resTheme} = useTheme();
+  const {resTheme, isSupportClicked, setIsSupportClicked} = useTheme();
   const [isAccountClicked, setIsAccountClicked] = useState(true)
-  const [isSupportClicked, setIsSupportClicked] = useState(false)
+
+  useEffect(()=>{
+    if(isSupportClicked==true){
+      setIsAccountClicked(false)
+    }
+
+  else if(isAccountClicked==true){
+      setIsSupportClicked(false)
+    }
+
+
+   
+    
+
+    fetch('http://localhost/qwestymain/api/get.php', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwtToken')}` 
+    },
+
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); 
+    })
+    .then(data => {
+      
+      console.log(data); 
+    })
+    .catch(error => {
+      console.error('There was a problem with your fetch operation:', error);
+    });
+
+  })
 
   const handleClick = (clicked) =>{
     
@@ -72,7 +108,7 @@ const Account = ({theme})=>{
   return(
     <div className={theme==="dark"?"accountContent dark":"accountContent"} style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>
       <div className="headings">
-        <h1  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Account</h1>
+        <h1  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}} id='setting-h1'>Account</h1>
         <p  style={{color: theme==="dark"?"#F4F4F4":"#201F24"}}>Edit basic informations</p>
       </div>
       

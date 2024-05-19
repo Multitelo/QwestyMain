@@ -1,7 +1,7 @@
 @font-face{
   font-family: Inter;
   src: url('../fonts/Inter/inter.ttf');
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 @font-face{
@@ -82,7 +82,7 @@ nav .items{
   letter-spacing: -0.483px;
 }
 
-/* nav .items:last-child{
+nav .items:last-child{
   margin-left: auto;
   height: 60px;
   width:156px;
@@ -102,7 +102,7 @@ nav .items{
   border: 2px solid #FFF;
 
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-} */
+}
 
 nav .items:last-child:hover{
   color:black;

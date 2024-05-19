@@ -7,31 +7,22 @@ import {FaPlus }from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { CiHeadphones,CiMenuFries } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
-import logoBlack from "../../assets/images/logoBlack.png";
-import logowhite from "../../assets/images/Logo.png";
+import logoBlack from "../../assets/images/Logo.png";
+import logowhite from "../../assets/images/Solvety_logo_white.png";
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import supportIconB from '../../assets/images/support-iconB.svg';
+import supportIconW from '../../assets/images/support-iconW.svg';
+
 
 function Top() {
-  const {resTheme, researcherTheme, dropdown, handleResearcherDropdown, setDropdown} = useTheme();
+  const {resTheme, researcherTheme, dropdown, handleResearcherDropdown, setDropdown, setIsSupportClicked} = useTheme();
   const dropdownRef = useRef(null);
 
   const closeDropdown = () => {
     setDropdown(false);
   };
-  useEffect(() => {
-    // const handleClickOutside = (event) => {
-    //   if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-    //     closeDropdown();
-    //   }
-    // };
 
-    // document.addEventListener('mousedown', handleClickOutside);
-
-    // return () => {
-    //   document.removeEventListener('mousedown', handleClickOutside);
-    // };
-  }, []);
 
   return (
     <div className={`reas-top ${resTheme} `} ref={dropdownRef}>
@@ -42,7 +33,8 @@ function Top() {
          </div>
        
       <Link className='create-box'
-            to="/researcher/create">
+            to="/researcher/create"
+            title="create">
         <FaPlus /> create
       </Link>
 
@@ -66,7 +58,9 @@ function Top() {
           {dropdown?<IoCloseOutline size={'2rem'}/>: <CiMenuFries size={'2rem'}/>}
         </div>
 
-       <CiHeadphones id="headphones"/>
+      <Link id='support-icon' to='/researcher/settings' onClick={()=>setIsSupportClicked(true)} title="support"> 
+          <img src={resTheme=='dark'?supportIconW:supportIconB} alt="icon of support"/>
+      </Link> 
       </div>   
       
      

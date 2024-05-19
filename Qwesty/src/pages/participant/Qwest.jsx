@@ -3,7 +3,7 @@ import qwestbg from "../../assets/images/qwestbg.svg";
 import { useLoading } from "../../context/LoadingContext";
 import LoadingBg from "../../components/ben/LoadingBg";
 import { qwestComponents } from "../../components/ben/routes";
-
+import SideBar from "../../components/share/SideBar";
 const Qwest = () => {
   const { loading } = useLoading();
   const { Profile } = qwestComponents;

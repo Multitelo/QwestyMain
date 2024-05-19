@@ -1,21 +1,46 @@
 
 
-.researcher-bar{
+.researcher-bar {
     background-color: #fff;
     width: 20%;
     color: #363334;
     font-family: Outfit;
     font-size: 18px;
-    height: 100vh; /* Set height to auto */
+    height: 100vh;
     transition: all 0.5s;
     padding: 10px 30px;
     border-bottom-right-radius: 15px;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
     position: fixed;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-}
+  }
+  
+  /* Hide the scrollbar */
+  .researcher-bar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  
+  /* Customize the scrollable content */
+  .researcher-bar::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 8px;
+  }
+  
+  .researcher-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+  
+  .researcher-bar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
 .researcher-bar .flex-search {
     margin-top: 30px;
+    /* border: 1px solid red; */
+    padding: 20px;
 }
 
 .researcher-bar .flex-search .search{
@@ -34,8 +59,8 @@
     z-index: 2;
 }
 .researcher-bar .logo{
-    padding:20px 0px 10;
-    width: 270px;
+    /* padding:20px 0px 10; */
+    width: 170px;
     height: 80px;
     
 }
@@ -47,14 +72,41 @@
     gap:15px;
     transition: all 0.5s;
     border-radius: 5px;
+    justify-items: center;
     align-items: center;
+    color: inherit;
 }
+
+/* Styles for participant's menu */
+#participant-menu{
+    background-color:#4955C4 ;
+}
+#partic-link{
+    color:#fff;
+}
+
+#partic-link:hover{
+    color:#000;
+    background-color: #fff;
+
+}
+
+#partic-link.active{
+    color:#000;
+    background-color: #fff;
+}
+
+
+
+
+
+
 
 
 #toggle-theme{
     display: flex;
     gap:10px;   
-    padding: 40px 15px; 
+    padding: 40px 0px; 
     align-items: center;
 }
 .side-link.Settings{
@@ -107,8 +159,10 @@
     position: relative;
     margin-top: auto;
     font-weight: bold;
-    padding: 10px 15px 40px 15px;
+    cursor: pointer;
+   
 }
+
 /* Styles of top page */
 .reas-top{
     display: flex;
@@ -116,11 +170,12 @@
     color:#131217;
     background-color: #F4F4F4;
     justify-content: flex-end;
-    padding:0 20px;
+    padding:0 0px;
     font-family: Outfit;
     font-size: 20px;
     align-items: center;
     transition: all 0.5s ;
+    
 }
 
 .reas-top.dark{
@@ -139,9 +194,12 @@
     padding: 10px 10px;
     height: 40px;
     border-radius: 5px;
-
+    transition: all 0.5s;
 }
 
+.reas-top .create-box:hover{
+    opacity: 0.8;
+}
 .reas-top .user-content{
     display: flex;
     gap:10px;
@@ -156,9 +214,11 @@
 
 
 .user-content .pic{
+    display: flex;
+    align-items: center;
     border: 1px solid #8AADC1;
     border-radius: 10px;
-    padding: 5px;
+    padding:5px ;
     transition: box-shadow 0.3s ease;
 
 }
@@ -169,14 +229,19 @@
 
 .reas-top #big{
     transition: all 0.3s ease;
-
+    color: inherit;
 }
 .reas-top #big:hover{
     text-decoration: underline;
     opacity: 0.7;
-    /* color:#8E5DF5; */
+    color:#8E5DF5;
 
 }
+
+.reas-top #support-icon:hover{
+    opacity: 0.6;
+}
+
 .user-content .menu-icon{
     display: none;
 }
@@ -239,6 +304,8 @@
     border-radius: 15px;
     margin-bottom: 20px;
 }
+
+
 
 .researcher-content.dark .home-main-section.settings{
     background-color: #201F24;
@@ -507,7 +574,7 @@
     min-height: 100vh;
     color:#121217;
     font-family: Outfit;
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -527,11 +594,11 @@
     width:60vw;
 }
 .create-survey-container h1{
-    font-size: 36px;
+    font-size: 32px;
 }
 
 .create-survey-container h2{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -541,11 +608,13 @@
 .create-survey-container input, 
 #select-field,
 .create-survey-container textarea{
-    font-size: 20px;
+    font-size: 16px;
     border: 1px solid #A5A1A1;
     border-radius: 10px;
     padding:10px;
     background-color: inherit;
+    color: inherit;
+    /* opacity: 0.8; */
     justify-self: flex-start;
     
 }
@@ -563,6 +632,7 @@
 .create-survey-container #select-field{
     border: none;
     padding: 0;
+    /* opacity: 0; */
 }
 .create-survey-container p{
     font-size: 16px;
@@ -575,6 +645,10 @@
     padding: 10px 20px;
     align-self: flex-end;
     font-size: 18px;
+}
+
+.create-survey-container #custom-input{
+    margin: 20px 0;
 }
 
 /* style for preview survey page */
@@ -702,10 +776,12 @@ font-weight: bold;
     color:#f4f4f4;
 
 }
-.research-support h1{
+.research-support h1,
+#setting-h1{
     color: #101828;
-    font-weight: bold;
-    font-size: 48px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 42px;
     margin-bottom: 20px;
 }
 .research-support.dark h1{
@@ -722,6 +798,7 @@ font-weight: bold;
     background-color: inherit;
     border-radius: 8px;
     padding: 10px;
+    color: #000;
 }
 
 .research-support.dark input, .research-support.dark textarea{
@@ -780,11 +857,7 @@ background-color: #363334 !important;
 }
 
   /* Media query for smaller devices */
-  @media screen and (max-width: 768px) {
-    .css-4pax7l-MuiPickersLayout-root {
 
-    }
-  }
 
   @media screen and (max-width: 350px) {
     .css-4pax7l-MuiPickersLayout-root {
@@ -830,7 +903,14 @@ background-color: #363334 !important;
 }
 
 @media (max-width:993px){
-  
+
+    #participant-menu{
+        background-color:inherit ;
+    }
+
+    #support-icon{
+        display: none;
+    }
     .research-box{
         font-size: 24px;
     }
@@ -857,6 +937,7 @@ background-color: #363334 !important;
         right: 0px;
         top: 120px;
         position: fixed;
+        /* background-color: #4955C4; */
         background-color: #f4f4f4;
         height: calc(100dvh - 80px); 
         overflow-y: auto; 
@@ -906,25 +987,25 @@ background-color: #363334 !important;
     .reas-top{
         height: 100px;
         width: 100%;
-        /* border: 1px solid red; */
+       
         padding-left: 10px;
         z-index: 1;
         display: flex;
+        margin-top: 0%;
     }
     .reas-top .logos{
         display: block;
         margin-right: auto;
         align-self: center;
-        height: 40px;
-        scale: 1.2;
-        width: 100px;
-        /* border: 1px solid red; */
+        width: 150px;
+        align-self: center;
      }
     .researcher-menu{
         width: 0%;
     }
     .home-main{
         width: 100%;
+        padding: 0 10px;
     }
 
 
@@ -942,7 +1023,7 @@ background-color: #363334 !important;
         bottom: -20px;
         font-weight: bold;
         padding: 10px 15px 40px 15px;
-       
+         cursor: pointer;
     }
     .home-main-section.settings{
         flex-direction: column;
@@ -1052,7 +1133,7 @@ background-color: #363334 !important;
 /* md */
 @media (max-width: 768px) {
     .reas-top{
-        padding-top: 30px;
+        /* padding-top: 30px; */
     }
     .research-footer{
         display: block;
@@ -1143,6 +1224,7 @@ background-color: #363334 !important;
         gap: 0;
         width: 30vw;
     }
+
 /* Styles for support page within the settings page */
 .research-support{
     width: 80vw;
@@ -1157,7 +1239,8 @@ background-color: #363334 !important;
     width:70vw;
     gap:50px;
 }
-.research-support h1{
+.research-support h1,
+#setting-h1{
     font-size: 36px;
 }
 .research-support #term{
@@ -1207,13 +1290,15 @@ background-color: #363334 !important;
         }
     .reas-top{
         gap:10px;
-       padding-left: 10px;
+       /* padding-left: 10px; */
+       padding: 0;
        justify-content: flex-start;
        padding-bottom: 20px;
     }
     .reas-top .logos{
         padding-left: 0;
-        width: 100px; 
+        /* width: 100px;  */
+        /* scale:0.9; */
         margin-right: auto;
 }
 
@@ -1223,7 +1308,7 @@ background-color: #363334 !important;
 }
 .reas-top .user-content{
     display: flex;
-    gap:10px;
+    gap:3px;
 }
     /* Style for schedule research page */
 .scheduled-container .filter-box{
@@ -1248,20 +1333,20 @@ background-color: #363334 !important;
     width:80vw;
 }
 .create-survey-container h1{
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .create-survey-container h2{
-    font-size: 18px;
+    font-size: 16px;
 }
 .create-survey-container input, 
 #select-field,
 .create-survey-container textarea{
-    font-size: 15px;
+    font-size: 14px;
 }
 .create-survey-container button{
     align-self: center;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 }
@@ -1283,7 +1368,7 @@ background-color: #363334 !important;
     }
 
 .reas-top .bell-box{
-    width: 25px;
+    width: 45px;
     display: inline;
 }
 .theme-box{
@@ -1291,15 +1376,16 @@ background-color: #363334 !important;
     padding: 5px;
 }
 .reas-top .logos{
-    scale: 1.4;
-    padding-left: 5px;
+    /* scale: 1.4; */
+    width: 120px;
+    /* padding-left: 5px; */
 }
 .side-link,
 .researcher-bar .flex-search{
     width: 90%;
     font-size: 14px;
-    height:30px;
-    padding: 20px;
+    /* height:30px; */
+    padding: 10px;
 }
 
 .flex-search{
@@ -1347,24 +1433,22 @@ font-size: 14px;
         justify-content: center;
     }
 }
-@media  (orientation:landscape){
-    
-}
+
+@media (max-width: 300px) {
+  
+        .researcher-bar .side-links.small {
+          
+            width: 100vw;
+        }
+    }  
 
 
-::-webkit-scrollbar-button {
-    display: none;
-}
-
-/* Show scrollbar arrows when content overflows */
-.researcher-bar {
-    overflow-y: auto;
-}
-
-.researcher-bar::-webkit-scrollbar-button {
-    display: block;
-}
 
 
-  /* Style the scrollbar track and thumb */
+
+
+
+
+
+
   
