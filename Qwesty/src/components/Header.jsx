@@ -71,7 +71,7 @@ function Header() {
             
           <Link to='/' className='items logo'><img src={Logo}></img></Link>
           {
-            barClicked&&  <IoMdClose id="close-bar" onClick={handleClick} size={'3rem'}/>
+            barClicked&&  <IoMdClose id="close-bar" onClick={handleClick} size={'2rem'}/>
           } 
           <Link to='/researcher/home'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">  contact us</Link>
