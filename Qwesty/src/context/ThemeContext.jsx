@@ -14,7 +14,7 @@ export const ThemeProvider = ({ children }) => {
     const localResearchTheme = localStorage.getItem('resTheme')
     return localResearchTheme?localResearchTheme:'light';
   })
-  const [usertype, setUsertype] = useState('');
+  const [usertype, setUsertype] = useState('researcher');
   const [dropdown, setDropdown] = useState(false);
 console.log(resTheme)
 
