@@ -37,7 +37,7 @@ const Qwest = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="overlay  absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
+        <div className="overlay absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
         <div className="w-full h-full p-3 overflow-auto">
           {/* <StartQuest /> */}
           <QwestScenes />
