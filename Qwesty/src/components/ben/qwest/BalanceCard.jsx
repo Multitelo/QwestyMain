@@ -1,7 +1,11 @@
 import React from "react";
 import qwestLogo from "../../../assets/qwest_assets/logo.svg";
+import { useQuest } from "../../../context/QwestContext";
 
-const BalanceCard = ({ balance = 360, stipend = 500 }) => {
+const BalanceCard = ({ stipend = 0 }) => {
+  const { coins, balance } = useQuest();
+  const validScore = coins.filter((score) => score > 0);
+
   return (
     <div className="bg-gradient-to-b from-[#A748DA] to-[#672FAF] rounded-[2rem] p-4 992:p-5">
       <div className="flex gap-[5px] items-center">
@@ -17,9 +21,13 @@ const BalanceCard = ({ balance = 360, stipend = 500 }) => {
       <div className="flex justify-between items-center mb-1 992:mb-5">
         <div className="flex mb-0 992:mb-1">
           <img src={qwestLogo} alt="qwest logo" />
-          <h1 className="font-bold text-xl 992:text-3xl">{balance}</h1>
+          <h1 className="font-bold text-xl 992:text-3xl">
+            {balance + validScore.length}
+          </h1>
         </div>
-        <h1 className="text-white text-xl 992:text-2xl mr-4">{stipend}</h1>
+        <h1 className="text-white text-xl 992:text-2xl mr-4">
+          {!coins ? stipend : validScore.length}
+        </h1>
       </div>
     </div>
   );

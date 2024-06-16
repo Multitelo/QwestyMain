@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import qwestbg from "../../assets/images/qwestbg.svg";
 import LoadingBg from "../../components/ben/LoadingBg";
 import StartQuest from "../../components/ben/qwest/StartQuest";
 import Sidebar from "../../components/share/SideBar";
 import { useLoading } from "../../context/LoadingContext";
-import { useQwest } from "../../context/QwestContext";
 import QwestScenes from "../../components/ben/qwest/QwestScenes";
 
 const Qwest = () => {
   const { loading } = useLoading();
-  const {
-    currentQuestionIndex,
-    responses,
-    progress,
-    startQwest,
-    answerQuestion,
-    skipQuestion,
-  } = useQwest();
+  const [questStarted, setQuestStarted] = useState(false);
+
+  useEffect(() => {
+    const questState = localStorage.getItem("questStarted");
+    if (questState) {
+      setQuestStarted(true);
+    }
+  }, []);
+
+  const handleStartQuest = () => {
+    setQuestStarted(true);
+    localStorage.setItem("questStarted", "true");
+  };
+
+  const handleEndQuest = () => {
+    setQuestStarted(false);
+    localStorage.removeItem("questStarted");
+    window.location.reload(); // Reload the page to reset the state
+  };
+
+  const handleNoClick = () => {
+    alert("You chose not to start the quest.");
+  };
 
   return (
     <section className="w-full h-screen flex relative">
@@ -39,8 +53,11 @@ const Qwest = () => {
       >
         <div className="overlay absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
         <div className="w-full h-full p-3 overflow-auto">
-          {/* <StartQuest /> */}
-          <QwestScenes />
+          {!questStarted ? (
+            <StartQuest onYesClick={handleStartQuest} onNoClick={handleNoClick} />
+          ) : (
+            <QwestScenes onEndQuest={handleEndQuest} />
+          )}
         </div>
       </div>
     </section>

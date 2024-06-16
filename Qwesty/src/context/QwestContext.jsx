@@ -1,66 +1,154 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useRef, useEffect, useContext } from "react";
+import { surveyQuestions } from "../data/data";
 
 const QwestContext = createContext();
-
-export const useQwest = () => useContext(QwestContext);
+export const useQuest = () => useContext(QwestContext);
 
 export const QwestProvider = ({ children }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
-  const [responses, setResponses] = useState([]);
-  const [progress, setProgress] = useState(0);
-  const totalQuestions = 10;
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentOptionSet, setCurrentOptionSet] = useState(0);
+  const [fade, setFade] = useState(true);
+  const [timer, setTimer] = useState(5);
+  const [isPaused, setIsPaused] = useState(false);
+  const [coins, setCoins] = useState([]);
+  const [balance, setBalance] = useState(25);
+  const timerRef = useRef(null);
 
-  // Function to start the quiz
-  const startQwest = () => {
-    setCurrentQuestionIndex(0);
-    setResponses([]);
-    setProgress(0);
+  const totalOptionSets = Math.ceil(surveyQuestions[currentQuestion]?.options.length / 4);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    setTimer(5);
+    timerRef.current = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
   };
 
-  // Function to handle answering a question
-  const answerQuestion = (answer) => {
-    const newResponses = [...responses];
-    newResponses[currentQuestionIndex] = { answer, status: "answered" };
-    setResponses(newResponses);
-    nextQuestion(newResponses);
+  const togglePause = () => {
+    setIsPaused((prev) => {
+      if (prev) {
+        timerRef.current = setInterval(() => {
+          setTimer((prev) => prev - 1);
+        }, 1000);
+      } else {
+        clearInterval(timerRef.current);
+      }
+      return !prev;
+    });
   };
 
-  // Function to handle skipping a question
-  const skipQuestion = () => {
-    const newResponses = [...responses];
-    newResponses[currentQuestionIndex] = { answer: null, status: "not answered" };
-    setResponses(newResponses);
-    nextQuestion(newResponses);
+  const endQuiz = () => {
+    clearInterval(timerRef.current);
+    setCoins([]);
+    localStorage.removeItem("questStarted");
+    window.location.reload();
   };
 
-  // Function to go to the next question
-  const nextQuestion = (newResponses) => {
-    if (currentQuestionIndex < totalQuestions - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      updateProgress(newResponses);
+  useEffect(() => {
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (timer <= 0) {
+      clearInterval(timerRef.current);
+      if (selectedAnswers[currentQuestion] == null) {
+        updateCoins(0);
+      }
+    }
+  }, [timer]);
+
+  useEffect(() => {
+    if (!isPaused && selectedAnswers[currentQuestion] == null && currentQuestion < surveyQuestions.length) {
+      startTimer();
+    }
+  }, [currentQuestion, isPaused]);
+
+  useEffect(() => {
+    setFade(false);
+    const timeout = setTimeout(() => setFade(true), 500);
+    return () => clearTimeout(timeout);
+  }, [currentQuestion, currentOptionSet]);
+
+  const handleSelectedAnswer = (index) => {
+    if (selectedAnswers[currentQuestion] == null) {
+      setSelectedAnswers({
+        ...selectedAnswers,
+        [currentQuestion]: index,
+      });
+      if (timer > 0) {
+        clearInterval(timerRef.current);
+        updateCoins(1);
+      }
     } else {
-      // Quiz is complete
-      setCurrentQuestionIndex(null);
-      updateProgress(newResponses);
+      setSelectedAnswers({
+        ...selectedAnswers,
+        [currentQuestion]: index,
+      });
     }
   };
 
-  // Function to update the progress based on responses
-  const updateProgress = (responses) => {
-    const answeredCount = responses.filter((response) => response).length;
-    const newProgress = (answeredCount / totalQuestions) * 100;
-    setProgress(newProgress);
+  const nextQuestion = () => {
+    if (currentQuestion < surveyQuestions.length - 1) {
+      setCurrentQuestion((next) => {
+        const newQuestionIndex = next < surveyQuestions.length - 1 ? next + 1 : next;
+        if (selectedAnswers[newQuestionIndex] == null) {
+          startTimer();
+        }
+        return newQuestionIndex;
+      });
+      setCurrentOptionSet(0);
+    } else {
+      clearInterval(timerRef.current);
+    }
+  };
+
+  const prevQuestion = () => {
+    setCurrentQuestion((prev) => (prev > 0 ? prev - 1 : prev));
+    setCurrentOptionSet(0);
+  };
+
+  const handleNextOptionSet = () => {
+    setCurrentOptionSet((next) => (next < totalOptionSets - 1 ? next + 1 : next));
+  };
+
+  const handlePrevOptionSet = () => {
+    setCurrentOptionSet((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const updateCoins = (coin) => {
+    setCoins((prevCoins) => [...prevCoins, coin]);
   };
 
   return (
     <QwestContext.Provider
       value={{
-        currentQuestionIndex,
-        responses,
-        progress,
-        startQwest,
-        answerQuestion,
-        skipQuestion,
+        selectedAnswers,
+        currentQuestion,
+        currentOptionSet,
+        fade,
+        timer,
+        isPaused,
+        coins,
+        balance,
+        timerRef,
+        startTimer,
+        togglePause,
+        endQuiz,
+        handleSelectedAnswer,
+        nextQuestion,
+        prevQuestion,
+        handleNextOptionSet,
+        handlePrevOptionSet,
+        updateCoins,
+        setSelectedAnswers,
+        setCurrentQuestion,
+        setCurrentOptionSet,
+        setFade,
+        setTimer,
+        setIsPaused,
+        setCoins,
+        setBalance,
       }}
     >
       {children}

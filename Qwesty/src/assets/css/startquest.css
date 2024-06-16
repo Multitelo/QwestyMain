@@ -34,7 +34,7 @@
 
 /* startquest.css */
 
-/* @keyframes bounce {
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
@@ -48,5 +48,5 @@
   
   .animated-avatar {
     animation: bounce 2s infinite;
-  } */
+  }
   
