@@ -4,7 +4,10 @@ import fireImg from '../../../assets/images/fire.svg'
 function Fire() {
   return (
     <div className='qwest-fire'>
-        
+       <div className="coin">
+            
+       </div>
+
        <div className="fireImg">
             <img src={fireImg}
                  alt="Image of fire"/>

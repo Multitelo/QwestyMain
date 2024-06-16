@@ -5,7 +5,7 @@ import StartQuest from "../../components/ben/qwest/StartQuest";
 import Sidebar from "../../components/share/SideBar";
 import { useLoading } from "../../context/LoadingContext";
 import QwestScenes from "../../components/ben/qwest/QwestScenes";
-import { qwestComponents } from "../../components/ben/routes";
+// import { qwestComponents } from "../../components/ben/routes";
 
 
 const Qwest = () => {
