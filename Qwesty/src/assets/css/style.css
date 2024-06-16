@@ -1,7 +1,7 @@
 @font-face{
   font-family: Inter;
   src: url('../fonts/Inter/inter.ttf');
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 @font-face{
@@ -82,7 +82,7 @@ nav .items{
   letter-spacing: -0.483px;
 }
 
-/* nav .items:last-child{
+nav .items:last-child{
   margin-left: auto;
   height: 60px;
   width:156px;
@@ -102,7 +102,7 @@ nav .items{
   border: 2px solid #FFF;
 
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-} */
+}
 
 nav .items:last-child:hover{
   color:black;
@@ -158,7 +158,7 @@ nav #arrow{
   flex-direction: column;
   align-items: center;
   gap: 5vh;
-  margin-bottom: 5vh;
+  margin:0px 0 50px;
   padding: 20px;
 }
 
@@ -537,7 +537,7 @@ line-height: 24px;
                        "faq-item-4 faq-item-5"
                        "faq-item-6 faq-item-7"
                         ;
-  margin-bottom: 280px;
+  margin: 280px 0;
   column-gap: 15vw;
   row-gap: 30px;
   align-items: center;
@@ -739,8 +739,8 @@ letter-spacing: -0.483px;
   border-radius: 5px;  
   translate:-10vw 0vw;
   transition: 1s translate;
-  padding-top: 10px;
-  padding-bottom: 30px;
+  padding: 10px 70px 30px;
+  
   position: fixed;
   animation: nav 0.5s ease-in-out;
   overflow-y: scroll;
@@ -763,23 +763,30 @@ letter-spacing: -0.483px;
 grid-area: close;
 color: #FFF;
 justify-self: center;
-padding: 10px;
+margin:20px;
 
 }
-.nav-medium-devices{
-   display:flex;
-   padding: 20px 70px;
-  }
+.nav-medium-devices {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100px;  
+  margin-bottom: 10px;
+  justify-content: space-between;
+  
+}
+
+.nav-medium-devices > * {
+  margin: 10px;
+}
 
 /* .logo{
   width: 0;
 } */
 .small-logo{
-  margin-right: auto;
-  width: 30vw;
-  position: absolute;
-  top:4vh;
-  left:8vw;
+  width: 150px;
+ 
 }
 #temp-solvety-logo{
   margin-right: auto;
@@ -793,8 +800,7 @@ padding: 10px;
   margin-left: auto;
  
   display: inline-flex;
-  position: absolute;
-  top:4vh;
+ 
   right:8vw;
   padding: 5px;
 }
@@ -1296,4 +1302,16 @@ button img, img#close-bar{
 .faq-container ::-webkit-scrollbar-thumb {
   background-color: #b29be2; 
   border-radius: 15px; 
+}
+
+@media screen and (max-width:300px) {
+  .small-logo{
+    width: 50vw;
+   
+  }
+  .nav-medium-devices {
+    align-items: center;
+
+  }
+
 }
