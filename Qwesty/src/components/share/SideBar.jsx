@@ -49,7 +49,7 @@ function SideBar() {
           },
       ];
 
-      const researcherMenu = [
+      const participantMenu = [
         {
             path: "/" ,
             name: "Quests",
@@ -125,11 +125,11 @@ function SideBar() {
   return (
     <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}` } 
          
-         id={usertype=='researcher'?'participant-menu':''}
+         id={usertype=='participant'?'participant-menu':''}
          >
         <div className="logo">
       <Link to='/'>
-            <img src={resTheme === 'dark' || usertype=='researcher' ?logowhite:logoBlack}
+            <img src={resTheme === 'dark' || usertype=='participant' ?logowhite:logoBlack}
                 alt="logo of solvety"/></Link>
          </div>
 
@@ -148,9 +148,9 @@ function SideBar() {
           </div>
           
           {
-            usertype=='researcher'?
+            usertype=='participant'?
             
-            researcherMenu.map((item, index)=> (
+            participantMenu.map((item, index)=> (
               <NavLink to={item.path}
                       className={`side-link  ${item.name}`} 
                       activeClassName='active'
@@ -184,7 +184,7 @@ function SideBar() {
           }
      
        {  
-          usertype=='researcher'?'':
+          usertype=='participant'?'':
             <div id="toggle-theme">
               <p>{resTheme==='light'?'Dark':"Light"} theme</p>
               <ToggleInput onChange={researcherTheme} checked={resTheme==='light'?false:true}/>
@@ -192,9 +192,9 @@ function SideBar() {
          }
 
           <div className="logout-btn" onClick={handleLogout}>
-               <img src={resTheme==='dark' || usertype=='researcher'?logoutW:logoutB}
+               <img src={resTheme==='dark' || usertype=='participant'?logoutW:logoutB}
                     alt="logout icon"/>
-                    <p style={{ color:usertype=='researcher'?'#fff':''}}>Log out</p>
+                    <p style={{ color:usertype=='participant'?'#fff':''}}>Log out</p>
           </div>
              
          </div>    

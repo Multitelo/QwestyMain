@@ -197,6 +197,16 @@
     transition: all 0.5s;
 }
 
+/* styles for top section of the participant  */
+#participant-top .create-box,
+#participant-top .bell-box ,
+#participant-top  #support-icon,
+#participant-top #dropArw{
+    display: none;
+}
+
+
+
 .reas-top .create-box:hover{
     opacity: 0.8;
 }
@@ -256,7 +266,7 @@
 .researcher-content{
     display: flex;
 
-    gap:30px;
+    /* gap:30px; */
     height: 100%;
 
     background-color: #F4F4F4;
@@ -278,7 +288,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding:1px 20px;
 }
 
 /* Styles for settings page */
@@ -993,6 +1003,12 @@ background-color: #363334 !important;
         display: flex;
         margin-top: 0%;
     }
+
+    #participant-top .bell-box{
+        display: inline-block;
+    }
+
+
     .reas-top .logos{
         display: block;
         margin-right: auto;
@@ -1368,7 +1384,7 @@ background-color: #363334 !important;
     }
 
 .reas-top .bell-box{
-    width: 45px;
+    /* width: 45px; */
     display: inline;
 }
 .theme-box{
