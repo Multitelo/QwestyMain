@@ -1,26 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import qwestbg from "../../assets/images/qwestbg.svg";
-import { useLoading } from "../../context/LoadingContext";
 import LoadingBg from "../../components/ben/LoadingBg";
+import StartQuest from "../../components/ben/qwest/StartQuest";
+import Sidebar from "../../components/share/SideBar";
+import { useLoading } from "../../context/LoadingContext";
+import QwestScenes from "../../components/ben/qwest/QwestScenes";
 import { qwestComponents } from "../../components/ben/routes";
-import SideBar from "../../components/share/SideBar";
+
+
 const Qwest = () => {
   const { loading } = useLoading();
-  const { Profile } = qwestComponents;
+  const [questStarted, setQuestStarted] = useState(false);
+
+  useEffect(() => {
+    const questState = localStorage.getItem("questStarted");
+    if (questState) {
+      setQuestStarted(true);
+    }
+  }, []);
+
+  const handleStartQuest = () => {
+    setQuestStarted(true);
+    localStorage.setItem("questStarted", "true");
+  };
+
+  const handleEndQuest = () => {
+    setQuestStarted(false);
+    localStorage.removeItem("questStarted");
+    window.location.reload(); // Reload the page to reset the state
+  };
+
+  const handleNoClick = () => {
+    alert("You chose not to start the quest.");
+  };
 
   return (
-    <section className="w-full md:flex relative">
+    <section className="w-full h-screen flex relative">
       {loading && <LoadingBg />}
+
       {/* sidebar */}
-      <div
-        className={`sidebar bg-white h-screen p-5 w-[20%] hidden md:grid place-content-center`}
-      >
-        Sidebar
+      <div className="w-[20%] hidden 992:block">
+        <Sidebar />
       </div>
 
       {/* main section */}
       <div
-        className={`qwestSection w-full md:w-[80%] h-screen`}
+        className="qwestSection w-full 992:w-[80%] h-full relative"
         style={{
           background: `url(${qwestbg})`,
           backgroundPosition: "center",
@@ -28,8 +53,13 @@ const Qwest = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full flex justify-end py-5 pr-20 pl-40">
-          <Profile />
+        <div className="overlay absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
+        <div className="w-full h-full p-3 overflow-auto">
+          {!questStarted ? (
+            <StartQuest onYesClick={handleStartQuest} onNoClick={handleNoClick} />
+          ) : (
+            <QwestScenes onEndQuest={handleEndQuest} />
+          )}
         </div>
       </div>
     </section>
