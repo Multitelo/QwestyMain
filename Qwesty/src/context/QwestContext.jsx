@@ -1,6 +1,7 @@
 import React, { createContext, useState, useRef, useEffect, useContext } from "react";
 import { surveyQuestions } from "../data/data";
 
+
 const QwestContext = createContext();
 export const useQuest = () => useContext(QwestContext);
 
@@ -11,6 +12,7 @@ export const QwestProvider = ({ children }) => {
   const [fade, setFade] = useState(true);
   const [timer, setTimer] = useState(5);
   const [isPaused, setIsPaused] = useState(false);
+  const [showRetakePopup, setShowRetakePopup] = useState(false); 
   const [coins, setCoins] = useState([]);
   const [balance, setBalance] = useState(25);
   const timerRef = useRef(null);
@@ -45,6 +47,17 @@ export const QwestProvider = ({ children }) => {
     window.location.reload();
   };
 
+  const handleRetake = () => {
+    setShowRetakePopup(true);
+    startTimer();
+    updateCoins(1);
+  };
+
+  const handleCancel = () => {
+    setShowRetakePopup(false);
+    nextQuestion();
+  };
+
   useEffect(() => {
     return () => clearInterval(timerRef.current);
   }, []);
@@ -54,6 +67,7 @@ export const QwestProvider = ({ children }) => {
       clearInterval(timerRef.current);
       if (selectedAnswers[currentQuestion] == null) {
         updateCoins(0);
+        setShowRetakePopup(true);
       }
     }
   }, [timer]);
@@ -120,6 +134,8 @@ export const QwestProvider = ({ children }) => {
     setCoins((prevCoins) => [...prevCoins, coin]);
   };
 
+  const progress = (currentQuestion / surveyQuestions.length) * 100;
+
   return (
     <QwestContext.Provider
       value={{
@@ -132,6 +148,8 @@ export const QwestProvider = ({ children }) => {
         coins,
         balance,
         timerRef,
+        showRetakePopup,
+        progress,
         startTimer,
         togglePause,
         endQuiz,
@@ -149,6 +167,8 @@ export const QwestProvider = ({ children }) => {
         setIsPaused,
         setCoins,
         setBalance,
+        handleRetake,
+        handleCancel,
       }}
     >
       {children}

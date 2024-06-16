@@ -46,6 +46,9 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
     handleNextOptionSet,
     handlePrevOptionSet,
     setCurrentOptionSet,
+    showRetakePopup,
+    handleRetake,
+    handleCancel,
   } = useQuest();
 
   const presentQuestion = surveyQuestion[currentQuestion];
