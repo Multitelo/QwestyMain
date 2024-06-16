@@ -515,7 +515,7 @@ const Insights = () => {
               </div>
             ) : activeCard === 2 ? (
               <div>
-                <div className="grid grid-cols-2 gap-4 w-[90%] mx-auto">
+                <div className="grid text-black grid-cols-2 gap-4 w-[90%] mx-auto">
                   <button className="bg-white w-[9em] py-[0.8em] rounded-xl drop-shadow-md">
                     Table Chart
                   </button>
@@ -525,7 +525,8 @@ const Insights = () => {
                 </div>
               </div>
             ) : (
-              <></>
+              <>
+              </>
             )}
           </section>
         </div>

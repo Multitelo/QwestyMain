@@ -396,3 +396,38 @@ export const ResponseByQuestions = [
     ]
   },
 ]
+
+
+
+export const surveyQuestions = [
+  {
+    id: 1,
+    question: "What is your favorite color?",
+    options: ["Red", "Blue", "Green", "Yellow","Orange"],
+    type: "multiple-choice",
+  },
+  {
+    id: 2,
+    question: "How often do you exercise?",
+    options: ["Daily", "Weekly", "Monthly", "Rarely","Daily", "Weekly", "Monthly", "Rarely"],
+    type: "multiple-choice",
+  },
+  {
+    id: 3,
+    question: "What is your preferred mode of communication?",
+    options: ["Email", "Phone", "Text Message", "In-person"],
+    type: "multiple-choice",
+  },
+  {
+    id: 4,
+    question: "Which type of cuisine do you prefer?",
+    options: ["Italian", "Chinese", "Mexican", "Indian"],
+    type: "multiple-choice",
+  },
+  {
+    id: 5,
+    question: "What is your favorite season?",
+    options: ["Spring", "Summer", "Autumn", "Winter"],
+    type: "multiple-choice",
+  },
+];

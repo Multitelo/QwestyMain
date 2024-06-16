@@ -19,6 +19,7 @@ export const ThemeProvider = ({ children }) => {
 
   const [usertype, setUsertype] = useState('participant');
   const [userId, setUserId] = useState('')
+
   const [dropdown, setDropdown] = useState(false);
   const [isSupportClicked, setIsSupportClicked] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
