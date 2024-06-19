@@ -21,7 +21,7 @@ const QwestScenesContent = ({ onEndQuest }) => {
         </div>
       </div>
       <div className="mt-6 992:mt-[14rem] 992:float-right w-fit 992:px-20">
-        <QuestionSection surveyQuestion={surveyQuestions} onEndQuest={onEndQuest} />
+        <QuestionSection surveyQugitestion={surveyQuestions} onEndQuest={onEndQuest} />
       </div>
     </div>
   );
