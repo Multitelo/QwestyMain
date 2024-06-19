@@ -58,7 +58,7 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
   return (
     <div className="flex flex-col justify-center 992:items-center gap-5">
       <Question question={presentQuestion} fade={fade} />
-      <div className="grid grid-cols-1 992:grid-cols-2 gap-y-2 992:gap-y-8 992:gap-x-14">
+      <div className="grid grid-cols-1 992:grid-cols-2 gap-y-2 992:gap-y-5 992:gap-x-14">
         {presentQuestion.options
           .slice(currentOptionSet * maxOptionsPerSet, (currentOptionSet + 1) * maxOptionsPerSet)
           .map((option, index) => (
@@ -73,7 +73,7 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
           ))}
       </div>
       {presentQuestion.options.length > maxOptionsPerSet && (
-        <div className="grid grid-cols-3 gap-y-2 gap-x-3 w-fit mt-5">
+        <div className="grid grid-cols-3 gap-y-2 gap-x-3 w-fit mt-2">
           {Array.from({ length: totalOptionSets }).map((_, index) => (
             <OptionSlider
               key={index}
@@ -91,12 +91,12 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
           <QwestButton color="#8E5DF5" bgColor="#E8DCFF" onClick={nextQuestion}>
             Next
           </QwestButton>
-          <QwestButton color="black" bgColor="white" onClick={togglePause}>
-            {isPaused ? "Start" : "Pause"}
-          </QwestButton>
-          <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest}>
-            End
-          </QwestButton>
+          <QwestButton color="black" bgColor="white" onClick={togglePause} hidden>
+              {isPaused ? "Start" : "Pause"}
+            </QwestButton>
+            <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest} hidden>
+              End
+            </QwestButton>
         </div>
       </div>
     </div>

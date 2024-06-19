@@ -18,7 +18,7 @@ const CoinGrid = () => {
         {coins.map((coinValue, index) => (
           <div
             key={index}
-            className={`bg-white whitespace-nowrap w-14 sm:w-16 py-[1px] rounded-lg flex justify-center items-center ${
+            className={`bg-white whitespace-nowrap w-10 sm:w-16 py-[1px] rounded-lg flex justify-center items-center ${
               coinValue === 0 ? "text-red-500" : ""
             }`}
           >
