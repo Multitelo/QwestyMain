@@ -74,7 +74,10 @@
 }
 
 #below .css-14gyywz-MuiSlider-valueLabel{
+    display: block !important;
     top:40px !important;
+    /* height: 100px;
+    width: 200px; */
     background-color: #fff !important;
     color: #000 !important;
     border-radius: 10px !important;
@@ -153,6 +156,7 @@
     display: flex;
     align-items: center;
     gap:50px;
+    margin-top: 50px;
 }
 .totQuestions{
     display: flex;
@@ -189,21 +193,56 @@
 
 /* Styles for fire in the quest page */
 .qwest-fire{
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-items: center;
     width:200px;
     height: 500px;
     flex-direction: column;
-    gap:100px;
+    gap:150px;
 }
 
 .fireImg{
     justify-self: flex-end;
+    z-index: 1;
 }
 .qwest-fire img{
     max-width: 100%;
 }
+
+.qwest-fire .coin img{
+    z-index: -1;
+    opacity:1;
+    animation: coinAnimate 2s ease-in-out 0.5s infinite ;
+    transform: rotate(360deg);
+    box-shadow: 5px 5px 20px orange;
+    border-radius: 50%;
+    transition: all 1s;
+    animation: coinAnimateSec 5s  ease-in 1 5s;
+   
+}
+
+/*  animations for the coin in the fire */
+@keyframes coinAnimate {
+    0% {
+        transform: rotate(0deg) scale(1) ;
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1) ;
+    }
+}
+
+/*  animations for the coin in the fire */
+@keyframes coinAnimateSec {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(200px);
+    }
+}
+
 
 @keyframes anim {
     0%{
@@ -232,9 +271,9 @@
         width: 40vw;
         height:50px;
     }
-    .q-btn-box{
+    /* .q-btn-box{
         display:none;
-    }
+    } */
     .totQuestions p{
         font-size: 14px;
     }

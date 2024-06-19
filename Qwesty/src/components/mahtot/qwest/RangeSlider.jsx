@@ -2,45 +2,47 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-const marks = [
-  {
-    value: 10,
-    label: '10',
-  },
-  {
-    value: 20,
-    label: '20',
-  },
-  {
-    value: 37,
-    label: '37',
-  },
-  {
-    value: 100,
-    label: '100',
-  },
-];
+export default function RangeSlider({ id, max, initialValue }) {
+  const [value, setValue] = React.useState(initialValue);
+  const [marks, setMarks] = React.useState([
+    {
+      value: 10,
+      label: '10',
+    },
+    {
+      value: Math.floor(max / 3),
+      label: `${Math.floor(max / 3)}`,
+    },
+    {
+      value: Math.floor((max * 2) / 3),
+      label: `${Math.floor((max * 2) / 3)}`,
+    },
+    {
+      value: max,
+      label: `${max}`,
+    },
+  ]);
 
+  React.useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
-function valuetext(value) {
-  return `${value}°C`;
-}
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-export default function RangeSlider({id, max, initialValue}) {
   return (
-        <Box sx={{ width: 300 }} id={id}>
-          <Slider
-          // style={{border:'1px solid red'}}
-            
-            aria-label="Always visible"
-            defaultValue={initialValue}
-            // getAriaValueText={valuetext}
-            step={50}
-            marks={marks}
-            // disabled='true'
-            max={max}
-            valueLabelDisplay="on"
-          />
-        </Box>
+    <Box sx={{ width: 300 }} id={id}>
+      <Slider
+        aria-label="Always visible"
+        value={value}
+        onChange={handleChange}
+        disabled="true"
+        step={50}
+        marks={marks}
+        max={max}
+        valueLabelDisplay="on"
+      />
+    </Box>
   );
 }

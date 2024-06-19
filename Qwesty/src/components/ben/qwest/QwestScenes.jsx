@@ -4,6 +4,7 @@ import BalanceCard from "./BalanceCard";
 import QuestionSection from "./QuestionSection";
 import { surveyQuestions } from "../../../data/data";
 import { QwestProvider, useQuest } from "../../../context/QwestContext";
+import EndSection from "../../share/qwest/EndSection";
 
 const QwestScenesContent = ({ onEndQuest }) => {
   const { coins } = useQuest();
@@ -22,7 +23,11 @@ const QwestScenesContent = ({ onEndQuest }) => {
       </div>
       <div className="mt-6 992:mt-[14rem] 992:float-right w-fit 992:px-20">
         <QuestionSection surveyQuestion={surveyQuestions} onEndQuest={onEndQuest} />
+        <div className="flex justify-start">
+          <EndSection/>
       </div>
+      </div>
+      
     </div>
   );
 };

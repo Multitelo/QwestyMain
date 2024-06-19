@@ -91,10 +91,10 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
           <QwestButton color="#8E5DF5" bgColor="#E8DCFF" onClick={nextQuestion}>
             Next
           </QwestButton>
-          <QwestButton color="black" bgColor="white" onClick={togglePause}>
+          <QwestButton color="black" bgColor="white" onClick={togglePause} hidden>
             {isPaused ? "Start" : "Pause"}
           </QwestButton>
-          <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest}>
+          <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest} hidden>
             End
           </QwestButton>
         </div>

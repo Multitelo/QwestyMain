@@ -168,7 +168,7 @@
     display: flex;
     gap:30px;
     color:#131217;
-    background-color: #F4F4F4;
+    background-color: inherit;
     justify-content: flex-end;
     padding:0 0px;
     font-family: Outfit;

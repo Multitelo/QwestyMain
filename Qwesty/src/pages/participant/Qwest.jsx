@@ -3,6 +3,7 @@ import qwestbg from "../../assets/images/qwestbg.svg";
 import LoadingBg from "../../components/ben/LoadingBg";
 import StartQuest from "../../components/ben/qwest/StartQuest";
 import Sidebar from "../../components/share/SideBar";
+import Top from "../../components/share/Top";
 import { useLoading } from "../../context/LoadingContext";
 import QwestScenes from "../../components/ben/qwest/QwestScenes";
 // import { qwestComponents } from "../../components/ben/routes";
@@ -35,7 +36,7 @@ const Qwest = () => {
   };
 
   return (
-    <section className="w-full h-screen flex relative">
+    <section className="w-full  flex relative">
       {loading && <LoadingBg />}
 
       {/* sidebar */}
@@ -53,7 +54,11 @@ const Qwest = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
+      
         <div className="overlay absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
+        <div className="overflow-hidden">
+          <Top/>
+        </div>
         <div className="w-full h-full p-3 overflow-auto">
           {!questStarted ? (
             <StartQuest onYesClick={handleStartQuest} onNoClick={handleNoClick} />

@@ -30,7 +30,7 @@ import {
 } from "./routes/Index.jsx";
 import SurveyProviders from "./context/Survey/SurveyProviders";
 import Providers from "./context/Provider/Providers.jsx";
-
+// import QwestSec from "./routes/Index.jsx";
 
 function App() {
   return (
@@ -68,6 +68,9 @@ function App() {
             <Route path="/signedUp/rewards" element={<Rewards />} />
             <Route path="/signedUp/my-profile" element={<Myprofile />} />
             <Route path="/signedUp/qwest-game" element={< Qwest/>}/>
+            <Route path="/signedUp/qwest-game-sec" element={< QwestSec/>}/>
+            <Route path="/fire" element={<Fire/>}/>
+
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
