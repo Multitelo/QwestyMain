@@ -1,5 +1,5 @@
-import logoBlack from "../../assets/images/logoBlack.svg";
-import logowhite from "../../assets/images/logoW.svg";
+import logoBlack from "../../assets/images/Logo.png";
+import logowhite from "../../assets/images/Solvety_logo_white.png";
 import searchIcon from '../../assets/images/search.svg';
 import settingsW from '../../assets/images/settingsB.svg';
 import settingsB from '../../assets/images/settings.svg';
@@ -14,15 +14,22 @@ import logoutB from '../../assets/images/log-out.svg';
 import '../../assets/css/researcher.css';
 import { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
+import { CiCalendar } from "react-icons/ci";
+import { LiaCoinsSolid } from "react-icons/lia";
+import { IoSettingsOutline } from "react-icons/io5";
+import { FiUser } from "react-icons/fi";
+import { LuUserPlus } from "react-icons/lu";
 import ToggleInput from "../ToggleInput";
+import { useNavigate } from 'react-router-dom';
 
 function SideBar() {
-        const {resTheme, researcherTheme, dropdown,setDropdown } = useTheme();
+        const {resTheme, researcherTheme, dropdown,setDropdown,  usertype } = useTheme();
 
         const [search, setSearch] = useState('')
         const location = useLocation();
-     
+        const navigateTo = useNavigate();
+
         const menuItem = [
           {
               path: "/researcher/home" ,
@@ -41,6 +48,37 @@ function SideBar() {
               icon: resTheme === "dark" || location.pathname === "/researcher/settings" ? settingsW : settingsB,
           },
       ];
+
+      const researcherMenu = [
+        {
+            path: "/" ,
+            name: "Quests",
+            icon:<CiCalendar size={'1.5rem'}/>,
+        },
+     
+        {
+            path: "/",
+            name: "My profile",
+            icon: <FiUser  size={'1.5rem'}/>,
+        },
+        {
+            path: "/",
+            name: "Rewards",
+            icon:<LiaCoinsSolid  size={'1.5rem'} />,
+        },
+        {
+          path: "/",
+          name: "Settings",
+          icon: <IoSettingsOutline  size={'1.5rem'}/>,
+      },
+      {
+        path: "/",
+        name: "Referrals",
+        icon: <LuUserPlus  size={'1.5rem'}/>,
+    },
+    ];
+
+      
 
       useEffect(() => {
           window.addEventListener('resize', () => {
@@ -73,11 +111,26 @@ function SideBar() {
                setDropdown(false);
           }
         };
+
+  
+         
+        
+          const handleLogout = () => {
+            localStorage.removeItem('jwtToken');
+        
+           navigateTo('/login');
+          };
+
+
   return (
-    <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}`}>
+    <div className={`researcher-bar small ${resTheme} ${dropdown===true? 'dropdown':''}` } 
+         
+         id={usertype=='researcher'?'participant-menu':''}
+         >
         <div className="logo">
-        <img src={resTheme === 'light'? logoBlack:logowhite}
-             alt="logo of Qwesty"/>
+      <Link to='/'>
+            <img src={resTheme === 'dark' || usertype=='researcher' ?logowhite:logoBlack}
+                alt="logo of solvety"/></Link>
          </div>
 
         <div className={`side-links small ${dropdown===true?'display':''}`} >
@@ -95,7 +148,26 @@ function SideBar() {
           </div>
           
           {
-               menuItem.map((item, index) => (
+            usertype=='researcher'?
+            
+            researcherMenu.map((item, index)=> (
+              <NavLink to={item.path}
+                      className={`side-link  ${item.name}`} 
+                      activeClassName='active'
+                      id='partic-link' >
+
+                   <div className="side-icon" id="partic-icon">
+                        {item.icon}
+                    </div>
+                    
+                   <div className="link-text">{item.name}</div>
+
+
+              </NavLink>
+            ))
+            
+            
+            :menuItem.map((item, index) => (
                     <NavLink to={item.path} key={index} 
                             className={`side-link  ${item.name}`} 
                             activeClassName='active'
@@ -110,15 +182,19 @@ function SideBar() {
                ))
           
           }
-         <div id="toggle-theme">
-          <p>{resTheme==='light'?'Dark':"Light"} theme</p>
-          <ToggleInput onChange={researcherTheme} checked={resTheme==='light'?false:true}/>
-         </div>
+     
+       {  
+          usertype=='researcher'?'':
+            <div id="toggle-theme">
+              <p>{resTheme==='light'?'Dark':"Light"} theme</p>
+              <ToggleInput onChange={researcherTheme} checked={resTheme==='light'?false:true}/>
+            </div>
+         }
 
-          <div className="logout-btn">
-               <img src={resTheme==='light'?logoutB:logoutW}
+          <div className="logout-btn" onClick={handleLogout}>
+               <img src={resTheme==='dark' || usertype=='researcher'?logoutW:logoutB}
                     alt="logout icon"/>
-                    <p>Log out</p>
+                    <p style={{ color:usertype=='researcher'?'#fff':''}}>Log out</p>
           </div>
              
          </div>    

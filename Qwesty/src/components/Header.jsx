@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { TiArrowSortedDown } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import Main from './Main';
+import { RiMenu3Fill } from "react-icons/ri";
 
 function Header() {
 
@@ -56,13 +57,13 @@ function Header() {
   return (
     <>
    
-   {/* <div id='medi'>
+   <div id='medi'>
    <div className='nav-medium-devices'>
       
       <Link to='/' className='small-logo'><img src={Logo}></img></Link>
       
       <button onClick={handleClick} 
-                         id="dropdown-btn"><img src={bars}/></button>
+                         id="dropdown-btn" style={{color:'#fff'}}><RiMenu3Fill size={'2.5rem'}/></button>
                          </div>
            
            {barClicked &&              
@@ -70,7 +71,7 @@ function Header() {
             
           <Link to='/' className='items logo'><img src={Logo}></img></Link>
           {
-            barClicked&&  <IoMdClose id="close-bar" onClick={handleClick} size={'3rem'}/>
+            barClicked&&  <IoMdClose id="close-bar" onClick={handleClick} size={'2rem'}/>
           } 
           <Link to='/researcher/home'className='items' id="first-item">about us</Link>
           <Link to='/signedUp/rewards'className='items' id="second-item">  contact us</Link>
@@ -78,15 +79,15 @@ function Header() {
          <Link to='/login'className='items' id="fourth-item">LogIn</Link>
          
       </nav>}              
-      </div>        */}
-        <nav className="nav-bar temp">
+      </div>       
+        <nav id="nav-bar">
             
-            <Link to='/' className='items logo' id="temp-solvety-logo"><img src={Logo}></img></Link>
+            <Link to='/' className='items logo'><img src={Logo}></img></Link>
          
-            {/* <Link to='/researcher/home' className='items' id="first-item">about us</Link>
+            <Link to='/researcher/home' className='items' id="first-item">about us</Link>
             <Link to='/signedUp/rewards' className='items' id="second-item">contact us</Link>
-            <Link to='/' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link> */}
-            {<Link to='/login' className='items' id="fourth-item">LogIn</Link>}
+            <Link to='/' className='items' id="third-item">services<TiArrowSortedDown id="arrow" /></Link>
+            <Link to='/login' className='items' id="fourth-item">LogIn</Link>
            
         </nav>
 
