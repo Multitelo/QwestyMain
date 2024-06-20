@@ -197,10 +197,16 @@
     display: flex;
     align-items: center;
     justify-items: center;
-    width:200px;
-    height: 500px;
+    width:350px;
+    height: auto;
     flex-direction: column;
-    gap:150px;
+    gap:100px;
+    padding: 10px;
+}
+
+.qwest-fire-anim{
+    position: relative;
+    height: 300px;
 }
 
 .fireImg{
@@ -220,10 +226,74 @@
     border-radius: 50%;
     transition: all 1s;
     animation: coinAnimateSec 5s  ease-in 1 5s;
-   
+    width: 50px;
+    height:50px;
 }
 
+.retake-qwes{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    font-family: Outfit;
+    border-radius: 15px;
+    padding: 10px;
+    width: 300px;
+    gap:30px;
+    color: #636387;
+    font-size: 20px;
+}
+
+.qwest-fire .retake-btns{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    gap:30%;
+}
+
+
+.retake-btns button{
+    background: #F3EDFF;
+    color: #424040;
+    border-radius: 10px;
+    padding:3px 20px;
+    transition: all 0.5s;
+
+}
+.retake-btns button:first-child,
+.retake-btns button:hover{
+   color: #8E5DF5;
+}
+
+.retake-btns button:hover{
+    transform: scale(1.1);
+ }
 /*  animations for the coin in the fire */
+
+/* Styles for count down timer */
+.count-down{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    flex-direction: column;
+    gap:10px;
+    background-color: #fff;
+    border-radius: 20px;
+    font-family: Outfit;
+    font-size: 16px;
+    width: 320px;
+    transform: translateX(200);
+    height: 135px;
+    animation: Timeranim 1s ease-in-out 1;
+}
+.count-down p:first-child{
+    color:#636387;
+    font-size: 32px;
+}
+.count-down p:nth-child(2){
+    color:#FA8787;
+    font-size: 40px;
+}
 @keyframes coinAnimate {
     0% {
         transform: rotate(0deg) scale(1) ;
@@ -258,6 +328,21 @@
     }
 }
 
+/* animations for the countdown timer */
+@keyframes Timeranim {
+    0%{
+        transform: translateX(200);
+    }
+
+    50%{
+        transform: translateX(220);
+    }
+
+    100%{
+        transform: translateX(250);
+    }
+}
+
 @media screen and (max-width:992px){
     .top-slider{
         display: none;
@@ -280,6 +365,33 @@
 
     .qwest-fire{
         width:100px;
+    }
+    
+    .count-down{
+        width: 220px;
+        height: 105px;
+        padding-top: 10px;
+    }
+    .count-down p:first-child{
+      
+        font-size: 20px;
+    }
+    .count-down p:nth-child(2){
+        font-size: 24px;
+    }
+
+    @keyframes Timeranim {
+        0%{
+            transform: translateX(200);
+        }
+    
+        50%{
+            transform: translateX(220);
+        }
+    
+        100%{
+            transform: translateX(250);
+        }
     }
     
 }
