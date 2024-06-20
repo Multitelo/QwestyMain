@@ -4,7 +4,7 @@ import BalanceCard from "./BalanceCard";
 import QuestionSection from "./QuestionSection";
 import { surveyQuestions } from "../../../data/data";
 import { QwestProvider, useQuest } from "../../../context/QwestContext";
-import QwestButton from "./QwestButton";
+import EndSection from "../../share/qwest/EndSection";
 
 const QwestScenesContent = ({ onEndQuest }) => {
   const [questStarted, setQuestStarted] = useState(false);
@@ -23,34 +23,24 @@ const QwestScenesContent = ({ onEndQuest }) => {
         <div className="inline-block min-w-[180px] 992:absolute ">
           <CoinGrid />
         </div>
-        {/* <div
-          className={`inline-block 992:absolute 992:right-0 ${!coins ? "992:top-" : coins.length >= 3 ? "992:top-20" : "992:top-14"} mt-5 992:mt-0`}
-        > */}
+
         <div
           className={`inline-block 992:absolute 992:right-0 992:top-[5rem] mt-5 992:mt-0`}
         >
           <BalanceCard />
         </div>
       </div>
-      <div className="mt-6 992:mt-[20rem] 992:float-right w-fit">
-        <div className="992:px-20">
-          <QuestionSection
-            surveyQuestion={surveyQuestions}
-            onEndQuest={onEndQuest}
-          />
+      <div className="mt-6 992:mt-[20rem] 992:float-right w-fit 992:px-0 relative">
+        <QuestionSection
+          surveyQuestion={surveyQuestions}
+          onEndQuest={onEndQuest}
+        />
+        <div className="flex justify-start w-fit">
+          <EndSection />
         </div>
-        <section className="my-10 flex">
-          <div className="ml-auto w-fit pr-10 992:flex gap-10 hidden">
-            <QwestButton color="black" bgColor="white" onClick={togglePause}>
-              {isPaused ? "Start" : "Pause"}
-            </QwestButton>
-            <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={endQuiz}>
-              End
-            </QwestButton>
-          </div>
-        </section>
       </div>
-      {/* <div className="p-20 bg-white h-20 w-20 absolute z-20">hjjjkjkjk</div> */}
+      <div className="avatar"></div>
+      <div className="fire"></div>
     </div>
   );
 };

@@ -7,7 +7,7 @@
   display: flex;
   background-color: #fff;
   min-height: 110vh;
-  border:10px solid rgba(255, 255, 255, 0);
+  /* border:10px solid rgba(255, 255, 255, 0); */
   flex-direction: row; 
   justify-content: stretch; 
 }
@@ -27,12 +27,12 @@
 .signUp-left main{
     align-self: center;
   
-    width:100%;
-    height: 100%;
+    /* width:100%; */
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0px;
+    margin-top: 70px;
 }
 
 .signUp-right {
@@ -378,6 +378,29 @@ sup{
       .errMsg {
         width: 50vw;
       }
+
+      .signUp-left h1{
+        font-size: 36px;
+      }
+
+      .second-content h2, .first-content h2{
+        font-size: 24px;
+      }
+
+      .radio-container {
+        margin-right: 5px;
+
+      }
+      .signUp-right footer,
+      .signUp-container footer
+      {
+        font-size: 16px;
+      }
+      .signUp-left main{
+        
+        margin-top: 30px;
+    }
+    
   }
 
   @media only screen and (max-width:400px){

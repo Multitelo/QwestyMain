@@ -22,11 +22,11 @@ const BalanceCard = ({ stipend = 0 }) => {
         <div className="flex mb-0 992:mb-1">
           <img src={qwestLogo} alt="qwest logo" />
           <h1 className="font-bold text-xl 992:text-3xl">
-            {balance + validScore.length}
+            {balance}
           </h1>
         </div>
         <h1 className="text-white text-xl 992:text-2xl mr-4">
-          {!coins ? stipend : validScore.length}
+          {""}
         </h1>
       </div>
     </div>

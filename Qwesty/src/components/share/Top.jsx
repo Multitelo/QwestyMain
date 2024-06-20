@@ -1,5 +1,6 @@
 import bell from '../../assets/images/bell.svg'
 import avatar from '../../assets/images/resAvatar.svg'
+import qwestAvatar from '../../assets/images/avatar.svg'
 import Lmode from '../../assets/images/Lmode.png';
 import Dmode from '../../assets/images/Dmode.png';
 import { useTheme } from '../../context/ThemeContext';
@@ -13,10 +14,9 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import supportIconB from '../../assets/images/support-iconB.svg';
 import supportIconW from '../../assets/images/support-iconW.svg';
-
-
+import TopLevel from '../mahtot/qwest/TopLevel';
 function Top() {
-  const {resTheme, researcherTheme, dropdown, handleResearcherDropdown, setDropdown, setIsSupportClicked} = useTheme();
+  const {resTheme, researcherTheme, dropdown, handleResearcherDropdown, setDropdown, setIsSupportClicked, usertype} = useTheme();
   const dropdownRef = useRef(null);
 
   const closeDropdown = () => {
@@ -25,7 +25,7 @@ function Top() {
 
 
   return (
-    <div className={`reas-top ${resTheme} `} ref={dropdownRef}>
+    <div className={`reas-top ${resTheme} `} ref={dropdownRef} id={`${usertype=='participant'?'participant-top':''}`}>
        
        <div className="logos">
         <img src={resTheme === 'light'? logoBlack:logowhite}
@@ -45,13 +45,27 @@ function Top() {
       <div className='user-content'>
        <RiArrowDropDownLine id="dropArw" />
        <div className='pic'>
-        <Link to='/researcher/profile'>  
-          <img src={avatar}
+        <Link to={  usertype==='researcher'?'/researcher/profile':'/signedUp/qwest-game-play'}>  
+          <img src={ usertype==='participant'?qwestAvatar: avatar}
                alt="avatar"
-               /></Link>
+               />
+               
+               </Link>
              
        </div>
-       <Link to='/researcher/profile'><p id="big">Spencer</p></Link>
+
+       {
+        usertype=='participant'?
+          <div>
+              <TopLevel/>
+          </div>:''
+       }
+
+        {  
+         usertype==='researcher'?
+            <Link to='/researcher/profile'><p id="big">Spencer</p></Link>
+            :<p id="big" style={{color:'#000'}}>Jake</p>
+        }
         <div className={`menu-icon ${dropdown===true?'active':''}`}
              onClick={handleResearcherDropdown}
              title={`${dropdown===true?'Hide' :'Show'} menu`} >

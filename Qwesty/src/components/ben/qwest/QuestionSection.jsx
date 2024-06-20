@@ -83,7 +83,7 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
           ))}
         </div>
       )}
-      <div className="w-full">
+      <div className="w-fit">
         <div className="flex space-x-4 992:space-x-24 items-center justify-evenly">
           <QwestButton bgColor="#8E5DF5" onClick={prevQuestion}>
             Prev
@@ -92,11 +92,11 @@ const QuestionSection = ({ surveyQuestion, onEndQuest }) => {
             Next
           </QwestButton>
           <QwestButton color="black" bgColor="white" onClick={togglePause} hidden>
-              {isPaused ? "Start" : "Pause"}
-            </QwestButton>
-            <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest} hidden>
-              End
-            </QwestButton>
+            {isPaused ? "Start" : "Pause"}
+          </QwestButton>
+          <QwestButton color="#8E5DF5" bgColor="#FA8787" onClick={onEndQuest} hidden>
+            End
+          </QwestButton>
         </div>
       </div>
     </div>

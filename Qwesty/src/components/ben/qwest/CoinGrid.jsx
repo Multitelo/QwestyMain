@@ -10,9 +10,9 @@ const CoinGrid = () => {
 
   return (
     <div>
-      <div className="hidden sm:flex mb-1">
+      <div className="hidden 992:flex mb-1">
         <img src={qwestLogo} alt="qwest logo" />
-        <h1 className="font-bold text-2xl">{balance + validScore.length}</h1>
+        <h1 className="font-bold text-2xl">{balance}</h1>
       </div>
       <div className="coin_grid grid grid-cols-3 whitespace-nowrap w-fit gap-x-1 gap-y-2">
         {coins.map((coinValue, index) => (

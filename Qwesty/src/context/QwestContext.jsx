@@ -7,6 +7,7 @@ export const useQuest = () => useContext(QwestContext);
 export const QwestProvider = ({ children }) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [max, setMax] = useState(0);
   const [currentOptionSet, setCurrentOptionSet] = useState(0);
   const [fade, setFade] = useState(true);
   const [timer, setTimer] = useState(5);
@@ -15,7 +16,7 @@ export const QwestProvider = ({ children }) => {
   const [coins, setCoins] = useState([]);
   const [balance, setBalance] = useState(25);
   const timerRef = useRef(null);
-
+  const questionLength = surveyQuestions.length
   const totalOptionSets = Math.ceil(surveyQuestions[currentQuestion]?.options.length / 4);
 
   const startTimer = () => {
@@ -55,6 +56,11 @@ export const QwestProvider = ({ children }) => {
     setShowRetakePopup(false);
     nextQuestion();
   };
+
+
+  useEffect(()=> {
+      setMax(currentQuestion)
+  },[currentQuestion])
 
   useEffect(() => {
     return () => clearInterval(timerRef.current);
@@ -119,6 +125,7 @@ export const QwestProvider = ({ children }) => {
 
   const prevQuestion = () => {
     setCurrentQuestion((prev) => (prev > 0 ? prev - 1 : prev));
+    setMax(currentQuestion)
     setCurrentOptionSet(0);
   };
 
@@ -141,6 +148,7 @@ export const QwestProvider = ({ children }) => {
       value={{
         selectedAnswers,
         currentQuestion,
+        questionLength,
         currentOptionSet,
         fade,
         timer,
@@ -150,6 +158,7 @@ export const QwestProvider = ({ children }) => {
         timerRef,
         showRetakePopup,
         progress,
+        max,
         startTimer,
         togglePause,
         endQuiz,

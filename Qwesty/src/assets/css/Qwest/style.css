@@ -1,0 +1,285 @@
+#participant-bg {
+    background: url('/src/assets/images/qwestbg.svg') no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#sec-layer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0,0.2);
+}
+#participant-bg .reas-top {
+    background-color: inherit;
+   
+}
+
+#range{
+ border:10px solid red;
+ background-color: aqua;
+
+}
+
+.range .value{
+    font-family: Outfit;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    padding:1px 19px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+
+}
+
+
+
+/* Slider styles */
+.MuiBox-root.css-1v5z18m{
+    /* border:1px solid red; */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: 176px;
+    height: auto;
+}
+
+#below.MuiBox-root.css-1v5z18m{
+    width: 300px;
+    height:50px;
+}
+
+.css-ltlhnc-MuiSlider-root{
+    height:15px !important;
+    width:100%  !important;
+}
+
+#top .css-14gyywz-MuiSlider-valueLabel{
+    display: none;
+}
+
+#below .css-14gyywz-MuiSlider-valueLabel{
+    display: block !important;
+    top:40px !important;
+    /* height: 100px;
+    width: 200px; */
+    background-color: #fff !important;
+    color: #000 !important;
+    border-radius: 10px !important;
+}
+
+.css-14gyywz-MuiSlider-valueLabel::before{
+    width:0 !important;
+}
+
+.css-1ucwjgd-MuiSlider-markLabel{
+    display: none !important;
+
+}
+
+.css-1bvr8oc-MuiSlider-markLabel{
+    display: none;
+}
+
+.css-1ucwjgd-MuiSlider-markLabel{
+    background-color: #fff !important;
+}
+
+.MuiSlider-rail.css-7o8aqz-MuiSlider-rail{
+    background-color: #fff;
+    opacity: 1 !important;
+}
+#top .MuiSlider-track.css-ttgsjq-MuiSlider-track{
+    background-color:#2A2A27 ;
+}
+
+#below .css-ttgsjq-MuiSlider-track{
+    background-color:#37D8AD ;
+
+}
+
+.MuiSlider-thumb.MuiSlider-thumbSizeMedium.MuiSlider-thumbColorPrimary.MuiSlider-thumb.MuiSlider-thumbSizeMedium.MuiSlider-thumbColorPrimary.css-1as9v07-MuiSlider-thumb::before{
+    display: none !important;
+    
+
+}
+
+.css-1as9v07-MuiSlider-thumb{
+    height: 0px !important;
+}
+
+.top-slider{
+    display: flex;
+    /* align-content: center; */
+    width:200px;
+    /* border:1px solid blue; */
+    gap:5px;
+    align-items: center;
+    height: 50px !important;
+    flex-direction: column;
+}
+
+.top-slider .captionTop{
+    display: flex;
+    color:#000;
+    gap:20px;
+    font-family: Outfit;
+    font-size: 16px;
+    position: relative;
+    top:-40px;
+}
+
+.qwest-parts{
+    display: flex;
+    width: 80%;
+    /* flex-direction: column; */
+}
+
+/* styles for the below slider */
+
+.qwest-end-section{
+    display: flex;
+    align-items: center;
+    gap:50px;
+    margin-top: 50px;
+}
+.totQuestions{
+    display: flex;
+    flex-direction: column;
+}
+.totQuestions p{
+    color: #fff;
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* styles for qwest buttons */
+.q-btn-box{
+    display: flex;
+    gap:10px;
+}
+
+.qwest-btn button{
+    font-size: 18px;
+    font-family: Outfit;
+    width: 150px;
+    height: 50px;
+    box-shadow: 0px 4px 15px 0px #00000026;
+    border-radius: 10px;
+}
+
+/* styles for qwesty avatar */
+.qwesty-avatar{
+        opacity: 1;
+        animation: anim 1s ease-in-out;
+}
+
+
+/* Styles for fire in the quest page */
+.qwest-fire{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width:200px;
+    height: 500px;
+    flex-direction: column;
+    gap:150px;
+}
+
+.fireImg{
+    justify-self: flex-end;
+    z-index: 1;
+}
+.qwest-fire img{
+    max-width: 100%;
+}
+
+.qwest-fire .coin img{
+    z-index: -1;
+    opacity:1;
+    animation: coinAnimate 2s ease-in-out 0.5s infinite ;
+    transform: rotate(360deg);
+    box-shadow: 5px 5px 20px orange;
+    border-radius: 50%;
+    transition: all 1s;
+    animation: coinAnimateSec 5s  ease-in 1 5s;
+   
+}
+
+/*  animations for the coin in the fire */
+@keyframes coinAnimate {
+    0% {
+        transform: rotate(0deg) scale(1) ;
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1) ;
+    }
+}
+
+/*  animations for the coin in the fire */
+@keyframes coinAnimateSec {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(200px);
+    }
+}
+
+
+@keyframes anim {
+    0%{
+        opacity:0;
+    }
+
+    50%{
+        opacity:0.5;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+@media screen and (max-width:992px){
+    .top-slider{
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width:768px){
+    #below.MuiBox-root.css-1v5z18m{
+        width: 40vw;
+        height:50px;
+    }
+    /* .q-btn-box{
+        display:none;
+    } */
+    .totQuestions p{
+        font-size: 14px;
+    }
+
+    .qwest-fire{
+        width:100px;
+    }
+    
+}

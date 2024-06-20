@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/images/Logo.png';
 import backBtn from '../assets/images/backBtn.png';
 import '../assets/css/login-signup.css';
@@ -157,17 +157,18 @@ function SignUpPage() {
             const data = await response.json();
             setUserId(data.newUserId)
             console.log(userId)
-            // const redirectToVerify = `/verify?userId=${userId}&usertype=${usertype}`;
-            // window.location.href = redirectToVerify;
-            // navigateTo('/researcher/research')
-            alert('Signed up successful! Thank you.');
-            
+           
         } catch (error) {
             console.error('Network error:', error.message);
             setErrE("A network error occurred. Please try again.");
         }
     };
     
+    useEffect(() => {
+        if (userId) {
+            navigateTo('/verify')
+        }
+    }, [userId]);
     
     
     
