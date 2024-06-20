@@ -28,7 +28,7 @@ const Qwest = () => {
   const handleEndQuest = () => {
     setQuestStarted(false);
     localStorage.removeItem("questStarted");
-    window.location.reload(); // Reload the page to reset the state
+    window.location.reload();
   };
 
   const handleNoClick = () => {
@@ -55,16 +55,20 @@ const Qwest = () => {
         }}
       >
       
-        <div className="overlay absolute opacity-[0.4] bg-black w-full h-full p-20"></div>
-        <div className="overflow-hidden">
+        <div className="overlay absolute opacity-[0.4] bg-black w-full h-full"></div>
+        <div className="overflow-hidden z-20 relative  pr-10">
           <Top/>
         </div>
         <div className="w-full h-full p-3 overflow-auto">
           {!questStarted ? (
-            <StartQuest onYesClick={handleStartQuest} onNoClick={handleNoClick} />
+            <StartQuest
+              onYesClick={handleStartQuest}
+              onNoClick={handleNoClick}
+            />
           ) : (
             <QwestScenes onEndQuest={handleEndQuest} />
           )}
+         
         </div>
       </div>
     </section>
