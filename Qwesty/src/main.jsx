@@ -5,7 +5,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import "./index.css";
 import Avatar from "./components/share/qwest/Avatar.jsx";
 import Fire from "./components/share/qwest/Fire.jsx";
-import CountDown from "./components/mahtot/qwest/CountDown.jsx";
+import LastScene from "./components/mahtot/qwest/LastScene.jsx";
+
 import {
   Login,
   Signup,
@@ -72,7 +73,7 @@ function App() {
             <Route path="/signedUp/qwest-game-sec" element={< QwestSec/>}/>
             <Route path="/fire" element={<Fire/>}/>
             <Route path="/avatar" element={<Avatar/>}/>
-            <Route path="/count" element={<CountDown/>}/>
+            <Route path="/last" element={<LastScene/>}/>
 
           </Routes>
         </BrowserRouter>

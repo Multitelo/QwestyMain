@@ -5,6 +5,10 @@ import QuestionSection from "./QuestionSection";
 import { surveyQuestions } from "../../../data/data";
 import { QwestProvider, useQuest } from "../../../context/QwestContext";
 import EndSection from "../../share/qwest/EndSection";
+import Fire from "../../share/qwest/Fire";
+import avatarF from "../../../assets/images/solvety-avatar.png";
+import avatarSec from "../../../assets/images/Solvety-baby-with-water.png"
+
 
 const QwestScenesContent = ({ onEndQuest }) => {
   const [questStarted, setQuestStarted] = useState(false);
@@ -15,7 +19,7 @@ const QwestScenesContent = ({ onEndQuest }) => {
       setQuestStarted(true);
     }
   }, []);
-  const { coins, togglePause, isPaused, endQuiz } = useQuest();
+  const { coins, togglePause, isPaused, endQuiz,showRetakePopup, changeAvatar } = useQuest();
 
   return (
     <div className="relative z-10 text-white h-screen">
@@ -39,8 +43,15 @@ const QwestScenesContent = ({ onEndQuest }) => {
           <EndSection />
         </div>
       </div>
-      <div className="avatar"></div>
-      <div className="fire"></div>
+   
+      <div className="avatars-box" >
+          <div className="fire">
+            <Fire/>
+          </div>
+          <div className="avatar">
+            <img src={changeAvatar?avatarSec:avatarF}/>
+          </div>
+      </div>
     </div>
   );
 };

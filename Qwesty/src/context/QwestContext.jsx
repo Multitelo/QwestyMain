@@ -18,6 +18,7 @@ export const QwestProvider = ({ children }) => {
   const timerRef = useRef(null);
   const questionLength = surveyQuestions.length
   const totalOptionSets = Math.ceil(surveyQuestions[currentQuestion]?.options.length / 4);
+ const [changeAvatar, setChangeAvatar] = useState(false);
 
   const startTimer = () => {
     clearInterval(timerRef.current);
@@ -178,6 +179,8 @@ export const QwestProvider = ({ children }) => {
         setBalance,
         handleRetake,
         handleCancel,
+        changeAvatar, 
+        setChangeAvatar,
       }}
     >
       {children}
