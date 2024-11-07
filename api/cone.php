@@ -48,7 +48,5 @@
 // // Process $result2...
 
 // // Close connections
-// mysqli_close($conn1);
-// mysqli_close($conn2);
 
 ?>
